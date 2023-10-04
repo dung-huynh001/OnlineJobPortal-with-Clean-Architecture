@@ -1,0 +1,5 @@
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.AssemblyInfoInputs.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.AssemblyInfo.cs
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.csproj.CoreCompileInputs.cache

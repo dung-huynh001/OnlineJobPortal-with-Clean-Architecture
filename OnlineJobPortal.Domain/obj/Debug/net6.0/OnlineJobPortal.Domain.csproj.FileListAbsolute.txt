@@ -1,0 +1,12 @@
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Domain\bin\Debug\net6.0\OnlineJobPortal.Domain.deps.json
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Domain\bin\Debug\net6.0\OnlineJobPortal.Domain.dll
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Domain\bin\Debug\net6.0\OnlineJobPortal.Domain.pdb
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Domain\obj\Debug\net6.0\OnlineJobPortal.Domain.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Domain\obj\Debug\net6.0\OnlineJobPortal.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Domain\obj\Debug\net6.0\OnlineJobPortal.Domain.AssemblyInfoInputs.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Domain\obj\Debug\net6.0\OnlineJobPortal.Domain.AssemblyInfo.cs
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Domain\obj\Debug\net6.0\OnlineJobPortal.Domain.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Domain\obj\Debug\net6.0\OnlineJobPortal.Domain.dll
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Domain\obj\Debug\net6.0\refint\OnlineJobPortal.Domain.dll
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Domain\obj\Debug\net6.0\OnlineJobPortal.Domain.pdb
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Domain\obj\Debug\net6.0\ref\OnlineJobPortal.Domain.dll
