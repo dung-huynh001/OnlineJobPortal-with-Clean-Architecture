@@ -8,6 +8,6 @@ namespace OnlineJobPortal.Domain.Entities
 
         public ICollection<CandidateSkill> CandidateSkills { get; set; }
 
-        public ICollection<JobRequirement> JobRequirements { get; set; }
+        public ICollection<RequirementSkill> JobRequirements { get; set; }
     }
 }

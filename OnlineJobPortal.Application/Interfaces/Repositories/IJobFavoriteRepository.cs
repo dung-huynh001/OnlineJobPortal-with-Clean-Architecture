@@ -1,6 +1,8 @@
-﻿namespace OnlineJobPortal.Application.Interfaces.Repositories
+﻿using OnlineJobPortal.Domain.Entities;
+
+namespace OnlineJobPortal.Application.Interfaces.Repositories
 {
-    public interface IJobFavoriteRepository
+    public interface IJobFavoriteRepository : IGenericRepository<JobFavorite>
     {
 
     }

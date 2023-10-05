@@ -1,6 +1,8 @@
-﻿namespace OnlineJobPortal.Application.Interfaces.Repositories
+﻿using AutoMapper;
+
+namespace OnlineJobPortal.Application.Interfaces.Repositories
 {
-    public interface IProfileRepository
+    public interface IProfileRepository : IGenericRepository<Profile>
     {
     }
 }
