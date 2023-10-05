@@ -1,6 +1,9 @@
-﻿namespace OnlineJobPortal.Application.Interfaces.Repositories
+﻿using OnlineJobPortal.Domain.Entities;
+
+namespace OnlineJobPortal.Application.Interfaces.Repositories
 {
-    internal interface IAdminRepository
+    public interface IAdminRepository : IGenericRepository<Admin>
     {
+
     }
 }

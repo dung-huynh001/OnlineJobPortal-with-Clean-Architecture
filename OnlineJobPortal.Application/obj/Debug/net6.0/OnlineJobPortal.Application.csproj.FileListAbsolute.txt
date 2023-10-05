@@ -1,5 +1,15 @@
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\bin\Debug\net6.0\OnlineJobPortal.Application.deps.json
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\bin\Debug\net6.0\OnlineJobPortal.Application.dll
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\bin\Debug\net6.0\OnlineJobPortal.Application.pdb
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\bin\Debug\net6.0\OnlineJobPortal.Domain.dll
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\bin\Debug\net6.0\OnlineJobPortal.Domain.pdb
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.csproj.AssemblyReference.cache
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.AssemblyInfoInputs.cache
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.AssemblyInfo.cs
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.csproj.CopyComplete
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.dll
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\refint\OnlineJobPortal.Application.dll
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\OnlineJobPortal.Application.pdb
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Application\obj\Debug\net6.0\ref\OnlineJobPortal.Application.dll

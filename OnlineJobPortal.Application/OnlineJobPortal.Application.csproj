@@ -11,42 +11,58 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="DTOs\" />
-    <Folder Include="Futures\Applications\Queries\" />
-    <Folder Include="Futures\Applications\Commands\" />
-    <Folder Include="Futures\BussinessIndustrys\Commands\" />
-    <Folder Include="Futures\BussinessIndustrys\Queries\" />
-    <Folder Include="Futures\CandidateSkills\Commands\" />
-    <Folder Include="Futures\CandidateSkills\Queries\" />
-    <Folder Include="Futures\Candidates\Commands\" />
-    <Folder Include="Futures\Candidates\Queries\" />
-    <Folder Include="Futures\CompanyImages\Commands\" />
-    <Folder Include="Futures\CompanyImages\Queries\" />
-    <Folder Include="Futures\Companys\Commands\" />
-    <Folder Include="Futures\Companys\Queries\" />
-    <Folder Include="Futures\Educations\Commands\" />
-    <Folder Include="Futures\Educations\Queries\" />
-    <Folder Include="Futures\Employers\Commands\" />
-    <Folder Include="Futures\Employers\Queries\" />
-    <Folder Include="Futures\Experiences\Commands\" />
-    <Folder Include="Futures\Experiences\Queries\" />
-    <Folder Include="Futures\JobCategorys\Commands\" />
-    <Folder Include="Futures\JobCategorys\Queries\" />
-    <Folder Include="Futures\JobFavorites\Commands\" />
-    <Folder Include="Futures\JobFavorites\Queries\" />
-    <Folder Include="Futures\JobPosts\Commands\" />
-    <Folder Include="Futures\JobPosts\Queries\" />
-    <Folder Include="Futures\JobRequirements\Commands\" />
-    <Folder Include="Futures\JobRequirements\Queries\" />
-    <Folder Include="Futures\Messages\Commands\" />
-    <Folder Include="Futures\Messages\Queries\" />
-    <Folder Include="Futures\Profiles\Commands\" />
-    <Folder Include="Futures\Profiles\Queries\" />
-    <Folder Include="Futures\Skill\Commands\" />
-    <Folder Include="Futures\Skill\Queries\" />
-    <Folder Include="Futures\User\Commands\" />
-    <Folder Include="Futures\User\Queries\" />
+    <Folder Include="DTOs\BussinessIndustryDto\" />
+    <Folder Include="DTOs\CompanyDto\" />
+    <Folder Include="DTOs\CompanyImageDto\" />
+    <Folder Include="DTOs\EducationDto\" />
+    <Folder Include="DTOs\EmployerDto\" />
+    <Folder Include="DTOs\ExperienceDto\" />
+    <Folder Include="DTOs\JobCategoryDto\" />
+    <Folder Include="DTOs\JobFavoriteDto\" />
+    <Folder Include="DTOs\JobRequirementDto\" />
+    <Folder Include="DTOs\MessageDto\" />
+    <Folder Include="DTOs\ApplicationDto\" />
+    <Folder Include="DTOs\ProfileDto\" />
+    <Folder Include="DTOs\SkillDto\" />
+    <Folder Include="DTOs\UserDto\" />
+    <Folder Include="DTOs\CandidateSkillDto\" />
+    <Folder Include="DTOs\CandidateDto\" />
+    <Folder Include="Futures\AdminFeatures\Commands\" />
+    <Folder Include="Futures\AdminFeatures\Queries\" />
+    <Folder Include="Futures\ApplicationFeatures\Queries\" />
+    <Folder Include="Futures\ApplicationFeatures\Commands\" />
+    <Folder Include="Futures\BussinessIndustryFeatures\Commands\" />
+    <Folder Include="Futures\BussinessIndustryFeatures\Queries\" />
+    <Folder Include="Futures\CandidateSkillFeatures\Commands\" />
+    <Folder Include="Futures\CandidateSkillFeatures\Queries\" />
+    <Folder Include="Futures\CandidateFeatures\Commands\" />
+    <Folder Include="Futures\CandidateFeatures\Queries\" />
+    <Folder Include="Futures\CompanyImageFeatures\Commands\" />
+    <Folder Include="Futures\CompanyImageFeatures\Queries\" />
+    <Folder Include="Futures\CompanyFeatures\Commands\" />
+    <Folder Include="Futures\CompanyFeatures\Queries\" />
+    <Folder Include="Futures\EducationFeatures\Commands\" />
+    <Folder Include="Futures\EducationFeatures\Queries\" />
+    <Folder Include="Futures\EmployerFeatures\Commands\" />
+    <Folder Include="Futures\EmployerFeatures\Queries\" />
+    <Folder Include="Futures\ExperienceFeatures\Commands\" />
+    <Folder Include="Futures\ExperienceFeatures\Queries\" />
+    <Folder Include="Futures\JobCategoryFeatures\Commands\" />
+    <Folder Include="Futures\JobCategoryFeatures\Queries\" />
+    <Folder Include="Futures\JobFavoriteFeatures\Commands\" />
+    <Folder Include="Futures\JobFavoriteFeatures\Queries\" />
+    <Folder Include="Futures\JobPostFeatures\Commands\" />
+    <Folder Include="Futures\JobPostFeatures\Queries\" />
+    <Folder Include="Futures\JobRequirementFeatures\Commands\" />
+    <Folder Include="Futures\JobRequirementFeatures\Queries\" />
+    <Folder Include="Futures\MessageFeatures\Commands\" />
+    <Folder Include="Futures\MessageFeatures\Queries\" />
+    <Folder Include="Futures\ProfileFeatures\Commands\" />
+    <Folder Include="Futures\ProfileFeatures\Queries\" />
+    <Folder Include="Futures\SkillFeatures\Commands\" />
+    <Folder Include="Futures\SkillFeatures\Queries\" />
+    <Folder Include="Futures\UserFeatures\Commands\" />
+    <Folder Include="Futures\UserFeatures\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,7 +70,8 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="FluentValidation" Version="11.5.2" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-    <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
   </ItemGroup>
 
