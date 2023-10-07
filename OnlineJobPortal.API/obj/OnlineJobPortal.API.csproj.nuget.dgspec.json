@@ -277,6 +277,9 @@
             "projectReferences": {
               "C:\\Users\\DELL\\Desktop\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Application\\OnlineJobPortal.Application.csproj": {
                 "projectPath": "C:\\Users\\DELL\\Desktop\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Application\\OnlineJobPortal.Application.csproj"
+              },
+              "C:\\Users\\DELL\\Desktop\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Domain\\OnlineJobPortal.Domain.csproj": {
+                "projectPath": "C:\\Users\\DELL\\Desktop\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Domain\\OnlineJobPortal.Domain.csproj"
               }
             }
           }

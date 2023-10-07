@@ -15,7 +15,7 @@ namespace OnlineJobPortal.Domain.Entities
         public string? WebsiteUrl { get; set; }
 
         public int BussinessIndustryId { get; set; }
-        public BussinessIndustry BussinessIndustry { get; set; }
+        public CandidateSkill BussinessIndustry { get; set; }
 
         public ICollection<CompanyImage>? CompanyImages { get; set; }
 

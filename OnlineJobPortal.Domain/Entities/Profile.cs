@@ -16,5 +16,7 @@ namespace OnlineJobPortal.Domain.Entities
         public ICollection<Education>? Educations { get; set; }
 
         public ICollection<Experience>? Experiences { get; set; }
+
+        public ICollection<ForeignLanguage>? ForeignLanguages { get; set; }
     }
 }

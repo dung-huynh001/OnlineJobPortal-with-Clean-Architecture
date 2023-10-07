@@ -5,6 +5,8 @@ namespace OnlineJobPortal.Application.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
+        IGenericRepository<T> Repository<T>() where T : class;
+
         IAdminRepository AdminRepository { get; }
         IApplicationRepository ApplicationRepository { get; }
         IBussinessIndustryRepository BussinessIndustryRepository { get; }
@@ -15,13 +17,14 @@ namespace OnlineJobPortal.Application.Interfaces
         IEducationRepository EducationRepository { get; }
         IEmployerRepository EmployerRepository { get; }
         IExperienceRepository ExperienceRepository { get; }
-        IJobCategoryRepository JobCategoryRepository { get; }
+        IJobTypeRepository JobTypeRepository { get; }
         IJobFavoriteRepository JobFavoriteRepository { get; }
         IJobPostRepository JobPostRepository { get; }
-        IJobRequirementRepository JobRequirementRepository { get; }
+        IRequirementSkillRepository RequirementSkillRepository { get; }
         IMessageRepository MessageRepository { get; }
         IProfileRepository ProfileRepository { get; }
         ISkillRepository SkillRepository { get; }
+        IForeignLanguageRepository ForeignLanguageRepository { get; }
 
         Task<int> Save(CancellationToken cancellationToken);
         Task<int> SaveAsync(CancellationToken cancellationToken);

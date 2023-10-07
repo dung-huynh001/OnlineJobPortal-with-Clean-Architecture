@@ -2541,7 +2541,8 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.10",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.10",
       "Microsoft.Extensions.Configuration >= 7.0.0",
-      "OnlineJobPortal.Application >= 1.0.0"
+      "OnlineJobPortal.Application >= 1.0.0",
+      "OnlineJobPortal.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2579,6 +2580,9 @@
           "projectReferences": {
             "C:\\Users\\DELL\\Desktop\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Application\\OnlineJobPortal.Application.csproj": {
               "projectPath": "C:\\Users\\DELL\\Desktop\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Application\\OnlineJobPortal.Application.csproj"
+            },
+            "C:\\Users\\DELL\\Desktop\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Domain\\OnlineJobPortal.Domain.csproj": {
+              "projectPath": "C:\\Users\\DELL\\Desktop\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Domain\\OnlineJobPortal.Domain.csproj"
             }
           }
         }

@@ -14,7 +14,7 @@ namespace OnlineJobPortal.Application.Interfaces
         DbSet<Admin> Admins { get; set; }
         DbSet<OnlineJobPortal.Domain.Entities.Application> Applications { get; set; }
         DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        DbSet<BussinessIndustry> BussinessIndustrys { get; set; }
+        DbSet<CandidateSkill> BussinessIndustrys { get; set; }
         DbSet<Candidate> Candidates { get; set; }
         DbSet<CandidateSkill> CandidateSkills { get; set; }
         DbSet<Company> Companies { get; set; }
@@ -22,10 +22,10 @@ namespace OnlineJobPortal.Application.Interfaces
         DbSet<Education> Educations { get; set; }
         DbSet<Employer> Employers { get; set; }
         DbSet<Experience> Experiences { get; set; }
-        DbSet<JobCategory> JobCategories { get; set; }
+        DbSet<JobType> JobTypes { get; set; }
         DbSet<JobFavorite> JobFavorites { get; set; }
         DbSet<JobPost> JobPosts { get; set; }
-        DbSet<JobRequirement> JobRequirements { get; set; }
+        DbSet<RequirementSkill> RequirementSkills { get; set; }
         DbSet<Message> Messages { get; set; }
         DbSet<Profile> Profiles { get; set; }
         DbSet<Skill> Skills { get; set; }

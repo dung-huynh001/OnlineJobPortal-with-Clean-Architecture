@@ -11,15 +11,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Contracts\Identity\" />
     <Folder Include="DTOs\BussinessIndustryDto\" />
     <Folder Include="DTOs\CompanyDto\" />
     <Folder Include="DTOs\CompanyImageDto\" />
     <Folder Include="DTOs\EducationDto\" />
     <Folder Include="DTOs\EmployerDto\" />
     <Folder Include="DTOs\ExperienceDto\" />
-    <Folder Include="DTOs\JobCategoryDto\" />
     <Folder Include="DTOs\JobFavoriteDto\" />
-    <Folder Include="DTOs\JobRequirementDto\" />
+    <Folder Include="DTOs\JobTypeDto\" />
+    <Folder Include="DTOs\RequirementSkillDto\" />
     <Folder Include="DTOs\MessageDto\" />
     <Folder Include="DTOs\ApplicationDto\" />
     <Folder Include="DTOs\ProfileDto\" />
@@ -47,14 +48,15 @@
     <Folder Include="Futures\EmployerFeatures\Queries\" />
     <Folder Include="Futures\ExperienceFeatures\Commands\" />
     <Folder Include="Futures\ExperienceFeatures\Queries\" />
-    <Folder Include="Futures\JobCategoryFeatures\Commands\" />
-    <Folder Include="Futures\JobCategoryFeatures\Queries\" />
+    <Folder Include="Futures\ForeignLangugeFeatures\Commands\" />
+    <Folder Include="Futures\ForeignLangugeFeatures\Queries\" />
     <Folder Include="Futures\JobFavoriteFeatures\Commands\" />
     <Folder Include="Futures\JobFavoriteFeatures\Queries\" />
-    <Folder Include="Futures\JobPostFeatures\Commands\" />
+    <Folder Include="Futures\JobTypeFeatures\Commands\" />
+    <Folder Include="Futures\JobTypeFeatures\Queries\" />
     <Folder Include="Futures\JobPostFeatures\Queries\" />
-    <Folder Include="Futures\JobRequirementFeatures\Commands\" />
-    <Folder Include="Futures\JobRequirementFeatures\Queries\" />
+    <Folder Include="Futures\RequirementSkillFeatures\Commands\" />
+    <Folder Include="Futures\RequirementSkillFeatures\Queries\" />
     <Folder Include="Futures\MessageFeatures\Commands\" />
     <Folder Include="Futures\MessageFeatures\Queries\" />
     <Folder Include="Futures\ProfileFeatures\Commands\" />
@@ -63,6 +65,7 @@
     <Folder Include="Futures\SkillFeatures\Queries\" />
     <Folder Include="Futures\UserFeatures\Commands\" />
     <Folder Include="Futures\UserFeatures\Queries\" />
+    <Folder Include="Models\Identity\" />
   </ItemGroup>
 
   <ItemGroup>
