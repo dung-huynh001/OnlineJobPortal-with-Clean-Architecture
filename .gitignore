@@ -18,7 +18,8 @@ mono_crash.*
 
 # Build results
 [Dd]ebug/
-*/[Dd]ebug/*
+**/Debug/
+**/Debug/*.*
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
