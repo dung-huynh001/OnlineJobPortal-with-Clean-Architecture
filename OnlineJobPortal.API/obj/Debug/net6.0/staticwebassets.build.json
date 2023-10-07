@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "JFW01aAr3vMyfvAP5ABWj2hSgdbwF1vBgY70JXpoWpM=",
+  "Source": "OnlineJobPortal.API",
+  "BasePath": "_content/OnlineJobPortal.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
