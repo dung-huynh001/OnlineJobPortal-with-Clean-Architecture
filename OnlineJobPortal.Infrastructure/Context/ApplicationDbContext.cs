@@ -28,10 +28,10 @@ namespace OnlineJobPortal.Infrastructure.Context
         public DbSet<Education> Educations { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DbSet<Employer> Employers { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DbSet<Experience> Experiences { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<JobType> JobCategories { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DbSet<JobType> JobTypes { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DbSet<JobFavorite> JobFavorites { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DbSet<JobPost> JobPosts { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<RequirementSkill> JobRequirements { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DbSet<RequirementSkill> RequirementSkills { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DbSet<Message> Messages { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DbSet<Profile> Profiles { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DbSet<Skill> Skills { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

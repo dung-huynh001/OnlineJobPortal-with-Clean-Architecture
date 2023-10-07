@@ -13,7 +13,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.10",
           "Microsoft.Extensions.Configuration": "7.0.0",
-          "OnlineJobPortal.Application": "1.0.0"
+          "OnlineJobPortal.Application": "1.0.0",
+          "OnlineJobPortal.Domain": "1.0.0"
         },
         "runtime": {
           "OnlineJobPortal.Infrastructure.dll": {}

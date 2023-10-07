@@ -2,7 +2,7 @@
 
 namespace OnlineJobPortal.Domain.Entities
 {
-    public class CandidateSkill : BaseEntity
+    public class BussinessIndustry : BaseEntity
     {
         public string BussinessName { get; set; }
 

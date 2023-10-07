@@ -22,10 +22,10 @@ namespace OnlineJobPortal.Application.Interfaces
         DbSet<Education> Educations { get; set; }
         DbSet<Employer> Employers { get; set; }
         DbSet<Experience> Experiences { get; set; }
-        DbSet<JobType> JobCategories { get; set; }
+        DbSet<JobType> JobTypes { get; set; }
         DbSet<JobFavorite> JobFavorites { get; set; }
         DbSet<JobPost> JobPosts { get; set; }
-        DbSet<RequirementSkill> JobRequirements { get; set; }
+        DbSet<RequirementSkill> RequirementSkills { get; set; }
         DbSet<Message> Messages { get; set; }
         DbSet<Profile> Profiles { get; set; }
         DbSet<Skill> Skills { get; set; }

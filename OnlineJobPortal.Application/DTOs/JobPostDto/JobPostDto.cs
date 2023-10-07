@@ -19,7 +19,7 @@ namespace OnlineJobPortal.Application.DTOs.JobPostDto
         public int NumberOfRecruits { get; set; }
         public DateTime ExpiredDate { get; set; }
 
-        public ICollection<RequirementSkill> JobRequirements { get; set; }
+        public ICollection<RequirementSkill> RequirementSkills { get; set; }
 
         public ICollection<JobFavorite>? JobFavorites { get; set; }
 
