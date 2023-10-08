@@ -13,7 +13,17 @@ namespace OnlineJobPortal.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<JobType> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(jt => jt.Id);
+
+            builder.Property(jt => jt.JobTypeName)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.HasMany(jt => jt.JobPost)
+                .WithOne(jp => jp.JobType)
+                .HasForeignKey(jp => jp.JobTypeId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
+
     }
 }

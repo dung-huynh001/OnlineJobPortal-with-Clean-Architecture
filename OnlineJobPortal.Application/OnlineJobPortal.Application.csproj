@@ -22,7 +22,7 @@
     <Folder Include="DTOs\JobTypeDto\" />
     <Folder Include="DTOs\RequirementSkillDto\" />
     <Folder Include="DTOs\MessageDto\" />
-    <Folder Include="DTOs\ApplicationDto\" />
+    <Folder Include="DTOs\ApplyDto\" />
     <Folder Include="DTOs\ProfileDto\" />
     <Folder Include="DTOs\SkillDto\" />
     <Folder Include="DTOs\UserDto\" />

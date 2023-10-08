@@ -19,7 +19,7 @@ namespace OnlineJobPortal.Domain.Entities
 
         public ICollection<JobFavorite>? JobFavorites { get; set; }
 
-        public ICollection<Application>? Applications { get; set; }
+        public ICollection<Apply>? Applications { get; set; }
 
         public int EmployerId { get; set; }
         public Employer Employer { get; set; }

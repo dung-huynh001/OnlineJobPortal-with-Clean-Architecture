@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Commands
 {
-    public record CreateJobPostCommand : IRequest<BaseCommandResponse> 
+    /*public record CreateJobPostCommand : IRequest<BaseCommandResponse> 
     {
         public JobPostDto JobPostDto { get; set; }
     }
@@ -40,5 +40,5 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Commands
 
             return Response;
         }
-    }
+    }*/
 }

@@ -8,7 +8,7 @@ namespace OnlineJobPortal.Application.Interfaces
         IGenericRepository<T> Repository<T>() where T : class;
 
         IAdminRepository AdminRepository { get; }
-        IApplicationRepository ApplicationRepository { get; }
+        IApplyRepository ApplicationRepository { get; }
         IBussinessIndustryRepository BussinessIndustryRepository { get; }
         ICandidateRepository CandidateRepository { get; }
         ICandidateSkillRepository CandidateSkillRepository { get; }

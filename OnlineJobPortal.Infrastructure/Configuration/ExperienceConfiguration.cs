@@ -13,7 +13,23 @@ namespace OnlineJobPortal.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<Experience> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(e => e.Id);
+
+            builder.Property(e => e.JobTitle)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(e => e.CompanyName)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(e => e.Description)
+                .HasMaxLength(500);
+
+            builder.HasOne(e => e.Profile)
+                .WithMany(p => p.Experiences)
+                .HasForeignKey(e => e.ProfileId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace OnlineJobPortal.Application.Interfaces
     public interface IApplicationDbContext
     {
         DbSet<Admin> Admins { get; set; }
-        DbSet<OnlineJobPortal.Domain.Entities.Application> Applications { get; set; }
+        DbSet<Apply> Applications { get; set; }
         DbSet<ApplicationUser> ApplicationUsers { get; set; }
         DbSet<CandidateSkill> BussinessIndustrys { get; set; }
         DbSet<Candidate> Candidates { get; set; }

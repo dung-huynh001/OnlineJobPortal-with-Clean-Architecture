@@ -13,7 +13,65 @@ namespace OnlineJobPortal.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<JobPost> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(jp => jp.Id);
+
+            builder.Property(jp => jp.Title)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(jp => jp.Description)
+                .IsRequired()
+                .HasMaxLength(500);
+
+            builder.Property(jp => jp.Requirement)
+                .HasMaxLength(500);
+
+            builder.Property(jp => jp.Benefits)
+                .HasMaxLength(500);
+
+            builder.Property(jp => jp.Location)
+                .HasMaxLength(100);
+
+            builder.Property(jp => jp.Salary)
+                .HasMaxLength(50);
+
+            builder.Property(jp => jp.Address)
+                .HasMaxLength(200);
+
+            builder.Property(jp => jp.YearsOfExperience)
+                .HasMaxLength(50);
+
+            builder.Property(jp => jp.NumberOfRecruits)
+                .IsRequired();
+
+            builder.Property(jp => jp.ExpiredDate)
+                .IsRequired();
+
+            builder.HasMany(jp => jp.RequirementSkills)
+                .WithOne(rs => rs.JobPost)
+                .HasForeignKey(rs => rs.JobPostId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasMany(jp => jp.JobFavorites)
+                .WithOne(jf => jf.JobPost)
+                .HasForeignKey(jf => jf.JobPostId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasMany(jp => jp.Applications)
+                .WithOne(a => a.JobPost)
+                .HasForeignKey(a => a.JobPostId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(jp => jp.Employer)
+                .WithMany(e => e.JobPosts)
+                .HasForeignKey(jp => jp.EmployerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(jp => jp.JobType)
+                .WithMany()
+                .HasForeignKey(jp => jp.JobTypeId)
+                .IsRequired();
         }
+
     }
 }

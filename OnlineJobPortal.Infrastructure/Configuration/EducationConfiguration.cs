@@ -13,7 +13,34 @@ namespace OnlineJobPortal.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<Education> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(e => e.Id);
+
+            // Configure properties
+            builder.Property(e => e.Certificate)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(e => e.Major)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(e => e.University)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(e => e.StartDate)
+                .IsRequired();
+
+            builder.Property(e => e.CompletionDate)
+                .IsRequired();
+
+            builder.Property(e => e.GPA)
+                .IsRequired();
+
+            builder.HasOne(e => e.Profile)
+                .WithMany(p => p.Educations)
+                .HasForeignKey(e => e.ProfileId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

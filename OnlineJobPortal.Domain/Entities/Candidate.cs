@@ -15,7 +15,7 @@ namespace OnlineJobPortal.Domain.Entities
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 
-        public ICollection<Application>? Applications { get; set; }
+        public ICollection<Apply>? Applications { get; set; }
 
         public ICollection<JobFavorite>? JobFavorites { get; set; }
 

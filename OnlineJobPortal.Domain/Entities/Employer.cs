@@ -15,7 +15,7 @@ namespace OnlineJobPortal.Domain.Entities
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 
-        public ICollection<Message>? messages { get; set; }
+        public ICollection<Message>? Messages { get; set; }
 
         public int CompanyId { get; set; }
         public Company Company { get; set; }
