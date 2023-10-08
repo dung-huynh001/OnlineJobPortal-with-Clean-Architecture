@@ -13,7 +13,17 @@ namespace OnlineJobPortal.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<CompanyImage> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(ci => ci.Id);
+
+            builder.Property(ci => ci.Url)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            builder.HasOne(ci => ci.Company)
+                .WithMany(c => c.CompanyImages)
+                .HasForeignKey(ci => ci.CompanyId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

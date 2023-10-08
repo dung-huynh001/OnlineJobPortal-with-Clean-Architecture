@@ -13,7 +13,22 @@ namespace OnlineJobPortal.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<Message> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(m => m.Id);
+
+            builder.Property(m => m.Content)
+                .IsRequired()
+                .HasMaxLength(500);
+
+            builder.HasOne(m => m.Candidate)
+                .WithMany(c => c.Messages)
+                .HasForeignKey(m => m.CandidateId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(m => m.Employer)
+                .WithMany(e => e.Messages)
+                .HasForeignKey(m => m.EmployerId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
+
     }
 }

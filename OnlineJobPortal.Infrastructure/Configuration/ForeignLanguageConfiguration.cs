@@ -13,7 +13,22 @@ namespace OnlineJobPortal.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<ForeignLanguage> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(fl => fl.Id);
+
+            builder.Property(fl => fl.LanguageName)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(fl => fl.Proficiency)
+                .HasMaxLength(50);
+
+            builder.Property(fl => fl.Degree)
+                .HasMaxLength(50);
+
+            builder.HasOne(fl => fl.Profile)
+                .WithMany(p => p.ForeignLanguages)
+                .HasForeignKey(fl => fl.ProfileId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

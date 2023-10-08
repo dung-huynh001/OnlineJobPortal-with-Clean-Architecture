@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Domain.Entities;
+using OnlineJobPortal.Infrastructure.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,24 +19,24 @@ namespace OnlineJobPortal.Infrastructure.Context
             
         }
 
-        public DbSet<Admin> Admins { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<Domain.Entities.Application> Applications { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<ApplicationUser> ApplicationUsers { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<CandidateSkill> BussinessIndustrys { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<Candidate> Candidates { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<CandidateSkill> CandidateSkills { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<Company> Companies { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<CompanyImage> CompanyImages { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<Education> Educations { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<Employer> Employers { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<Experience> Experiences { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<JobType> JobTypes { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<JobFavorite> JobFavorites { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<JobPost> JobPosts { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<RequirementSkill> RequirementSkills { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<Message> Messages { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<Profile> Profiles { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<Skill> Skills { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Apply> Applications { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<CandidateSkill> BussinessIndustrys { get; set; }
+        public DbSet<Candidate> Candidates { get; set; }
+        public DbSet<CandidateSkill> CandidateSkills { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<CompanyImage> CompanyImages { get; set; }
+        public DbSet<Education> Educations { get; set; }
+        public DbSet<Employer> Employers { get; set; }
+        public DbSet<Experience> Experiences { get; set; }
+        public DbSet<JobType> JobTypes { get; set; }
+        public DbSet<JobFavorite> JobFavorites { get; set; }
+        public DbSet<JobPost> JobPosts { get; set; }
+        public DbSet<RequirementSkill> RequirementSkills { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Skill> Skills { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -45,6 +47,25 @@ namespace OnlineJobPortal.Infrastructure.Context
                 if(tableName.StartsWith("AspNet"))
                     entityType.SetTableName(tableName.Substring(6));
             }
+
+            builder.ApplyConfiguration(new AdminConfiguration());
+            builder.ApplyConfiguration(new ApplyConfiguration());
+            builder.ApplyConfiguration(new BussinessIndustryConfiguration());
+            builder.ApplyConfiguration(new CandidateConfiguration());
+            builder.ApplyConfiguration(new CandidateSkillConfiguration());
+            builder.ApplyConfiguration(new CompanyConfiguration());
+            builder.ApplyConfiguration(new CompanyImageConfiguration());
+            builder.ApplyConfiguration(new EducationConfiguration());
+            builder.ApplyConfiguration(new EmployerConfiguration());
+            builder.ApplyConfiguration(new ExperienceConfiguration());
+            builder.ApplyConfiguration(new ForeignLanguageConfiguration());
+            builder.ApplyConfiguration(new JobFavoriteConfiguration());
+            builder.ApplyConfiguration(new JobPostConfiguration());
+            builder.ApplyConfiguration(new JobTypeConfiguration());
+            builder.ApplyConfiguration(new MessageConfiguration());
+            builder.ApplyConfiguration(new ProfileConfiguration());
+            builder.ApplyConfiguration(new RequirementSkillConfiguration());
+            builder.ApplyConfiguration(new SkillConfiguration());
         }
 
         public async Task<int> SaveChangesAsync()

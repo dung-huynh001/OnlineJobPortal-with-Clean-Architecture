@@ -7,11 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineJobPortal.Domain", "O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineJobPortal.Application", "OnlineJobPortal.Application\OnlineJobPortal.Application.csproj", "{73D628DE-768F-4E53-906D-973A25E3335D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineJobPortal.API", "OnlineJobPortal.API\OnlineJobPortal.API.csproj", "{D31C08C1-F4A3-4894-BA93-3CC3711AEFFF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineJobPortal.Infrastructure", "OnlineJobPortal.Infrastructure\OnlineJobPortal.Infrastructure.csproj", "{7F6B51D6-A1B9-4736-92B8-90DA89EEF595}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineJobPortal.Presentation", "OnlineJobPortal.Presentation\OnlineJobPortal.Presentation.csproj", "{4DED1120-6983-4787-B4C5-620A979D4490}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineJobPortal.Presentation", "OnlineJobPortal.Presentation\OnlineJobPortal.Presentation.csproj", "{4DED1120-6983-4787-B4C5-620A979D4490}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +25,6 @@ Global
 		{73D628DE-768F-4E53-906D-973A25E3335D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73D628DE-768F-4E53-906D-973A25E3335D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73D628DE-768F-4E53-906D-973A25E3335D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D31C08C1-F4A3-4894-BA93-3CC3711AEFFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D31C08C1-F4A3-4894-BA93-3CC3711AEFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D31C08C1-F4A3-4894-BA93-3CC3711AEFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D31C08C1-F4A3-4894-BA93-3CC3711AEFFF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7F6B51D6-A1B9-4736-92B8-90DA89EEF595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7F6B51D6-A1B9-4736-92B8-90DA89EEF595}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F6B51D6-A1B9-4736-92B8-90DA89EEF595}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -9,11 +9,19 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Infrastructure.Configuration
 {
-    public class BussinessIndustryConfiguration : IEntityTypeConfiguration<CandidateSkill>
+    public class BussinessIndustryConfiguration : IEntityTypeConfiguration<BussinessIndustry>
     {
-        public void Configure(EntityTypeBuilder<CandidateSkill> builder)
+        public void Configure(EntityTypeBuilder<BussinessIndustry> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(bi => bi.Id);
+
+            builder.Property(bi => bi.BussinessName)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.HasMany(bi => bi.Companies)
+                .WithOne(c => c.BussinessIndustry)
+                .HasForeignKey(c => c.BussinessIndustryId);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace OnlineJobPortal.Application.DTOs.JobPostDto
 
         public ICollection<JobFavorite>? JobFavorites { get; set; }
 
-        public ICollection<OnlineJobPortal.Domain.Entities.Application>? Applications { get; set; }
+        public ICollection<Apply>? Applications { get; set; }
 
         public ICollection<ForeignLanguage>? ForeignLanguages { get; set; }
 

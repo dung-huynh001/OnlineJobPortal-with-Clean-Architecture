@@ -13,7 +13,21 @@ namespace OnlineJobPortal.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<RequirementSkill> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(rs => rs.Id);
+
+            builder.Property(rs => rs.Level)
+                .IsRequired();
+
+            builder.HasOne(rs => rs.JobPost)
+                .WithMany(jp => jp.RequirementSkills)
+                .HasForeignKey(rs => rs.JobPostId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(rs => rs.Skill)
+                .WithMany()
+                .HasForeignKey(rs => rs.SkillId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
+
     }
 }
