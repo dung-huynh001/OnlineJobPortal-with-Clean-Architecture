@@ -18,9 +18,9 @@ namespace OnlineJobPortal.Infrastructure.Configuration
             builder.Property(cs => cs.Level)
                 .IsRequired();
 
-            builder.HasOne(cs => cs.Profile)
+            builder.HasOne(cs => cs.Resume)
                 .WithMany(p => p.CandidateSkills)
-                .HasForeignKey(cs => cs.ProfileId)
+                .HasForeignKey(cs => cs.ResumeId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 

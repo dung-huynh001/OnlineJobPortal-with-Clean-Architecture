@@ -50,7 +50,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasForeignKey(jf => jf.CandidateId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasMany(c => c.Profiles)
+            builder.HasMany(c => c.Resumes)
                 .WithOne(p => p.Candidate)
                 .HasForeignKey(p => p.CandidateId)
                 .OnDelete(DeleteBehavior.Cascade);

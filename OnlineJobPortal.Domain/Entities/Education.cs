@@ -11,7 +11,7 @@ namespace OnlineJobPortal.Domain.Entities
         public DateTime CompletionDate { get; set; }
         public double GPA { get; set; }
 
-        public int? ProfileId { get; set; }
-        public Profile? Profile { get; set; }
+        public int? ResumeId { get; set; }
+        public Resume? Resume { get; set; }
     }
 }

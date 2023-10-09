@@ -22,9 +22,9 @@ namespace OnlineJobPortal.Infrastructure.Context
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Apply> Applications { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        public DbSet<CandidateSkill> BussinessIndustrys { get; set; }
+        public DbSet<Experience> BussinessIndustrys { get; set; }
         public DbSet<Candidate> Candidates { get; set; }
-        public DbSet<CandidateSkill> CandidateSkills { get; set; }
+        public DbSet<Experience> CandidateSkills { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyImage> CompanyImages { get; set; }
         public DbSet<Education> Educations { get; set; }
@@ -35,7 +35,7 @@ namespace OnlineJobPortal.Infrastructure.Context
         public DbSet<JobPost> JobPosts { get; set; }
         public DbSet<RequirementSkill> RequirementSkills { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Resume> Resumes { get; set; }
         public DbSet<Skill> Skills { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -63,7 +63,7 @@ namespace OnlineJobPortal.Infrastructure.Context
             builder.ApplyConfiguration(new JobPostConfiguration());
             builder.ApplyConfiguration(new JobTypeConfiguration());
             builder.ApplyConfiguration(new MessageConfiguration());
-            builder.ApplyConfiguration(new ProfileConfiguration());
+            builder.ApplyConfiguration(new ResumeConfiguration());
             builder.ApplyConfiguration(new RequirementSkillConfiguration());
             builder.ApplyConfiguration(new SkillConfiguration());
         }

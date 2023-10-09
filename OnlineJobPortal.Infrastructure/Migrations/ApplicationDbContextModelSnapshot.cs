@@ -392,7 +392,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Property<int>("Level")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProfileId")
+                    b.Property<int>("ResumeId")
                         .HasColumnType("int");
 
                     b.Property<int>("SkillId")
@@ -403,7 +403,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProfileId");
+                    b.HasIndex("ResumeId");
 
                     b.HasIndex("SkillId");
 
@@ -530,7 +530,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int?>("ProfileId")
+                    b.Property<int?>("ResumeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
@@ -546,7 +546,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProfileId");
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("Educations");
                 });
@@ -634,7 +634,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("ProfileId")
+                    b.Property<int>("ResumeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateAt")
@@ -642,9 +642,9 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProfileId");
+                    b.HasIndex("ResumeId");
 
-                    b.ToTable("Experiences");
+                    b.ToTable("Experience");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ForeignLanguage", b =>
@@ -673,7 +673,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("ProfileId")
+                    b.Property<int>("ResumeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateAt")
@@ -681,7 +681,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProfileId");
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("ForeignLanguage");
                 });
@@ -851,7 +851,39 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Profile", b =>
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.RequirementSkill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("JobPostId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SkillId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobPostId");
+
+                    b.HasIndex("SkillId");
+
+                    b.ToTable("RequirementSkills");
+                });
+
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Resume", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -887,39 +919,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
                     b.HasIndex("CandidateId");
 
-                    b.ToTable("Profiles");
-                });
-
-            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.RequirementSkill", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreateAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("JobPostId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Level")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SkillId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdateAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("JobPostId");
-
-                    b.HasIndex("SkillId");
-
-                    b.ToTable("RequirementSkills");
+                    b.ToTable("Resumes");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Skill", b =>
@@ -1040,9 +1040,9 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.CandidateSkill", b =>
                 {
-                    b.HasOne("OnlineJobPortal.Domain.Entities.Profile", "Profile")
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Resume", "Resume")
                         .WithMany("CandidateSkills")
-                        .HasForeignKey("ProfileId")
+                        .HasForeignKey("ResumeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1052,7 +1052,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Profile");
+                    b.Navigation("Resume");
 
                     b.Navigation("Skill");
                 });
@@ -1081,12 +1081,12 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Education", b =>
                 {
-                    b.HasOne("OnlineJobPortal.Domain.Entities.Profile", "Profile")
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Resume", "Resume")
                         .WithMany("Educations")
-                        .HasForeignKey("ProfileId")
+                        .HasForeignKey("ResumeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.Navigation("Profile");
+                    b.Navigation("Resume");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Employer", b =>
@@ -1110,24 +1110,24 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Experience", b =>
                 {
-                    b.HasOne("OnlineJobPortal.Domain.Entities.Profile", "Profile")
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Resume", "Resume")
                         .WithMany("Experiences")
-                        .HasForeignKey("ProfileId")
+                        .HasForeignKey("ResumeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Profile");
+                    b.Navigation("Resume");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ForeignLanguage", b =>
                 {
-                    b.HasOne("OnlineJobPortal.Domain.Entities.Profile", "Profile")
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Resume", "Resume")
                         .WithMany("ForeignLanguages")
-                        .HasForeignKey("ProfileId")
+                        .HasForeignKey("ResumeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Profile");
+                    b.Navigation("Resume");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.JobFavorite", b =>
@@ -1187,17 +1187,6 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Navigation("Employer");
                 });
 
-            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Profile", b =>
-                {
-                    b.HasOne("OnlineJobPortal.Domain.Entities.Candidate", "Candidate")
-                        .WithMany("Profiles")
-                        .HasForeignKey("CandidateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Candidate");
-                });
-
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.RequirementSkill", b =>
                 {
                     b.HasOne("OnlineJobPortal.Domain.Entities.JobPost", "JobPost")
@@ -1217,6 +1206,17 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Navigation("Skill");
                 });
 
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Resume", b =>
+                {
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Candidate", "Candidate")
+                        .WithMany("Resumes")
+                        .HasForeignKey("CandidateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Candidate");
+                });
+
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.BussinessIndustry", b =>
                 {
                     b.Navigation("Companies");
@@ -1230,7 +1230,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
                     b.Navigation("Messages");
 
-                    b.Navigation("Profiles");
+                    b.Navigation("Resumes");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Company", b =>
@@ -1261,7 +1261,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Navigation("JobPost");
                 });
 
-            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Profile", b =>
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Resume", b =>
                 {
                     b.Navigation("CandidateSkills");
 

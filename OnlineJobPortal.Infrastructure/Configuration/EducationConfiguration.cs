@@ -37,9 +37,9 @@ namespace OnlineJobPortal.Infrastructure.Configuration
             builder.Property(e => e.GPA)
                 .IsRequired();
 
-            builder.HasOne(e => e.Profile)
+            builder.HasOne(e => e.Resume)
                 .WithMany(p => p.Educations)
-                .HasForeignKey(e => e.ProfileId)
+                .HasForeignKey(e => e.ResumeId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

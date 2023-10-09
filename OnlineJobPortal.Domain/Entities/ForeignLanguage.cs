@@ -8,7 +8,7 @@ namespace OnlineJobPortal.Domain.Entities
         public string Proficiency { get; set; }
         public string Degree { get; set; }
 
-        public int ProfileId { get; set; }
-        public Profile Profile { get; set; }
+        public int ResumeId { get; set; }
+        public Resume Resume { get; set; }
     }
 }

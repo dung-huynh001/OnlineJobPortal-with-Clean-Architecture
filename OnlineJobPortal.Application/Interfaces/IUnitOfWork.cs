@@ -22,7 +22,7 @@ namespace OnlineJobPortal.Application.Interfaces
         IJobPostRepository JobPostRepository { get; }
         IRequirementSkillRepository RequirementSkillRepository { get; }
         IMessageRepository MessageRepository { get; }
-        IProfileRepository ProfileRepository { get; }
+        IResumeRepository ResumeRepository { get; }
         ISkillRepository SkillRepository { get; }
         IForeignLanguageRepository ForeignLanguageRepository { get; }
 

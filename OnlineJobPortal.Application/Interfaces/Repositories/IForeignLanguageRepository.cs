@@ -2,7 +2,7 @@
 
 namespace OnlineJobPortal.Application.Interfaces.Repositories
 {
-    public interface IForeignLanguageRepository : IGenericRepository<Admin>
+    public interface IForeignLanguageRepository : IGenericRepository<ForeignLanguage>
     {
 
     }

@@ -5,9 +5,9 @@ using OnlineJobPortal.Domain.Entities;
 
 namespace OnlineJobPortal.Infrastructure.Configuration
 {
-    public class ProfileConfiguration : IEntityTypeConfiguration<Profile>
+    public class ResumeConfiguration : IEntityTypeConfiguration<Resume>
     {
-        public void Configure(EntityTypeBuilder<Profile> builder)
+        public void Configure(EntityTypeBuilder<Resume> builder)
         {
             builder.HasKey(p => p.Id);
 
@@ -22,28 +22,28 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasMaxLength(100);
 
             builder.HasOne(p => p.Candidate)
-                .WithMany(c => c.Profiles)
+                .WithMany(c => c.Resumes)
                 .HasForeignKey(p => p.CandidateId)
                 .IsRequired();
 
             builder.HasMany(p => p.CandidateSkills)
-                .WithOne(cs => cs.Profile)
-                .HasForeignKey(cs => cs.ProfileId)
+                .WithOne(cs => cs.Resume)
+                .HasForeignKey(cs => cs.ResumeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(p => p.Educations)
-                .WithOne(e => e.Profile)
-                .HasForeignKey(e => e.ProfileId)
+                .WithOne(e => e.Resume)
+                .HasForeignKey(e => e.ResumeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(p => p.Experiences)
-                .WithOne(ex => ex.Profile)
-                .HasForeignKey(ex => ex.ProfileId)
+                .WithOne(ex => ex.Resume)
+                .HasForeignKey(ex => ex.ResumeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(p => p.ForeignLanguages)
-                .WithOne(fl => fl.Profile)
-                .HasForeignKey(fl => fl.ProfileId)
+                .WithOne(fl => fl.Resume)
+                .HasForeignKey(fl => fl.ResumeId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
 
