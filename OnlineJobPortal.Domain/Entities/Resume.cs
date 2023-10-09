@@ -2,7 +2,7 @@
 
 namespace OnlineJobPortal.Domain.Entities
 {
-    public class Profile : BaseEntity
+    public class Resume : BaseEntity
     {
         public string  Title { get; set; }
         public string  CareerGoal { get; set; }

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineJobPortal.Infrastruct
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineJobPortal.Presentation", "OnlineJobPortal.Presentation\OnlineJobPortal.Presentation.csproj", "{4DED1120-6983-4787-B4C5-620A979D4490}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineJobPortal.API", "OnlineJobPortal.API\OnlineJobPortal.API.csproj", "{622CC104-F6E3-48CE-BC94-DBC9DD18A02D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4DED1120-6983-4787-B4C5-620A979D4490}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DED1120-6983-4787-B4C5-620A979D4490}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DED1120-6983-4787-B4C5-620A979D4490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{622CC104-F6E3-48CE-BC94-DBC9DD18A02D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{622CC104-F6E3-48CE-BC94-DBC9DD18A02D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{622CC104-F6E3-48CE-BC94-DBC9DD18A02D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{622CC104-F6E3-48CE-BC94-DBC9DD18A02D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

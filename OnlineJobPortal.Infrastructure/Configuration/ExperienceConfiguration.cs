@@ -26,9 +26,9 @@ namespace OnlineJobPortal.Infrastructure.Configuration
             builder.Property(e => e.Description)
                 .HasMaxLength(500);
 
-            builder.HasOne(e => e.Profile)
+            builder.HasOne(e => e.Resume)
                 .WithMany(p => p.Experiences)
-                .HasForeignKey(e => e.ProfileId)
+                .HasForeignKey(e => e.ResumeId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

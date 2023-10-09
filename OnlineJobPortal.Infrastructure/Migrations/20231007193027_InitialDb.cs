@@ -822,7 +822,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 name: "UserTokens");
 
             migrationBuilder.DropTable(
-                name: "Profiles");
+                name: "Resumes");
 
             migrationBuilder.DropTable(
                 name: "JobPosts");

@@ -25,9 +25,9 @@ namespace OnlineJobPortal.Infrastructure.Configuration
             builder.Property(fl => fl.Degree)
                 .HasMaxLength(50);
 
-            builder.HasOne(fl => fl.Profile)
+            builder.HasOne(fl => fl.Resume)
                 .WithMany(p => p.ForeignLanguages)
-                .HasForeignKey(fl => fl.ProfileId)
+                .HasForeignKey(fl => fl.ResumeId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

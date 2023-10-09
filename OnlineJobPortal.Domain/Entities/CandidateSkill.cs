@@ -7,8 +7,8 @@ namespace OnlineJobPortal.Domain.Entities
     {
         public Level Level { get; set; }
 
-        public int ProfileId { get; set; }
-        public Profile Profile { get; set; }
+        public int ResumeId { get; set; }
+        public Resume Resume { get; set; }
 
         public int SkillId { get; set; }
         public Skill Skill { get; set; }

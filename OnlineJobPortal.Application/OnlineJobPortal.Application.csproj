@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Identity\" />
     <Folder Include="DTOs\BussinessIndustryDto\" />
     <Folder Include="DTOs\CompanyDto\" />
     <Folder Include="DTOs\CompanyImageDto\" />
@@ -23,7 +22,7 @@
     <Folder Include="DTOs\RequirementSkillDto\" />
     <Folder Include="DTOs\MessageDto\" />
     <Folder Include="DTOs\ApplyDto\" />
-    <Folder Include="DTOs\ProfileDto\" />
+    <Folder Include="DTOs\ResumeDto\" />
     <Folder Include="DTOs\SkillDto\" />
     <Folder Include="DTOs\UserDto\" />
     <Folder Include="DTOs\CandidateSkillDto\" />
@@ -59,13 +58,12 @@
     <Folder Include="Futures\RequirementSkillFeatures\Queries\" />
     <Folder Include="Futures\MessageFeatures\Commands\" />
     <Folder Include="Futures\MessageFeatures\Queries\" />
-    <Folder Include="Futures\ProfileFeatures\Commands\" />
-    <Folder Include="Futures\ProfileFeatures\Queries\" />
+    <Folder Include="Futures\ResumeFeatures\Commands\" />
+    <Folder Include="Futures\ResumeFeatures\Queries\" />
     <Folder Include="Futures\SkillFeatures\Commands\" />
     <Folder Include="Futures\SkillFeatures\Queries\" />
     <Folder Include="Futures\UserFeatures\Commands\" />
     <Folder Include="Futures\UserFeatures\Queries\" />
-    <Folder Include="Models\Identity\" />
   </ItemGroup>
 
   <ItemGroup>
