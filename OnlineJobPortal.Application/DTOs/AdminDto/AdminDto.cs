@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.DTOs.ApplicationDto
 {
-    public class AdminDto : BaseDto
+    public class AdminDto
     {
         public string FullName { get; set; }
         public string NationalId { get; set; }

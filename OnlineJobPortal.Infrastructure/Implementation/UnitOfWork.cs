@@ -61,7 +61,7 @@ namespace OnlineJobPortal.Infrastructure.Implementation
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
 
         public IGenericRepository<T> Repository<T>() where T : BaseEntity
@@ -85,22 +85,13 @@ namespace OnlineJobPortal.Infrastructure.Implementation
 
         public Task Rollback()
         {
-            throw new NotImplementedException();
+            _context.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+            return Task.CompletedTask;
         }
 
-        public Task<int> Save(CancellationToken cancellationToken)
+        public async Task<int> SaveAsync(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> SaveAndRemoveCache(CancellationToken cancellationToken, params string[] cacheKeys)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> SaveAsync(CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
+            return await _context.SaveChangesAsync(cancellationToken);
         }
     }
 }

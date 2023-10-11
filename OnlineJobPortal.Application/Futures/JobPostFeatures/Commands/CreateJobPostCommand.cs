@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Commands
 {
-    /*public record CreateJobPostCommand : IRequest<BaseCommandResponse> 
+    public record CreateJobPostCommand : IRequest<ApiResponse>
     {
         public JobPostDto JobPostDto { get; set; }
     }
 
-    public class CreateJobPostCommandHandler : IRequestHandler<CreateJobPostCommand, BaseCommandResponse>
+    public class CreateJobPostCommandHandler : IRequestHandler<CreateJobPostCommand, ApiResponse>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -28,17 +28,18 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Commands
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<BaseCommandResponse> Handle(CreateJobPostCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(CreateJobPostCommand request, CancellationToken cancellationToken)
         {
-            var Response = new BaseCommandResponse();
+            var Response = new ApiResponse();
             var JobPost = _mapper.Map<JobPost>(request.JobPostDto);
 
             await _unitOfWork.Repository<JobPost>().AddAsync(JobPost);
+            await _unitOfWork.SaveAsync(cancellationToken);
 
             Response.Success = true;
             Response.Message = "Post News Success";
 
             return Response;
         }
-    }*/
+    }
 }

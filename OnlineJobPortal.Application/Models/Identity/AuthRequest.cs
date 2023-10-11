@@ -9,7 +9,7 @@ namespace OnlineJobPortal.Application.Models.Identity
 {
     public class AuthRequest
     {
-        [Required]
+        [Required, EmailAddress]
         public string Email { get; set; }
 
         [Required]

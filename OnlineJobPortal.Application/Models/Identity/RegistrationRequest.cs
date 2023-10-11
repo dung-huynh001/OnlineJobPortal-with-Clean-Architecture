@@ -17,10 +17,12 @@ namespace OnlineJobPortal.Application.Models.Identity
         [Required, EmailAddress]
         public string Email { get; set; }
 
-        [Required]
-        public string Password { get; set; }
+        [Required, MinLength(6), MaxLength(50)]
+        public string Password { get; set; } 
+        
+        [Required, MinLength(6), MaxLength(50)]
+        public string PasswordConfirm { get; set; }
 
-        [Required, Phone]
-        public string PhoneNumber { get; set; }
+
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace OnlineJobPortal.API.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

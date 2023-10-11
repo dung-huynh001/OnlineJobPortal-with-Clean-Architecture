@@ -21,18 +21,18 @@ namespace OnlineJobPortal.API.Controllers
         public async Task<IActionResult> Register(RegistrationRequest request)
         {
             var result = await _authService.RegisterAsync(request);
-            if (result.Succeeded)
+            if (result.Success)
             {
-                return Ok(result.Succeeded);
+                return Ok(result);
             }
-            return BadRequest();
+            return BadRequest(result);
         }
 
         [HttpPost("Login")]
         public async Task<IActionResult> Login(AuthRequest request)
         {
             var result = await _authService.LoginAsync(request);
-            if (string.IsNullOrEmpty(result))
+            if (!result.Success)
             {
                 return BadRequest();
             }

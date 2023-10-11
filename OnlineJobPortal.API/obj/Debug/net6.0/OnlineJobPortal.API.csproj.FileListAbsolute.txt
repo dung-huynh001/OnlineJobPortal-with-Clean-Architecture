@@ -1,3 +1,9 @@
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.AssemblyInfoInputs.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.AssemblyInfo.cs
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\appsettings.json
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\OnlineJobPortal.API.exe
@@ -14,6 +20,8 @@ C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.A
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\MediatR.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\MediatR.Contracts.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\System.Web.Http.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -39,9 +47,11 @@ C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.A
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\Swashbuckle.Core.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\System.Drawing.Common.dll
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
@@ -67,13 +77,7 @@ C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.A
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\OnlineJobPortal.Application.pdb
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\OnlineJobPortal.Infrastructure.pdb
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\OnlineJobPortal.Domain.pdb
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.csproj.AssemblyReference.cache
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.AssemblyInfoInputs.cache
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.AssemblyInfo.cs
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.csproj.CoreCompileInputs.cache
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\staticwebassets\msbuild.OnlineJobPortal.API.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\staticwebassets\msbuild.build.OnlineJobPortal.API.props
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.OnlineJobPortal.API.props

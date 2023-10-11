@@ -26,9 +26,7 @@ namespace OnlineJobPortal.Application.Interfaces
         ISkillRepository SkillRepository { get; }
         IForeignLanguageRepository ForeignLanguageRepository { get; }
 
-        Task<int> Save(CancellationToken cancellationToken);
         Task<int> SaveAsync(CancellationToken cancellationToken);
-        Task<int> SaveAndRemoveCache(CancellationToken cancellationToken, params string[] cacheKeys);
         Task Rollback();
     }
 }
