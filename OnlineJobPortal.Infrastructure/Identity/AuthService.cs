@@ -35,7 +35,7 @@ namespace OnlineJobPortal.Infrastructure.Identity
         public async Task<string> LoginAsync(AuthRequest request)
         {
             var result = await _signInManager.PasswordSignInAsync(request.Email, request.Password, false, false);
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
                 return string.Empty;
             }
@@ -63,7 +63,7 @@ namespace OnlineJobPortal.Infrastructure.Identity
         {
             var user = new ApplicationUser
             {
-                UserName = request.UserName,
+                UserName = request.Email,
                 UserType = request.UserType,
                 Email = request.Email,
                 PhoneNumber = request.PhoneNumber,

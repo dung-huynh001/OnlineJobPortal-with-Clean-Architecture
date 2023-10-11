@@ -20,11 +20,11 @@ namespace OnlineJobPortal.Infrastructure.Context
         }
 
         public DbSet<Admin> Admins { get; set; }
-        public DbSet<Apply> Applications { get; set; }
+        public DbSet<Apply> Applys { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        public DbSet<Experience> BussinessIndustrys { get; set; }
+        public DbSet<BussinessIndustry> BussinessIndustrys { get; set; }
         public DbSet<Candidate> Candidates { get; set; }
-        public DbSet<Experience> CandidateSkills { get; set; }
+        public DbSet<CandidateSkill> CandidateSkills { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyImage> CompanyImages { get; set; }
         public DbSet<Education> Educations { get; set; }

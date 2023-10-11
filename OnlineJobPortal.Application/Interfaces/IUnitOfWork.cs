@@ -5,7 +5,7 @@ namespace OnlineJobPortal.Application.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IGenericRepository<T> Repository<T>() where T : class;
+        IGenericRepository<T> Repository<T>() where T : BaseEntity;
 
         IAdminRepository AdminRepository { get; }
         IApplyRepository ApplicationRepository { get; }

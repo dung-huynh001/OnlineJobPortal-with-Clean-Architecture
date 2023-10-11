@@ -1,7 +1,10 @@
-﻿using OnlineJobPortal.Application.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Application.Interfaces.Repositories;
+using OnlineJobPortal.Domain.Common;
 using OnlineJobPortal.Infrastructure.Context;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +14,15 @@ namespace OnlineJobPortal.Infrastructure.Implementation
 {
     public class UnitOfWork : IUnitOfWork
     {
+        private readonly ApplicationDbContext _context;
+        private Hashtable _repositories;
+        private bool disposed;
+
+
+        public UnitOfWork(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public IAdminRepository AdminRepository => throw new NotImplementedException();
 
         public IApplyRepository ApplicationRepository => throw new NotImplementedException();
@@ -52,9 +64,23 @@ namespace OnlineJobPortal.Infrastructure.Implementation
             throw new NotImplementedException();
         }
 
-        public IGenericRepository<T> Repository<T>() where T : class
+        public IGenericRepository<T> Repository<T>() where T : BaseEntity
         {
-            throw new NotImplementedException();
+            if (_repositories == null)
+                _repositories = new Hashtable();
+
+            var type = typeof(T).Name;
+
+            if (!_repositories.ContainsKey(type))
+            {
+                var repositoryType = typeof(GenericRepository<>);
+
+                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(T)), _context);
+
+                _repositories.Add(type, repositoryInstance);
+            }
+
+            return (IGenericRepository<T>)_repositories[type];
         }
 
         public Task Rollback()

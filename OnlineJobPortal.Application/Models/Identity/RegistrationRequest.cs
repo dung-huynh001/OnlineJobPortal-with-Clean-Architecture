@@ -17,9 +17,6 @@ namespace OnlineJobPortal.Application.Models.Identity
         [Required, EmailAddress]
         public string Email { get; set; }
 
-        [Required, MaxLength(50)]
-        public string UserName { get; set; }
-
         [Required]
         public string Password { get; set; }
 

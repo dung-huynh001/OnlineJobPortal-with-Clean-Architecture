@@ -299,7 +299,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
                     b.HasIndex("JobPostId");
 
-                    b.ToTable("Applications");
+                    b.ToTable("Applys");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.BussinessIndustry", b =>
@@ -323,7 +323,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BussinessIndustry");
+                    b.ToTable("BussinessIndustrys");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Candidate", b =>
@@ -407,7 +407,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
                     b.HasIndex("SkillId");
 
-                    b.ToTable("CandidateSkill");
+                    b.ToTable("CandidateSkills");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Company", b =>
@@ -644,7 +644,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
                     b.HasIndex("ResumeId");
 
-                    b.ToTable("Experience");
+                    b.ToTable("Experiences");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ForeignLanguage", b =>
