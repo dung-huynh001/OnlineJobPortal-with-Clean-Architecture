@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OnlineJobPortal.API\OnlineJobPortal.API.csproj" />
     <ProjectReference Include="..\OnlineJobPortal.Application\OnlineJobPortal.Application.csproj" />
     <ProjectReference Include="..\OnlineJobPortal.Domain\OnlineJobPortal.Domain.csproj" />
     <ProjectReference Include="..\OnlineJobPortal.Infrastructure\OnlineJobPortal.Infrastructure.csproj" />

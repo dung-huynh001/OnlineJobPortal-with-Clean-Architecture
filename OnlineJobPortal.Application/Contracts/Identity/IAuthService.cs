@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using OnlineJobPortal.Application.Models.Identity;
+using OnlineJobPortal.Application.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace OnlineJobPortal.Application.Contracts.Identity
 {
     public interface IAuthService
     {
-        Task<string> LoginAsync(AuthRequest request);
-        Task<IdentityResult> RegisterAsync(RegistrationRequest request);
+        Task<ApiResponse> LoginAsync(AuthRequest request);
+        Task<ApiResponse> RegisterAsync(RegistrationRequest request);
     }
 }

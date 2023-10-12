@@ -27,7 +27,6 @@
     <Folder Include="DTOs\UserDto\" />
     <Folder Include="DTOs\CandidateSkillDto\" />
     <Folder Include="DTOs\CandidateDto\" />
-    <Folder Include="Futures\AdminFeatures\Commands\" />
     <Folder Include="Futures\AdminFeatures\Queries\" />
     <Folder Include="Futures\ApplicationFeatures\Queries\" />
     <Folder Include="Futures\ApplicationFeatures\Commands\" />

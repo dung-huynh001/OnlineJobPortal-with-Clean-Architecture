@@ -1,6 +1,8 @@
-﻿namespace OnlineJobPortal.Application.Interfaces
+﻿using OnlineJobPortal.Domain.Common;
+
+namespace OnlineJobPortal.Application.Interfaces
 {
-    public interface IGenericRepository<TEntity> where TEntity : class
+    public interface IGenericRepository<TEntity> where TEntity : BaseEntity
     {
         IQueryable<TEntity> GetAll { get; }
         Task<TEntity> GetByIdAsync(int id);

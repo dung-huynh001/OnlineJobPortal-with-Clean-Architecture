@@ -5,7 +5,7 @@ namespace OnlineJobPortal.Application.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IGenericRepository<T> Repository<T>() where T : class;
+        IGenericRepository<T> Repository<T>() where T : BaseEntity;
 
         IAdminRepository AdminRepository { get; }
         IApplyRepository ApplicationRepository { get; }
@@ -26,9 +26,7 @@ namespace OnlineJobPortal.Application.Interfaces
         ISkillRepository SkillRepository { get; }
         IForeignLanguageRepository ForeignLanguageRepository { get; }
 
-        Task<int> Save(CancellationToken cancellationToken);
         Task<int> SaveAsync(CancellationToken cancellationToken);
-        Task<int> SaveAndRemoveCache(CancellationToken cancellationToken, params string[] cacheKeys);
         Task Rollback();
     }
 }

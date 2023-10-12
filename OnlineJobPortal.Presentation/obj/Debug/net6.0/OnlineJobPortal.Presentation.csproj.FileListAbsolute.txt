@@ -1,3 +1,11 @@
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.AssemblyInfoInputs.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.AssemblyInfo.cs
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.RazorAssemblyInfo.cache
+C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.RazorAssemblyInfo.cs
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\bin\Debug\net6.0\appsettings.json
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\bin\Debug\net6.0\OnlineJobPortal.Presentation.staticwebassets.runtime.json
@@ -64,15 +72,7 @@ C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.P
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\bin\Debug\net6.0\OnlineJobPortal.Application.pdb
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\bin\Debug\net6.0\OnlineJobPortal.Domain.pdb
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\bin\Debug\net6.0\OnlineJobPortal.Infrastructure.pdb
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.csproj.AssemblyReference.cache
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.AssemblyInfoInputs.cache
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.AssemblyInfo.cs
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.csproj.CoreCompileInputs.cache
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.RazorAssemblyInfo.cache
-C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.RazorAssemblyInfo.cs
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\staticwebassets\msbuild.OnlineJobPortal.Presentation.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\staticwebassets\msbuild.build.OnlineJobPortal.Presentation.props
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.OnlineJobPortal.Presentation.props
