@@ -14,7 +14,7 @@ namespace OnlineJobPortal.Application.DTOs.JobPostDto
         public string Description { get; set; }
         public string Requirement { get; set; }
         public string Location { get; set; }
-        public Decimal Salary { get; set; }
+        public string Salary { get; set; }
         public string Address { get; set; }
         public int NumberOfRecruits { get; set; }
         public DateTime ExpiredDate { get; set; }

@@ -13,5 +13,6 @@ namespace OnlineJobPortal.Application.Contracts.Identity
     {
         Task<ApiResponse> LoginAsync(AuthRequest request);
         Task<ApiResponse> RegisterAsync(RegistrationRequest request);
+        Task Logout();
     }
 }

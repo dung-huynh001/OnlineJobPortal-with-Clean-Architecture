@@ -137,5 +137,10 @@ namespace OnlineJobPortal.Infrastructure.Identity
                 Message = "User created successfully!"
             };
         }
+
+        public async Task Logout()
+        {
+            await _signInManager.SignOutAsync();
+        }
     }
 }

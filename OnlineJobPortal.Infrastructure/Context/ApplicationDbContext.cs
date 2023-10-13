@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using OnlineJobPortal.Application.Interfaces;
+using OnlineJobPortal.Domain.Common;
 using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Infrastructure.Configuration;
 using System;
@@ -68,8 +69,17 @@ namespace OnlineJobPortal.Infrastructure.Context
             builder.ApplyConfiguration(new SkillConfiguration());
         }
 
-        public async Task<int> SaveChangesAsync()
+        public virtual async Task<int> SaveChangesAsync()
         {
+            foreach (var entity in base.ChangeTracker.Entries<BaseEntity>()
+                .Where(q => q.State == EntityState.Added || q.State == EntityState.Modified))
+            {
+                entity.Entity.UpdateAt = DateTime.UtcNow;
+
+                if(entity.State == EntityState.Added)
+                    entity.Entity.CreateAt = DateTime.UtcNow;
+            }
+
             return await base.SaveChangesAsync();
         }
     }
