@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "9dasfeRTIMeqAwq3SUtgYrh/WDNGJ38zim+exiaIsXo=",
+  "Hash": "URAXa4s8zhvDqQtsut/fDfE72uavZ6xzRviIksTXxfk=",
   "Source": "OnlineJobPortal.Presentation",
   "BasePath": "_content/OnlineJobPortal.Presentation",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\DELL\\Desktop\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.API\\OnlineJobPortal.API.csproj",
+      "Version": 2,
+      "Source": "OnlineJobPortal.API",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [
     {
       "Name": "OnlineJobPortal.Presentation\\wwwroot",

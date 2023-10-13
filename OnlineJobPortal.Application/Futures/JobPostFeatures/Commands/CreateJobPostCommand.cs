@@ -14,7 +14,7 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Commands
 {
     public record CreateJobPostCommand : IRequest<ApiResponse>
     {
-        public JobPostDto JobPostDto { get; set; }
+        public CreateJobPostDto CreateJobPostDto { get; set; }
     }
 
     public class CreateJobPostCommandHandler : IRequestHandler<CreateJobPostCommand, ApiResponse>
@@ -30,16 +30,18 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Commands
 
         public async Task<ApiResponse> Handle(CreateJobPostCommand request, CancellationToken cancellationToken)
         {
-            var Response = new ApiResponse();
-            var JobPost = _mapper.Map<JobPost>(request.JobPostDto);
+            var JobPost = _mapper.Map<JobPost>(request.CreateJobPostDto);
 
             await _unitOfWork.Repository<JobPost>().AddAsync(JobPost);
             await _unitOfWork.SaveAsync(cancellationToken);
 
-            Response.Success = true;
-            Response.Message = "Post News Success";
 
-            return Response;
+            return new ApiResponse
+            {
+                Success = true,
+                Message = "Job post creation success!",
+                Data = JobPost
+            };
         }
     }
 }

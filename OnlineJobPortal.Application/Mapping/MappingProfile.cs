@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using OnlineJobPortal.Application.DTOs.ApplicationDto;
+using OnlineJobPortal.Application.DTOs.BussinessIndustryDto;
 using OnlineJobPortal.Application.DTOs.JobPostDto;
 using OnlineJobPortal.Application.Models.Identity;
 using OnlineJobPortal.Domain.Entities;
@@ -16,8 +17,10 @@ namespace OnlineJobPortal.Application.Mapping
         public MappingProfile()
         {
             CreateMap<JobPostDto, JobPost>().ReverseMap();
+            CreateMap<CreateJobPostDto, JobPost>().ReverseMap();
             CreateMap<AdminDto, Admin>().ReverseMap();
             CreateMap<ApplicationUser, RegistrationRequest>().ReverseMap();
+            CreateMap<BussinessIndustryDto, BussinessIndustry>().ReverseMap();
         }
     }
 }

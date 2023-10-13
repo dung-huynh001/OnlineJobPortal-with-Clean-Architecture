@@ -34,9 +34,16 @@ namespace OnlineJobPortal.API.Controllers
             var result = await _authService.LoginAsync(request);
             if (!result.Success)
             {
-                return BadRequest();
+                return Unauthorized("Invalid login attempt.");
             }
             return Ok(result);
+        }
+
+        [HttpPost("Logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await _authService.Logout();
+            return Ok();
         }
     }
 }

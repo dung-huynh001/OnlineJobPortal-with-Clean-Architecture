@@ -8,6 +8,7 @@ namespace OnlineJobPortal.Application.Interfaces.Repositories
     {
         public AdminRepository(ApplicationDbContext context) : base(context)
         {
+
         }
     }
 }

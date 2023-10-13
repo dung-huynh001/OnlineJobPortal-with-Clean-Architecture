@@ -825,11 +825,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\Desktop\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Domain\\OnlineJobPortal.Domain.csproj",
+      "projectUniqueName": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Domain\\OnlineJobPortal.Domain.csproj",
       "projectName": "OnlineJobPortal.Domain",
-      "projectPath": "C:\\Users\\DELL\\Desktop\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Domain\\OnlineJobPortal.Domain.csproj",
+      "projectPath": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Domain\\OnlineJobPortal.Domain.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\Desktop\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Domain\\obj\\",
+      "outputPath": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
