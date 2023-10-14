@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.DTOs.BussinessIndustryDto
 {
-    public class BussinessIndustryDto : BaseDto
+    public class UpdateBussinessIndustryDto : BaseDto
     {
         public string BussinessName { get; set; }
     }

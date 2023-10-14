@@ -2,7 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineJobPortal.Application.Contracts.Identity;
 using OnlineJobPortal.Application.Models.Identity;
+using OnlineJobPortal.Infrastructure.Context;
 using OnlineJobPortal.Infrastructure.Identity;
+using OnlineJobPortal.Infrastructure.Implementation;
+using System.Security.Claims;
 
 namespace OnlineJobPortal.API.Controllers
 {

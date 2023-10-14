@@ -1,7 +1,10 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnlineJobPortal.Application.DTOs.AdminDto;
 using OnlineJobPortal.Application.Futures.AdminFeatures.Commands;
+using OnlineJobPortal.Application.Futures.AdminFeatures.Queries;
 using System.Net;
 
 namespace OnlineJobPortal.API.Controllers
@@ -16,7 +19,25 @@ namespace OnlineJobPortal.API.Controllers
         {
             this.mediator = mediator;
         }
-        [HttpPost]
+
+        [HttpGet("GetAll")]
+        public async Task<IEnumerable<AdminDto>> GetAll([FromQuery]GetAllAdminsQuery request)
+        {
+            var result = await mediator.Send(request);
+
+            return (IEnumerable<AdminDto>)result.Data;
+        }
+
+        [HttpGet("GetById")]
+        [Authorize(Roles = "Admin")]
+        public async Task<AdminDto> GetById([FromQuery]GetAdminByIdQuery request)
+        {
+            var result = await mediator.Send(request);
+
+            return (AdminDto)result.Data;
+        }
+
+        [HttpPost("Create")]
         public async Task<IActionResult> Create(CreateAdminCommand createAdminCommand)
         {
             var result = await mediator.Send(createAdminCommand);

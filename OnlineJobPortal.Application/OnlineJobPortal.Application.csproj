@@ -14,42 +14,23 @@
     <Folder Include="DTOs\CompanyDto\" />
     <Folder Include="DTOs\CompanyImageDto\" />
     <Folder Include="DTOs\EducationDto\" />
-    <Folder Include="DTOs\EmployerDto\" />
     <Folder Include="DTOs\ExperienceDto\" />
     <Folder Include="DTOs\JobFavoriteDto\" />
     <Folder Include="DTOs\JobTypeDto\" />
-    <Folder Include="DTOs\RequirementSkillDto\" />
     <Folder Include="DTOs\MessageDto\" />
-    <Folder Include="DTOs\ApplyDto\" />
     <Folder Include="DTOs\ResumeDto\" />
-    <Folder Include="DTOs\SkillDto\" />
     <Folder Include="DTOs\UserDto\" />
-    <Folder Include="DTOs\CandidateSkillDto\" />
-    <Folder Include="DTOs\CandidateDto\" />
-    <Folder Include="Futures\AdminFeatures\Queries\" />
-    <Folder Include="Futures\ApplicationFeatures\Queries\" />
-    <Folder Include="Futures\ApplicationFeatures\Commands\" />
-    <Folder Include="Futures\BussinessIndustryFeatures\Commands\" />
+    <Folder Include="Futures\ApplyFeatures\Queries\" />
     <Folder Include="Futures\BussinessIndustryFeatures\Queries\" />
-    <Folder Include="Futures\CandidateSkillFeatures\Commands\" />
     <Folder Include="Futures\CandidateSkillFeatures\Queries\" />
-    <Folder Include="Futures\CandidateFeatures\Commands\" />
     <Folder Include="Futures\CandidateFeatures\Queries\" />
-    <Folder Include="Futures\CompanyImageFeatures\Commands\" />
     <Folder Include="Futures\CompanyImageFeatures\Queries\" />
-    <Folder Include="Futures\CompanyFeatures\Commands\" />
     <Folder Include="Futures\CompanyFeatures\Queries\" />
-    <Folder Include="Futures\EducationFeatures\Commands\" />
     <Folder Include="Futures\EducationFeatures\Queries\" />
-    <Folder Include="Futures\EmployerFeatures\Commands\" />
     <Folder Include="Futures\EmployerFeatures\Queries\" />
-    <Folder Include="Futures\ExperienceFeatures\Commands\" />
     <Folder Include="Futures\ExperienceFeatures\Queries\" />
-    <Folder Include="Futures\ForeignLangugeFeatures\Commands\" />
     <Folder Include="Futures\ForeignLangugeFeatures\Queries\" />
-    <Folder Include="Futures\JobFavoriteFeatures\Commands\" />
     <Folder Include="Futures\JobFavoriteFeatures\Queries\" />
-    <Folder Include="Futures\JobTypeFeatures\Commands\" />
     <Folder Include="Futures\JobTypeFeatures\Queries\" />
     <Folder Include="Futures\JobPostFeatures\Queries\" />
     <Folder Include="Futures\RequirementSkillFeatures\Commands\" />
@@ -58,10 +39,7 @@
     <Folder Include="Futures\MessageFeatures\Queries\" />
     <Folder Include="Futures\ResumeFeatures\Commands\" />
     <Folder Include="Futures\ResumeFeatures\Queries\" />
-    <Folder Include="Futures\SkillFeatures\Commands\" />
     <Folder Include="Futures\SkillFeatures\Queries\" />
-    <Folder Include="Futures\UserFeatures\Commands\" />
-    <Folder Include="Futures\UserFeatures\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

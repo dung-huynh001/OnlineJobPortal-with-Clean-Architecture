@@ -14,7 +14,7 @@ namespace OnlineJobPortal.Application.Futures.AdminFeatures.Commands
 {
     public record CreateAdminCommand : IRequest<ApiResponse>
     {
-        public AdminDto Admin { get; set; }
+        public CreateAdminDto Admin { get; set; }
     }
 
     public class CreateAdminCommandHandler : IRequestHandler<CreateAdminCommand, ApiResponse>
@@ -33,6 +33,7 @@ namespace OnlineJobPortal.Application.Futures.AdminFeatures.Commands
             var admin = mapper.Map<Admin>(request.Admin);
 
             await unitOfWork.Repository<Admin>().AddAsync(admin);
+            await unitOfWork.SaveAsync(cancellationToken);
 
             return new ApiResponse
             {
