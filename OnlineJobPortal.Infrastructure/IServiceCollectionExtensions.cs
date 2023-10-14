@@ -24,6 +24,8 @@ namespace OnlineJobPortal.Infrastructure
             AddAuthentication(services, configuration);
             AddDbContext(services, configuration);
             AddRepositories(services);
+
+            services.AddHttpContextAccessor();
         }
 
         private static void AddAuthentication(this IServiceCollection services, IConfiguration configuration)
@@ -83,8 +85,10 @@ namespace OnlineJobPortal.Infrastructure
 
         private static void AddRepositories(this IServiceCollection services)
         {
-            services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
-            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IApplicationDbContext, ApplicationDbContext>()
+                    .AddScoped<IAuthService, AuthService>()
+                    .AddScoped<ICurrentUserService, CurrentUserSevice>();
+
 
             services
                 .AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork))
