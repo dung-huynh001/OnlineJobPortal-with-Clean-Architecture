@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineJobPortal.Application.DTOs.AdminDto;
 using OnlineJobPortal.Application.Futures.AdminFeatures.Commands;
 using OnlineJobPortal.Application.Futures.AdminFeatures.Queries;
+using OnlineJobPortal.Application.Interfaces;
+using OnlineJobPortal.Infrastructure.Implementation;
 using System.Net;
 
 namespace OnlineJobPortal.API.Controllers
@@ -14,10 +16,12 @@ namespace OnlineJobPortal.API.Controllers
     public class AdminController : ControllerBase
     {
         private readonly IMediator mediator;
+        private readonly ICurrentUserService currentUserSevice;
 
-        public AdminController(IMediator mediator)
+        public AdminController(IMediator mediator, ICurrentUserService currentUserSevice)
         {
             this.mediator = mediator;
+            this.currentUserSevice = currentUserSevice;
         }
 
         [HttpGet("GetAll")]
@@ -46,6 +50,14 @@ namespace OnlineJobPortal.API.Controllers
                 return BadRequest(result);
             }
             return StatusCode(StatusCodes.Status201Created, createAdminCommand);
+        }
+
+        [HttpGet("GetCurrentUser")]
+        [Authorize]
+        public async Task<IActionResult> GetCurrentUser()
+        {
+            var user = currentUserSevice.UserId;
+            return Ok(user);
         }
     }
 }

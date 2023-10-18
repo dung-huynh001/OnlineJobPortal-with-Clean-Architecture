@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Text;
+using OnlineJobPortal.Application.Contracts.Identity;
+using OnlineJobPortal.Application.Interfaces;
 
 namespace OnlineJobPortal.Application
 {

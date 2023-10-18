@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Presentation.Models;
 using System.Diagnostics;
 
@@ -7,14 +8,20 @@ namespace OnlineJobPortal.Presentation.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICurrentUserService currentUserService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ICurrentUserService currentUserService)
         {
             _logger = logger;
+            this.currentUserService = currentUserService;
         }
 
         public IActionResult Index()
         {
+            if (HttpContext.User.Identity!.IsAuthenticated)
+            {
+                ViewBag.FullName = currentUserService.GetFullNameById();
+            }
             return View();
         }
 

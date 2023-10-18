@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using OnlineJobPortal.Application.DTOs.ApplicationDto;
+using OnlineJobPortal.Application.DTOs.CandidateDto;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Application.Responses;
 using OnlineJobPortal.Domain.Entities;
@@ -14,7 +15,7 @@ namespace OnlineJobPortal.Application.Futures.CandidateFeatures.Commands
 {
     public record CreateCandidateCommand : IRequest<ApiResponse>
     {
-        public CreateAdminDto CreateAdminDto { get; set; }
+        public CreateCandidateDto CreateCandidateDto { get; set; }
     }
     public class CreateCandidateCommandHandler : IRequestHandler<CreateCandidateCommand, ApiResponse>
     {
@@ -31,7 +32,7 @@ namespace OnlineJobPortal.Application.Futures.CandidateFeatures.Commands
         {
             try
             {
-                var candidate = mapper.Map<Candidate>(request.CreateAdminDto);
+                var candidate = mapper.Map<Candidate>(request.CreateCandidateDto);
 
                 await unitOfWork.Repository<Candidate>().AddAsync(candidate);
                 await unitOfWork.SaveAsync(cancellationToken);
