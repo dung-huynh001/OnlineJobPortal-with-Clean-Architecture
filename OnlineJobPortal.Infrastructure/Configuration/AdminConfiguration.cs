@@ -20,7 +20,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasMaxLength(100);
 
             builder.Property(a => a.NationalId)
-                .IsRequired()
+                .IsRequired(false)
                 .HasMaxLength(20);
 
             // Cấu hình thuộc tính Gender
@@ -31,7 +31,8 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .IsRequired();
 
             builder.Property(a => a.Address)
-                .HasMaxLength(200);
+                .HasMaxLength(200)
+                .IsRequired(false);
 
             builder.HasOne(a => a.User)
                 .WithOne()

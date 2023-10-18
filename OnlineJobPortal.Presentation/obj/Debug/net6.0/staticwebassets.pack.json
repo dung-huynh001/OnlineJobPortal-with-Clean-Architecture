@@ -1,20 +1,124 @@
 {
   "Files": [
     {
-      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\OnlineJobPortal.Presentation.bundle.scp.css",
-      "PackagePath": "staticwebassets\\OnlineJobPortal.Presentation.bundle.scp.css"
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\css\\HomePage\\custom.css",
+      "PackagePath": "staticwebassets\\css\\HomePage\\custom.css"
     },
     {
-      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\css\\HomePage\\style.css",
+      "PackagePath": "staticwebassets\\css\\HomePage\\style.css"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\css\\LoginPage\\login.css",
+      "PackagePath": "staticwebassets\\css\\LoginPage\\login.css"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
     {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\site.js",
-      "PackagePath": "staticwebassets\\js\\site.js"
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\ITJobs_Logo.png",
+      "PackagePath": "staticwebassets\\img\\ITJobs_Logo.png"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\about-1.jpg",
+      "PackagePath": "staticwebassets\\img\\about-1.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\about-2.jpg",
+      "PackagePath": "staticwebassets\\img\\about-2.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\about-3.jpg",
+      "PackagePath": "staticwebassets\\img\\about-3.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\about-4.jpg",
+      "PackagePath": "staticwebassets\\img\\about-4.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\carousel-1.jpg",
+      "PackagePath": "staticwebassets\\img\\carousel-1.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\carousel-2.jpg",
+      "PackagePath": "staticwebassets\\img\\carousel-2.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\com-logo-1.jpg",
+      "PackagePath": "staticwebassets\\img\\com-logo-1.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\com-logo-2.jpg",
+      "PackagePath": "staticwebassets\\img\\com-logo-2.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\com-logo-3.jpg",
+      "PackagePath": "staticwebassets\\img\\com-logo-3.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\com-logo-4.jpg",
+      "PackagePath": "staticwebassets\\img\\com-logo-4.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\com-logo-5.jpg",
+      "PackagePath": "staticwebassets\\img\\com-logo-5.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\favicon.png",
+      "PackagePath": "staticwebassets\\img\\favicon.png"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\job-5382501.jpg",
+      "PackagePath": "staticwebassets\\img\\job-5382501.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\laptops-593296.jpg",
+      "PackagePath": "staticwebassets\\img\\laptops-593296.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\log.svg",
+      "PackagePath": "staticwebassets\\img\\log.svg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\register.svg",
+      "PackagePath": "staticwebassets\\img\\register.svg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\testimonial-1.jpg",
+      "PackagePath": "staticwebassets\\img\\testimonial-1.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\testimonial-2.jpg",
+      "PackagePath": "staticwebassets\\img\\testimonial-2.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\testimonial-3.jpg",
+      "PackagePath": "staticwebassets\\img\\testimonial-3.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\testimonial-4.jpg",
+      "PackagePath": "staticwebassets\\img\\testimonial-4.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\HomePage\\main.js",
+      "PackagePath": "staticwebassets\\js\\HomePage\\main.js"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\LoginPage\\login.js",
+      "PackagePath": "staticwebassets\\js\\LoginPage\\login.js"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\animate\\animate.css",
+      "PackagePath": "staticwebassets\\lib\\animate\\animate.css"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\animate\\animate.min.css",
+      "PackagePath": "staticwebassets\\lib\\animate\\animate.min.css"
     },
     {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\bootstrap\\LICENSE",
@@ -197,6 +301,14 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\easing\\easing.js",
+      "PackagePath": "staticwebassets\\lib\\easing\\easing.js"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\easing\\easing.min.js",
+      "PackagePath": "staticwebassets\\lib\\easing\\easing.min.js"
+    },
+    {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
@@ -243,6 +355,58 @@
     {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\owlcarousel\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\owlcarousel\\assets\\ajax-loader.gif",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\ajax-loader.gif"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\owlcarousel\\assets\\owl.carousel.css",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.carousel.css"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\owlcarousel\\assets\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.carousel.min.css"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\owlcarousel\\assets\\owl.theme.default.css",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.theme.default.css"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\owlcarousel\\assets\\owl.theme.default.min.css",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.theme.default.min.css"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\owlcarousel\\assets\\owl.theme.green.css",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.theme.green.css"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\owlcarousel\\assets\\owl.theme.green.min.css",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.theme.green.min.css"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\owlcarousel\\assets\\owl.video.play.png",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\assets\\owl.video.play.png"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\owlcarousel\\owl.carousel.js",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\owl.carousel.js"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\owlcarousel\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\lib\\owlcarousel\\owl.carousel.min.js"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\wow\\wow.js",
+      "PackagePath": "staticwebassets\\lib\\wow\\wow.js"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\lib\\wow\\wow.min.js",
+      "PackagePath": "staticwebassets\\lib\\wow\\wow.min.js"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.OnlineJobPortal.Presentation.Microsoft.AspNetCore.StaticWebAssets.props",

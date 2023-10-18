@@ -110,7 +110,8 @@ namespace OnlineJobPortal.Infrastructure
                 .AddScoped<IMessageRepository, MessageRepository>()
                 .AddScoped<IResumeRepository, ResumeRepository>()
                 .AddScoped<IRequirementSkillRepository, RequirementSkillRepository>()
-                .AddScoped<ISkillRepository, SkillRepository>();
+                .AddScoped<ISkillRepository, SkillRepository>()
+                .AddScoped<ICurrentUserService, CurrentUserSevice>();
         }
     }
 }

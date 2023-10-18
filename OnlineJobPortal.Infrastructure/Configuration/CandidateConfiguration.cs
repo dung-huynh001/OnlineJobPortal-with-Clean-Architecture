@@ -20,7 +20,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasMaxLength(100);
 
             builder.Property(c => c.NationalId)
-                .IsRequired()
+                .IsRequired(false)
                 .HasMaxLength(20);
 
             builder.Property(c => c.Gender)
@@ -30,10 +30,12 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .IsRequired();
 
             builder.Property(c => c.Address)
-                .HasMaxLength(200);
+                .HasMaxLength(200)
+                .IsRequired(false);
 
             builder.Property(c => c.AvatarUrl)
-                .HasMaxLength(255);
+                .HasMaxLength(255)
+                .IsRequired(false);
 
             builder.HasOne(c => c.User)
                 .WithOne()

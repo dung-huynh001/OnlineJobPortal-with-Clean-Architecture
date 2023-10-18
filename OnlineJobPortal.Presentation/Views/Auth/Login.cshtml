@@ -1,0 +1,176 @@
+﻿@{
+    Layout = null;
+}
+
+@model AuthViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/waitme@1.19.0/waitMe.min.css" rel="stylesheet">
+    <link href="~/css/LoginPage/login.css" rel="stylesheet" />
+    <title>IT Jobs</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form method="post" action="/auth/login" class="sign-in-form">
+                    <h2 class="title">
+                        Welcome to <span class="text-primary glow">
+                            IT<span class="text-dark">Jobs</span>
+                        </span>
+                    </h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" asp-for="AuthRequest.Email" placeholder="Email" autocomplete="off" />
+                        <span asp-validation-for="AuthRequest.Email" class="text-danger error-message"></span>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" asp-for="AuthRequest.Password" placeholder="Mật khẩu" autocomplete="off" />
+                        <span asp-validation-for="AuthRequest.Password" class="text-danger error-message"></span>
+                    </div>
+                    <input type="submit" class="btn solid" value="Đăng nhập" />
+                    <p class="social-text">Hoặc đăng nhập với nền tảng</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                    </div>
+                </form>
+                <form method="post" asp-action="Register" class="sign-up-form">
+                    <h2 class="title">Tạo tài khoản</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" asp-for="RegistrationRequest.FullName" placeholder="Họ và tên" autocomplete="off" />
+                        <span asp-validation-for="RegistrationRequest.FullName" class="text-danger error-message"></span>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="text" asp-for="RegistrationRequest.Email" placeholder="Email" autocomplete="off" />
+                        <span asp-validation-for="RegistrationRequest.Email" class="text-danger error-message"></span>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" asp-for="RegistrationRequest.Password" placeholder="Mật khẩu" autocomplete="off" />
+                        <span asp-validation-for="RegistrationRequest.Password" class="text-danger error-message"></span>
+
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" asp-for="RegistrationRequest.PasswordConfirm" placeholder="Nhập lại mật khẩu" autocomplete="off" />
+                        <span asp-validation-for="RegistrationRequest.PasswordConfirm" class="text-danger error-message"></span>
+                    </div>
+                    <input asp-for="RegistrationRequest.UserType" value="1" type="hidden" />
+                    <input type="submit" class="btn" value="Đăng ký" />
+                    <p class="social-text">Hoặc đăng ký với các nền tảng</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Bạn là người mới?</h3>
+                    <p>
+                        Hãy đăng ký tài khoản để có cơ hội cùng tham gia một môi trường tuyển dụng nổi bật và nhận được
+                        các cơ hội sự nghiệp lý tưởng.
+                    </p>
+                    <button class="btn transparent" id="sign-up-btn">
+                        Đăng ký
+                    </button>
+                </div>
+                <img src="~/img/log.svg" class="image" alt="" />
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>Bạn đã là thành viên của ITJobs?</h3>
+                    <p>
+                        Chào mừng bạn trở lại với ITJobs. Cùng đăng nhập để sử dụng gia nhập môi trường tuyển dụng sôi
+                        động và hấp dẫn.
+                    </p>
+                    <button class="btn transparent" id="sign-in-btn">
+                        Đăng nhập
+                    </button>
+                </div>
+                <img src="~/img/register.svg" class="image" alt="" />
+            </div>
+        </div>
+    </div>
+    <script src="~/js/LoginPage/login.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/waitme@1.19.0/waitMe.min.js"></script>
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <script>
+            toastr.warning('@ViewBag.ErrorMessage');
+            @ViewBag.ErrorMessage = null;
+        </script>
+    }
+
+    <script>
+        $(document).ready(function () {
+            var loginform = $(".sign-in-form");
+            var registerform = $(".sign-up-form");
+
+
+            loginform.validate(); // Khởi tạo validation cho form
+            registerform.validate();
+
+
+            loginform.submit(function (event) {
+                if (loginform.valid()) {
+                    loginform.waitMe({
+                        effect: 'rotation', // Chọn kiểu hiệu ứng spinner (có nhiều tùy chọn)
+                        text: 'Loading...', // Văn bản hiển thị
+                        bg: 'rgba(255, 255, 255, 0.7)', // Màu nền của overlay
+                        color: '#17b85f', // Màu của spinner
+                        maxSize: '', // Kích thước của spinner
+                        waitTime: -1, // Thời gian tối đa để spinner tự động ẩn
+                    });
+                } else {
+                    // Form không hợp lệ, không thực hiện đăng nhập
+                    event.preventDefault();
+                }
+            });
+
+            registerform.submit(function (event) {
+                if (registerform.valid()) {
+                    registerform.waitMe({
+                        effect: 'rotation', // Chọn kiểu hiệu ứng spinner (có nhiều tùy chọn)
+                        text: 'Loading...', // Văn bản hiển thị
+                        bg: 'rgba(255, 255, 255, 0.7)', // Màu nền của overlay
+                        color: '#17b85f', // Màu của spinner
+                        maxSize: '', // Kích thước của spinner
+                        waitTime: -1, // Thời gian tối đa để spinner tự động ẩn
+                    });
+                } else {
+                    // Form không hợp lệ, không thực hiện đăng nhập
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>
