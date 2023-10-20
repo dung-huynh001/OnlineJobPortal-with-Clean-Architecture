@@ -37,29 +37,35 @@ namespace OnlineJobPortal.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(AuthRequest request)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var result = await authService.LoginAsync(request);
-
-                if (!result.Success)
+                try
                 {
-                    ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng nhập.";
+                    var result = await authService.LoginAsync(request);
+
+                    if (!result.Success)
+                    {
+                        ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng nhập.";
+                        return View();
+                    }
+
+                    return RedirectToAction("Index", "Home");
+                }
+                catch
+                {
                     return View();
                 }
-
-                return RedirectToAction("Index", "Home");
             }
-            catch
-            {
-                return View();
-            }
+            ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng nhập.";
+            return View();
 		}
 
         [Route("/register")]
         public IActionResult Register()
 		{
-			return View();
+            return View();
 		}
+
 
         [HttpPost("Register")]
 		public async Task<IActionResult> Register(RegistrationRequest request)
@@ -83,6 +89,11 @@ namespace OnlineJobPortal.Presentation.Controllers
             {
                 return View();
             }
+        }
+
+        public IActionResult ChangePassword()
+        {
+            return View();
         }
 
         public async Task<IActionResult> Logout()

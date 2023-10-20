@@ -172,3 +172,14 @@
     border: none;
   }
 }
+
+.badge__primary {
+  background-color: #00b14f;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  margin: 0 4px;
+  padding: 2px 4px;
+  text-align: center;
+}
