@@ -1,0 +1,63 @@
+.company-cover {
+  background: linear-gradient(90deg, #212f3f, #00b14f);
+  min-height: 320px;
+}
+
+.company-cover .company-cover-logo {
+  left: 30px;
+  top: 45% !important;
+}
+
+.company-cover .company-cover-logo img {
+  height: 150px;
+  width: 150px;
+  object-fit: fill;
+}
+
+.company-cover > img {
+  height: 250px;
+  object-fit: cover;
+}
+
+.company-cover .company-cover-detail {
+  left: 200px;
+}
+
+@media (max-width: 576px) {
+  .company-cover .company-cover-logo {
+    left: 33% !important;
+    top: 15% !important;
+  }
+  .company-cover .company-cover-detail {
+    left: 0;
+  }
+  .company-cover .company-cover-detail h5 {
+    text-align: center;
+  }
+  
+  .company-cover .company-cover-detail .company-cover-detail-item {
+    text-align: center;
+    padding: 3px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .company-cover .company-cover-logo {
+    left: 33% !important;
+    top: 15% !important;
+  }
+  .company-cover .company-cover-detail {
+    left: 0;
+  }
+  .company-cover .company-cover-detail h5 {
+    text-align: center;
+  }
+
+  .company-cover .company-cover-detail .company-cover-detail-item {
+    text-align: center;
+    padding: 3px 0;
+  }
+}
+
+@media (min-width: 992px) {
+}

@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\css\\CompanyPage\\company.css",
+      "PackagePath": "staticwebassets\\css\\CompanyPage\\company.css"
+    },
+    {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\css\\HomePage\\custom.css",
       "PackagePath": "staticwebassets\\css\\HomePage\\custom.css"
     },
@@ -67,6 +71,10 @@
     {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\com-logo-5.jpg",
       "PackagePath": "staticwebassets\\img\\com-logo-5.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\default_user.png",
+      "PackagePath": "staticwebassets\\img\\default_user.png"
     },
     {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\favicon.png",
