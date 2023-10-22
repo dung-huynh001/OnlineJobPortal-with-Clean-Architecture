@@ -425,24 +425,35 @@
   text-shadow: 0 0 2px, 0 0 3px;
 }
 
-.noti-icon {
+.noti-icon{
+  /* background: rgba(0, 177, 79, 0.102);
+  border-radius: 50%;
+  margin: 15px 5px; */
+  color: #00b14f;
+  height: 40px;
+  padding: 10px;
+  text-align: center;
+  width: 40px;
   background: rgba(0, 177, 79, 0.102);
   border-radius: 50%;
   margin: 15px 5px;
 }
 
 .profile-area {
-  background: #fafafa;
+  background: #e5f7ed;
+  font-weight: 700;
   border-radius: 20px;
-  margin: 15px 5px 19px;
-  padding-right: 22px;
+  margin: 15px 5px;
+  padding-right: 15px;
+  padding-left: 12px;
+  color: var(--dark)
 }
 
 .profile-area .profile-img {
   border-radius: 50%;
-  height: 30px;
-  width: 30px;
-  margin: 5px 10px 5px 0;
+  height: 25px;
+  width: 25px;
+  margin: 0;
   max-width: 100%;
   vertical-align: middle;
 }

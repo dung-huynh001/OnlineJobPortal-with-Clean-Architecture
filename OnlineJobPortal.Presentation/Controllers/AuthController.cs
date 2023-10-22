@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OnlineJobPortal.Application.Contracts.Identity;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Application.Models.Identity;
@@ -14,21 +15,21 @@ namespace OnlineJobPortal.Presentation.Controllers
     public class AuthController : Controller
     {
         private readonly ILogger<AuthController> logger;
-		private readonly HttpClient httpClient;
+        private readonly HttpClient httpClient;
         private readonly ICurrentUserService currentUserService;
         private readonly IAuthService authService;
 
         public AuthController(ILogger<AuthController> logger, HttpClient httpClient, ICurrentUserService currentUserService, IAuthService authService)
         {
             this.logger = logger;
-			this.httpClient = httpClient;
+            this.httpClient = httpClient;
             this.currentUserService = currentUserService;
             this.authService = authService;
             this.httpClient.BaseAddress = new Uri("https://localhost:7143");
-		}
+        }
 
-		[Route("/login")]
-		public IActionResult Login()
+        [Route("/login")]
+        public IActionResult Login()
         {
             return View();
         }
@@ -58,32 +59,32 @@ namespace OnlineJobPortal.Presentation.Controllers
             }
             ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng nhập.";
             return View();
-		}
+        }
 
         [Route("/register")]
         public IActionResult Register()
-		{
+        {
             return View();
-		}
+        }
 
 
         [HttpPost("Register")]
-		public async Task<IActionResult> Register(RegistrationRequest request)
+        public async Task<IActionResult> Register(RegistrationRequest request)
         {
             try
             {
-                var response = await httpClient.PostAsJsonAsync("api/Auth/Register", request);
-                if (response.IsSuccessStatusCode)
+                if (ModelState.IsValid)
                 {
-                    // Xử lý dữ liệu từ API ở đây
-                    var result = await response.Content.ReadFromJsonAsync<ApiResponse>();
-                    return RedirectToAction("Login");
+                    var response = await httpClient.PostAsJsonAsync("api/Auth/Register", request);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadFromJsonAsync<ApiResponse>();
+                        return RedirectToAction("Login");
+                    }
                 }
-                else
-                {
-                    ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng ký.";
-                    return View();
-                }
+                
+                ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng ký.";
+                throw new Exception();
             }
             catch
             {

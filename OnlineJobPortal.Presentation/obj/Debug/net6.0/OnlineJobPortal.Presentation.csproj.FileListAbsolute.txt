@@ -368,3 +368,4 @@ D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\bin\Deb
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\bin\Debug\net6.0\bundleconfig.json
