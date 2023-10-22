@@ -14,5 +14,10 @@ namespace OnlineJobPortal.Presentation.Controllers
         {
             return View();
         }
+
+        public IActionResult TopCompany() 
+        { 
+            return View();
+        }
     }
 }
