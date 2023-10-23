@@ -39,6 +39,10 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasMaxLength(255)
                 .IsRequired(false);
 
+            builder.Property(e => e.Position)
+                .HasMaxLength(255)
+                .IsRequired(false);
+
             builder.HasOne(e => e.User)
                 .WithOne()
                 .HasForeignKey<Employer>(e => e.UserId)

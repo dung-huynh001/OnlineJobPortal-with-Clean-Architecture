@@ -8729,6 +8729,18 @@
       "PackagePath": "staticwebassets\\area\\assets\\plugins\\popper.min.js"
     },
     {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\area\\assets\\plugins\\vietnamlocal\\vietnamlocalselector.js",
+      "PackagePath": "staticwebassets\\area\\assets\\plugins\\vietnamlocal\\vietnamlocalselector.js"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\area\\assets\\plugins\\vietnamlocal\\vietnamlocalselector.min.js",
+      "PackagePath": "staticwebassets\\area\\assets\\plugins\\vietnamlocal\\vietnamlocalselector.min.js"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\area\\assets\\plugins\\vietnamlocal\\vietnamlocalselector.nonoop.js",
+      "PackagePath": "staticwebassets\\area\\assets\\plugins\\vietnamlocal\\vietnamlocalselector.nonoop.js"
+    },
+    {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\area\\assets\\scss\\app\\_app.scss",
       "PackagePath": "staticwebassets\\area\\assets\\scss\\app\\_app.scss"
     },
@@ -9215,6 +9227,14 @@
     {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\carousel-2.jpg",
       "PackagePath": "staticwebassets\\img\\carousel-2.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\carouselEmployer-01.jpg",
+      "PackagePath": "staticwebassets\\img\\carouselEmployer-01.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\carouselEmployer-02.jpg",
+      "PackagePath": "staticwebassets\\img\\carouselEmployer-02.jpg"
     },
     {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\com-logo-1.jpg",
