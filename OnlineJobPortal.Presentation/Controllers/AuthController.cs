@@ -92,6 +92,18 @@ namespace OnlineJobPortal.Presentation.Controllers
             }
         }
 
+        [Route("/register-employer")]
+        public IActionResult RegisterEmployer()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterEmployer(RegisterEmployerViewModel model)
+        {
+            return View();
+        }
+
         public IActionResult ChangePassword()
         {
             return View();

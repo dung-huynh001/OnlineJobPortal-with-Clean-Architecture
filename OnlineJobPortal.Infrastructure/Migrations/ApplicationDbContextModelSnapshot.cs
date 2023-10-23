@@ -583,6 +583,10 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<string>("Position")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("datetime2");
 
