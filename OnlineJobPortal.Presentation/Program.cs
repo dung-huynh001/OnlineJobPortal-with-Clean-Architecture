@@ -8,6 +8,7 @@ using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Infrastructure;
 using OnlineJobPortal.Infrastructure.Context;
 using OnlineJobPortal.Infrastructure.Identity;
+using OnlineJobPortal.Presentation;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add configuration of Application Proj
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddPresentation(builder.Configuration);
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddControllersWithViews();

@@ -59,6 +59,10 @@ namespace OnlineJobPortal.Infrastructure.Implementation
 
         public IForeignLanguageRepository ForeignLanguageRepository => throw new NotImplementedException();
 
+        public IDistrictRepository DistrictRepository => throw new NotImplementedException();
+
+        public IProvinceRepository ProvinceRepository => throw new NotImplementedException();
+
         public void Dispose()
         {
             _context.Dispose();

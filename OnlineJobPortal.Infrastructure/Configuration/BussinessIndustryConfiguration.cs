@@ -18,10 +18,6 @@ namespace OnlineJobPortal.Infrastructure.Configuration
             builder.Property(bi => bi.BussinessName)
                 .IsRequired()
                 .HasMaxLength(100);
-
-            builder.HasMany(bi => bi.Companies)
-                .WithOne(c => c.BussinessIndustry)
-                .HasForeignKey(c => c.BussinessIndustryId);
         }
     }
 }

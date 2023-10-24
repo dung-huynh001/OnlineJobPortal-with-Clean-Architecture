@@ -38,7 +38,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                     <h1 class="text-success glow" style="font-family: Poppins, sans-serif; font-weight: 700">IT<span
                             class="text-dark">Jobs</span></h1>
                 </a>
-                <form method="post" asp-area="" asp-controller="Auth" asp-action="RegisterEmployer">
+                <form method="post" asp-area="" asp-controller="Auth" asp-action="RegisterEmployer" id="registerForm">
                     <div class="col-12 py-3">
                         <h4 class="fw-bold ps-2 border-5 border-start border-success">Tài khoản</h4>
                         <div class="d-flex flex-column pb-3">
@@ -100,14 +100,14 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="col d-flex flex-column">
                                 <label class="form-label" for="">Địa điểm làm việc <span
                                         class="text-danger">*</span></label>
-                                <select class="form-select" name="ls_province" sp-for="Province"></select>
-                                <span asp-validation-for="Province" class="text-danger error-message"></span>
+                                <select class="form-select ls_province" asp-for="ProvinceId"></select>
+                                <span asp-validation-for="ProvinceId" class="text-danger error-message"></span>
 
                             </div>
                             <div class="col d-flex flex-column">
                                 <label class="form-label" for="">Quận/huyện<span class="text-danger">*</span></label>
-                                <select class="form-select" name="ls_district" asp-for="District"></select>
-                                <span asp-validation-for="District" class="text-danger error-message"></span>
+                                <select class="form-select ls_district" asp-for="DistrictId"></select>
+                                <span asp-validation-for="DistrictId" class="text-danger error-message"></span>
                             </div>
                             <div class="col d-flex flex-column d-none">
                                 <label class="form-label" for="">Xã/phường<span class="text-danger">*</span></label>
@@ -121,7 +121,10 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <span asp-validation-for="WebsiteUrl" class="text-danger error-message"></span>
 
                         </div>
-                        <input type="text" value="2" hidden>
+                        <input type="hidden" name="ProvinceName" asp-for="ProvinceName">
+                        <input type="hidden" name="DistrictName" asp-for="DistrictName">
+                        <input type="hidden" name="Address" asp-for="Address">
+                        <input type="text" value="2" hidden asp-for="UserType">
                     </div>
                     <button type="submit" class="btn btn-success">Hoàn tất</button>
                 </form>
@@ -137,15 +140,17 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="~/img/carouselEmployer-01.jpg" class="d-block w-100 min-vh-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0,0,0,0.4);">
-                                <h5>First slide label</h5>
+                            <div class="carousel-caption d-none d-md-block px-3 rounded-pill"
+                                style="background-color: rgba(0,0,0,0.3);">
+                                <h5>ITJobs - Online Job Portal</h5>
                                 <p>Some representative placeholder content for the first slide.</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="~/img/carouselEmployer-02.jpg" class="d-block w-100 min-vh-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0,0,0,0.4);">
-                                <h5>Second slide label</h5>
+                            <div class="carousel-caption d-none d-md-block px-3 rounded-pill"
+                                style="background-color: rgba(0,0,0,0.3);">
+                                <h5>ITJobs - Online Job Portal</h5>
                                 <p>Some representative placeholder content for the second slide.</p>
                             </div>
                         </div>
@@ -181,6 +186,27 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             province: "ls_province",
             district: "ls_district",
             ward: "ls_ward"
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".ls_province").change(function () {
+                var provinceText = $(this).find("option:selected").text();
+                $("input[name='ProvinceName']").val(provinceText);
+            });
+
+            $(".ls_district").change(function () {
+                var districtText = $(this).find("option:selected").text();
+                $("input[name='DistrictName']").val(districtText);
+
+                var provinceText = $(".ls_province").find("option:selected").text();
+
+                var address = districtText + ", Tỉnh " + provinceText;;
+                if (provinceText === "Hồ Chí Minh") {
+                    address = districtText + ", TP. " + provinceText;
+                }
+                $("input[name='Address']").val(address);
+                    });
         });
     </script>
     <partial name="_ValidationScriptsPartial" />

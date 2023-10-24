@@ -25,6 +25,8 @@ namespace OnlineJobPortal.Application.Interfaces
         IResumeRepository ResumeRepository { get; }
         ISkillRepository SkillRepository { get; }
         IForeignLanguageRepository ForeignLanguageRepository { get; }
+        IDistrictRepository DistrictRepository { get; }
+        IProvinceRepository ProvinceRepository { get; }
 
         Task<int> SaveAsync(CancellationToken cancellationToken);
         Task Rollback();

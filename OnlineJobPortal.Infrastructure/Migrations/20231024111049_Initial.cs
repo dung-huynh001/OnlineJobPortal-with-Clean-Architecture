@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OnlineJobPortal.Infrastructure.Migrations
 {
-    public partial class InitialDb : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "BussinessIndustry",
+                name: "BussinessIndustrys",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -21,7 +21,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BussinessIndustry", x => x.Id);
+                    table.PrimaryKey("PK_BussinessIndustrys", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -37,6 +37,18 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_JobTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Provinces",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    ProvinceName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Provinces", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -95,31 +107,20 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Companies",
+                name: "Districts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CompanyName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Owner = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    EstablishmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Contact = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Facebook = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Twitter = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    WebsiteUrl = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    BussinessIndustryId = table.Column<int>(type: "int", nullable: false),
-                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    ProvinceId = table.Column<int>(type: "int", nullable: false),
+                    DistrictName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Companies", x => x.Id);
+                    table.PrimaryKey("PK_Districts", x => new { x.Id, x.ProvinceId });
                     table.ForeignKey(
-                        name: "FK_Companies_BussinessIndustry_BussinessIndustryId",
-                        column: x => x.BussinessIndustryId,
-                        principalTable: "BussinessIndustry",
+                        name: "FK_Districts_Provinces_ProvinceId",
+                        column: x => x.ProvinceId,
+                        principalTable: "Provinces",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -152,10 +153,10 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FullName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    NationalId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    NationalId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -178,11 +179,11 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FullName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    NationalId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    NationalId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    AvatarUrl = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    AvatarUrl = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -284,6 +285,68 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Companies",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CompanyName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Owner = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    EstablishmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Contact = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Facebook = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Twitter = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    WebsiteUrl = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    DistrictId = table.Column<int>(type: "int", nullable: false),
+                    ProvinceId = table.Column<int>(type: "int", nullable: false),
+                    BussinessIndustryId = table.Column<int>(type: "int", nullable: false),
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Companies", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Companies_BussinessIndustrys_BussinessIndustryId",
+                        column: x => x.BussinessIndustryId,
+                        principalTable: "BussinessIndustrys",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Companies_Districts_DistrictId_ProvinceId",
+                        columns: x => new { x.DistrictId, x.ProvinceId },
+                        principalTable: "Districts",
+                        principalColumns: new[] { "Id", "ProvinceId" },
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Resumes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    CareerGoal = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Position = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    CandidateId = table.Column<int>(type: "int", nullable: false),
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Resumes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Resumes_Candidates_CandidateId",
+                        column: x => x.CandidateId,
+                        principalTable: "Candidates",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CompanyImages",
                 columns: table => new
                 {
@@ -312,11 +375,12 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FullName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    NationalId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    NationalId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    AvatarUrl = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    AvatarUrl = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Position = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CompanyId = table.Column<int>(type: "int", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -340,25 +404,105 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Profiles",
+                name: "CandidateSkills",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    CareerGoal = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Position = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    CandidateId = table.Column<int>(type: "int", nullable: false),
+                    Level = table.Column<int>(type: "int", nullable: false),
+                    ResumeId = table.Column<int>(type: "int", nullable: false),
+                    SkillId = table.Column<int>(type: "int", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Profiles", x => x.Id);
+                    table.PrimaryKey("PK_CandidateSkills", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Profiles_Candidates_CandidateId",
-                        column: x => x.CandidateId,
-                        principalTable: "Candidates",
+                        name: "FK_CandidateSkills_Resumes_ResumeId",
+                        column: x => x.ResumeId,
+                        principalTable: "Resumes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CandidateSkills_Skills_SkillId",
+                        column: x => x.SkillId,
+                        principalTable: "Skills",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Educations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Certificate = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Major = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    University = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CompletionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    GPA = table.Column<double>(type: "float", nullable: false),
+                    ResumeId = table.Column<int>(type: "int", nullable: true),
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Educations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Educations_Resumes_ResumeId",
+                        column: x => x.ResumeId,
+                        principalTable: "Resumes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Experiences",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    JobTitle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    CompanyName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    ResumeId = table.Column<int>(type: "int", nullable: false),
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Experiences", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Experiences_Resumes_ResumeId",
+                        column: x => x.ResumeId,
+                        principalTable: "Resumes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ForeignLanguage",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LanguageName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Proficiency = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Degree = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ResumeId = table.Column<int>(type: "int", nullable: false),
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ForeignLanguage", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ForeignLanguage_Resumes_ResumeId",
+                        column: x => x.ResumeId,
+                        principalTable: "Resumes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -431,111 +575,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CandidateSkill",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Level = table.Column<int>(type: "int", nullable: false),
-                    ProfileId = table.Column<int>(type: "int", nullable: false),
-                    SkillId = table.Column<int>(type: "int", nullable: false),
-                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CandidateSkill", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CandidateSkill_Profiles_ProfileId",
-                        column: x => x.ProfileId,
-                        principalTable: "Profiles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CandidateSkill_Skills_SkillId",
-                        column: x => x.SkillId,
-                        principalTable: "Skills",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Educations",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Certificate = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Major = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    University = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CompletionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GPA = table.Column<double>(type: "float", nullable: false),
-                    ProfileId = table.Column<int>(type: "int", nullable: true),
-                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Educations", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Educations_Profiles_ProfileId",
-                        column: x => x.ProfileId,
-                        principalTable: "Profiles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Experiences",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    JobTitle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    CompanyName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    ProfileId = table.Column<int>(type: "int", nullable: false),
-                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Experiences", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Experiences_Profiles_ProfileId",
-                        column: x => x.ProfileId,
-                        principalTable: "Profiles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ForeignLanguage",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    LanguageName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Proficiency = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Degree = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ProfileId = table.Column<int>(type: "int", nullable: false),
-                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ForeignLanguage", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ForeignLanguage_Profiles_ProfileId",
-                        column: x => x.ProfileId,
-                        principalTable: "Profiles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Applications",
+                name: "Applys",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -548,15 +588,15 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Applications", x => x.Id);
+                    table.PrimaryKey("PK_Applys", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Applications_Candidates_CandidateId",
+                        name: "FK_Applys_Candidates_CandidateId",
                         column: x => x.CandidateId,
                         principalTable: "Candidates",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Applications_JobPosts_JobPostId",
+                        name: "FK_Applys_JobPosts_JobPostId",
                         column: x => x.JobPostId,
                         principalTable: "JobPosts",
                         principalColumn: "Id",
@@ -628,13 +668,13 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Applications_CandidateId",
-                table: "Applications",
+                name: "IX_Applys_CandidateId",
+                table: "Applys",
                 column: "CandidateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Applications_JobPostId",
-                table: "Applications",
+                name: "IX_Applys_JobPostId",
+                table: "Applys",
                 column: "JobPostId");
 
             migrationBuilder.CreateIndex(
@@ -644,13 +684,13 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_CandidateSkill_ProfileId",
-                table: "CandidateSkill",
-                column: "ProfileId");
+                name: "IX_CandidateSkills_ResumeId",
+                table: "CandidateSkills",
+                column: "ResumeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CandidateSkill_SkillId",
-                table: "CandidateSkill",
+                name: "IX_CandidateSkills_SkillId",
+                table: "CandidateSkills",
                 column: "SkillId");
 
             migrationBuilder.CreateIndex(
@@ -659,14 +699,24 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 column: "BussinessIndustryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Companies_DistrictId_ProvinceId",
+                table: "Companies",
+                columns: new[] { "DistrictId", "ProvinceId" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CompanyImages_CompanyId",
                 table: "CompanyImages",
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Educations_ProfileId",
+                name: "IX_Districts_ProvinceId",
+                table: "Districts",
+                column: "ProvinceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Educations_ResumeId",
                 table: "Educations",
-                column: "ProfileId");
+                column: "ResumeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employers_CompanyId",
@@ -680,14 +730,14 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Experiences_ProfileId",
+                name: "IX_Experiences_ResumeId",
                 table: "Experiences",
-                column: "ProfileId");
+                column: "ResumeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ForeignLanguage_ProfileId",
+                name: "IX_ForeignLanguage_ResumeId",
                 table: "ForeignLanguage",
-                column: "ProfileId");
+                column: "ResumeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_JobFavorites_CandidateId",
@@ -720,11 +770,6 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 column: "EmployerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Profiles_CandidateId",
-                table: "Profiles",
-                column: "CandidateId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_RequirementSkills_JobPostId",
                 table: "RequirementSkills",
                 column: "JobPostId");
@@ -733,6 +778,11 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 name: "IX_RequirementSkills_SkillId",
                 table: "RequirementSkills",
                 column: "SkillId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Resumes_CandidateId",
+                table: "Resumes",
+                column: "CandidateId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",
@@ -780,10 +830,10 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 name: "Admins");
 
             migrationBuilder.DropTable(
-                name: "Applications");
+                name: "Applys");
 
             migrationBuilder.DropTable(
-                name: "CandidateSkill");
+                name: "CandidateSkills");
 
             migrationBuilder.DropTable(
                 name: "CompanyImages");
@@ -849,7 +899,13 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "BussinessIndustry");
+                name: "BussinessIndustrys");
+
+            migrationBuilder.DropTable(
+                name: "Districts");
+
+            migrationBuilder.DropTable(
+                name: "Provinces");
         }
     }
 }

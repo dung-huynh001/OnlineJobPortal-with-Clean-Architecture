@@ -30,6 +30,11 @@ namespace OnlineJobPortal.Infrastructure.Implementation
             return Task.CompletedTask;
         }
 
+        public async Task<T?> FindWeakEntityAsync(int pk1, int pk2)
+        {
+            return await _context.Set<T>().FindAsync(pk1, pk2);
+        }
+
         public async Task<List<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();

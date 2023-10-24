@@ -38,6 +38,8 @@ namespace OnlineJobPortal.Infrastructure.Context
         public DbSet<Message> Messages { get; set; }
         public DbSet<Resume> Resumes { get; set; }
         public DbSet<Skill> Skills { get; set; }
+        public DbSet<Province> Provinces { get; set; }
+        public DbSet<District> Districts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -67,6 +69,8 @@ namespace OnlineJobPortal.Infrastructure.Context
             builder.ApplyConfiguration(new ResumeConfiguration());
             builder.ApplyConfiguration(new RequirementSkillConfiguration());
             builder.ApplyConfiguration(new SkillConfiguration());
+            builder.ApplyConfiguration(new ProvinceConfiguration());
+            builder.ApplyConfiguration(new DistrictConfiguration());
         }
 
         public virtual async Task<int> SaveChangesAsync()

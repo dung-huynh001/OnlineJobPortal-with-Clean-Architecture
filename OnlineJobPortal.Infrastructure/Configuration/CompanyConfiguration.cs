@@ -20,34 +20,40 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasMaxLength(100);
 
             builder.Property(c => c.Owner)
-                .IsRequired()
+                .IsRequired(false)
                 .HasMaxLength(100);
 
             builder.Property(c => c.EstablishmentDate)
                 .IsRequired();
 
             builder.Property(c => c.Address)
+                .IsRequired(false)
                 .HasMaxLength(200);
 
             builder.Property(c => c.Description)
+                .IsRequired(false)
                 .HasMaxLength(500);
 
             builder.Property(c => c.Contact)
+                .IsRequired(false)
                 .HasMaxLength(100);
 
             builder.Property(c => c.Facebook)
+                .IsRequired(false)
                 .HasMaxLength(255);
 
             builder.Property(c => c.Twitter)
+                .IsRequired(false)
                 .HasMaxLength(255);
 
             builder.Property(c => c.WebsiteUrl)
+                .IsRequired(false)
                 .HasMaxLength(255);
 
             builder.HasOne(c => c.BussinessIndustry)
                 .WithMany(bi => bi.Companies)
                 .HasForeignKey(c => c.BussinessIndustryId)
-                .IsRequired();
+                .IsRequired(false);
 
             builder.HasMany(c => c.CompanyImages)
                 .WithOne(ci => ci.Company)

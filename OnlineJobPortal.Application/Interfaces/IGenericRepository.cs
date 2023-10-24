@@ -6,6 +6,7 @@ namespace OnlineJobPortal.Application.Interfaces
     {
         IQueryable<TEntity> GetAll { get; }
         Task<TEntity> GetByIdAsync(int id);
+        Task<TEntity?> FindWeakEntityAsync(int pk1, int pk2);
         Task<List<TEntity>> GetAllAsync();
         Task AddAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);
