@@ -1,10 +1,18 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OnlineJobPortal.Application.Contracts.Identity;
+using OnlineJobPortal.Application.DTOs.CompanyDto;
+using OnlineJobPortal.Application.DTOs.LocationDto;
+using OnlineJobPortal.Application.Futures.CompanyFeatures.Commands;
+using OnlineJobPortal.Application.Futures.DistrictFeatures.Commands;
+using OnlineJobPortal.Application.Futures.LocationFeatures.Commands;
+using OnlineJobPortal.Application.Futures.ProvinceFeatures.Commands;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Application.Models.Identity;
 using OnlineJobPortal.Application.Responses;
+using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Infrastructure.Identity;
 using OnlineJobPortal.Presentation.Models;
 using System.Net.Http;
@@ -18,13 +26,17 @@ namespace OnlineJobPortal.Presentation.Controllers
         private readonly HttpClient httpClient;
         private readonly ICurrentUserService currentUserService;
         private readonly IAuthService authService;
+        private readonly IMapper mapper;
+        private readonly IMediator mediator;
 
-        public AuthController(ILogger<AuthController> logger, HttpClient httpClient, ICurrentUserService currentUserService, IAuthService authService)
+        public AuthController(ILogger<AuthController> logger, HttpClient httpClient, ICurrentUserService currentUserService, IAuthService authService, IMapper mapper, IMediator mediator)
         {
             this.logger = logger;
             this.httpClient = httpClient;
             this.currentUserService = currentUserService;
             this.authService = authService;
+            this.mapper = mapper;
+            this.mediator = mediator;
             this.httpClient.BaseAddress = new Uri("https://localhost:7143");
         }
 
@@ -75,24 +87,23 @@ namespace OnlineJobPortal.Presentation.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var response = await httpClient.PostAsJsonAsync("api/Auth/Register", request);
-                    if (response.IsSuccessStatusCode)
+                    var result = await authService.RegisterAsync(request);
+                    if (!result.Success)
                     {
-                        var result = await response.Content.ReadFromJsonAsync<ApiResponse>();
-                        return RedirectToAction("Login");
+                        throw new Exception();
                     }
+                    return RedirectToAction("Login");
                 }
-                
-                ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng ký.";
                 throw new Exception();
             }
             catch
             {
+                ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng ký.";
                 return View();
             }
         }
 
-        [Route("/register-employer")]
+        [HttpGet]
         public IActionResult RegisterEmployer()
         {
             return View();
@@ -101,7 +112,33 @@ namespace OnlineJobPortal.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> RegisterEmployer(RegisterEmployerViewModel model)
         {
-            return View();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var location = mapper.Map<CreateLocationDto>(model);
+                    CreateLocationCommand createLocationCommand = new CreateLocationCommand();
+                    createLocationCommand.Location = location;
+
+                    var createLocationResponse = await mediator.Send(createLocationCommand);
+
+                    var registerDto = mapper.Map<RegistrationEmployerRequest>(model);
+                    var registerEmployerResponse = await authService.RegisterEmployerAsync(registerDto);
+
+                    if (!registerEmployerResponse.Success)
+                    {
+                        throw new Exception();
+                    }
+
+                    return RedirectToAction("Index", "Home", new {area = "Employer"});
+                }
+                throw new Exception();
+            }
+            catch
+            {
+                ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng ký.";
+                return View(model);
+            }
         }
 
         public IActionResult ChangePassword()
@@ -111,15 +148,8 @@ namespace OnlineJobPortal.Presentation.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            try
-            {
-                await authService.Logout();
-                return RedirectToAction("Index", "Home");
-            }
-            catch
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            await authService.Logout();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

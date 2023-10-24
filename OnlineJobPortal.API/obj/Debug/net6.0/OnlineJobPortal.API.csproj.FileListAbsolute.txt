@@ -88,6 +88,12 @@ C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.A
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.pdb
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.genruntimeconfig.cache
 C:\Users\DELL\Desktop\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\ref\OnlineJobPortal.API.dll
+D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.csproj.AssemblyReference.cache
+D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.AssemblyInfoInputs.cache
+D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.AssemblyInfo.cs
+D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.csproj.CoreCompileInputs.cache
+D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.MvcApplicationPartsAssemblyInfo.cache
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\appsettings.Development.json
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\appsettings.json
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\OnlineJobPortal.API.exe
@@ -157,13 +163,6 @@ D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\OnlineJobPortal.Application.pdb
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\OnlineJobPortal.Infrastructure.pdb
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\bin\Debug\net6.0\OnlineJobPortal.Domain.pdb
-D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.csproj.AssemblyReference.cache
-D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.GeneratedMSBuildEditorConfig.editorconfig
-D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.AssemblyInfoInputs.cache
-D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.AssemblyInfo.cs
-D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.csproj.CoreCompileInputs.cache
-D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.MvcApplicationPartsAssemblyInfo.cs
-D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\OnlineJobPortal.API.MvcApplicationPartsAssemblyInfo.cache
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\staticwebassets\msbuild.OnlineJobPortal.API.Microsoft.AspNetCore.StaticWebAssets.props
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\staticwebassets\msbuild.build.OnlineJobPortal.API.props
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.API\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.OnlineJobPortal.API.props

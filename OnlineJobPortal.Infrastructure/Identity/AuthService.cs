@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using OnlineJobPortal.Application.Contracts.Identity;
 using OnlineJobPortal.Application.DTOs.ApplicationDto;
 using OnlineJobPortal.Application.DTOs.CandidateDto;
+using OnlineJobPortal.Application.DTOs.CompanyDto;
 using OnlineJobPortal.Application.DTOs.EmployerDto;
 using OnlineJobPortal.Application.Futures.AdminFeatures.Commands;
 using OnlineJobPortal.Application.Futures.CandidateFeatures.Commands;
@@ -217,6 +218,94 @@ namespace OnlineJobPortal.Infrastructure.Identity
             };
         }
 
+        public async Task<ApiResponse> RegisterEmployerAsync(RegistrationEmployerRequest request)
+        {
+            try
+            {
+                var userExists = await _userManager.FindByNameAsync(request.Email);
+
+                if (userExists != null)
+                {
+                    return new ApiResponse
+                    {
+                        Success = false,
+                        Message = "UserName already exist!"
+                    };
+                }
+
+                if (!request.Password.Equals(request.PasswordConfirm))
+                {
+                    return new ApiResponse
+                    {
+                        Success = false,
+                        Message = "Confirm password does not match password"
+                    };
+                }
+
+                var user = new ApplicationUser
+                {
+                    UserName = request.Email,
+                    Email = request.Email,
+                    UserType = request.UserType,
+                };
+
+                var result = await _userManager.CreateAsync(user, request.Password);
+
+                if (!result.Succeeded)
+                {
+                    return new ApiResponse
+                    {
+                        Success = false,
+                        Message = "User creation failed!"
+                    };
+                }
+
+                var role = request.UserType.ToString();
+
+                if (!await _roleManager.RoleExistsAsync(role))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(role));
+                }
+
+                if (await _roleManager.RoleExistsAsync(role))
+                {
+                    await _userManager.AddToRoleAsync(user, role);
+                }
+
+                var employerDto = _mapper.Map<CreateEmployerDto>(request);
+                var companyDto = _mapper.Map<CreateCompanyDto>(request);
+                var createEmployerCommand = new CreateEmployerCommand();
+                createEmployerCommand.CreateEmployerDto = employerDto;
+                createEmployerCommand.CreateCompanyDto = companyDto;
+
+                employerDto.UserId = user.Id;
+
+                var createEmployerResponse = await mediator.Send(createEmployerCommand);
+
+                if (!createEmployerResponse.Success)
+                {
+                    return new ApiResponse
+                    {
+                        Success = false,
+                        Message = "Create employer failed!"
+                    };
+                }
+
+                return new ApiResponse
+                {
+                    Success = true,
+                    Message = "User created successfully!"
+                };
+            }
+            catch
+            {
+                return new ApiResponse
+                {
+                    Success = false,
+                    Message = "User create failed!"
+                };
+            }
+        }
         public async Task Logout()
         {
             await _signInManager.SignOutAsync();

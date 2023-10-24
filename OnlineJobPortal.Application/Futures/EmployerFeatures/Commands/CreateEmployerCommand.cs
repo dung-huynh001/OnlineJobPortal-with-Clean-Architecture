@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using OnlineJobPortal.Application.DTOs.CompanyDto;
 using OnlineJobPortal.Application.DTOs.EmployerDto;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Application.Responses;
@@ -15,6 +16,7 @@ namespace OnlineJobPortal.Application.Futures.EmployerFeatures.Commands
     public class CreateEmployerCommand : IRequest<ApiResponse>
     {
         public CreateEmployerDto CreateEmployerDto { get; set; }
+        public CreateCompanyDto CreateCompanyDto { get; set; }
     }
     public class CreateEmployerCommandHandler : IRequestHandler<CreateEmployerCommand, ApiResponse>
     {
@@ -31,7 +33,12 @@ namespace OnlineJobPortal.Application.Futures.EmployerFeatures.Commands
             try
             {
                 var employer = mapper.Map<Employer>(request.CreateEmployerDto);
+                var company = mapper.Map<Company>(request.CreateCompanyDto);
 
+                await unitOfWork.Repository<Company>().AddAsync(company);
+                await unitOfWork.SaveAsync(cancellationToken);
+
+                employer.CompanyId = company.Id;
                 await unitOfWork.Repository<Employer>().AddAsync(employer);
                 await unitOfWork.SaveAsync(cancellationToken);
 

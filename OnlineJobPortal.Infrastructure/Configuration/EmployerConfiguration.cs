@@ -40,8 +40,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .IsRequired(false);
 
             builder.Property(e => e.Position)
-                .HasMaxLength(255)
-                .IsRequired(false);
+                .IsRequired();
 
             builder.HasOne(e => e.User)
                 .WithOne()

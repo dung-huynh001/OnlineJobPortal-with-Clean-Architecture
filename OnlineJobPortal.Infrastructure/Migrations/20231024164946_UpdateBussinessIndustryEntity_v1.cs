@@ -4,7 +4,7 @@
 
 namespace OnlineJobPortal.Infrastructure.Migrations
 {
-    public partial class ConfigIdentity : Migration
+    public partial class UpdateBussinessIndustryEntity_v1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

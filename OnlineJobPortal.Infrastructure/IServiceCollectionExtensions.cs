@@ -13,6 +13,7 @@ using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Infrastructure.Context;
 using OnlineJobPortal.Infrastructure.Identity;
 using OnlineJobPortal.Infrastructure.Implementation;
+using OnlineJobPortal.Infrastructure.Implementation.Repositories;
 using System.Text;
 
 namespace OnlineJobPortal.Infrastructure
@@ -111,7 +112,9 @@ namespace OnlineJobPortal.Infrastructure
                 .AddScoped<IResumeRepository, ResumeRepository>()
                 .AddScoped<IRequirementSkillRepository, RequirementSkillRepository>()
                 .AddScoped<ISkillRepository, SkillRepository>()
-                .AddScoped<ICurrentUserService, CurrentUserSevice>();
+                .AddScoped<ICurrentUserService, CurrentUserSevice>()
+                .AddScoped<IDistrictRepository, DistrictRepository>()
+                .AddScoped<IProvinceRepository, ProvinceRepository>();
         }
     }
 }

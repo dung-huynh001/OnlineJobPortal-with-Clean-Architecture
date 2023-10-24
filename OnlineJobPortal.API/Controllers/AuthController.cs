@@ -31,6 +31,7 @@ namespace OnlineJobPortal.API.Controllers
             return BadRequest(result);
         }
 
+
         [HttpPost("Login")]
         public async Task<IActionResult> Login(AuthRequest request)
         {
@@ -41,6 +42,8 @@ namespace OnlineJobPortal.API.Controllers
             }
             return Ok(result);
         }
+
+
 
         [HttpPost("Logout")]
         public async Task<IActionResult> Logout()

@@ -4,10 +4,15 @@ using OnlineJobPortal.Application.DTOs.ApplicationDto;
 using OnlineJobPortal.Application.DTOs.BussinessIndustryDto;
 using OnlineJobPortal.Application.DTOs.CandidateDto;
 using OnlineJobPortal.Application.DTOs.CandidateSkillDto;
+using OnlineJobPortal.Application.DTOs.CompanyDto;
+using OnlineJobPortal.Application.DTOs.EmployerDto;
 using OnlineJobPortal.Application.DTOs.ForeignLanguageDto;
 using OnlineJobPortal.Application.DTOs.JobPostDto;
+using OnlineJobPortal.Application.DTOs.LocationDto;
 using OnlineJobPortal.Application.DTOs.RequirementSkillDto;
 using OnlineJobPortal.Application.DTOs.SkillDto;
+using OnlineJobPortal.Application.Futures.DistrictFeatures.Commands;
+using OnlineJobPortal.Application.Futures.ProvinceFeatures.Commands;
 using OnlineJobPortal.Application.Models.Identity;
 using OnlineJobPortal.Domain.Entities;
 using System;
@@ -46,6 +51,24 @@ namespace OnlineJobPortal.Application.Mapping
 
             CreateMap<CreateRequirementSkillDto, RequirementSkill>().ReverseMap();
             CreateMap<UpdateRequirementSkillDto, RequirementSkill>().ReverseMap();
+
+            CreateMap<CreateDistrictCommand, District>().ReverseMap();
+
+            CreateMap<CreateProvinceCommand, Province>().ReverseMap();
+
+            CreateMap<CreateCompanyDto, Company>().ReverseMap();
+
+            CreateMap<CreateEmployerDto, Employer>().ReverseMap();
+            CreateMap<CreateEmployerDto, Company>().ReverseMap();
+
+
+            CreateMap<CreateLocationDto, District>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.DistrictId))
+                .ReverseMap();
+
+            CreateMap<CreateLocationDto, Province>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ProvinceId))
+                .ReverseMap();
         }
     }
 }
