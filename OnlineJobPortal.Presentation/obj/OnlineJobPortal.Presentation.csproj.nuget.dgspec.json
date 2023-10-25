@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\OnlineJobPortal.Presentation.csproj": {}
+    "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlinejObportal.presentation\\OnlineJobPortal.Presentation.csproj": {}
   },
   "projects": {
     "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Application\\OnlineJobPortal.Application.csproj": {
@@ -259,14 +259,14 @@
         }
       }
     },
-    "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\OnlineJobPortal.Presentation.csproj": {
+    "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlinejObportal.presentation\\OnlineJobPortal.Presentation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\OnlineJobPortal.Presentation.csproj",
+        "projectUniqueName": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlinejObportal.presentation\\OnlineJobPortal.Presentation.csproj",
         "projectName": "OnlineJobPortal.Presentation",
-        "projectPath": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\OnlineJobPortal.Presentation.csproj",
+        "projectPath": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlinejObportal.presentation\\OnlineJobPortal.Presentation.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\obj\\",
+        "outputPath": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlinejObportal.presentation\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
