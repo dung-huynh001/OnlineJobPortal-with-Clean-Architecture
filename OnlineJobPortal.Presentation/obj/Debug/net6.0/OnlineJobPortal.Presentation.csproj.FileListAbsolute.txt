@@ -368,3 +368,4 @@ D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Deb
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.pdb
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.genruntimeconfig.cache
 D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\obj\Debug\net6.0\ref\OnlineJobPortal.Presentation.dll
+D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlinejObportal.presentation\obj\Debug\net6.0\OnlineJobPortal.Presentation.MvcApplicationPartsAssemblyInfo.cs
