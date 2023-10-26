@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SFdTNF6d9ctbkueZnzpv+uiCRB5vhXJwuqzPB2GlBniUU1UanOzbcrKcJWfLLOp2flFSgopnLvg7zsWtILvhcg==",
+  "dgSpecHash": "K7sRBH0Ae54jx5yhH45r6Swmw80l7BBQsRyggbuYUlsM86qnm3JT+bh0hGqfnyWMNoPl4mxkvYJlpZ/gmNWZfA==",
   "success": true,
-  "projectFilePath": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlinejObportal.presentation\\OnlineJobPortal.Presentation.csproj",
+  "projectFilePath": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\OnlineJobPortal.Presentation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

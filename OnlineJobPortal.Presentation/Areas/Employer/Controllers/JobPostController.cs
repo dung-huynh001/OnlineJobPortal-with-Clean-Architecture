@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineJobPortal.Domain.Entities;
+using OnlineJobPortal.Presentation.Areas.Employer.Models;
 
 namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
 {
@@ -11,6 +13,12 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
         }
 
         public IActionResult PostANewJob()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PostANewJob(JobPostViewModel model)
         {
             return View();
         }

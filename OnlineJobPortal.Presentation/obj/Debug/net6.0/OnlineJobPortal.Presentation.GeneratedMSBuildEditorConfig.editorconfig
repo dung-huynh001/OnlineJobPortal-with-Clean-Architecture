@@ -9,141 +9,141 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OnlineJobPortal.Presentation
 build_property.RootNamespace = OnlineJobPortal.Presentation
-build_property.ProjectDir = D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlinejObportal.presentation\
+build_property.ProjectDir = D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlinejObportal.presentation
+build_property.MSBuildProjectDirectory = D:\LVTN\Project_V1_03102023\OnlineJobPortal\OnlineJobPortal.Presentation
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Admin/Views/Home/Index.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Admin/Views/Profile/Index.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/Profile/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZmlsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Admin/Views/Shared/_Layout.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Admin/Views/Shared/_NavbarPartial.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/Shared/_NavbarPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9OYXZiYXJQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Admin/Views/Shared/_SidebarPanelPartial.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/Shared/_SidebarPanelPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9TaWRlYmFyUGFuZWxQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Admin/Views/_ViewImports.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Admin/Views/_ViewStart.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Employer/Views/Home/Index.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Employer/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Employer/Views/JobPost/PostANewJob.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Employer/Views/JobPost/PostANewJob.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcSm9iUG9zdFxQb3N0QU5ld0pvYi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Employer/Views/Shared/_Layout.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Employer/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Employer/Views/Shared/_NavbarPartial.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Employer/Views/Shared/_NavbarPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcU2hhcmVkXF9OYXZiYXJQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Employer/Views/Shared/_SidebarPanelPartial.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Employer/Views/Shared/_SidebarPanelPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcU2hhcmVkXF9TaWRlYmFyUGFuZWxQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Employer/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Employer/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Employer/Views/_ViewImports.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Employer/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Areas/Employer/Views/_ViewStart.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Employer/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Auth/ChangePassword.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Auth/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Auth/Login.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Auth/Register.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Auth/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Auth/RegisterEmployer.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Auth/RegisterEmployer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3RlckVtcGxveWVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Company/CompanyDetail.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Company/CompanyDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxDb21wYW55RGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Company/Index.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Company/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Company/TopCompany.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Company/TopCompany.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxUb3BDb21wYW55LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Home/Index.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Home/Privacy.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/JobPost/FindJob.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/JobPost/FindJob.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUG9zdFxGaW5kSm9iLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/JobPost/Index.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/JobPost/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iUG9zdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Shared/Error.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Shared/_Layout.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Shared/_NavbarPartial.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Shared/_NavbarPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZiYXJQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/_ViewImports.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlinejObportal.presentation/Views/_ViewStart.cshtml]
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
