@@ -1,92 +1,10 @@
 ﻿@*
 For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-}
-<style>
-    .step {
-        height: 35px !important;
-        width: 35px !important;
-        text-align: center;
-        vertical-align: middle;
-        color: #fff;
-        padding: 5px;
-        font-size: 13px;
-        background-color: #9f9d9d;
-        outline: none;
-        border-radius: 50%;
-        display: inline-block;
-    }
+@using OnlineJobPortal.Presentation.Areas.Employer.Models
+@model JobPostViewModel
 
-    .active-step {
-        background-color: #fff;
-        color: #000;
-        border: 2px solid #000;
-    }
-
-    .active-step+span {
-        font-weight: 700;
-    }
-
-    .vertical-line {
-        margin-left: 8px;
-        border-left: 5px solid #ccc;
-        height: 100%;
-    }
-
-
-    .stepper {
-        height: 250px;
-    }
-    
-    @@media(max-width:768px) {
-        .vertical-line {
-            display: none;
-        }
-
-        .stepper {
-            height: 100%;
-        }
-    }
-
-
-    .step-title {
-        cursor: pointer;
-    }
-
-    .divider {
-        margin-top: .5rem;
-        margin-bottom: 0;
-        width: calc(100% - 1rem);
-    }
-
-    form .form-label {
-        color: #444 !important;
-        font-weight: 500;
-    }
-
-    form .form-select {
-        color: #5d6778
-    }
-
-    .active-tab {
-        display: flex !important;
-    }
-
-    .text-editor {
-        min-height: 40vh;
-    }
-
-    .ck-editor__editable[role="textbox"] {
-        /* editing area */
-        min-height: 200px;
-    }
-
-    .range-method,
-    .about-method {
-        display: none;
-    }
-</style>
+<link rel="stylesheet" href="~/area/custom/css/PostANewJob.css">
 
 <div class="container">
     <div class="row">
@@ -123,27 +41,31 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             </div>
         </div>
         <div class="col-12 col-lg-9 min-vh-100">
-            <form action="" class="container rounded-3 bg-white p-3">
+            <form asp-area="Employer" asp-controller="JobPost" asp-action="PostANewJob" class="container rounded-3 bg-white p-3">
                 <div class="row gy-4 d-none active-tab postJob-tabs" id="basicInfomationTab">
                     <h5 class="col-12 fw-bold">Basic Infomation</h5>
                     <div class="m-0">
                         <hr class="divider">
                     </div>
                     <div class="col-12">
-                        <label for="" class="form-label">Job title</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="Ex: Mobile Developer">
+                        <label class="form-label" asp-for="Title">Job title <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" asp-for="Title" placeholder="Ex: Mobile Developer">
+                        <span asp-validation-for="Title" class="text-danger error-message"></span>
                     </div>
                     <div class="col-6">
-                        <label for="" class="form-label">Employement type</label>
-                        <select name="" id="" class="form-select">
+                        <label asp-for="JobTypeId" class="form-label">Employement type <span
+                                class="text-danger">*</span></label>
+                        <select asp-for="JobTypeId" class="form-select">
                             <option hidden>Choose employement type</option>
                             <option value="">Full Time</option>
                             <option value="">Part Time</option>
                         </select>
+                        <span asp-validation-for="JobTypeId" class="text-danger error-message"></span>
                     </div>
                     <div class="col-6">
-                        <label for="" class="form-label">Requirement level</label>
-                        <select name="" id="" class="form-select">
+                        <label asp-for="Level" class="form-label">Requirement level <span
+                                class="text-danger">*</span></label>
+                        <select asp-for="Level" class="form-select">
                             <option hidden>Choose requirement level</option>
                             <option value="1">Intern</option>
                             <option value="2">Fresher</option>
@@ -151,39 +73,63 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <option value="4">Middle</option>
                             <option value="5">Senior</option>
                             <option value="6">Expert</option>
-                            <option value="0">None</option>
+                            <option value="0">All level</option>
                         </select>
+                        <span asp-validation-for="Level" class="text-danger error-message"></span>
                     </div>
                     <div class="col-6">
-                        <label for="" class="form-label">Years of experience</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="Ex: Không yêu cầu">
+                        <label asp-for="YearsOfExperience" class="form-label">Years of experience <span
+                                class="text-danger">*</span></label>
+                        <input type="text" asp-for="YearsOfExperience" class="form-control"
+                            placeholder="Ex: Không yêu cầu">
+                        <span asp-validation-for="YearsOfExperience" class="text-danger error-message"></span>
                     </div>
                     <div class="col-6">
-                        <label for="" class="form-label">Number of recruits</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="Ex: 2 người">
+                        <label asp-for="NumberOfRecruits" class="form-label">Number of recruits <span
+                                class="text-danger">*</span></label>
+                        <input type="text" asp-for="NumberOfRecruits" class="form-control" placeholder="Ex: 2 người">
+                        <span asp-validation-for="NumberOfRecruits" class="text-danger error-message"></span>
                     </div>
                     <div class="col-6">
-                        <label for="" class="form-label">City/Province</label>
-                        <select name="" id="" class="form-select">
-                            <option hidden>Choose City/Province</option>
+                        <label asp-for="ProvinceId" class="form-label">Province <span
+                                class="text-danger">*</span></label>
+                        <select asp-for="ProvinceId" class="form-select ls_province">
+                            <option hidden>Choose city/province</option>
                         </select>
+                        <input type="hidden" name="ProvinceName" asp-for="ProvinceName">
+                        <span asp-validation-for="NumberOfRecruits" class="text-danger error-message"></span>
                     </div>
 
                     <div class="col-6">
-                        <label for="" class="form-label">District</label>
-                        <select name="" id="" class="form-select">
+                        <label asp-for="DistrictId" class="form-label">District <span
+                                class="text-danger">*</span></label>
+                        <select asp-for="DistrictId" class="form-select ls_district">
                             <option hidden>Choose district</option>
                         </select>
+                        <input type="hidden" name="DistrictName" asp-for="DistrictName">
+                        <span asp-validation-for="NumberOfRecruits" class="text-danger error-message"></span>
                     </div>
 
+                    <!--Unnessesary-->
+                    <div class="col-6" hidden>
+                        <label for="" class="form-label">Ward <span class="text-danger">*</span></label>
+                        <select name="" id="" class="form-select ls_ward">
+                            <option hidden>Choose Ward</option>
+                        </select>
+                    </div>
+
+
                     <div class="col-12">
-                        <label for="" class="form-label">Address</label>
-                        <input type="text" name="" id="" class="form-control"
+                        <label asp-for="Address" class="form-label">Address <span class="text-danger">*</span></label>
+                        <input type="text" asp-for="Address" class="form-control"
                             placeholder="Ex: Số 1, Hẻm 41, Phường 2, Quận 1, TP Hồ Chí Minh">
+                        <span asp-validation-for="Address" class="text-danger error-message"></span>
                     </div>
                     <div class="col-12">
-                        <label for="" class="form-label">Date of expiration</label>
-                        <input type="Date" name="" id="" class="form-control" placeholder="Ex: 2 người">
+                        <label asp-for="ExpiredDate" class="form-label">Date of expiration <span
+                                class="text-danger">*</span></label>
+                        <input type="Date" asp-for="ExpiredDate" class="form-control" placeholder="Ex: 2 người">
+                        <span asp-validation-for="ExpiredDate" class="text-danger error-message"></span>
                     </div>
                     <div class="col-12 d-flex justify-content-end">
                         <a role="button" class="btn btn-outline-none" onclick="showJobDescriptionTab()">Next <svg
@@ -200,12 +146,34 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         <hr class="divider">
                     </div>
                     <div class="col-12">
-                        <label for="" class="form-label">Job description</label>
-                        <textarea name="" id="text-editor-js" class="form-control text-editor"></textarea>
+                        <label asp-for="Description" class="form-label">Job description <span
+                                class="text-danger">*</span></label>
+                        <textarea asp-for="Description" id="text-editor-js" class="form-control text-editor"></textarea>
+                        <span asp-validation-for="Description" class="text-danger error-message"></span>
                     </div>
                     <div class="col-12">
-                        <label for="" class="form-label">Requirements for candidates</label>
-                        <textarea name="" id="text-editor-cr" class="form-control text-editor"></textarea>
+                        <label asp-for="Requirement" class="form-label">Requirements for candidates <span
+                                class="text-danger">*</span></label>
+                        <textarea asp-for="Requirement" id="text-editor-cr" class="form-control text-editor"></textarea>
+                        <span asp-validation-for="Requirement" class="text-danger error-message"></span>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Skills <span class="text-danger">*</span></label>
+                        <select id="skillSelector" data-placeholder="Ex: C#, ASP.NET,..." class="chosen-select form-control" multiple>
+                            <option value="0">HTML</option>
+                            <option value="1">CSS</option>
+                            <option value="2">BOOTSTRAP</option>
+                            <option value="3">JAVASCRIPT</option>
+                            <option value="4">JQUERY</option>
+                            <option value="5">MYSQL</option>
+                            <option value="6">PHP</option>
+                        </select>
+                        <span asp-validation-for="Skills" class="text-danger error-message"></span>
+
+                        <!--Stores array of skills to post-->
+                        <div id="skillList" type="hidden">
+
+                        </div>
                     </div>
                     <div class="col-12 d-flex justify-content-between">
                         <a role="button" class="btn btn-outline-none" onclick="showBasicInfomationTab()"><svg
@@ -229,24 +197,24 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         <hr class="divider">
                     </div>
                     <div class="col-12">
-                        <div class="row g-0 justify-content-start gap-4">
-                            <label for="" class="form-label">Salary</label>
-                            <div class="col-3">
-                                <select name="" id="methodSelector" class="form-select">
-                                    <option hidden>Choose a method to pay</option>
-                                    <option value="0">Range</option>
-                                    <option value="1">About</option>
-                                    <option value="2">Discuss</option>
-                                </select>
-                            </div>
-                            <div class="col-2 range-method"><input type="text" class="form-control"
+                        <label for="" class="form-label">Salary <span class="text-danger">*</span></label>
+                        <select name="" id="methodSelector" class="form-select">
+                            <option hidden>Choose a method to pay</option>
+                            <option value="0">Range</option>
+                            <option value="1">About</option>
+                            <option value="2">Discuss</option>
+                        </select>
+                        <div class="row g-0 justify-content-start gap-2 pt-2">
+                            <div class="col-5 col-lg-3 range-method"><input type="text" id="minSalary" class="form-control"
                                     placeholder="Ex: 2000$"></div>
-                            <p class="col text-center range-method">to</p>
-                            <div class="col-3 about-method"><input type="text" class="form-control"
+                            <p class="col-1 col-lg text-center range-method">to</p>
+                            <div class="col-5 col-lg-3 range-method"><input type="text" id="maxSalary" class="form-control"
+                                    placeholder="Ex: 5000$"></div>
+
+                            <div class="col-12 col-lg-3 about-method"><input type="text" class="form-control"
                                     placeholder="Ex: 4000$"></div>
-                            <div class="col-2 range-method"><input type="text" class="form-control"
-                                    placeholder="Ex: 3000$"></div>
-                            <div class="col-3 range-method">
+
+                            <div class="col-12 col-lg-4 period">
                                 <select name="" id="periodSelector" class="form-select">
                                     <option value="0">Per month</option>
                                     <option value="1">Per week</option>
@@ -254,11 +222,13 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                     <option value="3">Per project</option>
                                 </select>
                             </div>
+                            <input type="text" hidden asp-for="Salary" />
                         </div>
                     </div>
                     <div class="col-12">
-                        <label for="" class="form-label">Benefits</label>
-                        <textarea name="" id="" class="text-editor"></textarea>
+                        <label asp-for="Benefits" class="form-label">Benefits <span class="text-danger">*</span></label>
+                        <textarea asp-for="Benefits" class="text-editor"></textarea>
+                        <span asp-validation-for="Benefits" class="text-danger error-message"></span>
                     </div>
                     <div class="col-12 d-flex justify-content-start">
                         <a role="button" class="btn btn-outline-none" onclick="showJobDescriptionTab()"><svg
@@ -267,6 +237,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 <path fill-rule="evenodd"
                                     d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
                             </svg>Previous</a>
+                        <button type="submit" class="btn btn-success ms-auto text-white">Hoàn Tất</button>
                     </div>
                 </div>
             </form>
@@ -276,99 +247,18 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 
 @section Scripts {
     <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
-    <script src="~/area/custom/PostANewJob.js"></script>
-    @* <script>
-const editors = document.querySelectorAll('.text-editor');
-editors.forEach((el) => {
-ClassicEditor
-.create(el)
-.catch(error => {
-console.error(error);
-});
-});
-</script>
+    <script src="~/area/custom/js/PostANewJob.js"></script>
+    <script src="~/area/assets/plugins/vietnamlocal/vietnamlocalselector.min.js"></script>
 
-<script>
-$(document).ready(function () {
-// Chọn tất cả các step
-var steps_title = $('.step-title');
-var steps = $('.step');
+    <script>
+        //Khởi tạo chosen select
+        $(document).ready(function () {
+            $(".chosen-select").chosen({
+                allow_single_deselect: true,
+                width: "100%",
+                no_results_text: "Không tìm thấy kết quả :",
+            });
+        });
 
-// Sử dụng sự kiện click cho mỗi step
-steps_title.click(function () {
-// Loại bỏ class active-step từ tất cả các step
-steps.removeClass('active-step');
-
-// Thêm class active-step vào step mà bạn vừa nhấn
-$(this).children(".step").addClass('active-step');
-});
-
-//Remove active nav-links
-var navLinks = $('.nav-link');
-navLinks.removeClass('active');
-
-//Add active for Post a new Job
-var PostANewJobItem = navLinks.eq(2);
-PostANewJobItem.addClass('active');
-
-
-});
-
-// Add active for tabs
-function hiddenTabs() {
-var tabs = $('.postJob-tabs');
-tabs.removeClass('active-tab');
-}
-
-
-
-function showBasicInfomationTab() {
-hiddenTabs();
-$('#basicInfomationTab').addClass('active-tab');
-var steps = $('.step');
-steps.removeClass('active-step');
-$('#step-menu-item-basicInfomation .step').addClass('active-step');
-crollOnTop();
-}
-
-function showJobDescriptionTab() {
-hiddenTabs();
-$('#jobDescriptionTab').addClass('active-tab');
-var steps = $('.step');
-steps.removeClass('active-step');
-$('#step-menu-item-jobDescription .step').addClass('active-step');
-crollOnTop();
-}
-
-function showBenefitTab() {
-hiddenTabs();
-$('#benefitTab').addClass('active-tab');
-var steps = $('.step');
-steps.removeClass('active-step');
-$('#step-menu-item-benefits .step').addClass('active-step');
-crollOnTop();
-}
-
-function crollOnTop() {
-document.body.scrollTop = 0;
-document.documentElement.scrollTop = 0;
-}
-
-
-$('#methodSelector').on('change', function () {
-var selectedValue = $(this).val();
-console.log(selectedValue)
-if (selectedValue == "0") {
-$('.about-method').css('display', 'none');
-$('.range-method').css('display', 'block');
-} else if (selectedValue == "1") {
-$('.range-method').css('display', 'none');
-$('.about-method').css('display', 'block');
-} else {
-$('.range-method').css('display', 'none');
-$('.about-method').css('display', 'none');
-}
-});
-
-</script> *@
+    </script>
 }
