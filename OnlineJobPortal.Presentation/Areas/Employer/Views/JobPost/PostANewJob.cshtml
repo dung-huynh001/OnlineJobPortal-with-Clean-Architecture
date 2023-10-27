@@ -1,9 +1,14 @@
 ﻿@*
 For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using OnlineJobPortal.Application.DTOs.JobTypeDto;
+@using OnlineJobPortal.Application.DTOs.SkillDto;
 @using OnlineJobPortal.Presentation.Areas.Employer.Models
 @model JobPostViewModel
-
+@{
+    var skillList = ViewBag.SkillList as List<SkillDto>;
+    var jobTypeList = ViewBag.JobTypeList as List<JobTypeDto>;
+}
 <link rel="stylesheet" href="~/area/custom/css/PostANewJob.css">
 
 <div class="container">
@@ -41,7 +46,8 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             </div>
         </div>
         <div class="col-12 col-lg-9 min-vh-100">
-            <form asp-area="Employer" asp-controller="JobPost" asp-action="PostANewJob" class="container rounded-3 bg-white p-3">
+            <form asp-area="Employer" asp-controller="JobPost" asp-action="PostANewJob"
+                class="container rounded-3 bg-white p-3">
                 <div class="row gy-4 d-none active-tab postJob-tabs" id="basicInfomationTab">
                     <h5 class="col-12 fw-bold">Basic Infomation</h5>
                     <div class="m-0">
@@ -52,21 +58,39 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         <input type="text" class="form-control" asp-for="Title" placeholder="Ex: Mobile Developer">
                         <span asp-validation-for="Title" class="text-danger error-message"></span>
                     </div>
-                    <div class="col-6">
-                        <label asp-for="JobTypeId" class="form-label">Employement type <span
+                    <div class="col-12">
+                        <label asp-for="JobTypeId" class="form-label">Job category <span
                                 class="text-danger">*</span></label>
                         <select asp-for="JobTypeId" class="form-select">
-                            <option hidden>Choose employement type</option>
-                            <option value="">Full Time</option>
-                            <option value="">Part Time</option>
+                            <option style="display:none">Choose category</option>
+                            @if(jobTypeList != null)
+                            {
+                                foreach(var jobType in jobTypeList)
+                                {
+                                    <option value="@jobType.Id">@jobType.JobTypeName</option>
+                                }
+                            }
+
                         </select>
                         <span asp-validation-for="JobTypeId" class="text-danger error-message"></span>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="EmploymentType" class="form-label">Employement type <span
+                                class="text-danger">*</span></label>
+                        <select asp-for="EmploymentType" class="form-select">
+                            <option hidden value="">Choose employement type</option>
+                            <option value="0">Full Time</option>
+                            <option value="1">Part Time</option>
+                            <option value="2">Remote</option>
+                            <option value="3">Freelancer</option>
+                        </select>
+                        <span asp-validation-for="EmploymentType" class="text-danger error-message"></span>
                     </div>
                     <div class="col-6">
                         <label asp-for="Level" class="form-label">Requirement level <span
                                 class="text-danger">*</span></label>
                         <select asp-for="Level" class="form-select">
-                            <option hidden>Choose requirement level</option>
+                            <option hidden value="">Choose requirement level</option>
                             <option value="1">Intern</option>
                             <option value="2">Fresher</option>
                             <option value="3">Junior</option>
@@ -81,13 +105,13 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         <label asp-for="YearsOfExperience" class="form-label">Years of experience <span
                                 class="text-danger">*</span></label>
                         <input type="text" asp-for="YearsOfExperience" class="form-control"
-                            placeholder="Ex: Không yêu cầu">
+                            placeholder="Ex: Trên 3 năm kinh nghiệm">
                         <span asp-validation-for="YearsOfExperience" class="text-danger error-message"></span>
                     </div>
                     <div class="col-6">
                         <label asp-for="NumberOfRecruits" class="form-label">Number of recruits <span
                                 class="text-danger">*</span></label>
-                        <input type="text" asp-for="NumberOfRecruits" class="form-control" placeholder="Ex: 2 người">
+                        <input type="text" asp-for="NumberOfRecruits" class="form-control" placeholder="Ex: 2">
                         <span asp-validation-for="NumberOfRecruits" class="text-danger error-message"></span>
                     </div>
                     <div class="col-6">
@@ -114,7 +138,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                     <div class="col-6" hidden>
                         <label for="" class="form-label">Ward <span class="text-danger">*</span></label>
                         <select name="" id="" class="form-select ls_ward">
-                            <option hidden>Choose Ward</option>
+                            <option hidden value="">Choose Ward</option>
                         </select>
                     </div>
 
@@ -159,15 +183,17 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                     </div>
                     <div class="col-12">
                         <label class="form-label">Skills <span class="text-danger">*</span></label>
-                        <select id="skillSelector" data-placeholder="Ex: C#, ASP.NET,..." class="chosen-select form-control" multiple>
-                            <option value="0">HTML</option>
-                            <option value="1">CSS</option>
-                            <option value="2">BOOTSTRAP</option>
-                            <option value="3">JAVASCRIPT</option>
-                            <option value="4">JQUERY</option>
-                            <option value="5">MYSQL</option>
-                            <option value="6">PHP</option>
+                        <select id="skillSelector" data-placeholder="Ex: C#, ASP.NET,..." multiple class="chosen-select">
+                            <option value=""></option>
+                            @if (skillList != null)
+                            {
+                                foreach (var skill in skillList)
+                                {
+                                    <option value="@skill.Id">@skill.SkillName</option>
+                                }
+                            }
                         </select>
+
                         <span asp-validation-for="Skills" class="text-danger error-message"></span>
 
                         <!--Stores array of skills to post-->
@@ -199,23 +225,23 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                     <div class="col-12">
                         <label for="" class="form-label">Salary <span class="text-danger">*</span></label>
                         <select name="" id="methodSelector" class="form-select">
-                            <option hidden>Choose a method to pay</option>
-                            <option value="0">Range</option>
-                            <option value="1">About</option>
-                            <option value="2">Discuss</option>
+                            <option hidden value="">Choose a method to pay</option>
+                            <option value="1">Range</option>
+                            <option value="2">About</option>
+                            <option value="3">Discuss</option>
                         </select>
                         <div class="row g-0 justify-content-start gap-2 pt-2">
-                            <div class="col-5 col-lg-3 range-method"><input type="text" id="minSalary" class="form-control"
-                                    placeholder="Ex: 2000$"></div>
+                            <div class="col-5 col-lg-3 range-method"><input type="text" id="minSalary"
+                                    class="form-control" placeholder="Ex: 2000$"></div>
                             <p class="col-1 col-lg text-center range-method">to</p>
-                            <div class="col-5 col-lg-3 range-method"><input type="text" id="maxSalary" class="form-control"
-                                    placeholder="Ex: 5000$"></div>
+                            <div class="col-5 col-lg-3 range-method"><input type="text" id="maxSalary"
+                                    class="form-control" placeholder="Ex: 5000$"></div>
 
                             <div class="col-12 col-lg-3 about-method"><input type="text" class="form-control"
                                     placeholder="Ex: 4000$"></div>
 
                             <div class="col-12 col-lg-4 period">
-                                <select name="" id="periodSelector" class="form-select">
+                                <select name="" id="periodSelector" class="form-select" style="color: #000;">
                                     <option value="0">Per month</option>
                                     <option value="1">Per week</option>
                                     <option value="2">Per year</option>
@@ -223,6 +249,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 </select>
                             </div>
                             <input type="text" hidden asp-for="Salary" />
+                            <span asp-validation-for="Salary" class="text-danger error-message"></span>
                         </div>
                     </div>
                     <div class="col-12">
@@ -259,6 +286,5 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 no_results_text: "Không tìm thấy kết quả :",
             });
         });
-
     </script>
 }

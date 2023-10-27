@@ -8,6 +8,7 @@ using OnlineJobPortal.Application.DTOs.CompanyDto;
 using OnlineJobPortal.Application.DTOs.EmployerDto;
 using OnlineJobPortal.Application.DTOs.ForeignLanguageDto;
 using OnlineJobPortal.Application.DTOs.JobPostDto;
+using OnlineJobPortal.Application.DTOs.JobTypeDto;
 using OnlineJobPortal.Application.DTOs.LocationDto;
 using OnlineJobPortal.Application.DTOs.RequirementSkillDto;
 using OnlineJobPortal.Application.DTOs.SkillDto;
@@ -42,6 +43,9 @@ namespace OnlineJobPortal.Application.Mapping
 
             CreateMap<SkillDto, Skill>().ReverseMap();
             CreateMap<CreateSkillDto, Skill>().ReverseMap();
+
+            CreateMap<JobTypeDto, JobType>().ReverseMap();
+
 
             CreateMap<CreateCandidateDto, Candidate>().ReverseMap();
             CreateMap<UpdateCandidateDto, Candidate>().ReverseMap();

@@ -58,13 +58,13 @@ For more information on enabling MVC for empty projects, visit http://go.microso
                         <i class="fas fa-arrow-right arrow-right"></i>
                     </a>
                     <hr class="dropdown-divider">
-                    <a asp-controller="JobPost" asp-action="Index" class="dropdown-item">
+                    @* <a asp-controller="JobPost" asp-action="Index" class="dropdown-item">
                         <span>
                             <i class="icon fa-solid fa-table-list"></i>Danh sách việc làm
                             <span class="badge badge__new">NEW</span>
                         </span>
                         <i class="fas fa-arrow-right arrow-right"></i>
-                    </a>
+                    </a> *@
                     <a href="job-detail.html" class="dropdown-item">
                         <span>
                             <i class="icon fa-solid fa-check-to-slot"></i>Việc làm phù hợp
@@ -72,8 +72,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
                         </span>
                         <i class="fas fa-arrow-right arrow-right"></i>
                     </a>
-                    <hr class="dropdown-divider">
-                    <a href="job-detail.html" class="dropdown-item">
+                    <a asp-area="" asp-controller="JobPost" asp-action="FresherJob" class="dropdown-item">
                         <span>
                             <i class="icon fa-solid fa-graduation-cap"></i>
                             <span class="flashing">Việc làm IT Fresher</span>
@@ -87,12 +86,12 @@ For more information on enabling MVC for empty projects, visit http://go.microso
                 <a href="#" class="nav-link" data-bs-toggle="dropdown">Hồ sơ & CV</a>
                 <div class="dropdown-menu rounded-0 m-0">
                     <a href="job-list.html" class="dropdown-item">
-                        <span><i class="icon fa-solid fa-file-pen"></i>Mẫu CV</span>
+                        <span><i class="icon fa-solid fa-file-pen"></i>Tạo CV</span>
                         <i class="fas fa-arrow-right arrow-right"></i>
                     </a>
                     <hr class="dropdown-divider">
                     <a href="job-detail.html" class="dropdown-item">
-                        <span><i class="icon fa-regular fa-file-lines"></i>Mẫu Cover Letter</span>
+                        <span><i class="icon fa-regular fa-file-lines"></i>Quản lý hồ sơ & CV</span>
                         <i class="fas fa-arrow-right arrow-right"></i>
                     </a>
                 </div>

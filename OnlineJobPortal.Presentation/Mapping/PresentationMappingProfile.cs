@@ -6,6 +6,7 @@ using OnlineJobPortal.Application.Futures.DistrictFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ProvinceFeatures.Commands;
 using OnlineJobPortal.Application.Models.Identity;
 using OnlineJobPortal.Domain.Entities;
+using OnlineJobPortal.Presentation.Areas.Employer.Models;
 using OnlineJobPortal.Presentation.Models;
 
 namespace OnlineJobPortal.Presentation.Mapping
@@ -29,6 +30,7 @@ namespace OnlineJobPortal.Presentation.Mapping
 
 
             CreateMap<RegisterEmployerViewModel, CreateLocationDto>().ReverseMap();
+            CreateMap<JobPostViewModel, CreateLocationDto>().ReverseMap();
         }
     }
 }

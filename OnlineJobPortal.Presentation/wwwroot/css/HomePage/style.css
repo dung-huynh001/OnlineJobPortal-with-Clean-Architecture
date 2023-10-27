@@ -486,7 +486,7 @@
   font-weight: 400 !important;
   line-height: 1.5 !important;
   color: #666565 !important;
-  background-color: #fff !important;
+  background: #fff !important;
   background-clip: padding-box !important;
   border: 1px solid #ced4da !important;
   appearance: none !important;
