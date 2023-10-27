@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Application.Interfaces.Repositories;
 using OnlineJobPortal.Domain.Common;
@@ -14,7 +15,7 @@ namespace OnlineJobPortal.Infrastructure.Implementation
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ApplicationDbContext _context;
+        /*private readonly ApplicationDbContext _context;
         private Hashtable _repositories;
         private bool disposed;
 
@@ -96,6 +97,72 @@ namespace OnlineJobPortal.Infrastructure.Implementation
         public async Task<int> SaveAsync(CancellationToken cancellationToken)
         {
             return await _context.SaveChangesAsync(cancellationToken);
+        }*/
+        private readonly ApplicationDbContext _context;
+        private Hashtable _repositories;
+        private IDbContextTransaction _transaction;
+
+        public UnitOfWork(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public IGenericRepository<T> Repository<T>() where T : BaseEntity
+        {
+            if (_repositories == null)
+                _repositories = new Hashtable();
+
+            var type = typeof(T).Name;
+
+            if (!_repositories.ContainsKey(type))
+            {
+                var repositoryType = typeof(GenericRepository<>);
+
+                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(T)), _context);
+
+                _repositories.Add(type, repositoryInstance);
+            }
+
+            return (IGenericRepository<T>)_repositories[type];
+        }
+
+        public void BeginTransaction()
+        {
+            _transaction = _context.Database.BeginTransaction();
+        }
+
+        public void Commit()
+        {
+            try
+            {
+                _context.SaveChanges();
+                _transaction.Commit();
+            }
+            catch
+            {
+                _transaction.Rollback();
+                throw;
+            }
+            finally
+            {
+                _transaction.Dispose();
+            }
+        }
+
+        public void Rollback()
+        {
+            _transaction.Rollback();
+            _transaction.Dispose();
+        }
+
+        public async Task<int> SaveAsync(CancellationToken cancellationToken)
+        {
+            return await _context.SaveChangesAsync(cancellationToken);
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }

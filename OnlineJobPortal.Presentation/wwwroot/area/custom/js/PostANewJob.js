@@ -52,16 +52,28 @@ $(document).ready(function () {
     var methodSelector = $('#methodSelector');
     var period = $('#periodSelector option:selected').text();
 
-    var salary = '';
-    if(methodSelector.val() == 0) {
+    var salary = null;
+    if(methodSelector.val() == 1) {
         var minSalary = $('#minSalary').val();
         var maxSalary = $('#maxSalary').val();
-
-        salary = minSalary + ' - ' + maxSalary + + ' ' + period;
-    }else if(methodSelector.val() == 1) {
-        salary = $('.about-method').val()  + ' ' + period;
-    }else{
+        if(minSalary === '' || maxSalary === '') {
+          salary = null;
+        }
+        else{
+          salary = minSalary + ' - ' + maxSalary + + ' ' + period;
+        }
+    }else if(methodSelector.val() == 2) {
+        var about = $('.about-method input').val();
+        if(about === ''){
+          salary = null;
+        }
+        else{
+          salary = about  + ' ' + period;
+        }
+    }else if(methodSelector.val() == 3){
         salary = 'Thỏa thuận';
+    }else{
+      salary = null;
     }
 
     $('#Salary').val(salary);
@@ -122,11 +134,11 @@ $("#methodSelector").on("change", function () {
 
   //Ẩn hiện thông tin của các hình thức thanh toán lương
   var selectedValue = $(this).val();
-  if (selectedValue == "0") {
+  if (selectedValue == "1") {
     $(".about-method").css("display", "none");
     $(".range-method").css("display", "block");
     $(".period").css("display", "block");
-  } else if (selectedValue == "1") {
+  } else if (selectedValue == "2") {
     $(".range-method").css("display", "none");
     $(".period").css("display", "block");
     $(".about-method").css("display", "block");

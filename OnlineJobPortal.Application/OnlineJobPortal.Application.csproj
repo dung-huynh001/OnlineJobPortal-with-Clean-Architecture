@@ -15,7 +15,6 @@
     <Folder Include="DTOs\EducationDto\" />
     <Folder Include="DTOs\ExperienceDto\" />
     <Folder Include="DTOs\JobFavoriteDto\" />
-    <Folder Include="DTOs\JobTypeDto\" />
     <Folder Include="DTOs\MessageDto\" />
     <Folder Include="DTOs\ResumeDto\" />
     <Folder Include="DTOs\UserDto\" />
@@ -31,7 +30,6 @@
     <Folder Include="Futures\ExperienceFeatures\Queries\" />
     <Folder Include="Futures\ForeignLangugeFeatures\Queries\" />
     <Folder Include="Futures\JobFavoriteFeatures\Queries\" />
-    <Folder Include="Futures\JobTypeFeatures\Queries\" />
     <Folder Include="Futures\JobPostFeatures\Queries\" />
     <Folder Include="Futures\LocationFeatures\Queries\" />
     <Folder Include="Futures\ProvinceFeatures\Queries\" />
@@ -41,7 +39,6 @@
     <Folder Include="Futures\MessageFeatures\Queries\" />
     <Folder Include="Futures\ResumeFeatures\Commands\" />
     <Folder Include="Futures\ResumeFeatures\Queries\" />
-    <Folder Include="Futures\SkillFeatures\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

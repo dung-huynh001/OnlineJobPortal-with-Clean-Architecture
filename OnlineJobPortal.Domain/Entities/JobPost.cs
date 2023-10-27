@@ -1,4 +1,5 @@
 ﻿using OnlineJobPortal.Domain.Common;
+using OnlineJobPortal.Domain.Enums;
 
 namespace OnlineJobPortal.Domain.Entities
 {
@@ -6,6 +7,7 @@ namespace OnlineJobPortal.Domain.Entities
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public EmploymentType EmploymentType { get; set; }
         public string Requirement { get; set; }
         public string Benefits { get; set; }
         public string Location { get; set; }

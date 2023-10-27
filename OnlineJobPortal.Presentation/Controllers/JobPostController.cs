@@ -24,5 +24,10 @@ namespace OnlineJobPortal.Presentation.Controllers
         { 
             return View(); 
         }
+
+        public IActionResult FresherJob()
+        {
+            return View();
+        }
     }
 }

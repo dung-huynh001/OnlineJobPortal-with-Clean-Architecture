@@ -4,14 +4,14 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 @{
 }
 
-<link href="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.min.css" rel="stylesheet">
+<link href="~/area/assets/plugins/chosen/chosen.min.css" rel="stylesheet">
 
 <!-- Header End -->
 <div class="container-fluid py-5 bg-dark page-header mb-5">
     <div class="container my-5 pt-5 pb-4">
-        <h1 class="display-3 text-white mb-3 animated slideInDown">FIND JOBS</h1>
+        <h2 class="display-3 text-white mb-3 animated slideInDown text-uppercase">Tìm kiếm việc làm</h2>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb text-uppercase">
+            <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
                 <li class="breadcrumb-item text-white active" aria-current="page">Tìm kiếm việc làm</li>
             </ol>
@@ -143,15 +143,9 @@ For more information on enabling MVC for empty projects, visit https://go.micros
         <div class="container-fluid py-5">
             <div class="container">
                 <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
-                    <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
+                    <ul class="nav nav-pills d-inline-flex justify-content-around border-bottom mb-5 w-100">
                         <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill"
-                                href="#tab-1">
-                                <h6 class="mt-n1 mb-0">Hot</h6>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill"
+                            <a class="d-flex align-items-center text-start mx-3 pb-3 active" data-bs-toggle="pill"
                                 href="#tab-2">
                                 <h6 class="mt-n1 mb-0">Full Time</h6>
                             </a>
@@ -162,13 +156,25 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 <h6 class="mt-n1 mb-0">Part Time</h6>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill"
+                                href="#tab-3">
+                                <h6 class="mt-n1 mb-0">Remote</h6>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill"
+                                href="#tab-3">
+                                <h6 class="mt-n1 mb-0">Freelancer</h6>
+                            </a>
+                        </li>
                     </ul>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-1.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-1.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Software Engineer</h5>
@@ -203,7 +209,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-2.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-2.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Marketing Manager</h5>
@@ -238,7 +244,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-3.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-3.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Product Designer</h5>
@@ -273,7 +279,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-4.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-4.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Creative Director</h5>
@@ -308,7 +314,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-5.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-5.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Wordpress Developer</h5>
@@ -346,7 +352,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-1.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-1.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Software Engineer</h5>
@@ -381,7 +387,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-2.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-2.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Marketing Manager</h5>
@@ -416,7 +422,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-3.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-3.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Product Designer</h5>
@@ -451,7 +457,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-4.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-4.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Creative Director</h5>
@@ -486,7 +492,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-5.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-5.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Wordpress Developer</h5>
@@ -524,7 +530,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-1.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-1.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Software Engineer</h5>
@@ -559,7 +565,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-2.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-2.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Marketing Manager</h5>
@@ -594,7 +600,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-3.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-3.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Product Designer</h5>
@@ -629,7 +635,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-4.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-4.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Creative Director</h5>
@@ -664,7 +670,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-5.jpg"
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-5.jpg"
                                             alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Wordpress Developer</h5>
