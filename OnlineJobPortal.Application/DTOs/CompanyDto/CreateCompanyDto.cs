@@ -11,6 +11,7 @@ namespace OnlineJobPortal.Application.DTOs.CompanyDto
     {
         public int DistrictId { get; set; }
         public int ProvinceId { get; set; }
+        public string LogoUrl { get; set; }
         public string CompanyName { get; set; }
         public string WebsiteUrl { get; set; }
         public string Address { get; set; }

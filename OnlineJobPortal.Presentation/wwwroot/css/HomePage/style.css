@@ -439,6 +439,18 @@
   margin: 15px 5px;
 }
 
+.job-item a:hover { 
+  color: #555 !important;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.skills-wrapper span {
+  color: var(--primary);
+  background-color: #e5f7ed;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
 .profile-area {
   background: #e5f7ed;
   font-weight: 700;

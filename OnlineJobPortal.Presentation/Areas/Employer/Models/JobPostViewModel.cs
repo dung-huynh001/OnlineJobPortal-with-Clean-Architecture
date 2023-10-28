@@ -1,4 +1,6 @@
-﻿using OnlineJobPortal.Domain.Enums;
+﻿using OnlineJobPortal.Application.DTOs.RequirementSkillDto;
+using OnlineJobPortal.Application.DTOs.SkillDto;
+using OnlineJobPortal.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace OnlineJobPortal.Presentation.Areas.Employer.Models
@@ -54,6 +56,7 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Models
         public string Benefits { get; set; }
 
         [Required(ErrorMessage = "The Skills field is required.")]
-        public List<SkillViewModel> Skills { get; set; }
+        public List<CreateRequirementSkillDto> Skills { get; set; }
+        public int EmployerId { get; set; }
     }
 }

@@ -4,10 +4,13 @@ using OnlineJobPortal.Infrastructure.Implementation;
 
 namespace OnlineJobPortal.Application.Interfaces.Repositories
 {
-    public class SkillRepository : GenericRepository<Skill>, ISkillRepository
+    public class SkillRepository : ISkillRepository
     {
-        public SkillRepository(ApplicationDbContext context) : base(context)
+        private readonly IGenericRepository<Skill> repository;
+
+        public SkillRepository(IGenericRepository<Skill> repository)
         {
+            this.repository = repository;
         }
     }
 }

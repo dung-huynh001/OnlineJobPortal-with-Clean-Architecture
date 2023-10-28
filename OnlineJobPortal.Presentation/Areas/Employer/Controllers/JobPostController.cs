@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using OnlineJobPortal.Application.DTOs.JobPostDto;
 using OnlineJobPortal.Application.DTOs.LocationDto;
 using OnlineJobPortal.Application.DTOs.SkillDto;
+using OnlineJobPortal.Application.Futures.JobPostFeatures.Commands;
 using OnlineJobPortal.Application.Futures.JobTypeFeatures.Queries;
 using OnlineJobPortal.Application.Futures.LocationFeatures.Commands;
 using OnlineJobPortal.Application.Futures.SkillFeatures.Queries;
@@ -50,8 +52,15 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
                     var createLocationCommand = new CreateLocationCommand();
                     createLocationCommand.Location = location;
                     await mediator.Send(createLocationCommand);
-                    
 
+                    var createJobPostCommand = new CreateJobPostCommand();
+                    createJobPostCommand.CreateJobPostDto = mapper.Map<CreateJobPostDto>(model);
+                    var result = await mediator.Send(createJobPostCommand);
+                    if(!result.Success) 
+                    {
+                        throw new Exception();
+                    }
+                    return RedirectToAction("Index", "Home", new {area = "Employer"});
                 }
                 throw new Exception();
             }

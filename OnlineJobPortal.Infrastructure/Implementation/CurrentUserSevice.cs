@@ -22,6 +22,31 @@ namespace OnlineJobPortal.Infrastructure.Implementation
             this.applicationDbContext = applicationDbContext;
         }
         public string? UserId => httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+        public string? UsrType => httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Role);
+
+        public int GetActorId()
+        {
+            var userId = this.UserId;
+            var userType = applicationDbContext.ApplicationUsers.FirstOrDefault(a => a.Id.Equals(userId))!.UserType;
+
+            int actorId = 0;
+            switch (userType)
+            {
+                case UserType.Admin:
+                    var admin = applicationDbContext.Admins.FirstOrDefault(e => e.UserId.Equals(userId));
+                    actorId = admin!.Id;
+                    break;
+                case UserType.Candidate:
+                    var candidate = applicationDbContext.Candidates.FirstOrDefault(e => e.UserId.Equals(userId));
+                    actorId = candidate!.Id;
+                    break;
+                default:
+                    var employer = applicationDbContext.Employers.FirstOrDefault(e => e.UserId.Equals(userId));
+                    actorId = employer!.Id;
+                    break;
+            }
+            return actorId;
+        }
 
         public string GetFullNameById()
         {

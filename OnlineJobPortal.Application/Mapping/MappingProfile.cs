@@ -43,6 +43,7 @@ namespace OnlineJobPortal.Application.Mapping
 
             CreateMap<SkillDto, Skill>().ReverseMap();
             CreateMap<CreateSkillDto, Skill>().ReverseMap();
+            CreateMap<UpdateSkillDto, Skill>().ReverseMap();
 
             CreateMap<JobTypeDto, JobType>().ReverseMap();
 
@@ -73,6 +74,9 @@ namespace OnlineJobPortal.Application.Mapping
             CreateMap<CreateLocationDto, Province>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ProvinceId))
                 .ReverseMap();
+
+            CreateMap<JobPost, GetJobPostWithPaginationDto>()
+                .ForMember(dest => dest.EmploymentType, opt => opt.MapFrom(src => src.EmploymentType.ToString()));
         }
     }
 }

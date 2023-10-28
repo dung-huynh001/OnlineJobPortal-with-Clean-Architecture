@@ -14,5 +14,7 @@ namespace OnlineJobPortal.Domain.Entities
         public Province Province { get; set; }
 
         public ICollection<Company> Companies { get; set; }
+        public ICollection<JobPost> JobPosts { get; set; }
+
     }
 }

@@ -61,6 +61,7 @@ namespace OnlineJobPortal.Infrastructure.Identity
             }
 
             var user = await _userManager.FindByNameAsync(request.Email);
+            var userType = user.UserType;
 
             await _signInManager.SignInAsync(user, true);
 
@@ -69,7 +70,6 @@ namespace OnlineJobPortal.Infrastructure.Identity
             var authClaims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.UserName),
-                new Claim("FullName", "AdminNe"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -92,7 +92,7 @@ namespace OnlineJobPortal.Infrastructure.Identity
             {
                 Success = true,
                 Message = "Login Successfully!",
-                Data = new JwtSecurityTokenHandler().WriteToken(token)
+                Data = userType
             };
         }
 

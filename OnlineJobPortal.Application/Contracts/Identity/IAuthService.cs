@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using OnlineJobPortal.Application.Models.Identity;
 using OnlineJobPortal.Application.Responses;
+using OnlineJobPortal.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

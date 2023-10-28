@@ -11,5 +11,7 @@ namespace OnlineJobPortal.Application.Interfaces
     {
         string? UserId { get; }
         public string GetFullNameById();
+        public int GetActorId();
+        public string UsrType { get; }
     }
 }

@@ -26,6 +26,9 @@ namespace OnlineJobPortal.Infrastructure.Configuration
             builder.Property(c => c.EstablishmentDate)
                 .IsRequired();
 
+            builder.Property(c => c.LogoUrl)
+                .IsRequired();
+
             builder.Property(c => c.Address)
                 .IsRequired(false)
                 .HasMaxLength(200);

@@ -88,7 +88,9 @@ namespace OnlineJobPortal.Infrastructure
         {
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>()
                     .AddScoped<IAuthService, AuthService>()
-                    .AddScoped<ICurrentUserService, CurrentUserSevice>();
+                    .AddScoped<ICurrentUserService, CurrentUserSevice>()
+                    .AddScoped<IUploadService, UploadService>();
+
 
 
             services
