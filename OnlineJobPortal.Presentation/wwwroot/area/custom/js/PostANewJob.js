@@ -1,15 +1,7 @@
 ﻿
 
+
 $(document).ready(function () {
-
-  //Remove active nav-links
-  var navLinks = $(".nav-link");
-  navLinks.removeClass("active");
-  //Add active for Post a new Job
-  var PostANewJobItem = navLinks.eq(2);
-  PostANewJobItem.addClass("active");
-
-
   // Khởi tạo location selection
   var localpicker = new LocalPicker({
     province: "ls_province",
@@ -60,7 +52,7 @@ $(document).ready(function () {
           salary = null;
         }
         else{
-          salary = minSalary + ' - ' + maxSalary + + ' ' + period;
+          salary = minSalary + ' - ' + maxSalary + ' ' + period;
         }
     }else if(methodSelector.val() == 2) {
         var about = $('.about-method input').val();
@@ -163,17 +155,13 @@ $(document).ready(function () {
 
     var rawHtml = "";
     for (var i = 0; i < skills.length; i++) {
-      rawHtml +=
-        '<input type="hidden" name="Skills[' +
-        i +
-        '].Id" value="' +
-        skills[i].value +
-        '" />' +
-        '<input type="hidden" name="Skills[' +
-        i +
-        '].SkillName" value="' +
-        skills[i].text +
-        '" />';
+        rawHtml +=
+            '<input type="hidden" name="Skills[' +
+            i +
+            '].SkillId" value="' +
+            skills[i].value +
+            '" />';
+
       console.log(skills[i]);
     }
 

@@ -19,7 +19,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .IsRequired()
                 .HasMaxLength(100);
 
-            builder.Property(jp => jp.Description)
+            /*builder.Property(jp => jp.Description)
                 .IsRequired()
                 .HasMaxLength(500);
 
@@ -27,10 +27,12 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasMaxLength(500);
 
             builder.Property(jp => jp.Benefits)
-                .HasMaxLength(500);
+                .HasMaxLength(500);*/
 
-            builder.Property(jp => jp.Location)
-                .HasMaxLength(100);
+            builder.Property(jp => jp.ProvinceId)
+                .IsRequired();
+            builder.Property(jp => jp.DistrictId)
+                .IsRequired();
 
             builder.Property(jp => jp.Salary)
                 .HasMaxLength(50);

@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using OnlineJobPortal.Application.DTOs.CompanyDto;
 using OnlineJobPortal.Application.DTOs.EmployerDto;
+using OnlineJobPortal.Application.DTOs.JobPostDto;
 using OnlineJobPortal.Application.DTOs.LocationDto;
+using OnlineJobPortal.Application.DTOs.RequirementSkillDto;
+using OnlineJobPortal.Application.DTOs.SkillDto;
 using OnlineJobPortal.Application.Futures.DistrictFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ProvinceFeatures.Commands;
 using OnlineJobPortal.Application.Models.Identity;
@@ -11,9 +14,9 @@ using OnlineJobPortal.Presentation.Models;
 
 namespace OnlineJobPortal.Presentation.Mapping
 {
-    public class PresentationMappingProfile : Profile
+    public class MappingProfile : Profile
     {
-        public PresentationMappingProfile() 
+        public MappingProfile() 
         { 
             CreateMap<RegisterEmployerViewModel, RegistrationEmployerRequest>().ReverseMap();
 
@@ -31,6 +34,10 @@ namespace OnlineJobPortal.Presentation.Mapping
 
             CreateMap<RegisterEmployerViewModel, CreateLocationDto>().ReverseMap();
             CreateMap<JobPostViewModel, CreateLocationDto>().ReverseMap();
+
+            CreateMap<JobPostViewModel, CreateRequirementSkillDto>().ReverseMap();
+            CreateMap<JobPostViewModel, CreateJobPostDto>().ReverseMap();
+
         }
     }
 }

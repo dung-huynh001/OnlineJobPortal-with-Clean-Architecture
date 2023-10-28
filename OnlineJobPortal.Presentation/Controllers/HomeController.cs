@@ -21,6 +21,16 @@ namespace OnlineJobPortal.Presentation.Controllers
             if (HttpContext.User.Identity!.IsAuthenticated)
             {
                 ViewBag.FullName = currentUserService.GetFullNameById();
+                var useType = currentUserService.UsrType;
+                switch(useType.ToLower()) 
+                {
+                    case "admin":
+                        return RedirectToAction("Index", "Home", new {area = "Admin"});
+                    case "employer":
+                        return RedirectToAction("Index", "Home", new { area = "Employer" });
+                    default:
+                        break;
+                }
             }
             return View();
         }

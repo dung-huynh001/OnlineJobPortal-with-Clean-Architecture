@@ -37,6 +37,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
             builder.HasOne(a => a.User)
                 .WithOne()
                 .HasForeignKey<Admin>(a => a.UserId);
+
         }
     }
 }

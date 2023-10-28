@@ -446,6 +446,10 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<string>("LogoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Owner")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -757,16 +761,17 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
                     b.Property<string>("Benefits")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DistrictId")
+                        .HasColumnType("int");
 
                     b.Property<int>("EmployerId")
                         .HasColumnType("int");
@@ -780,18 +785,15 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Property<int>("JobTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<int>("NumberOfRecruits")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
                     b.Property<string>("Requirement")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Salary")
                         .IsRequired()
@@ -816,6 +818,8 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.HasIndex("EmployerId");
 
                     b.HasIndex("JobTypeId");
+
+                    b.HasIndex("DistrictId", "ProvinceId");
 
                     b.ToTable("JobPosts");
                 });
@@ -2337,6 +2341,14 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("OnlineJobPortal.Domain.Entities.District", "District")
+                        .WithMany("JobPosts")
+                        .HasForeignKey("DistrictId", "ProvinceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("District");
+
                     b.Navigation("Employer");
 
                     b.Navigation("JobType");
@@ -2417,6 +2429,8 @@ namespace OnlineJobPortal.Infrastructure.Migrations
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.District", b =>
                 {
                     b.Navigation("Companies");
+
+                    b.Navigation("JobPosts");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Employer", b =>

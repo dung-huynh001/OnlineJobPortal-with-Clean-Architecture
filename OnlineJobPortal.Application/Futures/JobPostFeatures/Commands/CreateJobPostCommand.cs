@@ -30,18 +30,44 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Commands
 
         public async Task<ApiResponse> Handle(CreateJobPostCommand request, CancellationToken cancellationToken)
         {
-            var JobPost = _mapper.Map<JobPost>(request.CreateJobPostDto);
-
-            await _unitOfWork.Repository<JobPost>().AddAsync(JobPost);
-            await _unitOfWork.SaveAsync(cancellationToken);
-
-
-            return new ApiResponse
+            _unitOfWork.BeginTransaction();
+            try
             {
-                Success = true,
-                Message = "Job post creation success!",
-                Data = JobPost
-            };
+                var JobPost = _mapper.Map<JobPost>(request.CreateJobPostDto);
+
+                await _unitOfWork.Repository<JobPost>().AddAsync(JobPost);
+                await _unitOfWork.SaveAsync(cancellationToken);
+
+
+                var requirementSkillsDto = request.CreateJobPostDto.Skills;
+                foreach(var requirementSkillDto in requirementSkillsDto)
+                {
+                    var requirementSkill = _mapper.Map<RequirementSkill>(requirementSkillDto);
+                    requirementSkill.JobPostId = JobPost.Id;
+                    requirementSkill.Level = request.CreateJobPostDto.Level;
+                    await _unitOfWork.Repository<RequirementSkill>().AddAsync(requirementSkill);
+                    await _unitOfWork.SaveAsync(cancellationToken);
+                }
+
+                _unitOfWork.Commit();
+                return new ApiResponse
+                {
+                    Success = true,
+                    Message = "Job post creation success!",
+                    Data = JobPost
+                };
+            }
+            catch
+            {
+                _unitOfWork.Rollback();
+
+                return new ApiResponse
+                {
+                    Success = false,
+                    Message = "Create job post failed! Something went wrong.",
+                };
+            }
+            
         }
     }
 }

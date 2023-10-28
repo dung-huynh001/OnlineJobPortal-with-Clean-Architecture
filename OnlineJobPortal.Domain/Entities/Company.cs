@@ -14,6 +14,7 @@ namespace OnlineJobPortal.Domain.Entities
         public string? Facebook { get; set; }
         public string? Twitter { get; set; }
         public string? WebsiteUrl { get; set; }
+        public string LogoUrl { get; set; }
 
         public int DistrictId { get; set; }
         public int ProvinceId { get; set; }

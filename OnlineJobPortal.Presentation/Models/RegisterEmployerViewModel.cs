@@ -1,4 +1,5 @@
-﻿using OnlineJobPortal.Domain.Enums;
+﻿using Microsoft.AspNetCore.Mvc;
+using OnlineJobPortal.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace OnlineJobPortal.Presentation.Models
@@ -22,5 +23,8 @@ namespace OnlineJobPortal.Presentation.Models
         public int DistrictId { get; set; }
         public string DistrictName { get; set; }
         public string Address { get; set; }
+        public string? LogoUrl { get; set; }
+        [BindProperty]
+        public IFormFile CompanyLogo { get; set; }
     }
 }

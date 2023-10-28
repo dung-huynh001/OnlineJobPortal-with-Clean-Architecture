@@ -30,7 +30,6 @@
     <Folder Include="Futures\ExperienceFeatures\Queries\" />
     <Folder Include="Futures\ForeignLangugeFeatures\Queries\" />
     <Folder Include="Futures\JobFavoriteFeatures\Queries\" />
-    <Folder Include="Futures\JobPostFeatures\Queries\" />
     <Folder Include="Futures\LocationFeatures\Queries\" />
     <Folder Include="Futures\ProvinceFeatures\Queries\" />
     <Folder Include="Futures\RequirementSkillFeatures\Commands\" />

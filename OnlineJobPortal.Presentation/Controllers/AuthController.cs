@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OnlineJobPortal.Application.Contracts.Identity;
@@ -13,6 +14,7 @@ using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Application.Models.Identity;
 using OnlineJobPortal.Application.Responses;
 using OnlineJobPortal.Domain.Entities;
+using OnlineJobPortal.Domain.Enums;
 using OnlineJobPortal.Infrastructure.Identity;
 using OnlineJobPortal.Presentation.Models;
 using System.Net.Http;
@@ -28,8 +30,13 @@ namespace OnlineJobPortal.Presentation.Controllers
         private readonly IAuthService authService;
         private readonly IMapper mapper;
         private readonly IMediator mediator;
+        private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IUploadService uploadService;
 
-        public AuthController(ILogger<AuthController> logger, HttpClient httpClient, ICurrentUserService currentUserService, IAuthService authService, IMapper mapper, IMediator mediator)
+        public AuthController(ILogger<AuthController> logger, 
+            HttpClient httpClient, ICurrentUserService currentUserService, 
+            IAuthService authService, IMapper mapper, IMediator mediator, 
+            IWebHostEnvironment webHostEnvironment, IUploadService uploadService)
         {
             this.logger = logger;
             this.httpClient = httpClient;
@@ -37,6 +44,8 @@ namespace OnlineJobPortal.Presentation.Controllers
             this.authService = authService;
             this.mapper = mapper;
             this.mediator = mediator;
+            this.webHostEnvironment = webHostEnvironment;
+            this.uploadService = uploadService;
             this.httpClient.BaseAddress = new Uri("https://localhost:7143");
         }
 
@@ -50,27 +59,37 @@ namespace OnlineJobPortal.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(AuthRequest request)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
                     var result = await authService.LoginAsync(request);
 
                     if (!result.Success)
                     {
-                        ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng nhập.";
-                        return View();
+                        throw new Exception();
                     }
 
-                    return RedirectToAction("Index", "Home");
+                    switch (result.Data)
+                    {
+                        case UserType.Candidate:
+                            return RedirectToAction("Index", "Home");
+                        case UserType.Employer :
+                            return RedirectToAction("Index", "Home", new { area = "Employer" });
+                        case UserType.Admin:
+                            return RedirectToAction("Index", "Home", new { area = "Admin" });
+                        default:
+                            throw new Exception();
+                    }
                 }
-                catch
-                {
-                    return View();
-                }
+                throw new Exception();
             }
-            ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng nhập.";
-            return View();
+            catch
+            {
+                ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng nhập.";
+                return View();
+            }
+            
         }
 
         [Route("/register")]
@@ -109,7 +128,7 @@ namespace OnlineJobPortal.Presentation.Controllers
             return View();
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task<IActionResult> RegisterEmployer(RegisterEmployerViewModel model)
         {
             try
@@ -131,6 +150,59 @@ namespace OnlineJobPortal.Presentation.Controllers
                     }
 
                     return RedirectToAction("Index", "Home", new {area = "Employer"});
+                }
+                throw new Exception();
+            }
+            catch
+            {
+                ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng ký.";
+                return View(model);
+            }
+        }*/
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterEmployer([FromForm] RegisterEmployerViewModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    /*if (model.CompanyLogo != null && model.CompanyLogo.Length > 0)
+                    {
+                        // Xử lý tệp ảnh logo công ty
+                        // Lưu tệp ảnh vào thư mục tùy chọn (ví dụ: "wwwroot/Uploads/CompanyImg/")
+                        string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Uploads/CompanyImg");
+                        string imgFormat = Path.GetExtension(model.CompanyLogo.FileName);
+                        string uniqueFileName = model.CompanyName.ToLower() + "_logo" + imgFormat;
+                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            model.CompanyLogo.CopyTo(stream);
+                        }
+
+                        // Lưu đường dẫn tới tệp ảnh logo vào cơ sở dữ liệu hoặc thực hiện các tác vụ khác ở đây
+                    }*/
+                    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Uploads/CompanyImg");
+                    string logoUrl = await uploadService.UploadImageAsync(model.CompanyLogo, uploadsFolder);
+
+                    model.LogoUrl = logoUrl;
+
+                    var location = mapper.Map<CreateLocationDto>(model);
+                    CreateLocationCommand createLocationCommand = new CreateLocationCommand();
+                    createLocationCommand.Location = location;
+
+                    var createLocationResponse = await mediator.Send(createLocationCommand);
+
+                    var registerDto = mapper.Map<RegistrationEmployerRequest>(model);
+                    var registerEmployerResponse = await authService.RegisterEmployerAsync(registerDto);
+
+                    if (!registerEmployerResponse.Success)
+                    {
+                        throw new Exception();
+                    }
+
+                    return RedirectToAction("Index", "Home", new { area = "Employer" });
                 }
                 throw new Exception();
             }

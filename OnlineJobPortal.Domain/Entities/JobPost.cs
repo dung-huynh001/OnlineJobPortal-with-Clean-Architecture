@@ -10,7 +10,9 @@ namespace OnlineJobPortal.Domain.Entities
         public EmploymentType EmploymentType { get; set; }
         public string Requirement { get; set; }
         public string Benefits { get; set; }
-        public string Location { get; set; }
+        public int ProvinceId { get; set; }
+        public int DistrictId { get; set; }
+        public District District { get; set; }
         public string Salary { get; set; }
         public string Address { get; set; }
         public string YearsOfExperience { get; set; }

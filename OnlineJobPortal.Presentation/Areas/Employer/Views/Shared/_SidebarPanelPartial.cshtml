@@ -27,7 +27,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 			<ul class="app-menu list-unstyled accordion" id="menu-accordion">
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link active" asp-area="Employer" asp-controller="Home" asp-action="Index">
+					<a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="Index" && ViewContext.RouteData.Values["Controller"].ToString()=="Home" ?"active":"")" asp-area="Employer" asp-controller="Home" asp-action="Index">
 						<span class="nav-icon">
 							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
 								fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +41,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 				</li><!--//nav-item-->
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link" href="docs.html">
+					<a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="CompanyProfile"?"active":"")" href="docs.html">
 						<span class="nav-icon">
 							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor"
 								xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +56,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 				</li><!--//nav-item-->
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link" asp-area="Employer" asp-controller="JobPost" asp-action="PostANewJob">
+					<a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="PostANewJob" && ViewContext.RouteData.Values["Controller"].ToString()=="JobPost" ?"active":"")" asp-area="Employer" asp-controller="JobPost" asp-action="PostANewJob">
 						<span class="nav-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 								class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -70,7 +70,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 				</li><!--//nav-item-->
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link" href="docs.html">
+					<a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="ManageJobPost"?"active":"")" href="docs.html">
 						<span class="nav-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 								class="bi bi-list-task" viewBox="0 0 16 16">
@@ -87,7 +87,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 				</li><!--//nav-item-->
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link" href="docs.html">
+					<a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="AllApplicants"?"active":"")" href="docs.html">
 						<span class="nav-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 								class="bi bi-people" viewBox="0 0 16 16">
@@ -100,7 +100,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 				</li><!--//nav-item-->
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link" href="docs.html">
+					<a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="SaveCandidates"?"active":"")" href="docs.html">
 						<span class="nav-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 								class="bi bi-heart" viewBox="0 0 16 16">
