@@ -76,7 +76,8 @@ namespace OnlineJobPortal.Application.Mapping
                 .ReverseMap();
 
             CreateMap<JobPost, GetJobPostWithPaginationDto>()
-                .ForMember(dest => dest.EmploymentType, opt => opt.MapFrom(src => src.EmploymentType.ToString()));
+                .ForMember(dest => dest.EmploymentType, opt => opt.MapFrom(src => src.EmploymentType.ToString()))
+                .ForMember(dest => dest.ExpiredDate, opt => opt.MapFrom(src => src.ExpiredDate.ToString("dd MMM, yyyy")));
         }
     }
 }

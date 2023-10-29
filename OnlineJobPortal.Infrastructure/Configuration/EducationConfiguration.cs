@@ -18,20 +18,22 @@ namespace OnlineJobPortal.Infrastructure.Configuration
             // Configure properties
             builder.Property(e => e.Certificate)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(256);
 
             builder.Property(e => e.Major)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(256);
 
             builder.Property(e => e.University)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(256);
 
             builder.Property(e => e.StartDate)
+                .HasColumnType("Date")
                 .IsRequired();
 
             builder.Property(e => e.CompletionDate)
+                .HasColumnType("Date")
                 .IsRequired();
 
             builder.Property(e => e.GPA)

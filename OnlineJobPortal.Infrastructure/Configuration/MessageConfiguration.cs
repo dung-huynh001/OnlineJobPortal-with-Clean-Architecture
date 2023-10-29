@@ -17,7 +17,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
 
             builder.Property(m => m.Content)
                 .IsRequired()
-                .HasMaxLength(500);
+                .HasColumnType("ntext");
 
             builder.HasOne(m => m.Candidate)
                 .WithMany(c => c.Messages)

@@ -17,7 +17,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
 
             builder.Property(s => s.SkillName)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(256);
 
             builder.HasMany(s => s.CandidateSkills)
                 .WithOne(cs => cs.Skill)

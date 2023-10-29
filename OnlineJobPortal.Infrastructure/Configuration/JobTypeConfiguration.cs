@@ -17,7 +17,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
 
             builder.Property(jt => jt.JobTypeName)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(256);
 
             builder.HasMany(jt => jt.JobPost)
                 .WithOne(jp => jp.JobType)

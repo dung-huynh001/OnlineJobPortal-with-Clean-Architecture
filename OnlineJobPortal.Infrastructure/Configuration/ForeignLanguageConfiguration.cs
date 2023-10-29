@@ -17,13 +17,13 @@ namespace OnlineJobPortal.Infrastructure.Configuration
 
             builder.Property(fl => fl.LanguageName)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(256);
 
             builder.Property(fl => fl.Proficiency)
-                .HasMaxLength(50);
+                .HasMaxLength(256);
 
             builder.Property(fl => fl.Degree)
-                .HasMaxLength(50);
+                .HasMaxLength(256);
 
             builder.HasOne(fl => fl.Resume)
                 .WithMany(p => p.ForeignLanguages)

@@ -16,10 +16,11 @@ namespace OnlineJobPortal.Application.DTOs.JobPostDto
         public string EmploymentType { get; set; }
         public string Salary { get; set; }
         public string Province { get; set; }
-        public DateTime ExpiredDate { get; set; }
-        public List<string> Skills { get; set; }
+        public string ExpiredDate { get; set; }
+        public ICollection<string> Skills { get; set; }
         public int EmployerId { get; set; }
         public int CompanyId { get; set; }
         public string CompanyName { get; set; }
+        public string LogoUrl { get; set; }
     }
 }

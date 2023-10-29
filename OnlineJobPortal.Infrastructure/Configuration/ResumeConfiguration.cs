@@ -13,13 +13,13 @@ namespace OnlineJobPortal.Infrastructure.Configuration
 
             builder.Property(p => p.Title)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(256);
 
             builder.Property(p => p.CareerGoal)
-                .HasMaxLength(500);
+                .HasColumnType("ntext");
 
             builder.Property(p => p.Position)
-                .HasMaxLength(100);
+                .HasMaxLength(256);
 
             builder.HasOne(p => p.Candidate)
                 .WithMany(c => c.Resumes)

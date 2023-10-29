@@ -714,13 +714,15 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 
 @section Scripts
 {
-    <script src="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.jquery.min.js"></script>
+    <script src="~/area/assets/plugins/chosen/chosen.jquery.min.js"></script>
     <script>
         $(document).ready(function () {
             $("#exp-selector, #local-selector, #salary-selector").chosen({
                 enable_search: true,
                 no_results_text: "Your Custom Title"
             });
+
+            
         });
     </script>
 }

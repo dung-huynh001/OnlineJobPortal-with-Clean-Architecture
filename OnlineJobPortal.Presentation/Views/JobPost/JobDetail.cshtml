@@ -3,6 +3,105 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 *@
 @{
 }
+
+<style>
+    a:hover {
+        cursor: pointer;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: transparent;
+        color: #666 !important;
+        border: 1px solid  #00b07478 !important;
+    }
+
+    .job-detail__info--title {
+        color: #263a4d;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 28px;
+    }
+
+    .job-detail__info--section {
+        align-items: center;
+        font-size: 16px;
+        gap: 16px
+    }
+
+    .job-detail__info--section-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 40px;
+        padding: 10px;
+        border-radius: 50%;
+        outline: none;
+        background: linear-gradient(11deg, #00bf5d, #00907c);
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    .job-detail__info--section-content {
+        gap: 2px;
+        line-height: 20px;
+    }
+
+    .job-detail__info--section-content-title {
+        letter-spacing: 0.2px;
+        line-height: 22px;
+    }
+
+    .job-detail__info--section-content-value {
+        letter-spacing: 0.3px;
+        line-height: 22px;
+        font-weight: 600;
+    }
+
+    .job-detail__info--action-button {
+        letter-spacing: .3px;
+    }
+
+    .job-detail__info--action-button--apply {
+        background: var(--primary);
+    }
+
+    .job-detail__info--action-button--save {
+        background: var(--primary);
+    }
+
+    .job-detail__company-name {
+        color: #212f3f;
+        display: -webkit-box;
+        font-family: Inter;
+        font-weight: 600;
+        letter-spacing: -0.16px;
+        line-height: 24px;
+    }
+
+    .job-detail__company-logo {
+        width: 88px;
+        height: 88px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        border-radius: 8px;
+    }
+
+    .job-detail__company-logo img {
+        width: 88px;
+        height: 88px;
+        object-fit: contain;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    .job-detail__company-value {
+        font-weight: 500;
+        color: #333;
+    }
+</style>
 <!-- Header End -->
 <div class="container-fluid py-5 bg-dark page-header mb-5">
     <div class="container my-5 pt-5 pb-4">
@@ -19,74 +118,159 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 <!-- Header End -->
 
 <!-- Job Detail Start -->
-<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+<div class="container-xxl wow fadeInUp" data-wow-delay="0.1s">
     <div class="container">
-        <div class="row gy-5 gx-4">
+        <div class="row">
             <div class="col-lg-8">
-                <div class="d-flex align-items-center mb-5">
-                    <img class="flex-shrink-0 img-fluid border rounded" src="~/img/com-logo-2.jpg" alt=""
-                        style="width: 80px; height: 80px;">
-                    <div class="text-start ps-4">
-                        <h3 class="mb-3">Marketing Manager</h3>
-                        <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>New York,
-                            USA</span>
-                        <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
-                        <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                            $456</span>
+                <div class="bg-light p-4 mb-4 rounded-3">
+                    <div class="job-detail__info--title">Lập Trình Viên / .NET Developer ( C#) Lương Từ 12-20 Triệu
+                    </div>
+                    <div class="d-flex justify-content-between my-4">
+                        <div class="job-detail__info--section d-flex flex-column flex-lg-row">
+                            <div class="job-detail__info--section-icon">
+                                <i class="far fa-money-bill-alt"></i>
+                            </div>
+                            <div class="job-detail__info--section-content">
+                                <div class="job-detail__info--section-content-title">Mức lương</div>
+                                <div class="job-detail__info--section-content-value">12 - 22 triệu</div>
+                            </div>
+                        </div>
+                        <div class="job-detail__info--section d-flex flex-column flex-lg-row">
+                            <div class="job-detail__info--section-icon">
+                                <i class="far fa-money-bill-alt"></i>
+                            </div>
+                            <div class="job-detail__info--section-content">
+                                <div class="job-detail__info--section-content-title">Địa điểm</div>
+                                <div class="job-detail__info--section-content-value">Bắc Ninh</div>
+                            </div>
+                        </div>
+                        <div class="job-detail__info--section d-flex flex-column flex-lg-row">
+                            <div class="job-detail__info--section-icon">
+                                <i class="far fa-money-bill-alt"></i>
+                            </div>
+                            <div class="job-detail__info--section-content">
+                                <div class="job-detail__info--section-content-title">Hạn cuối</div>
+                                <div class="job-detail__info--section-content-value">10 Nov, 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-4">
+                        <button class="text-white btn btn-primary flex-grow-1 rounded-3"><i
+                                class="fa-regular fa-paper-plane pe-2"></i>Ứng tuyển ngay</button>
+                        <button class="text-primary btn btn-outline-primary rounded-3"><i
+                                class="fa-regular fa-heart pe-2"></i>Lưu tin</button>
                     </div>
                 </div>
+                <div class="bg-light p-4 mb-4 rounded-3">
+                    <h5 class="ps-3 mb-4" style="border-left: 7px solid var(--primary);">Chi tiết tuyển dụng</h5>
+                    <div class="d-flex flex-column my-2">
+                        <p class="fw-bold fs-6 mb-2">Mô tả công việc</p>
+                        <div class="">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column my-2">
+                        <p class="fw-bold fs-6 mb-2">Yêu cầu ứng viên</p>
+                        <div class="">
 
-                <div class="mb-5">
-                    <h4 class="mb-3">Job description</h4>
-                    <p>Dolor justo tempor duo ipsum accusam rebum gubergren erat. Elitr stet dolor vero clita labore
-                        gubergren. Kasd sed ipsum elitr clita rebum ut sea diam tempor. Sadipscing nonumy vero labore
-                        invidunt dolor sed, eirmod dolore amet aliquyam consetetur lorem, amet elitr clita et sed
-                        consetetur dolore accusam. Vero kasd nonumy justo rebum stet. Ipsum amet sed lorem sea magna.
-                        Rebum vero dolores dolores elitr vero dolores magna, stet sea sadipscing stet et. Est voluptua
-                        et sanctus at sanctus erat vero sed sed, amet duo no diam clita rebum duo, accusam tempor
-                        takimata clita stet nonumy rebum est invidunt stet, dolor.</p>
-                    <h4 class="mb-3">Responsibility</h4>
-                    <p>Magna et elitr diam sed lorem. Diam diam stet erat no est est. Accusam sed lorem stet voluptua
-                        sit sit at stet consetetur, takimata at diam kasd gubergren elitr dolor</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-angle-right text-primary me-2"></i>Dolor justo tempor duo ipsum accusam</li>
-                        <li><i class="fa fa-angle-right text-primary me-2"></i>Elitr stet dolor vero clita labore
-                            gubergren</li>
-                        <li><i class="fa fa-angle-right text-primary me-2"></i>Rebum vero dolores dolores elitr</li>
-                        <li><i class="fa fa-angle-right text-primary me-2"></i>Est voluptua et sanctus at sanctus erat
-                        </li>
-                        <li><i class="fa fa-angle-right text-primary me-2"></i>Diam diam stet erat no est est</li>
-                    </ul>
-                    <h4 class="mb-3">Qualifications</h4>
-                    <p>Magna et elitr diam sed lorem. Diam diam stet erat no est est. Accusam sed lorem stet voluptua
-                        sit sit at stet consetetur, takimata at diam kasd gubergren elitr dolor</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-angle-right text-primary me-2"></i>Dolor justo tempor duo ipsum accusam</li>
-                        <li><i class="fa fa-angle-right text-primary me-2"></i>Elitr stet dolor vero clita labore
-                            gubergren</li>
-                        <li><i class="fa fa-angle-right text-primary me-2"></i>Rebum vero dolores dolores elitr</li>
-                        <li><i class="fa fa-angle-right text-primary me-2"></i>Est voluptua et sanctus at sanctus erat
-                        </li>
-                        <li><i class="fa fa-angle-right text-primary me-2"></i>Diam diam stet erat no est est</li>
-                    </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column my-2">
+                        <p class="fw-bold fs-6 mb-2">Quyền lợi</p>
+                        <div class="">
+
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column my-2">
+                        <p class="fw-bold fs-6">Địa điểm làm việc</p>
+                        <div class="">
+
+                        </div>
+                    </div>
+                    <div class="d-flex gap-4 py-3">
+                        <button class="btn btn-primary rounded-3">Ứng tuyển ngay</button>
+                        <button class="text-primary btn btn-outline-primary rounded-3">Lưu tin</button>
+                    </div>
+                    <p>Hạn cuối: 10 Nov, 2023</p>
                 </div>
+
             </div>
-
             <div class="col-lg-4">
-                <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
-                    <h4 class="mb-4">Job Summery</h4>
-                    <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: 01 Jan, 2045</p>
-                    <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: 123 Position</p>
-                    <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: Full Time</p>
-                    <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: $123 - $456</p>
-                    <p><i class="fa fa-angle-right text-primary me-2"></i>Location: New York, USA</p>
-                    <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Date Line: 01 Jan, 2045</p>
+                <div class="p-4 mb-4 bg-light rounded-3">
+                    <div class="job-detail__company d-flex flex-column gap-3">
+                        <div class="d-flex gap-4">
+                            <a href="" class="job-detail__company-logo">
+                                <img class="img-responsive"
+                                    src="https://cdn-new.topcv.vn/unsafe/80x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-modern-system-vn-26d13bd88bc9954f6b323f825e65ccf1-64eee0956e155.jpg"
+                                    alt="">
+                            </a>
+                            <a class="job-detail__company-name">CÔNG TY TNHH MODERN SYSTEM VN</a>
+                        </div>
+                        <div class="d-flex gap-3 align-items-center">
+                            <div class="job-detail__company-title flex-shrink-0"><i
+                                    class="fa-solid fa-location-dot pe-2 text-primary"></i><span>Địa điểm</span></div>
+                            <div class="job-detail__company-value">Tầng 1, Lô 102, Tòa nhà Cát Tường Thống Nhất</div>
+                        </div>
+                        <div class="d-flex gap-3 align-items-center">
+                            <div class="job-detail__company-title flex-shrink-0"><i
+                                    class="fa-solid fa-globe pe-2 text-primary"></i><span>Website</span></div>
+                            <div class="job-detail__company-value"><a>https://www.topcv.vn</a></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
-                    <h4 class="mb-4">Company Detail</h4>
-                    <p class="m-0">Ipsum dolor ipsum accusam stet et et diam dolores, sed rebum sadipscing elitr vero
-                        dolores. Lorem dolore elitr justo et no gubergren sadipscing, ipsum et takimata aliquyam et
-                        rebum est ipsum lorem diam. Et lorem magna eirmod est et et sanctus et, kasd clita labore.</p>
+                <div class="p-4 mb-4 bg-light rounded-3">
+                    <div class="job-detail__company d-flex flex-column gap-3">
+                        <h5>Thông tin chung</h5>
+                        <div class="d-flex gap-3 align-items-center">
+                            <div class="job-detail__info--section-icon text-white">
+                                <i class="fa-solid fa-medal"></i>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <p class="m-0">Cấp bậc</p>
+                                <p class="m-0 fw-bold">Fresher</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 align-items-center">
+                            <div class="job-detail__info--section-icon text-white">
+                                <i class="fa-solid fa-hourglass-half"></i>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <p class="m-0">Kinh nghiệm</p>
+                                <p class="m-0 fw-bold">Không yêu cầu kinh nghiệm</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 align-items-center">
+                            <div class="job-detail__info--section-icon text-white">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <p class="m-0">Số lượng tuyển</p>
+                                <p class="m-0 fw-bold">2 người</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 align-items-center">
+                            <div class="job-detail__info--section-icon text-white">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <p class="m-0">Hình thức làm việc</p>
+                                <p class="m-0 fw-bold">Full Time</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 mb-4 bg-light rounded-3">
+                    <div class="job-detail__company d-flex flex-column gap-3">
+                        <h5 class="mb-0">Danh mục</h5>
+                        <div class="d-flex mb-3">
+                            <a href="" class="text-dark px-1 rounded" style="background-color: #ebe5e5;">Web Developer</a>
+                        </div>
+                        <h5 class="mb-0">Kỹ năng</h5>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="" class="text-dark px-1 rounded" style="background-color: #ebe5e5;">C#</a>
+                            <a href="" class="text-dark px-1 rounded" style="background-color: #ebe5e5;">ASP.NET Core</a>
+                            <a href="" class="text-dark px-1 rounded" style="background-color: #ebe5e5;">SQL</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
