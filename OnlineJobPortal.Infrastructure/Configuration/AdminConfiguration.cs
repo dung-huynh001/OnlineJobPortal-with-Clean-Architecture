@@ -28,6 +28,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .IsRequired();
 
             builder.Property(a => a.DateOfBirth)
+                .HasColumnType("Date")
                 .IsRequired();
 
             builder.Property(a => a.Address)

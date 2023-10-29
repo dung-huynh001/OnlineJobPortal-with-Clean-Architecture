@@ -17,14 +17,14 @@ namespace OnlineJobPortal.Infrastructure.Configuration
 
             builder.Property(e => e.JobTitle)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(256);
 
             builder.Property(e => e.CompanyName)
                 .IsRequired()
                 .HasMaxLength(100);
 
             builder.Property(e => e.Description)
-                .HasMaxLength(500);
+                .HasColumnType("ntext");
 
             builder.HasOne(e => e.Resume)
                 .WithMany(p => p.Experiences)

@@ -86,5 +86,19 @@ namespace OnlineJobPortal.Infrastructure.Context
 
             return await base.SaveChangesAsync();
         }
+
+        public virtual async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            foreach (var entity in base.ChangeTracker.Entries<BaseEntity>()
+                .Where(q => q.State == EntityState.Added || q.State == EntityState.Modified))
+            {
+                entity.Entity.UpdateAt = DateTime.Now;
+
+                if (entity.State == EntityState.Added)
+                    entity.Entity.CreateAt = DateTime.Now;
+            }
+
+            return await base.SaveChangesAsync(cancellationToken);
+        }
     }
 }

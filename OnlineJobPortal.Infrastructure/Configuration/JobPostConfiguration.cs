@@ -19,15 +19,15 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .IsRequired()
                 .HasMaxLength(100);
 
-            /*builder.Property(jp => jp.Description)
+            builder.Property(jp => jp.Description)
                 .IsRequired()
-                .HasMaxLength(500);
+                .HasColumnType("ntext");
 
             builder.Property(jp => jp.Requirement)
-                .HasMaxLength(500);
+                .HasColumnType("ntext");
 
             builder.Property(jp => jp.Benefits)
-                .HasMaxLength(500);*/
+                .HasColumnType("ntext");
 
             builder.Property(jp => jp.ProvinceId)
                 .IsRequired();
@@ -35,18 +35,19 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .IsRequired();
 
             builder.Property(jp => jp.Salary)
-                .HasMaxLength(50);
+                .HasMaxLength(256);
 
             builder.Property(jp => jp.Address)
-                .HasMaxLength(200);
+                .HasMaxLength(256);
 
             builder.Property(jp => jp.YearsOfExperience)
-                .HasMaxLength(50);
+                .HasMaxLength(256);
 
             builder.Property(jp => jp.NumberOfRecruits)
                 .IsRequired();
 
             builder.Property(jp => jp.ExpiredDate)
+                .HasColumnType("Date")
                 .IsRequired();
 
             builder.HasMany(jp => jp.RequirementSkills)

@@ -8,6 +8,7 @@ using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Application.Responses;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
+using System.Linq;
 
 namespace OnlineJobPortal.Application
 {
@@ -20,14 +21,14 @@ namespace OnlineJobPortal.Application
         }
 
         public static async Task<PaginatedResult<T>> ToPaginatedListAsync<T>(
-            this IQueryable<T> source, 
+            this IEnumerable<T> source, 
             int pageNumber, int pageSize, 
             CancellationToken cancellationToken) where T : class
         {
             pageNumber = pageNumber == 0 ? 1 : pageNumber;
             pageSize = pageSize == 0 ? 10 : pageSize;
 
-            int TotalCount = await source.CountAsync();
+            int TotalCount = source.Count();
 
 
             int TotalPages = TotalCount % pageSize == 0 ?
@@ -36,10 +37,10 @@ namespace OnlineJobPortal.Application
 
             pageNumber = pageNumber <= 0 ? 1 : pageNumber;
 
-            List<T> items = await source
+            List<T> items = source
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
-                .ToListAsync(cancellationToken);
+                .ToList();
 
             return PaginatedResult<T>.Create(items, pageNumber, pageSize, TotalCount, TotalPages);
         }

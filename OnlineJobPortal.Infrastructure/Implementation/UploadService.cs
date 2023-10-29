@@ -43,7 +43,7 @@ namespace OnlineJobPortal.Infrastructure.Implementation
             int index = fullPath.IndexOf(webRootPath);
 
             // Cắt đường dẫn để chỉ lấy phần sau và loại bỏ web root path
-            string relativePath = "~" + fullPath.Substring(index + webRootPath.Length);
+            string relativePath = "." + fullPath.Substring(index + webRootPath.Length);
 
             // Thay thế ký tự '\' bằng '/' để đảm bảo chuỗi là đường dẫn web
             relativePath = relativePath.Replace("\\", "/");

@@ -1,6 +1,14 @@
 {
   "Files": [
     {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\Uploads\\CompanyImg\\3c630753-7bb8-46bb-b654-f0194ecc2bc7_com-logo-1.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\CompanyImg\\3c630753-7bb8-46bb-b654-f0194ecc2bc7_com-logo-1.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\Uploads\\CompanyImg\\a703315d-fdaf-4b34-b8c2-5d4334140e64_com-logo-3.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\CompanyImg\\a703315d-fdaf-4b34-b8c2-5d4334140e64_com-logo-3.jpg"
+    },
+    {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\area\\assets\\css\\portal.css",
       "PackagePath": "staticwebassets\\area\\assets\\css\\portal.css"
     },
@@ -9323,6 +9331,10 @@
     {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\testimonial-4.jpg",
       "PackagePath": "staticwebassets\\img\\testimonial-4.jpg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\HomePage\\homepage.js",
+      "PackagePath": "staticwebassets\\js\\HomePage\\homepage.js"
     },
     {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\HomePage\\main.js",

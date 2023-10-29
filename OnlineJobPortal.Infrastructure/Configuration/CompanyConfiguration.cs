@@ -24,6 +24,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasMaxLength(100);
 
             builder.Property(c => c.EstablishmentDate)
+                .HasColumnType("Date")
                 .IsRequired();
 
             builder.Property(c => c.LogoUrl)

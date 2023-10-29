@@ -9,5 +9,6 @@ namespace OnlineJobPortal.Application.Interfaces.Repositories
 {
     public interface IProvinceRepository : IGenericRepository<Province>
     {
+        Task<string> GetProvinceNameById(int id);
     }
 }
