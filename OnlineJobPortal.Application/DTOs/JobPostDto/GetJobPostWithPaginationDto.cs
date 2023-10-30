@@ -22,5 +22,7 @@ namespace OnlineJobPortal.Application.DTOs.JobPostDto
         public int CompanyId { get; set; }
         public string CompanyName { get; set; }
         public string LogoUrl { get; set; }
+        public DateTime CreateAt { get; set; }
+        public DateTime UpdateAt { get; set; }
     }
 }

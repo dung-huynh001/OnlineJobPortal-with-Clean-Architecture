@@ -22,14 +22,51 @@ namespace OnlineJobPortal.Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetJobWithPagination(int currentItems)
+        public ActionResult GetJobWithPagination(int currentItems, string sortBy)
         {
             try
             {
                 int pageSize = 10;
-                int pageNumber = currentItems / pageSize;
-                GetNewJobPostWithPaginationQuery request = new GetNewJobPostWithPaginationQuery(pageNumber, pageSize);
+                int pageNumber = currentItems / pageSize + 1;
+
+                if (currentItems % pageSize == 0)
+                {
+                    pageNumber = currentItems / pageSize + 1;
+                }
+                else
+                {
+                    pageNumber = currentItems / pageSize + 2;
+                }
+
+                if (currentItems > 0 && currentItems < pageSize)
+                {
+                    throw new Exception();
+                }
+
+                GetJobPostWithPaginationQuery request = new GetJobPostWithPaginationQuery(pageNumber, pageSize);
                 var items = mediator.Send(request).GetAwaiter().GetResult();
+                if(sortBy != null)
+                {
+                    switch (sortBy.ToLower())
+                    {
+                        case "all":
+                            items.Items = items.Items.OrderByDescending(i => i.CreateAt).ToList();
+                            break;
+                        case "fulltime":
+                            items.Items = items.Items.Where(i => i.EmploymentType.Equals("FullTime")).ToList();
+                            break;
+                        case "parttime":
+                            items.Items = items.Items.Where(i => i.EmploymentType.Equals("PartTime")).ToList();
+                            break;
+                        case "remote":
+                            items.Items = items.Items.Where(i => i.EmploymentType.Equals("Remote")).ToList();
+                            break;
+                        case "freelancer":
+                            items.Items = items.Items.Where(i => i.EmploymentType.Equals("Freelancer")).ToList();
+                            break;
+                    }
+                }
+                items.Items = items.Items.OrderByDescending(i => i.CreateAt).ToList();
                 return Json(items);
             }
             catch (Exception ex)
@@ -47,8 +84,10 @@ namespace OnlineJobPortal.Presentation.Controllers
         [HttpGet]
         public IActionResult JobDetail(int id)
         {
-            return View();
+            var data = mediator.Send(new GetJobPostDetailQuery(id)).GetAwaiter().GetResult();
+            return View(data);
         }
+
 
         public IActionResult JobList() 
         { 

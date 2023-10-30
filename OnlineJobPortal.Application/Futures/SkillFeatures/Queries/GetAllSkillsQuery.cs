@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.Futures.SkillFeatures.Queries
 {
-    public class GetAllSkillsQuery : IRequest<List<SkillDto>>
+    public class GetAllSkillsQuery : IRequest<List<GetSkillDto>>
     {
 
     }
 
-    public class GetAllSkillsQueryHandler : IRequestHandler<GetAllSkillsQuery, List<SkillDto>>
+    public class GetAllSkillsQueryHandler : IRequestHandler<GetAllSkillsQuery, List<GetSkillDto>>
     {
         private readonly IMapper mapper;
         private readonly IUnitOfWork unitOfWork;
@@ -27,14 +27,14 @@ namespace OnlineJobPortal.Application.Futures.SkillFeatures.Queries
             this.mapper = mapper;
             this.unitOfWork = unitOfWork;
         }
-        public async Task<List<SkillDto>> Handle(GetAllSkillsQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetSkillDto>> Handle(GetAllSkillsQuery request, CancellationToken cancellationToken)
         {
-            var skillListDto = new List<SkillDto>();
+            var skillListDto = new List<GetSkillDto>();
             var skillList = await unitOfWork.Repository<Skill>().GetAllAsync();
 
             foreach (var skill in skillList) 
             {
-                var skillDto = mapper.Map<SkillDto>(skill);
+                var skillDto = mapper.Map<GetSkillDto>(skill);
                 skillListDto.Add(skillDto);
             }
 

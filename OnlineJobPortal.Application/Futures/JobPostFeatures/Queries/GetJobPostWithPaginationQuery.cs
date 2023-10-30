@@ -14,32 +14,31 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Queries
 {
-    public record GetNewJobPostWithPaginationQuery : IRequest<PaginatedResult<GetJobPostWithPaginationDto>>
+    public record GetJobPostWithPaginationQuery : IRequest<PaginatedResult<GetJobPostWithPaginationDto>>
     {
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
-        public GetNewJobPostWithPaginationQuery() { }
-        public GetNewJobPostWithPaginationQuery(int pageNumber, int pageSize)
+        public GetJobPostWithPaginationQuery() { }
+        public GetJobPostWithPaginationQuery(int pageNumber, int pageSize)
         {
             this.PageNumber = pageNumber;
             this.PageSize = pageSize;
         }
     }
 
-    public class GetNewJobPostWithPaginationQueryHandler : IRequestHandler<GetNewJobPostWithPaginationQuery, PaginatedResult<GetJobPostWithPaginationDto>>
+    public class GetJobPostWithPaginationQueryHandler : IRequestHandler<GetJobPostWithPaginationQuery, PaginatedResult<GetJobPostWithPaginationDto>>
     {
         private readonly IMapper mapper;
         private readonly IUnitOfWork unitOfWork;
 
-        public GetNewJobPostWithPaginationQueryHandler(IMapper mapper, IUnitOfWork unitOfWork)
+        public GetJobPostWithPaginationQueryHandler(IMapper mapper, IUnitOfWork unitOfWork)
         {
             this.mapper = mapper;
             this.unitOfWork = unitOfWork;
         }
-        public async Task<PaginatedResult<GetJobPostWithPaginationDto>> Handle(GetNewJobPostWithPaginationQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedResult<GetJobPostWithPaginationDto>> Handle(GetJobPostWithPaginationQuery request, CancellationToken cancellationToken)
         {
-            var JobPosts = (await unitOfWork.Repository<JobPost>().GetAllAsync())
-                .OrderBy(c => c.CreateAt);
+            var JobPosts = await unitOfWork.Repository<JobPost>().GetAllAsync();
             List<GetJobPostWithPaginationDto> result = new List<GetJobPostWithPaginationDto>();
             foreach (var jobPost in JobPosts)
             {
