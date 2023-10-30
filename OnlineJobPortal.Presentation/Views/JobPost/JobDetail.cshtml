@@ -3,105 +3,11 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 *@
 @{
 }
+@using OnlineJobPortal.Application.DTOs.JobPostDto
+@model GetJobPostDetailDto
 
-<style>
-    a:hover {
-        cursor: pointer;
-    }
+<link rel="stylesheet" href="~/css/JobDetailPage/jobdetail.css">
 
-    .btn-outline-primary:hover {
-        background-color: transparent;
-        color: #666 !important;
-        border: 1px solid  #00b07478 !important;
-    }
-
-    .job-detail__info--title {
-        color: #263a4d;
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 28px;
-    }
-
-    .job-detail__info--section {
-        align-items: center;
-        font-size: 16px;
-        gap: 16px
-    }
-
-    .job-detail__info--section-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-        width: 40px;
-        padding: 10px;
-        border-radius: 50%;
-        outline: none;
-        background: linear-gradient(11deg, #00bf5d, #00907c);
-        color: white;
-        font-size: 1.2rem;
-    }
-
-    .job-detail__info--section-content {
-        gap: 2px;
-        line-height: 20px;
-    }
-
-    .job-detail__info--section-content-title {
-        letter-spacing: 0.2px;
-        line-height: 22px;
-    }
-
-    .job-detail__info--section-content-value {
-        letter-spacing: 0.3px;
-        line-height: 22px;
-        font-weight: 600;
-    }
-
-    .job-detail__info--action-button {
-        letter-spacing: .3px;
-    }
-
-    .job-detail__info--action-button--apply {
-        background: var(--primary);
-    }
-
-    .job-detail__info--action-button--save {
-        background: var(--primary);
-    }
-
-    .job-detail__company-name {
-        color: #212f3f;
-        display: -webkit-box;
-        font-family: Inter;
-        font-weight: 600;
-        letter-spacing: -0.16px;
-        line-height: 24px;
-    }
-
-    .job-detail__company-logo {
-        width: 88px;
-        height: 88px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 5px;
-        border-radius: 8px;
-    }
-
-    .job-detail__company-logo img {
-        width: 88px;
-        height: 88px;
-        object-fit: contain;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-    }
-
-    .job-detail__company-value {
-        font-weight: 500;
-        color: #333;
-    }
-</style>
 <!-- Header End -->
 <div class="container-fluid py-5 bg-dark page-header mb-5">
     <div class="container my-5 pt-5 pb-4">
@@ -121,9 +27,16 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 <div class="container-xxl wow fadeInUp" data-wow-delay="0.1s">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-12 d-block d-lg-none mb-3">
+                <div class="tabs d-flex gap-2 rounded-3">
+                    <a class="tab text-white rounded-pill p-2 ms-2 my-2 active" id="tab1">Chi tiết tuyển dụng</a>
+                    <a class="tab text-white rounded-pill p-2 my-2" id="tab2">Thông tin chung</a>
+                </div>
+            </div>
+
+            <div class="col-lg-8 tab-content d-none d-lg-block active" id="content1">
                 <div class="bg-light p-4 mb-4 rounded-3">
-                    <div class="job-detail__info--title">Lập Trình Viên / .NET Developer ( C#) Lương Từ 12-20 Triệu
+                    <div class="job-detail__info--title">@Model.Title
                     </div>
                     <div class="d-flex justify-content-between my-4">
                         <div class="job-detail__info--section d-flex flex-column flex-lg-row">
@@ -132,7 +45,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             </div>
                             <div class="job-detail__info--section-content">
                                 <div class="job-detail__info--section-content-title">Mức lương</div>
-                                <div class="job-detail__info--section-content-value">12 - 22 triệu</div>
+                                <div class="job-detail__info--section-content-value">@Model.Salary</div>
                             </div>
                         </div>
                         <div class="job-detail__info--section d-flex flex-column flex-lg-row">
@@ -141,7 +54,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             </div>
                             <div class="job-detail__info--section-content">
                                 <div class="job-detail__info--section-content-title">Địa điểm</div>
-                                <div class="job-detail__info--section-content-value">Bắc Ninh</div>
+                                <div class="job-detail__info--section-content-value">@Model.ProvinceName</div>
                             </div>
                         </div>
                         <div class="job-detail__info--section d-flex flex-column flex-lg-row">
@@ -150,7 +63,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             </div>
                             <div class="job-detail__info--section-content">
                                 <div class="job-detail__info--section-content-title">Hạn cuối</div>
-                                <div class="job-detail__info--section-content-value">10 Nov, 2023</div>
+                                <div class="job-detail__info--section-content-value">@Model.ExpiredDate</div>
                             </div>
                         </div>
                     </div>
@@ -161,59 +74,64 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 class="fa-regular fa-heart pe-2"></i>Lưu tin</button>
                     </div>
                 </div>
+
+
                 <div class="bg-light p-4 mb-4 rounded-3">
                     <h5 class="ps-3 mb-4" style="border-left: 7px solid var(--primary);">Chi tiết tuyển dụng</h5>
                     <div class="d-flex flex-column my-2">
                         <p class="fw-bold fs-6 mb-2">Mô tả công việc</p>
                         <div class="">
+                            @Html.Raw(Model.Description)
                         </div>
                     </div>
                     <div class="d-flex flex-column my-2">
                         <p class="fw-bold fs-6 mb-2">Yêu cầu ứng viên</p>
                         <div class="">
-
+                            @Html.Raw(Model.Requirement)
                         </div>
                     </div>
                     <div class="d-flex flex-column my-2">
                         <p class="fw-bold fs-6 mb-2">Quyền lợi</p>
                         <div class="">
-
+                            @Html.Raw(Model.Benefits)
                         </div>
                     </div>
                     <div class="d-flex flex-column my-2">
                         <p class="fw-bold fs-6">Địa điểm làm việc</p>
                         <div class="">
-
+                            @Model.Address
                         </div>
                     </div>
                     <div class="d-flex gap-4 py-3">
                         <button class="btn btn-primary rounded-3">Ứng tuyển ngay</button>
                         <button class="text-primary btn btn-outline-primary rounded-3">Lưu tin</button>
                     </div>
-                    <p>Hạn cuối: 10 Nov, 2023</p>
+                    <p>Hạn cuối: @Model.ExpiredDate</p>
                 </div>
 
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 tab-content d-none d-lg-block" id="content2">
                 <div class="p-4 mb-4 bg-light rounded-3">
                     <div class="job-detail__company d-flex flex-column gap-3">
                         <div class="d-flex gap-4">
-                            <a href="" class="job-detail__company-logo">
-                                <img class="img-responsive"
-                                    src="https://cdn-new.topcv.vn/unsafe/80x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-modern-system-vn-26d13bd88bc9954f6b323f825e65ccf1-64eee0956e155.jpg"
-                                    alt="">
+                            @{
+                                var logoUrl = Model.Company.LogoUrl;
+                                logoUrl = "~" + logoUrl.Substring(1);
+                            }
+                            <a asp-area="" asp-controller="Company" asp-action="CompanyDetail" target="_blank" class="job-detail__company-logo">
+                                <img class="img-responsive" src=@logoUrl alt="" asp-append-version="true">
                             </a>
-                            <a class="job-detail__company-name">CÔNG TY TNHH MODERN SYSTEM VN</a>
+                            <a asp-area="" asp-controller="Company" asp-action="CompanyDetail" target="_blank" class="job-detail__company-name">@Model.Company.CompanyName</a>
                         </div>
                         <div class="d-flex gap-3 align-items-center">
                             <div class="job-detail__company-title flex-shrink-0"><i
                                     class="fa-solid fa-location-dot pe-2 text-primary"></i><span>Địa điểm</span></div>
-                            <div class="job-detail__company-value">Tầng 1, Lô 102, Tòa nhà Cát Tường Thống Nhất</div>
+                            <div class="job-detail__company-value">@Model.Company.Address</div>
                         </div>
                         <div class="d-flex gap-3 align-items-center">
                             <div class="job-detail__company-title flex-shrink-0"><i
                                     class="fa-solid fa-globe pe-2 text-primary"></i><span>Website</span></div>
-                            <div class="job-detail__company-value"><a>https://www.topcv.vn</a></div>
+                            <div class="job-detail__company-value"><a>@Model.Company.WebsiteUrl</a></div>
                         </div>
                     </div>
                 </div>
@@ -226,7 +144,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             </div>
                             <div class="d-flex flex-column">
                                 <p class="m-0">Cấp bậc</p>
-                                <p class="m-0 fw-bold">Fresher</p>
+                                <p class="m-0 fw-bold">@Model.RequirementSkills.First().Level</p>
                             </div>
                         </div>
                         <div class="d-flex gap-3 align-items-center">
@@ -235,7 +153,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             </div>
                             <div class="d-flex flex-column">
                                 <p class="m-0">Kinh nghiệm</p>
-                                <p class="m-0 fw-bold">Không yêu cầu kinh nghiệm</p>
+                                <p class="m-0 fw-bold">@Model.YearsOfExperience</p>
                             </div>
                         </div>
                         <div class="d-flex gap-3 align-items-center">
@@ -244,7 +162,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             </div>
                             <div class="d-flex flex-column">
                                 <p class="m-0">Số lượng tuyển</p>
-                                <p class="m-0 fw-bold">2 người</p>
+                                <p class="m-0 fw-bold">@Model.NumberOfRecruits người</p>
                             </div>
                         </div>
                         <div class="d-flex gap-3 align-items-center">
@@ -253,7 +171,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             </div>
                             <div class="d-flex flex-column">
                                 <p class="m-0">Hình thức làm việc</p>
-                                <p class="m-0 fw-bold">Full Time</p>
+                                <p class="m-0 fw-bold">@Model.EmploymentType</p>
                             </div>
                         </div>
                     </div>
@@ -262,13 +180,18 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                     <div class="job-detail__company d-flex flex-column gap-3">
                         <h5 class="mb-0">Danh mục</h5>
                         <div class="d-flex mb-3">
-                            <a href="" class="text-dark px-1 rounded" style="background-color: #ebe5e5;">Web Developer</a>
+                            <a href="" class="text-dark px-2 rounded-pill" target="_blank"
+                                style="background-color: #f1eeee;">@Model.JobType.JobTypeName</a>
                         </div>
                         <h5 class="mb-0">Kỹ năng</h5>
                         <div class="d-flex flex-wrap gap-3">
-                            <a href="" class="text-dark px-1 rounded" style="background-color: #ebe5e5;">C#</a>
-                            <a href="" class="text-dark px-1 rounded" style="background-color: #ebe5e5;">ASP.NET Core</a>
-                            <a href="" class="text-dark px-1 rounded" style="background-color: #ebe5e5;">SQL</a>
+                            @{
+                                foreach (var item in Model.RequirementSkills)
+                                {
+                                    <a href="" class="text-dark px-2 rounded-pill" target="_blank"
+                                        style="background-color: #f1eeee;">@item.Skill.SkillName</a>
+                                }
+                            }
                         </div>
                     </div>
                 </div>
@@ -276,4 +199,23 @@ For more information on enabling MVC for empty projects, visit https://go.micros
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            const tabs = $('.tab');
+            const tabContents = $('.tab-content');
+
+            tabs.click(function () {
+                tabs.removeClass('active');
+                tabContents.removeClass('active');
+
+                const tabId = $(this).attr('id');
+
+                $(this).addClass('active');
+                $('#' + tabId.replace('tab', 'content')).addClass('active');
+            });
+        });
+    </script>
+}
 <!-- Job Detail End -->

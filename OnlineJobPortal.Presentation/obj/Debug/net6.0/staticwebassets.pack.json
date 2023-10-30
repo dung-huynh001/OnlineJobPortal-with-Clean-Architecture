@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Uploads\\CompanyImg\\3c630753-7bb8-46bb-b654-f0194ecc2bc7_com-logo-1.jpg"
     },
     {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\Uploads\\CompanyImg\\964d29f3-9059-40ba-b985-96c8dd5c8c52_com-logo-3.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\CompanyImg\\964d29f3-9059-40ba-b985-96c8dd5c8c52_com-logo-3.jpg"
+    },
+    {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\Uploads\\CompanyImg\\a703315d-fdaf-4b34-b8c2-5d4334140e64_com-logo-3.jpg",
       "PackagePath": "staticwebassets\\Uploads\\CompanyImg\\a703315d-fdaf-4b34-b8c2-5d4334140e64_com-logo-3.jpg"
     },
@@ -9221,6 +9225,10 @@
       "PackagePath": "staticwebassets\\css\\HomePage\\style.css"
     },
     {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\css\\JobDetailPage\\jobdetail.css",
+      "PackagePath": "staticwebassets\\css\\JobDetailPage\\jobdetail.css"
+    },
+    {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\css\\LoginPage\\login.css",
       "PackagePath": "staticwebassets\\css\\LoginPage\\login.css"
     },
@@ -9311,6 +9319,10 @@
     {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\log.svg",
       "PackagePath": "staticwebassets\\img\\log.svg"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\no-result-found.jpg",
+      "PackagePath": "staticwebassets\\img\\no-result-found.jpg"
     },
     {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\register.svg",

@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineJobPortal.Application.DTOs.SkillDto
+namespace OnlineJobPortal.Application.DTOs.JobTypeDto
 {
-    public class SkillDto : BaseDto
+    public class GetJobTypeDto : BaseDto
     {
-        public string SkillName { get; set; }
+        public string JobTypeName { get; set; }
     }
 }

@@ -8,7 +8,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 @inject ICurrentUserService CurrentUserService
 @model JobPostViewModel
 @{
-    var skillList = ViewBag.SkillList as List<SkillDto>;
+    var skillList = ViewBag.SkillList as List<GetSkillDto>;
     var jobTypeList = ViewBag.JobTypeList as List<JobTypeDto>;
 }
 <link rel="stylesheet" href="~/area/custom/css/PostANewJob.css">

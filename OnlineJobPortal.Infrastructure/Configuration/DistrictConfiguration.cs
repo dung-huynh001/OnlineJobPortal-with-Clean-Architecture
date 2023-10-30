@@ -29,8 +29,8 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasForeignKey(c => new { c.DistrictId, c.ProvinceId});
 
             builder.HasMany(d => d.JobPosts)
-                .WithOne(c => c.District)
-                .HasForeignKey(c => new { c.DistrictId, c.ProvinceId });
+                .WithOne(j => j.District)
+                .HasForeignKey(j => new { j.DistrictId, j.ProvinceId });
         }
     }
 }

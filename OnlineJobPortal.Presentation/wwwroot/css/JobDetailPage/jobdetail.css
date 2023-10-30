@@ -1,0 +1,119 @@
+a:hover {
+    cursor: pointer;
+}
+
+.btn-outline-primary:hover {
+    background-color: transparent;
+    color: #666 !important;
+    border: 1px solid #00b07478 !important;
+}
+
+.job-detail__info--title {
+    color: #263a4d;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.job-detail__info--section {
+    align-items: center;
+    font-size: 16px;
+    gap: 16px
+}
+
+.job-detail__info--section-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    border-radius: 50%;
+    outline: none;
+    background: linear-gradient(11deg, #00bf5d, #00907c);
+    color: white;
+    font-size: 1.2rem;
+}
+
+.job-detail__info--section-content {
+    gap: 2px;
+    line-height: 20px;
+}
+
+.job-detail__info--section-content-title {
+    letter-spacing: 0.2px;
+    line-height: 22px;
+}
+
+.job-detail__info--section-content-value {
+    letter-spacing: 0.3px;
+    line-height: 22px;
+    font-weight: 600;
+}
+
+.job-detail__info--action-button {
+    letter-spacing: .3px;
+}
+
+.job-detail__info--action-button--apply {
+    background: var(--primary);
+}
+
+.job-detail__info--action-button--save {
+    background: var(--primary);
+}
+
+.job-detail__company-name {
+    color: #212f3f;
+    display: -webkit-box;
+    font-family: Inter;
+    font-weight: 600;
+    letter-spacing: -0.16px;
+    line-height: 24px;
+}
+
+.job-detail__company-logo {
+    width: 88px;
+    height: 88px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.job-detail__company-logo img {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.job-detail__company-value {
+    font-weight: 500;
+    color: #333;
+}
+
+.tabs {
+    display: flex;
+    background: linear-gradient(to right, #107047, #00b074);
+}
+
+.tab {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    font-weight: 700;
+}
+
+.tab:active {
+    background: #00b14f;
+}
+
+.tabs .active {
+    background: #00b14f;
+}
+
+.tab-content.active {
+    display: block !important;
+}

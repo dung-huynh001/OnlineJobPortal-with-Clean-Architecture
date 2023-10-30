@@ -834,6 +834,11 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("JobTypeIcon")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
                     b.Property<string>("JobTypeName")
                         .IsRequired()
                         .HasMaxLength(256)
@@ -851,6 +856,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         {
                             Id = 1,
                             CreateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobTypeIcon = "fa-laptop-code",
                             JobTypeName = "Web Developer",
                             UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -858,6 +864,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         {
                             Id = 2,
                             CreateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobTypeIcon = "fa-mobile-alt",
                             JobTypeName = "Mobile Developer",
                             UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -865,6 +872,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         {
                             Id = 3,
                             CreateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobTypeIcon = "fa-check-double",
                             JobTypeName = "QA & QC",
                             UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -872,6 +880,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         {
                             Id = 4,
                             CreateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobTypeIcon = "fa-chart-pie",
                             JobTypeName = "Business Analysis",
                             UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -879,6 +888,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         {
                             Id = 5,
                             CreateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobTypeIcon = "fa-user-shield",
                             JobTypeName = "Tester",
                             UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -886,13 +896,15 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         {
                             Id = 6,
                             CreateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            JobTypeName = "Designer",
+                            JobTypeIcon = "fa-wifi",
+                            JobTypeName = "Internet of things(IoT)",
                             UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 7,
                             CreateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobTypeIcon = "fa-tasks",
                             JobTypeName = "Project Management",
                             UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -900,6 +912,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         {
                             Id = 8,
                             CreateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobTypeIcon = "fa-users",
                             JobTypeName = "Human Resource",
                             UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -907,6 +920,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         {
                             Id = 9,
                             CreateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobTypeIcon = "fa-paint-brush",
                             JobTypeName = "Design & Creative",
                             UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -914,6 +928,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         {
                             Id = 10,
                             CreateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobTypeIcon = "fa-server",
                             JobTypeName = "System Admin",
                             UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -921,6 +936,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         {
                             Id = 11,
                             CreateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobTypeIcon = "fa-cogs",
                             JobTypeName = "DevOps",
                             UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -928,6 +944,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         {
                             Id = 12,
                             CreateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobTypeIcon = "fa-shield-alt",
                             JobTypeName = "System Security",
                             UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
