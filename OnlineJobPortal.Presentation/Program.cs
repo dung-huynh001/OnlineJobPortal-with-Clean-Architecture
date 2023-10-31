@@ -10,6 +10,7 @@ using OnlineJobPortal.Infrastructure.Context;
 using OnlineJobPortal.Infrastructure.Identity;
 using OnlineJobPortal.Presentation;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,9 @@ builder.Services.AddPresentation(builder.Configuration);
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddMvc();
+builder.Services.AddMvc()
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 builder.Services.AddRazorPages();
 builder.Services.AddHttpClient();
 

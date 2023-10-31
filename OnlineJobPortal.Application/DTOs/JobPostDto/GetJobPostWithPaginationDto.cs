@@ -11,7 +11,6 @@ namespace OnlineJobPortal.Application.DTOs.JobPostDto
 {
     public class GetJobPostWithPaginationDto : BaseDto
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string EmploymentType { get; set; }
         public string Salary { get; set; }

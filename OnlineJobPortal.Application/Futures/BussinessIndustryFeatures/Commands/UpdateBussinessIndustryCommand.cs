@@ -14,7 +14,7 @@ namespace OnlineJobPortal.Application.Futures.BussinessIndustryFeatures.Commands
 {
     public class UpdateBussinessIndustryCommand : IRequest<ApiResponse>
     {
-        public UpdateBussinessIndustryDto UpdateBussinessIndustryDto { get; set; }
+        public GetBussinessIndustryDto UpdateBussinessIndustryDto { get; set; }
     }
 
     public class UpdateBussinessIndustryCommandHandler : IRequestHandler<UpdateBussinessIndustryCommand, ApiResponse>

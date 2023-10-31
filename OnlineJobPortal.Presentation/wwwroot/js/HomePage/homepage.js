@@ -46,11 +46,11 @@
       if (response.items.length == response.totalCount) {
         $(".btn-see-more").hidden();
       }
-      spinner.show();
+      spinner.hide();
     },
     error: function (error) {
       renderEmptyImg(jobTypeList);
-      spinner.show();
+      spinner.hide();
     },
   });
 });
@@ -134,6 +134,8 @@ function CreateJobType(item) {
 }
 
 $(".btn-see-more").click(function (e) {
+  spinner.show();
+
   var jobTypeItems = $(".job-type-item").length;
   $.ajax({
     type: "GET",
@@ -150,9 +152,11 @@ $(".btn-see-more").click(function (e) {
           $(".btn-see-more").hide();
         }
       }
+      spinner.hide();
     },
     error: function (error) {
       renderEmptyImg(jobTypeList);
+      spinner.hide();
     },
   });
 });

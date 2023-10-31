@@ -17,11 +17,11 @@ namespace OnlineJobPortal.Infrastructure.Configuration
 
             builder.Property(c => c.CompanyName)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(256);
 
             builder.Property(c => c.Owner)
                 .IsRequired(false)
-                .HasMaxLength(100);
+                .HasMaxLength(256);
 
             builder.Property(c => c.EstablishmentDate)
                 .HasColumnType("Date")
@@ -34,13 +34,13 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .IsRequired(false)
                 .HasMaxLength(200);
 
+            builder.Property(c => c.Hotline)
+                .IsRequired(false)
+                .HasMaxLength(200);
+
             builder.Property(c => c.Description)
                 .IsRequired(false)
-                .HasMaxLength(500);
-
-            builder.Property(c => c.Contact)
-                .IsRequired(false)
-                .HasMaxLength(100);
+                .HasColumnType("ntext");
 
             builder.Property(c => c.Facebook)
                 .IsRequired(false)

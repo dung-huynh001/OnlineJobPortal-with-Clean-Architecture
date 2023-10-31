@@ -40,7 +40,7 @@ namespace OnlineJobPortal.Application.Mapping
 
             CreateMap<ApplicationUser, RegistrationRequest>().ReverseMap();
 
-            CreateMap<UpdateBussinessIndustryDto, BussinessIndustry>().ReverseMap();
+            CreateMap<GetBussinessIndustryDto, BussinessIndustry>().ReverseMap();
 
             CreateMap<ForeignLanguageDto, ForeignLanguage>().ReverseMap();
 

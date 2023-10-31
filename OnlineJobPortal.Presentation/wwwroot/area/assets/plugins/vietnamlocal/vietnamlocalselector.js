@@ -90,6 +90,7 @@
                     }
                 }
             });
+            return Promise.resolve();
         }
         window.addEventListener('load', init);
     };
