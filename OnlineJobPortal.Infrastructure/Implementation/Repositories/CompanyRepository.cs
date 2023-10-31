@@ -18,10 +18,10 @@ namespace OnlineJobPortal.Application.Interfaces.Repositories
         {
             var company = await context.Companies
                 .Include(c => c.Employers)
+                .Include(c => c.BussinessIndustry)
                 .FirstOrDefaultAsync(c => c.Employers!.Any(e => e.Id.Equals(employerId)));
 
             return company;
         }
-
     }
 }

@@ -3,7 +3,7 @@ using OnlineJobPortal.Domain.Enums;
 
 namespace OnlineJobPortal.Domain.Entities
 {
-    public class Employer : BaseEntity  
+    public class Employer : BaseEntity
     {
         public string FullName { get; set; }
         public string NationalId { get; set; }

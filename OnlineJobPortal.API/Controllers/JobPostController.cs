@@ -17,7 +17,7 @@ namespace OnlineJobPortal.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
             return Ok();
         }

@@ -1,0 +1,152 @@
+﻿@*
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using OnlineJobPortal.Presentation.Areas.Employer.Models
+@model CompanyProfileViewModel
+
+<link rel="stylesheet" href="~/area/custom/css/CompanyProfile.css">
+
+<div class="container min-vh-100">
+    <form method="post" class="row bg-white p-3 rounded" style="min-height: 50vh;" asp-area="Employer" asp-controller="Company" asp-action="CompanyProfile" enctype="multipart/form-data">
+        <div class="col-12 mb-3">
+            <label class="form-label">Logo công ty <span class="text-danger">*</span></label>
+            <div class="d-flex align-items-end gap-3">
+                @{
+                    var logoUrl = Model.LogoUrl;
+                    logoUrl = "~" + logoUrl.Substring(1);
+                }
+                <img id="logoCompanyImg" src="@logoUrl" alt="" class="rounded com-logo" asp-append-version="true">
+                <a role="button" class="btn btn-success text-white" onclick="$('#CompanyLogo').click()">Đổi logo</a>
+                <input asp-for="@Model.CompanyLogo" type="file" accept="image/*" hidden >
+            </div>
+        </div>
+        <div class="col-12 mb-3">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Tên công ty <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Tên công ty" asp-for="@Model.CompanyName">
+                <span asp-validation-for="@Model.CompanyName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12 mb-3">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Lĩnh vực kinh doanh <span class="text-danger">*</span></label>
+                @{
+                    @using OnlineJobPortal.Application.DTOs.BussinessIndustryDto;
+                    List<GetBussinessIndustryDto> bussinessIndustries = ViewData["BussinessIndustrys"] as List<GetBussinessIndustryDto>;
+                    var bussinessId = Model.BussinessIndustryId ??= 1;
+                }
+
+                @Html.DropDownListFor(model => model.BussinessIndustryId, new SelectList(bussinessIndustries, "Id",
+                         "BussinessName"), bussinessIndustries[bussinessId].BussinessName, new { @class = "form-select" })
+                <span asp-validation-for="@Model.BussinessIndustryId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-6 mb-3">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Chủ doanh nghiệp <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Tên chủ doanh nghiệp" asp-for="@Model.Owner">
+                <span asp-validation-for="@Model.Owner" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-6 mb-3">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Ngày thành lập <span class="text-danger">*</span></label>
+                <input type="Date" class="form-control" asp-for="@Model.EstablishmentDate" value="@Model.EstablishmentDate.ToString("yyyy-MM-dd")">
+                <span asp-validation-for="@Model.EstablishmentDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-6 mb-3">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Địa chỉ Email <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Địa chỉ Email" value="">
+            </div>
+        </div>
+        <div class="col-6 mb-3">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Số điện thoại <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Số điện thoại công ty" asp-for="@Model.Hotline">
+                <span asp-validation-for="@Model.Hotline" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-6 mb-3">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Tỉnh / thành phố <span class="text-danger">*</span></label>
+                <select class="form-select ls_province" asp-for="@Model.ProvinceId"></select>
+                <span asp-validation-for="@Model.ProvinceId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-6 mb-3">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Quận / huyện <span class="text-danger">*</span></label>
+                <select class="form-select ls_district" asp-for="@Model.DistrictId"></select>
+                <span asp-validation-for="@Model.DistrictId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--Unnessesary-->
+        <div class="col-6" hidden>
+            <label for="" class="form-label">Ward <span class="text-danger">*</span></label>
+            <select name="" id="" class="form-select ls_ward">
+            </select>
+        </div>
+
+        <div class="col-12 mb-3">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Địa chỉ công ty <span class="text-danger">*</span></label>
+                <input type="text" class="form-control"
+                    placeholder="Vd: Hẻm 51, Đường 3/2, Phường Xuân Khánh, Quận Ninh Kiều, TP Cần Thơ"
+                    asp-for="@Model.Address">
+                <span asp-validation-for="@Model.Address" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-4">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Website <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Địa chỉ Website công ty" asp-for="@Model.WebsiteUrl">
+                <span asp-validation-for="@Model.WebsiteUrl" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-4">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Facebook</label>
+                <input type="text" class="form-control" placeholder="Địa chỉ Facebook" asp-for="@Model.Facebook">
+            </div>
+        </div>
+        <div class="col-4 mb-4">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Twitter</label>
+                <input type="text" class="form-control" placeholder="Địa chỉ Twitter" asp-for="@Model.Twitter">
+            </div>
+        </div>
+        <div class="col-12 mb-4">
+            <div class="d-flex flex-column position-relative">
+                <label class="form-label">Mô tả công ty <span class="text-danger">*</span></label>
+                @Html.TextAreaFor(model => model.Description, new { @class = "text-editor" })
+                <span asp-validation-for="@Model.Description" class="text-danger"></span>
+            </div>
+        </div>
+        <input type="text" hidden asp-for="@Model.Id">
+        <div class="col-12 mb-4 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success text-white me-0">
+                <i class="fa-regular fa-pen-to-square me-2"></i>Chỉnh sửa thông
+                tin</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+    <script src="~/area/assets/plugins/vietnamlocal/vietnamlocalselector.js"></script>
+    <script src="~/area/custom/js/CompanyProfile.js"></script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $(".ls_province").val(@Model.ProvinceId);
+                $(".ls_province")[0].dispatchEvent(new Event("change"));
+                $(".ls_district").val(@Model.DistrictId);
+            }, 0);
+        })
+    </script>
+    <partial name="_ValidationScriptsPartial" />
+}

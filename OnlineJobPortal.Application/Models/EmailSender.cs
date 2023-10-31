@@ -14,8 +14,12 @@ namespace OnlineJobPortal.Application.Models
         private string smtpUsername;
         private string smtpPassword;
 
-        public EmailSender()
+        public EmailSender(string smtpServer, int smtpPort, string smtpUsername, string smtpPassword)
         {
+            this.smtpPassword = smtpPassword;
+            this.smtpServer = smtpServer;
+            this.smtpPort = smtpPort;
+            this.smtpUsername = smtpUsername;
         }
     }
 }

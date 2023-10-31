@@ -38,6 +38,7 @@ namespace OnlineJobPortal.Presentation.Mapping
             CreateMap<JobPostViewModel, CreateRequirementSkillDto>().ReverseMap();
             CreateMap<JobPostViewModel, CreateJobPostDto>().ReverseMap();
 
+            CreateMap<Company, CompanyProfileViewModel>().ReverseMap();
         }
     }
 }

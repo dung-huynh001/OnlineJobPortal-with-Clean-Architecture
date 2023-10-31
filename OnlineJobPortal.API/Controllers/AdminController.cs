@@ -54,7 +54,7 @@ namespace OnlineJobPortal.API.Controllers
 
         [HttpGet("GetCurrentUser")]
         [Authorize]
-        public async Task<IActionResult> GetCurrentUser()
+        public IActionResult GetCurrentUser()
         {
             var user = currentUserSevice.UserId;
             return Ok(user);

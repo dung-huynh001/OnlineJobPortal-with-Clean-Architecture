@@ -9205,8 +9205,16 @@
       "PackagePath": "staticwebassets\\area\\assets\\scss\\portal.scss"
     },
     {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\area\\custom\\css\\CompanyProfile.css",
+      "PackagePath": "staticwebassets\\area\\custom\\css\\CompanyProfile.css"
+    },
+    {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\area\\custom\\css\\PostANewJob.css",
       "PackagePath": "staticwebassets\\area\\custom\\css\\PostANewJob.css"
+    },
+    {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\area\\custom\\js\\CompanyProfile.js",
+      "PackagePath": "staticwebassets\\area\\custom\\js\\CompanyProfile.js"
     },
     {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\area\\custom\\js\\PostANewJob.js",

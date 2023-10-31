@@ -52,6 +52,8 @@ namespace OnlineJobPortal.Presentation.Controllers
         [Route("/login")]
         public IActionResult Login()
         {
+            ViewBag.ErrorMessage = null;
+
             return View();
         }
 
@@ -95,6 +97,8 @@ namespace OnlineJobPortal.Presentation.Controllers
         [Route("/register")]
         public IActionResult Register()
         {
+            ViewBag.ErrorMessage = null;
+
             return View();
         }
 
@@ -128,38 +132,6 @@ namespace OnlineJobPortal.Presentation.Controllers
             return View();
         }
 
-        /*[HttpPost]
-        public async Task<IActionResult> RegisterEmployer(RegisterEmployerViewModel model)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var location = mapper.Map<CreateLocationDto>(model);
-                    CreateLocationCommand createLocationCommand = new CreateLocationCommand();
-                    createLocationCommand.Location = location;
-
-                    var createLocationResponse = await mediator.Send(createLocationCommand);
-
-                    var registerDto = mapper.Map<RegistrationEmployerRequest>(model);
-                    var registerEmployerResponse = await authService.RegisterEmployerAsync(registerDto);
-
-                    if (!registerEmployerResponse.Success)
-                    {
-                        throw new Exception();
-                    }
-
-                    return RedirectToAction("Index", "Home", new {area = "Employer"});
-                }
-                throw new Exception();
-            }
-            catch
-            {
-                ViewBag.ErrorMessage = "Vui lòng kiểm tra lại thông tin đăng ký.";
-                return View(model);
-            }
-        }*/
-
         [HttpPost]
         public async Task<IActionResult> RegisterEmployer([FromForm] RegisterEmployerViewModel model)
         {
@@ -167,22 +139,6 @@ namespace OnlineJobPortal.Presentation.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    /*if (model.CompanyLogo != null && model.CompanyLogo.Length > 0)
-                    {
-                        // Xử lý tệp ảnh logo công ty
-                        // Lưu tệp ảnh vào thư mục tùy chọn (ví dụ: "wwwroot/Uploads/CompanyImg/")
-                        string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Uploads/CompanyImg");
-                        string imgFormat = Path.GetExtension(model.CompanyLogo.FileName);
-                        string uniqueFileName = model.CompanyName.ToLower() + "_logo" + imgFormat;
-                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                        using (var stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            model.CompanyLogo.CopyTo(stream);
-                        }
-
-                        // Lưu đường dẫn tới tệp ảnh logo vào cơ sở dữ liệu hoặc thực hiện các tác vụ khác ở đây
-                    }*/
                     string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Uploads/CompanyImg");
                     string logoUrl = await uploadService.UploadImageAsync(model.CompanyLogo, uploadsFolder);
 

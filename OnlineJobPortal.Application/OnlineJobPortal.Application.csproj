@@ -19,11 +19,9 @@
     <Folder Include="DTOs\ResumeDto\" />
     <Folder Include="DTOs\UserDto\" />
     <Folder Include="Futures\ApplyFeatures\Queries\" />
-    <Folder Include="Futures\BussinessIndustryFeatures\Queries\" />
     <Folder Include="Futures\CandidateSkillFeatures\Queries\" />
     <Folder Include="Futures\CandidateFeatures\Queries\" />
     <Folder Include="Futures\CompanyImageFeatures\Queries\" />
-    <Folder Include="Futures\CompanyFeatures\Queries\" />
     <Folder Include="Futures\DistrictFeatures\Queries\" />
     <Folder Include="Futures\EducationFeatures\Queries\" />
     <Folder Include="Futures\EmployerFeatures\Queries\" />
