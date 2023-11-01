@@ -576,6 +576,10 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Property<int>("DistrictId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Email")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<DateTime>("EstablishmentDate")
                         .HasColumnType("Date");
 

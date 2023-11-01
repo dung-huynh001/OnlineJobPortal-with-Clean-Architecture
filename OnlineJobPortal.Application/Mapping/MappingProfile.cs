@@ -33,62 +33,42 @@ namespace OnlineJobPortal.Application.Mapping
             CreateMap<JobPost, GetJobPostDetailDto>()
                 .ForMember(dest => dest.ExpiredDate, opt => opt.MapFrom(src => src.ExpiredDate.ToString("dd MMM, yyyy")))
                 .ForMember(dest => dest.EmploymentType, opt => opt.MapFrom(src => src.EmploymentType.ToString()));
-
             CreateMap<AdminDto, Admin>().ReverseMap();
             CreateMap<CreateAdminDto, Admin>().ReverseMap();
             CreateMap<UpdateAdminDto, Admin>().ReverseMap();
-
             CreateMap<ApplicationUser, RegistrationRequest>().ReverseMap();
-
             CreateMap<GetBussinessIndustryDto, BussinessIndustry>().ReverseMap();
-
             CreateMap<ForeignLanguageDto, ForeignLanguage>().ReverseMap();
-
             CreateMap<GetSkillDto, Skill>().ReverseMap();
-
             CreateMap<GetRequirementSkillDto, RequirementSkill>().ReverseMap();
-
-
             CreateMap<CreateSkillDto, Skill>().ReverseMap();
             CreateMap<UpdateSkillDto, Skill>().ReverseMap();
-
             CreateMap<JobTypeDto, JobType>().ReverseMap();
             CreateMap<GetJobTypeWithPaginationDto, JobType>().ReverseMap();
             CreateMap<GetJobTypeDto, JobType>().ReverseMap();
-
-
             CreateMap<CreateCandidateDto, Candidate>().ReverseMap();
             CreateMap<UpdateCandidateDto, Candidate>().ReverseMap();
-
             CreateMap<CreateCandidateSkillDto, CandidateSkill>().ReverseMap();
             CreateMap<UpdateCandidateSkillDto, CandidateSkill>().ReverseMap();
-
             CreateMap<CreateRequirementSkillDto, RequirementSkill>().ReverseMap();
             CreateMap<UpdateRequirementSkillDto, RequirementSkill>().ReverseMap();
-
             CreateMap<CreateDistrictCommand, District>().ReverseMap();
-
             CreateMap<CreateProvinceCommand, Province>().ReverseMap();
-
             CreateMap<CreateCompanyDto, Company>().ReverseMap();
             CreateMap<GetCompanyDto, Company>().ReverseMap();
-
-
             CreateMap<CreateEmployerDto, Employer>().ReverseMap();
             CreateMap<CreateEmployerDto, Company>().ReverseMap();
-
-
             CreateMap<CreateLocationDto, District>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.DistrictId))
                 .ReverseMap();
-
             CreateMap<CreateLocationDto, Province>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ProvinceId))
                 .ReverseMap();
-
             CreateMap<JobPost, GetJobPostWithPaginationDto>()
                 .ForMember(dest => dest.EmploymentType, opt => opt.MapFrom(src => src.EmploymentType.ToString()))
                 .ForMember(dest => dest.ExpiredDate, opt => opt.MapFrom(src => src.ExpiredDate.ToString("dd MMM, yyyy")));
+            CreateMap<UpdateCompanyDto, Company>()
+                .ForMember(dest => dest.LogoUrl, opt => opt.MapFrom((src, dest) => src.LogoUrl != null ? src.LogoUrl : dest.LogoUrl));
         }
     }
 }

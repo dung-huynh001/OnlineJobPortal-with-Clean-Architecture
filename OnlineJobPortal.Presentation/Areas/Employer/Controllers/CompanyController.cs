@@ -6,21 +6,35 @@ using OnlineJobPortal.Application.Futures.CompanyFeatures.Queries;
 using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Presentation.Areas.Employer.Models;
 using OnlineJobPortal.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using OnlineJobPortal.Application.DTOs.LocationDto;
+using OnlineJobPortal.Application.Futures.LocationFeatures.Commands;
+using OnlineJobPortal.Application.DTOs.CompanyDto;
+using OnlineJobPortal.Application.Futures.CompanyFeatures.Commands;
+using Microsoft.AspNetCore.Hosting;
 
 namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
 {
     [Area("Employer")]
+    [Authorize(Roles = "Employer")]
     public class CompanyController : Controller
     {
         private readonly IMapper mapper;
         private readonly IMediator mediator;
         private readonly ICurrentUserService currentUserSevice;
+        private readonly IUploadService uploadService;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public CompanyController(IMapper mapper, IMediator mediator, ICurrentUserService currentUserSevice)
+        public CompanyController(IMapper mapper, IMediator mediator, 
+            ICurrentUserService currentUserSevice, 
+            IUploadService uploadService, 
+            IWebHostEnvironment webHostEnvironment)
         {
             this.mapper = mapper;
             this.mediator = mediator;
             this.currentUserSevice = currentUserSevice;
+            this.uploadService = uploadService;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
@@ -33,19 +47,43 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
         }
 
         [HttpPost]
-        public IActionResult CompanyProfile([FromForm] CompanyProfileViewModel companyProfile)
+        public async Task<IActionResult> CompanyProfile([FromForm] CompanyProfileViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                return RedirectToAction("CompanyProfile", "Company", new { area = "Employer", employerId = 2 });
+                int id = currentUserSevice.GetActorId();
 
+                if (ModelState.IsValid)
+                {
+                    if (model.CompanyLogo != null)
+                    {
+                        string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Uploads/CompanyImg");
+                        string logoUrl = await uploadService.UploadImageAsync(model.CompanyLogo, uploadsFolder);
+                        model.LogoUrl = logoUrl;
+                    }
+
+                    var location = mapper.Map<CreateLocationDto>(model);
+                    var createLocationCommand = new CreateLocationCommand();
+                    createLocationCommand.Location = location;
+                    await mediator.Send(createLocationCommand);
+
+                    var company = mapper.Map<UpdateCompanyDto>(model);
+                    var updateCompanyCommand = new UpdateCompanyCommand(company);
+                    var result = await mediator.Send(updateCompanyCommand);
+
+                    return RedirectToAction("CompanyProfile", "Company", new { area = "Employer", employerId = id });
+
+                }
+                throw new Exception();
             }
-            else
+            catch
             {
                 int id = currentUserSevice.GetActorId();
                 return RedirectToAction("CompanyProfile", "Company", new { area = "Employer", employerId = id });
             }
-            
+
+
+
         }
 
     }

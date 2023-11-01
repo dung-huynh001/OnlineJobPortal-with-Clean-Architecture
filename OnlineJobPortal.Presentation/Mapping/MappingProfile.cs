@@ -39,6 +39,9 @@ namespace OnlineJobPortal.Presentation.Mapping
             CreateMap<JobPostViewModel, CreateJobPostDto>().ReverseMap();
 
             CreateMap<Company, CompanyProfileViewModel>().ReverseMap();
+
+            CreateMap<CompanyProfileViewModel, CreateLocationDto>().ReverseMap();
+            CreateMap<CompanyProfileViewModel, UpdateCompanyDto>().ReverseMap();
         }
     }
 }

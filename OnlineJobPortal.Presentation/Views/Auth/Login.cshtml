@@ -34,7 +34,8 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" asp-for="AuthRequest.Password" placeholder="Mật khẩu" autocomplete="off" />
+                        <input type="password" asp-for="AuthRequest.Password" placeholder="Mật khẩu"
+                            autocomplete="off" />
                         <span asp-validation-for="AuthRequest.Password" class="text-danger error-message"></span>
                     </div>
                     <input type="submit" class="btn solid" value="Đăng nhập" />
@@ -52,8 +53,10 @@
                     <h2 class="title">Tạo tài khoản</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" asp-for="RegistrationRequest.FullName" placeholder="Họ và tên" autocomplete="off" />
-                        <span asp-validation-for="RegistrationRequest.FullName" class="text-danger error-message"></span>
+                        <input type="text" asp-for="RegistrationRequest.FullName" placeholder="Họ và tên"
+                            autocomplete="off" />
+                        <span asp-validation-for="RegistrationRequest.FullName"
+                            class="text-danger error-message"></span>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
@@ -62,14 +65,18 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" asp-for="RegistrationRequest.Password" placeholder="Mật khẩu" autocomplete="off" />
-                        <span asp-validation-for="RegistrationRequest.Password" class="text-danger error-message"></span>
+                        <input type="password" asp-for="RegistrationRequest.Password" placeholder="Mật khẩu"
+                            autocomplete="off" />
+                        <span asp-validation-for="RegistrationRequest.Password"
+                            class="text-danger error-message"></span>
 
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" asp-for="RegistrationRequest.PasswordConfirm" placeholder="Nhập lại mật khẩu" autocomplete="off" />
-                        <span asp-validation-for="RegistrationRequest.PasswordConfirm" class="text-danger error-message"></span>
+                        <input type="password" asp-for="RegistrationRequest.PasswordConfirm"
+                            placeholder="Nhập lại mật khẩu" autocomplete="off" />
+                        <span asp-validation-for="RegistrationRequest.PasswordConfirm"
+                            class="text-danger error-message"></span>
                     </div>
                     <input asp-for="RegistrationRequest.UserType" value="1" type="hidden" />
                     <input type="submit" class="btn" value="Đăng ký" />
@@ -119,12 +126,32 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/waitme@1.19.0/waitMe.min.js"></script>
-    @if (ViewBag.ErrorMessage != null)
-    {
-        <script>
-            toastr.warning('@ViewBag.ErrorMessage');
-        </script>
-        ViewBag.ErrorMessage = null;
+    @{
+        var err = ViewBag.ErrorMessage as string;
+        @if (err != null)
+        {
+            <script>
+                toastr.options = {
+                    timeOut: 2500
+                };
+                toastr.warning('@err');
+            </script>
+            ViewBag.ErrorMessage = null;
+        }
+    }
+
+    @{
+        var msg = TempData["SuccessMessage"] as string;
+        if (msg != null)
+        {
+            <script>
+                toastr.options = {
+                    timeOut: 2500
+                };
+                toastr.success('@msg');
+            </script>
+            TempData["StatusMessage"] = null;
+        }
     }
 
     <script>
@@ -173,4 +200,5 @@
 
     <partial name="_ValidationScriptsPartial" />
 </body>
+
 </html>

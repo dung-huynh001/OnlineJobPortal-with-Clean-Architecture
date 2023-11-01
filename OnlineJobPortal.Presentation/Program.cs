@@ -26,6 +26,10 @@ builder.Services.AddMvc()
 
 builder.Services.AddRazorPages();
 builder.Services.AddHttpClient();
+builder.Services.ConfigureApplicationCookie(options => {
+    options.AccessDeniedPath = $"/Home/AccessDenied";
+    options.LoginPath = $"/login";
+});
 
 var app = builder.Build();
 

@@ -30,7 +30,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Employer\Data\" />
     <Folder Include="Data\" />
-    <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\css\RegisterPage\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
