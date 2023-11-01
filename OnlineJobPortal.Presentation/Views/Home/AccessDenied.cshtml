@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <style>
+        img {
+            width: 80vh;
+            object-fit: fill;
+        }
+
+        /* CSS */
+        .glow {
+            text-shadow: 0 0 4px rgba(0, 0, 255, 0.719);
+        }
+
+        .glow-sm {
+            text-shadow: 0 0 2px rgba(0, 0, 255, 0.575);
+        }
+
+        p {
+            color: #1d1b3a;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        button {
+            box-shadow: 0 5px 10px 5px #b5e8f1;
+        }
+
+        button:hover {
+            box-shadow: none;
+        }
+    </style>
+    <title>Access Denied</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-white">
+            <div class="col-12 min-vh-100 min-vw-100">
+                <div class="d-flex justify-content-center">
+                    <img src="~/img/access-denied.jpg" alt="">
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <h1 class="glow" style="color: #3a3668">We are Sorry...</h1>
+                    <p class="glow-sm">The page you're trying to access has restricted access</p>
+                    <p class="glow-sm">Please refer to your system administrator</p>
+                    <button id="goBack" class="text-white btn btn-info py-2 px-5 mt-4 rounded-pill fw-bold">Go
+                        Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#goBack").click(function () {
+                window.history.back();
+            });
+        });
+
+    </script>
+</body>
+
+</html>

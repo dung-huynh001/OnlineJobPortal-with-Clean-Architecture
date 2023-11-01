@@ -18,6 +18,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 <img id="logoCompanyImg" src="@logoUrl" alt="" class="rounded com-logo" asp-append-version="true">
                 <a role="button" class="btn btn-success text-white" onclick="$('#CompanyLogo').click()">Đổi logo</a>
                 <input asp-for="@Model.CompanyLogo" type="file" accept="image/*" hidden >
+                <input asp-for="@Model.LogoUrl" type="text" hidden />
             </div>
         </div>
         <div class="col-12 mb-3">
@@ -58,7 +59,8 @@ For more information on enabling MVC for empty projects, visit https://go.micros
         <div class="col-6 mb-3">
             <div class="d-flex flex-column position-relative">
                 <label class="form-label">Địa chỉ Email <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" placeholder="Địa chỉ Email" value="">
+                <input type="text" class="form-control" placeholder="Địa chỉ Email" asp-for="@Model.Email">
+                <span asp-validation-for="@Model.Email" class="text-danger"></span>
             </div>
         </div>
         <div class="col-6 mb-3">
@@ -74,6 +76,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 <label class="form-label">Tỉnh / thành phố <span class="text-danger">*</span></label>
                 <select class="form-select ls_province" asp-for="@Model.ProvinceId"></select>
                 <span asp-validation-for="@Model.ProvinceId" class="text-danger"></span>
+                <input type="text" hidden asp-for="@Model.ProvinceName">
             </div>
         </div>
         <div class="col-6 mb-3">
@@ -81,6 +84,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 <label class="form-label">Quận / huyện <span class="text-danger">*</span></label>
                 <select class="form-select ls_district" asp-for="@Model.DistrictId"></select>
                 <span asp-validation-for="@Model.DistrictId" class="text-danger"></span>
+                <input type="text" hidden asp-for="@Model.DistrictName">
             </div>
         </div>
 
@@ -145,7 +149,8 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 $(".ls_province").val(@Model.ProvinceId);
                 $(".ls_province")[0].dispatchEvent(new Event("change"));
                 $(".ls_district").val(@Model.DistrictId);
-            }, 0);
+                $(".ls_district")[0].dispatchEvent(new Event("change"));
+            }, 100);
         })
     </script>
     <partial name="_ValidationScriptsPartial" />

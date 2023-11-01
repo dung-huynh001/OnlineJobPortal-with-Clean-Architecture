@@ -38,6 +38,10 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .IsRequired(false)
                 .HasMaxLength(200);
 
+            builder.Property(c => c.Email)
+                .IsRequired(false)
+                .HasMaxLength(200);
+
             builder.Property(c => c.Description)
                 .IsRequired(false)
                 .HasColumnType("ntext");

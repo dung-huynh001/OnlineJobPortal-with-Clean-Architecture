@@ -19,6 +19,7 @@ using OnlineJobPortal.Infrastructure.Identity;
 using OnlineJobPortal.Presentation.Models;
 using System.Net.Http;
 using System.Net.Http.Json;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace OnlineJobPortal.Presentation.Controllers
 {
@@ -49,11 +50,12 @@ namespace OnlineJobPortal.Presentation.Controllers
             this.httpClient.BaseAddress = new Uri("https://localhost:7143");
         }
 
+        [TempData]
+        public string SuccessMessage { get; set; }
+
         [Route("/login")]
         public IActionResult Login()
         {
-            ViewBag.ErrorMessage = null;
-
             return View();
         }
 
@@ -97,8 +99,6 @@ namespace OnlineJobPortal.Presentation.Controllers
         [Route("/register")]
         public IActionResult Register()
         {
-            ViewBag.ErrorMessage = null;
-
             return View();
         }
 
@@ -113,8 +113,14 @@ namespace OnlineJobPortal.Presentation.Controllers
                     var result = await authService.RegisterAsync(request);
                     if (!result.Success)
                     {
+                        if(result.Message.Equals("UserName already exist!"))
+                        {
+                            ViewBag.ErrorMessage = "Địa chỉ email đã được sử dụng.";
+                            return View();
+                        }
                         throw new Exception();
                     }
+                    SuccessMessage = "Đăng ký ứng viên thành công";
                     return RedirectToAction("Login");
                 }
                 throw new Exception();
@@ -155,9 +161,15 @@ namespace OnlineJobPortal.Presentation.Controllers
 
                     if (!registerEmployerResponse.Success)
                     {
+                        if(registerEmployerResponse.Message.Equals("UserName already exist!"))
+                        {
+                            ViewBag.ErrorMessage = "Địa chỉ email đã được sử dụng";
+                            return View(model);
+                        }
                         throw new Exception();
                     }
 
+                    SuccessMessage = "Đăng ký nhà tuyển dụng thành công.";
                     return RedirectToAction("Index", "Home", new { area = "Employer" });
                 }
                 throw new Exception();

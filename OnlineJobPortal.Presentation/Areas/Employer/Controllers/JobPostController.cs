@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineJobPortal.Application.DTOs.JobPostDto;
 using OnlineJobPortal.Application.DTOs.LocationDto;
@@ -14,6 +15,7 @@ using OnlineJobPortal.Presentation.Areas.Employer.Models;
 namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
 {
     [Area("Employer")]
+    [Authorize(Roles = "Employer")]
     public class JobPostController : Controller
     {
         private readonly IMapper mapper;
