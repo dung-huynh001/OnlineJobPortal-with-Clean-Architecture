@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oeEP65NsF/sibAfvfqpZgmc3HqfJ6jmlH04PH7t7Qk0=",
+  "Hash": "biL9lWDmzZjrJk2Cib4/4IA5EhjVBOgX18KyJSXGuBA=",
   "Source": "OnlineJobPortal.Presentation",
   "BasePath": "_content/OnlineJobPortal.Presentation",
   "Mode": "Default",
@@ -39253,6 +39253,23 @@
       "OriginalItemSpec": "wwwroot\\css\\LoginPage\\login.css"
     },
     {
+      "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\css\\ResumePage\\main.css",
+      "SourceId": "OnlineJobPortal.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\",
+      "BasePath": "_content/OnlineJobPortal.Presentation",
+      "RelativePath": "css/ResumePage/main.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\ResumePage\\main.css"
+    },
+    {
       "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\css\\ResumePage\\resume.css",
       "SourceId": "OnlineJobPortal.Presentation",
       "SourceType": "Discovered",
@@ -39542,6 +39559,23 @@
       "OriginalItemSpec": "wwwroot\\img\\com-logo-5.jpg"
     },
     {
+      "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\curriculum-vitae.png",
+      "SourceId": "OnlineJobPortal.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\",
+      "BasePath": "_content/OnlineJobPortal.Presentation",
+      "RelativePath": "img/curriculum-vitae.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\curriculum-vitae.png"
+    },
+    {
       "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\default_user.png",
       "SourceId": "OnlineJobPortal.Presentation",
       "SourceType": "Discovered",
@@ -39559,12 +39593,12 @@
       "OriginalItemSpec": "wwwroot\\img\\default_user.png"
     },
     {
-      "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\dublin-resume-templates.avif",
+      "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\dublin-resume-templates.jpg",
       "SourceId": "OnlineJobPortal.Presentation",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\",
       "BasePath": "_content/OnlineJobPortal.Presentation",
-      "RelativePath": "img/dublin-resume-templates.avif",
+      "RelativePath": "img/dublin-resume-templates.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -39573,7 +39607,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\dublin-resume-templates.avif"
+      "OriginalItemSpec": "wwwroot\\img\\dublin-resume-templates.jpg"
     },
     {
       "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\img\\favicon.png",
@@ -39865,6 +39899,23 @@
       "OriginalItemSpec": "wwwroot\\js\\LoginPage\\login.js"
     },
     {
+      "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\ResumePage\\app.js",
+      "SourceId": "OnlineJobPortal.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\",
+      "BasePath": "_content/OnlineJobPortal.Presentation",
+      "RelativePath": "js/ResumePage/app.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ResumePage\\app.js"
+    },
+    {
       "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\ResumePage\\resume.js",
       "SourceId": "OnlineJobPortal.Presentation",
       "SourceType": "Discovered",
@@ -39880,6 +39931,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\ResumePage\\resume.js"
+    },
+    {
+      "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\ResumePage\\script.js",
+      "SourceId": "OnlineJobPortal.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\",
+      "BasePath": "_content/OnlineJobPortal.Presentation",
+      "RelativePath": "js/ResumePage/script.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ResumePage\\script.js"
     },
     {
       "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\site.js",
@@ -41325,6 +41393,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\CompanyImg\\e1947474-a03e-4d4e-843e-efdf4d62162e_com-logo-4.jpg"
+    },
+    {
+      "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\Uploads\\CVs\\1daf8a7c-893a-48c8-ae69-ca62cfd52d05_cv.pdf",
+      "SourceId": "OnlineJobPortal.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\",
+      "BasePath": "_content/OnlineJobPortal.Presentation",
+      "RelativePath": "Uploads/CVs/1daf8a7c-893a-48c8-ae69-ca62cfd52d05_cv.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\CVs\\1daf8a7c-893a-48c8-ae69-ca62cfd52d05_cv.pdf"
+    },
+    {
+      "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\Uploads\\CVs\\4848ac91-16c6-4b85-91b8-09da49a93e5d_cv.pdf",
+      "SourceId": "OnlineJobPortal.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\",
+      "BasePath": "_content/OnlineJobPortal.Presentation",
+      "RelativePath": "Uploads/CVs/4848ac91-16c6-4b85-91b8-09da49a93e5d_cv.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\CVs\\4848ac91-16c6-4b85-91b8-09da49a93e5d_cv.pdf"
     }
   ]
 }
