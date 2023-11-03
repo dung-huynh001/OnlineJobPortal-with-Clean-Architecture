@@ -3,217 +3,190 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 *@
 @{
 }
+<style>
+    .box-img {
+        height: 90px;
+        width: 90px;
+    }
+</style>
 
 <!-- Header End -->
-<div class="container p-0 pt-4">
-    <div class="container m-0 bg-light mb-2 pt-5 pb-4 row align-item-around"
+<div class="container mt-2 pt-5 pb-4"
         style="background-image: linear-gradient(to right, #effdfa, #1fc3a8);">
-        <div class="col-12 col-sm-12 col-md-7 box-search-company">
-            <h1 class="title">Tìm kiếm thông tin công ty để <span class="text-primary glow">IT<span
-                        class="text-dark">Jobs</span></span> kết nối bạn với những cơ hội việc làm phù hợp nhất</h1>
-            <form class="form-search">
-                <i class="fa fa-light fa-magnifying-glass"></i>
-                <input type="text" placeholder="Nhập tên công ty muốn tìm kiếm..." class="form-control rounded-pill" />
-                <button class="btn btn-primary btn-sm rounded-pill btn-search" type="submit">Tìm kiếm</button>
-            </form>
-        </div>
-        <div class="d-none d-sm-block col-12 col-sm-12 col-md-5 align-self-end text-end">
-            <img class="align-middle align-bottom" style="width: 190px;"
-                src="https://static.topcv.vn/v4/image/company-search/img-top.png?v=1.0.0" alt="">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-7 box-search-company">
+                <h1 class="title">Tìm kiếm thông tin công ty để <span class="text-primary glow">IT<span
+                            class="text-dark">Jobs</span></span> kết nối bạn với những cơ hội việc làm phù hợp nhất</h1>
+                <form class="form-search">
+                    <i class="fa fa-light fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Nhập tên công ty muốn tìm kiếm..." class="form-control rounded-pill" />
+                    <button class="btn btn-primary btn-sm rounded-pill btn-search" type="submit">Tìm kiếm</button>
+                </form>
+            </div>
+            <div class="d-none d-sm-block col-12 col-sm-12 col-md-5 align-self-end text-end">
+                <img class="align-middle align-bottom" style="width: 190px;"
+                    src="https://static.topcv.vn/v4/image/company-search/img-top.png?v=1.0.0" alt="">
+            </div>
         </div>
     </div>
-</div>
 <!-- Header End -->
 
 <div class="container p-0">
     <div class="container bg-white mb-5 row justify-content-between m-0 p-0 g-0 g-sm-0 g-md-5">
-        <div class="col-12 col-sm-12 col-md-8 shadow py-3 px-5 mb-4 border border-light box-search-company">
-            <p>Tìm thấy <span class="text-primary fw-bold">256</span> công ty phù hợp với yêu cầu của bạn</p>
-            <div class="job-item p-4 mb-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-1.jpg" alt=""
-                            style="width: 80px; height: 80px;">
-                        <div class="text-start ps-4 col-12 col-sm-12">
-                            <h5 class="mb-3">Software Engineer</h5>
-                            <span class="text-truncate me-3 d-block">
-                                <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                INDIA
-                            </span>
-                            <span class="text-truncate me-0 w-100 d-block">
-                                <i class="far fa-money-bill-alt text-primary me-2"></i>
-                                <small>
-                                    Play Tango là dụng cụ học tập
-                                    thông minh, hỗ trợ trẻ em học nhiều nội dung đa dạng qua các trò chơi hình khối được rất
-                                    nhiều trẻ em...
-                                </small>
-                            </span>
-                        </div>
-                    </div>
-                    <div
-                        class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                        <div class="d-flex mb-3">
-                            <a class="btn btn-light btn-square me-3" href="">
-                                <i class="far fa-heart text-primary"></i>
-                            </a>
-                            <a class="btn btn-primary" href="">Xem chi tiết</a>
+        <div class="col-12 col-sm-12 col-md-9">
+            <div class="border border-light p-4">
+                <p>Tìm thấy <span class="text-primary fw-bold">256</span> công ty phù hợp với yêu cầu của bạn</p>
+                <div class="job-item p-4 mb-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center gap-3">
+                                <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-1.jpg" alt=""
+                                    style="width: 80px; height: 80px;">
+                                <div class="align-self-start">
+                                    <p class="d-flex flex-lg-row flex-column align-items-lg-baseline justify-content-lg-between gap-2">
+                                        <a class="fs-5 fw-bold text-muted" asp-area="" asp-controller="Company" asp-action="CompanyDetail" asp-route-id="1">Software Engineer</a>
+                                        <span>Đang có 3 tin tuyển dụng</span>
+                                    </p>
+                                    <p>
+                                        <i class="fa-solid fa-location-arrow text-primary me-2"></i>Rewa,
+                                        INDIA
+                                    </p>
+                                    <p class="overflow-hidden" style="max-height: 3rem">
+                                        <i class="fa-solid fa-circle-info text-primary me-2"></i>
+                                        Play Tango là dụng cụ học tập
+                                        thông minh, hỗ trợ trẻ em học nhiều nội dung đa dạng qua các trò chơi hình
+                                        khối được rất nhiều trẻ em...
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="job-item p-4 mb-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-1.jpg" alt=""
-                            style="width: 80px; height: 80px;">
-                        <div class="text-start ps-4">
-                            <h5 class="mb-3">Software Engineer</h5>
-                            <span class="text-truncate me-3">
-                                <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                INDIA
-                            </span>
-                            <span class="text-truncate me-3">
-                                <i class="far fa-clock text-primary me-2"></i>Full Time
-                            </span>
-                            <span class="text-truncate me-0">
-                                <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                $456
-                            </span>
+                <div class="job-item p-4 mb-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center gap-3">
+                                <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-1.jpg" alt=""
+                                    style="width: 80px; height: 80px;">
+                                <div class="align-self-start">
+                                    <p class="d-flex flex-lg-row flex-column align-items-lg-baseline justify-content-lg-between gap-3">
+                                        <a class="fs-5 fw-bold text-muted" asp-area="" asp-controller="Company" asp-action="CompanyDetail" asp-route-id="1">Software Engineer</a>
+                                        <span>Đang có 3 tin tuyển dụng</span>
+                                    </p>
+                                    <p>
+                                        <i class="fa-solid fa-location-arrow text-primary me-2"></i>Rewa,
+                                        INDIA
+                                    </p>
+                                    <p class="overflow-hidden" style="max-height: 3rem">
+                                        <i class="fa-solid fa-circle-info text-primary me-2"></i>
+                                        Play Tango là dụng cụ học tập
+                                        thông minh, hỗ trợ trẻ em học nhiều nội dung đa dạng qua các trò chơi hình
+                                        khối được rất nhiều trẻ em...
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div
-                        class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                        <div class="d-flex mb-3">
-                            <a class="btn btn-light btn-square me-3" href="">
-                                <i class="far fa-heart text-primary"></i>
-                            </a>
-                            <a class="btn btn-primary" href="">Xem chi tiết</a>
-                        </div>
-                        <small class="text-truncate">
-                            <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                            2045
-                        </small>
                     </div>
                 </div>
-            </div>
-            <div class="job-item p-4 mb-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-1.jpg" alt=""
-                            style="width: 80px; height: 80px;">
-                        <div class="text-start ps-4">
-                            <h5 class="mb-3">Software Engineer</h5>
-                            <span class="text-truncate me-3">
-                                <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                INDIA
-                            </span>
-                            <span class="text-truncate me-3">
-                                <i class="far fa-clock text-primary me-2"></i>Full Time
-                            </span>
-                            <span class="text-truncate me-0">
-                                <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                $456
-                            </span>
+                <div class="job-item p-4 mb-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center gap-3">
+                                <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-1.jpg" alt=""
+                                    style="width: 80px; height: 80px;">
+                                <div class="align-self-start">
+                                    <p class="d-flex flex-lg-row flex-column align-items-lg-baseline justify-content-lg-between gap-2">
+                                        <a class="fs-5 fw-bold text-muted" asp-area="" asp-controller="Company" asp-action="CompanyDetail" asp-route-id="1">Software Engineer</a>
+                                        <span>Đang có 3 tin tuyển dụng</span>
+                                    </p>
+                                    <p>
+                                        <i class="fa-solid fa-location-arrow text-primary me-2"></i>Rewa,
+                                        INDIA
+                                    </p>
+                                    <p class="overflow-hidden" style="max-height: 3rem">
+                                        <i class="fa-solid fa-circle-info text-primary me-2"></i>
+                                        Play Tango là dụng cụ học tập
+                                        thông minh, hỗ trợ trẻ em học nhiều nội dung đa dạng qua các trò chơi hình
+                                        khối được rất nhiều trẻ em...
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div
-                        class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                        <div class="d-flex mb-3">
-                            <a class="btn btn-light btn-square me-3" href="">
-                                <i class="far fa-heart text-primary"></i>
-                            </a>
-                            <a class="btn btn-primary" href="">Xem chi tiết</a>
-                        </div>
-                        <small class="text-truncate">
-                            <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                            2045
-                        </small>
                     </div>
                 </div>
-            </div>
-            <div class="job-item p-4 mb-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                        <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-1.jpg" alt=""
-                            style="width: 80px; height: 80px;">
-                        <div class="text-start ps-4">
-                            <h5 class="mb-3">Software Engineer</h5>
-                            <span class="text-truncate me-3">
-                                <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                INDIA
-                            </span>
-                            <span class="text-truncate me-3">
-                                <i class="far fa-clock text-primary me-2"></i>Full Time
-                            </span>
-                            <span class="text-truncate me-0">
-                                <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                $456
-                            </span>
-                        </div>
-                    </div>
-                    <div
-                        class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                        <div class="d-flex mb-3">
-                            <a class="btn btn-light btn-square me-3" href="">
-                                <i class="far fa-heart text-primary"></i>
-                            </a>
-                            <a class="btn btn-primary" href="">Xem chi tiết</a>
-                        </div>
-                        <small class="text-truncate">
-                            <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                            2045
-                        </small>
-                    </div>
+
+                <div class="d-flex justify-content-center">
+                    <a role="button" class="btn btn-primary py-3 px-5" id="btn-seeMore">Xem thêm</a>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-12 col-md-3 text-center shadow border border-light py-3 align-self-start">
-            <p class="fw-bolder">Nhà tuyển dụng hàng đầu</p>
-
-            <div class="row justify-content-center gap-4">
-                <div class="col-6 box-img py-3 my-3">
-                    <a href="#" target="_blank">
-                        <img class="img-responsive"
-                            src="https://cdn-new.topcv.vn/unsafe/60x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-buymed-1ba6aba7f7826b149fe5e4a9fa9d32b1-643fab9038a9a.jpg"
-                            alt="">
-                    </a>
-                </div>
-                <div class="col-6 box-img py-3 my-3">
-                    <a href="#" target="_blank">
-                        <img class="img-responsive"
-                            src="https://cdn-new.topcv.vn/unsafe/60x/filters:format(webp)/https://static.topcv.vn/company_logos/GLEoa5VUW6RUXHQDDn8y9jvrt7xCbGd7_1696416215____754b3b4d29be5657456a0f24eea767be.jpg"
-                            alt="">
-                    </a>
-                </div>
-                <div class="col-6 box-img py-3 my-3">
-                    <a href="#" target="_blank">
-                        <img class="img-responsive"
-                            src="https://cdn-new.topcv.vn/unsafe/60x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-buymed-1ba6aba7f7826b149fe5e4a9fa9d32b1-643fab9038a9a.jpg"
-                            alt="">
-                    </a>
-                </div>
-                <div class="col-6 box-img py-3 my-3">
-                    <a href="#" target="_blank">
-                        <img class="img-responsive"
-                            src="https://cdn-new.topcv.vn/unsafe/60x/filters:format(webp)/https://static.topcv.vn/company_logos/GLEoa5VUW6RUXHQDDn8y9jvrt7xCbGd7_1696416215____754b3b4d29be5657456a0f24eea767be.jpg"
-                            alt="">
-                    </a>
-                </div>
-                <div class="col-6 box-img py-3 my-3">
-                    <a href="#" target="_blank">
-                        <img class="img-responsive"
-                            src="https://cdn-new.topcv.vn/unsafe/60x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-buymed-1ba6aba7f7826b149fe5e4a9fa9d32b1-643fab9038a9a.jpg"
-                            alt="">
-                    </a>
-                </div>
-                <div class="col-6 box-img py-3 my-3">
-                    <a href="#" target="_blank">
-                        <img class="img-responsive"
-                            src="https://cdn-new.topcv.vn/unsafe/60x/filters:format(webp)/https://static.topcv.vn/company_logos/GLEoa5VUW6RUXHQDDn8y9jvrt7xCbGd7_1696416215____754b3b4d29be5657456a0f24eea767be.jpg"
-                            alt="">
-                    </a>
+        <div class="col-12 col-sm-12 col-md-3 align-self-start">
+            <div class="text-center border border-light p-3">
+                <p class="fw-bolder">Nhà tuyển dụng hàng đầu</p>
+                <div class="row justify-content-center gap-3">
+                    <div class="col-6 box-img py-3 my-3">
+                        <a href="#" target="_blank">
+                            <img class="img-responsive"
+                                src="https://cdn-new.topcv.vn/unsafe/60x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-buymed-1ba6aba7f7826b149fe5e4a9fa9d32b1-643fab9038a9a.jpg"
+                                alt="">
+                        </a>
+                    </div>
+                    <div class="col-6 box-img py-3 my-3">
+                        <a href="#" target="_blank">
+                            <img class="img-responsive"
+                                src="https://cdn-new.topcv.vn/unsafe/60x/filters:format(webp)/https://static.topcv.vn/company_logos/GLEoa5VUW6RUXHQDDn8y9jvrt7xCbGd7_1696416215____754b3b4d29be5657456a0f24eea767be.jpg"
+                                alt="">
+                        </a>
+                    </div>
+                    <div class="col-6 box-img py-3 my-3">
+                        <a href="#" target="_blank">
+                            <img class="img-responsive"
+                                src="https://cdn-new.topcv.vn/unsafe/60x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-buymed-1ba6aba7f7826b149fe5e4a9fa9d32b1-643fab9038a9a.jpg"
+                                alt="">
+                        </a>
+                    </div>
+                    <div class="col-6 box-img py-3 my-3">
+                        <a href="#" target="_blank">
+                            <img class="img-responsive"
+                                src="https://cdn-new.topcv.vn/unsafe/60x/filters:format(webp)/https://static.topcv.vn/company_logos/GLEoa5VUW6RUXHQDDn8y9jvrt7xCbGd7_1696416215____754b3b4d29be5657456a0f24eea767be.jpg"
+                                alt="">
+                        </a>
+                    </div>
+                    <div class="col-6 box-img py-3 my-3">
+                        <a href="#" target="_blank">
+                            <img class="img-responsive"
+                                src="https://cdn-new.topcv.vn/unsafe/60x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-buymed-1ba6aba7f7826b149fe5e4a9fa9d32b1-643fab9038a9a.jpg"
+                                alt="">
+                        </a>
+                    </div>
+                    <div class="col-6 box-img py-3 my-3">
+                        <a href="#" target="_blank">
+                            <img class="img-responsive"
+                                src="https://cdn-new.topcv.vn/unsafe/60x/filters:format(webp)/https://static.topcv.vn/company_logos/GLEoa5VUW6RUXHQDDn8y9jvrt7xCbGd7_1696416215____754b3b4d29be5657456a0f24eea767be.jpg"
+                                alt="">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                type: "get",
+                dataType: "json",
+                url: "",
+                data: 0,
+                success: function(res){
+
+                },
+                error: function(err){
+
+                }
+            });
+        });
+    </script>
+}

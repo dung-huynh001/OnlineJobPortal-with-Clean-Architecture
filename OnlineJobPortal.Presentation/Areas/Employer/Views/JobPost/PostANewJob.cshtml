@@ -145,13 +145,13 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                     <div class="col-12">
                         <label asp-for="Address" class="form-label">Nơi làm việc <span class="text-danger">*</span></label>
                         <input type="text" asp-for="Address" class="form-control"
-                            placeholder="Ex: Số 1, Hẻm 41, Phường 2, Quận 1, TP Hồ Chí Minh">
+                            placeholder="Vd. Số 1, Hẻm 41, Phường 2, Quận 1, TP Hồ Chí Minh">
                         <span asp-validation-for="Address" class="text-danger error-message"></span>
                     </div>
                     <div class="col-12">
                         <label asp-for="ExpiredDate" class="form-label">Ngày hết hạn <span
                                 class="text-danger">*</span></label>
-                        <input type="Date" asp-for="ExpiredDate" class="form-control" placeholder="Ex: 2 người">
+                        <input type="Date" asp-for="ExpiredDate" class="form-control" placeholder="Vd. 2 người">
                         <span asp-validation-for="ExpiredDate" class="text-danger error-message"></span>
                     </div>
                     <div class="col-12 d-flex justify-content-end">
@@ -229,24 +229,23 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <option value="2">Cột mốc</option>
                             <option value="3">Thỏa thuận</option>
                         </select>
-                        <div class="row g-0 justify-content-start gap-2 pt-2">
-                            <div class="col-5 col-lg-3 range-method"><input type="text" id="minSalary"
-                                    class="form-control" placeholder="Ex: 2000$"></div>
-                            <p class="col-1 col-lg text-center range-method">to</p>
-                            <div class="col-5 col-lg-3 range-method"><input type="text" id="maxSalary"
-                                    class="form-control" placeholder="Ex: 5000$"></div>
-
-                            <div class="col-12 col-lg-3 about-method"><input type="text" class="form-control"
-                                    placeholder="Ex: 4000$"></div>
-
-                            <div class="col-12 col-lg-4 period">
-                                <select name="" id="periodSelector" class="form-select" style="color: #000;">
-                                    <option value="0">trên tháng</option>
-                                    <option value="1">trên tuần</option>
-                                    <option value="2">trên năm</option>
-                                    <option value="3">trên dự án</option>
-                                </select>
+                        <div class="row g-0 justify-content-start align-items-center pt-2">
+                            <div class="col-5 col-lg-2 range-method">
+                                <input type="number" id="minSalary"
+                                       class="form-control" placeholder="Vd. 10" min="1" oninput="this.value = Math.abs(this.value)">
                             </div>
+                            <p class="col-1 text-center p-0 m-0 range-method form-label">đến</p>
+                            <div class="col-5 col-lg-2 range-method">
+                                <input type="number" id="maxSalary"
+                                       class="form-control" placeholder="Vd. 12" min="1" oninput="this.value = Math.abs(this.value)">
+                            </div>
+
+                            <div class="col-12 col-lg-2 about-method">
+                                <input type="number" class="form-control"
+                                       placeholder="Vd. 12" min="1" oninput="this.value = Math.abs(this.value)">
+                            </div>
+                            <p class="col-1 text-center p-0 m-0 period form-label">triệu</p>
+
                             <input type="text" hidden asp-for="Salary" />
                             <span asp-validation-for="Salary" class="text-danger error-message"></span>
                         </div>

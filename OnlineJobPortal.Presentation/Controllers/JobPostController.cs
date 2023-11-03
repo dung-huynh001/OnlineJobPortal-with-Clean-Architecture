@@ -3,6 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using OnlineJobPortal.Application.Futures.JobPostFeatures.Queries;
+using OnlineJobPortal.Domain.Enums;
+using OnlineJobPortal.Presentation.Models;
 
 namespace OnlineJobPortal.Presentation.Controllers
 {
@@ -22,32 +24,25 @@ namespace OnlineJobPortal.Presentation.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetJobWithPagination(int currentItems, string sortBy)
+        public ActionResult GetJobWithPagination(ConditionViewModel condition)
         {
             try
             {
-                int pageSize = 10;
+                int pageSize = 5;
+                int currentItems = condition.currentItems ?? 0;
                 int pageNumber = currentItems / pageSize + 1;
 
-                if (currentItems % pageSize == 0)
-                {
-                    pageNumber = currentItems / pageSize + 1;
-                }
-                else
-                {
-                    pageNumber = currentItems / pageSize + 2;
-                }
+                pageNumber = currentItems % pageSize == 0 ? currentItems / pageSize + 1 : pageNumber = currentItems / pageSize + 2;
 
-                if (currentItems > 0 && currentItems < pageSize)
-                {
+                if (currentItems % pageSize != 0)
                     throw new Exception();
-                }
 
-                GetJobPostWithPaginationQuery request = new GetJobPostWithPaginationQuery(pageNumber, pageSize);
+                var request = new GetJobPostWithPaginationQuery(pageNumber, pageSize);
                 var items = mediator.Send(request).GetAwaiter().GetResult();
-                if(sortBy != null)
+
+                if (condition.sortBy != null)
                 {
-                    switch (sortBy.ToLower())
+                    switch (condition.sortBy.ToLower())
                     {
                         case "all":
                             items.Items = items.Items.OrderByDescending(i => i.CreateAt).ToList();
@@ -66,7 +61,20 @@ namespace OnlineJobPortal.Presentation.Controllers
                             break;
                     }
                 }
+
                 items.Items = items.Items.OrderByDescending(i => i.CreateAt).ToList();
+
+
+                string? keyword = condition.keyword?.ToLower();
+                string? level = condition.level?.ToLower();
+                string? provinceName = condition.provinceName?.ToLower();
+                string? salary = condition.salary?.ToLower();
+
+                items.Items = items.Items
+                        .Where(i => i.Title.ToLower().Contains(keyword ?? "") 
+                        && i.Province.ToLower().Contains(provinceName ?? ""))
+                        .ToList();
+
                 return Json(items);
             }
             catch (Exception ex)
@@ -76,27 +84,29 @@ namespace OnlineJobPortal.Presentation.Controllers
         }
 
 
+
+
         public IActionResult FindJob()
-        {
-            return View();  
-        }
+            {
+                return View();
+            }
 
-        [HttpGet]
-        public IActionResult JobDetail(int id)
-        {
-            var data = mediator.Send(new GetJobPostDetailQuery(id)).GetAwaiter().GetResult();
-            return View(data);
-        }
+            [HttpGet]
+            public IActionResult JobDetail(int id)
+            {
+                var data = mediator.Send(new GetJobPostDetailQuery(id)).GetAwaiter().GetResult();
+                return View(data);
+            }
 
 
-        public IActionResult JobList() 
-        { 
-            return View(); 
-        }
+            public IActionResult GetJobListWithCondition(ConditionViewModel condition)
+            {
+                return View();
+            }
 
-        public IActionResult FresherJob()
-        {
-            return View();
+            public IActionResult FresherJob()
+            {
+                return View();
+            }
         }
     }
-}

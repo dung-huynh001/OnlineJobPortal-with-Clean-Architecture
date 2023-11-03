@@ -1,7 +1,4 @@
-﻿
-
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
   // Khởi tạo location selection
   var localpicker = new LocalPicker({
     province: "ls_province",
@@ -40,37 +37,26 @@ $(document).ready(function () {
     $(this).children(".step").addClass("active-step");
   });
 
-  $('form').on('submit', function(){
-    var methodSelector = $('#methodSelector');
-    var period = $('#periodSelector option:selected').text();
-
+  $("form").on("submit", function () {
+    var methodSelector = $("#methodSelector");
     var salary = null;
-    if(methodSelector.val() == 1) {
-        var minSalary = $('#minSalary').val();
-        var maxSalary = $('#maxSalary').val();
-        if(minSalary === '' || maxSalary === '') {
-          salary = null;
-        }
-        else{
-          salary = minSalary + ' - ' + maxSalary + ' ' + period;
-        }
-    }else if(methodSelector.val() == 2) {
-        var about = $('.about-method input').val();
-        if(about === ''){
-          salary = null;
-        }
-        else{
-          salary = about  + ' ' + period;
-        }
-    }else if(methodSelector.val() == 3){
-        salary = 'Thỏa thuận';
-    }else{
-      salary = null;
+
+    if (methodSelector.val() == 1) {
+      var minSalary = $("#minSalary").val();
+      var maxSalary = $("#maxSalary").val();
+      salary =
+        minSalary && maxSalary
+          ? minSalary + " - " + maxSalary
+          : null;
+    } else if (methodSelector.val() == 2) {
+      var about = $(".about-method input").val();
+      salary = about ? about: null;
+    } else if (methodSelector.val() == 3) {
+      salary = "Thỏa thuận";
     }
-
-    $('#Salary').val(salary);
+    
+    $("#Salary").val(salary);
   });
-
 });
 
 const editors = document.querySelectorAll(".text-editor");
@@ -143,28 +129,15 @@ $("#methodSelector").on("change", function () {
 
 $(document).ready(function () {
   $("#skillSelector").on("change", function () {
-    var container = $("#skillList");
+    var container = $("#skillList").empty();
 
-    container.empty();
-
-    var skills = $("#skillSelector option:selected")
-      .toArray()
-      .map((item) => {
-        return { value: item.value, text: item.text };
-      });
-
-    var rawHtml = "";
-    for (var i = 0; i < skills.length; i++) {
-        rawHtml +=
-            '<input type="hidden" name="Skills[' +
-            i +
-            '].SkillId" value="' +
-            skills[i].value +
-            '" />';
-
-      console.log(skills[i]);
-    }
-
-    container.append(rawHtml);
+    $("#skillSelector option:selected").each(function (i) {
+      container.append(
+        '<input type="hidden" name="Skills[' + i + '].SkillId" value="' +
+          this.value +
+          '" />'
+      );
+    });
   });
 });
+

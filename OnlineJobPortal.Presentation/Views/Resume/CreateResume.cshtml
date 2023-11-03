@@ -20,12 +20,9 @@
 
         .text-success {
             --bs-text-opacity: 1;
-            color: #198754!important;
+            color: #198754 !important;
         }
 
-        .fw-7 {
-            font-weight: 700 !important;
-        }
         .fs-30 {
             font-size: 30px;
         }
@@ -33,26 +30,17 @@
 </head>
 
 <body>
-    <nav class="navbar bg-white">
-        <div class="container">
-            <div class="navbar-content">
-                <div class="brand-and-toggler">
-                    <a class="navbar-brand py-3 d-flex align-items-center justify-content-center" asp-area="" asp-controller="Resume" asp-action="Index">
-                        <img class="navbar-brand-icon d-block" src="~/img/curriculum-vitae.png" alt="">
-                        <h1 class="glow fw-7 fs-30 d-none d-lg-block" style="color: #010101; line-height: 36px;"><span class="text-success">IT</span>Jobs CV
-                            Builders</h1>
-                    </a>
-                    @* <button type="button" class="navbar-toggler-btn">
-                        <div class="bars">
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                        </div>
-                    </button> *@
-                </div>
+    <header class="container-fluid">
+        <nav class="navbar navbar-light bg-white">
+            <div class="container">
+                <a class="navbar-brand py-3 d-flex align-items-center justify-content-center" href="#">
+                    <img class="navbar-brand-icon d-block" src="~/img/curriculum-vitae.png" alt="">
+                    <h1 class="glow fw-6 fs-30 d-none d-lg-block" style="color: #010101"><span class="text-success">IT</span>Jobs CV
+                        Builders</h1>
+                </a>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <section id="about-sc" class="">
         <div class="container">
