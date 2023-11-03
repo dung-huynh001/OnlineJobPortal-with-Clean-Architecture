@@ -69,6 +69,7 @@ namespace OnlineJobPortal.Application.Mapping
                 .ForMember(dest => dest.ExpiredDate, opt => opt.MapFrom(src => src.ExpiredDate.ToString("dd MMM, yyyy")));
             CreateMap<UpdateCompanyDto, Company>()
                 .ForMember(dest => dest.LogoUrl, opt => opt.MapFrom((src, dest) => src.LogoUrl != null ? src.LogoUrl : dest.LogoUrl));
+            CreateMap<GetCompanyWithPaginationDto, Company>().ReverseMap();
         }
     }
 }

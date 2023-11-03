@@ -53,22 +53,14 @@
                     <h1 class="glow" style="color: #3a3668">We are Sorry...</h1>
                     <p class="glow-sm">The page you're trying to access has restricted access</p>
                     <p class="glow-sm">Please refer to your system administrator</p>
-                    <button id="goBack" class="text-white btn btn-info py-2 px-5 mt-4 rounded-pill fw-bold">Go
-                        Back</button>
+                    <a role="button" asp-area="" asp-controller="Home" asp-action="Index" class="text-white btn btn-info py-2 px-5 mt-4 rounded-pill fw-bold">Go
+                        Back</a>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#goBack").click(function () {
-                window.history.back();
-            });
-        });
-
-    </script>
 </body>
 
 </html>

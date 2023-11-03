@@ -28,5 +28,16 @@ namespace OnlineJobPortal.Application.Interfaces.Repositories
                 .FirstOrDefaultAsync();
             return result;
         }
+
+        public async Task<int> GetTotalJobPostWithCompanyId(int companyId)
+        {
+            var total = context.JobPosts
+                .Include(j => j.Employer)
+                .Where(jp => jp.Employer.CompanyId == companyId)
+                .Count();
+
+            return total;
+        }
+
     }
 }

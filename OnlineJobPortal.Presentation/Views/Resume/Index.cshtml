@@ -13,6 +13,7 @@
     <link href="~/img/favicon.png" rel="icon">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/ResumePage/resume.css">
+
     <title>CV Builder</title>
 </head>
 
@@ -25,7 +26,7 @@
                     <h1 class="glow fw-7 fs-30 d-none d-lg-block"><span class="text-success">IT</span>Jobs CV
                         Builders</h1>
                 </a>
-                <div class="dropdown">
+                @* <div class="dropdown">
                     @{
                         if (User.Identity.IsAuthenticated)
                         {
@@ -43,26 +44,20 @@
                         }
                     }
 
-                </div>
+                </div> *@
             </div>
         </nav>
     </header>
     <main class="container-fluild bg-light">
         <div class="container">
             <div class="row justify-content-center">
-                <h1 class="col-lg-8 text-center fw-8 fs-lg text-dark py-5">Only 2% of resumes make it pass the
-                    first
-                    round. Be in the top 2%</h1>
+                <h1 class="col-lg-8 text-center fw-7 fs-lg text-dark py-5">Một hồ sơ ấn tượng có thể gia tăng tỉ lệ thành công của bạn. Hãy nắm bắt cơ hội đó</h1>
                 <div class="col-lg-8">
-                    <p class="fs-18 fw-5 text-center text-dark">Use professional field-tested resume templates that
-                        follow that exact 'resume rules' employers
-                        look for. Easy to use and done within minutes - try now for free!</p>
+                    <p class="fs-18 fw-5 text-center text-dark">Sử dụng các mẫu sơ yếu lý lịch đã được kiểm tra chuyên nghiệp tuân theo 'quy tắc sơ yếu lý lịch' chính xác mà nhà tuyển dụng tìm kiếm. Dễ sử dụng và thực hiện trong vòng vài phút - hãy thử ngay bây giờ!</p>
                 </div>
                 <div class="col-lg-8 d-flex justify-content-center p-5">
                     <a role="button" asp-area="" asp-controller="Resume" asp-action="CreateResume" target="_blank"
-                        class="btn btn-primary btn-shadow text-uppercase ls-2 fw-6 fs-15 py-4 px-5 rounded-pill">create
-                        my
-                        resume</a>
+                        class="btn btn-primary btn-shadow text-uppercase ls-2 fw-6 fs-15 py-4 px-5 rounded-pill">Tạo CV Mới</a>
                 </div>
                 <div class="col-lg-10 d-flex justify-content-center py-4">
                     <img src="~/img/dublin-resume-templates.jpg" alt="" class="w-100 h-100">
@@ -81,10 +76,8 @@
                                 alt="">
                         </div>
                         <div>
-                            <h5 class="fs-20 fw-7 text-blue-dark font-poppins">Make a resume that wins interviews!</h5>
-                            <p class="text text-left fw-5 ls-1 font-manrope">Use our resume maker with its advanced
-                                creation tools to tell professional story that
-                                engages recruiters, hiring managers and even CEOs.</p>
+                            <h5 class="fs-20 fw-7 text-blue-dark font-poppins">Tạo một CV để thắng cuộc phỏng vấn!</h5>
+                            <p class="text text-left fw-5 ls-1 font-manrope">Sử dụng công cụ tạo CV của chúng tôi cùng với các công cụ tạo nâng cao để kể câu chuyện chuyên nghiệp thu hút nhà tuyển dụng, người quản lý tuyển dụng và thậm chí cả CEO.</p>
                         </div>
                     </div>
                 </div>
@@ -95,10 +88,8 @@
                                 alt="">
                         </div>
                         <div>
-                            <h5 class="fs-20 fw-7 text-blue-dark font-poppins">Resume writing made easy!</h5>
-                            <p class="text text-left fw-5 ls-1 font-manrope">Resume writing has never been this
-                                effortless. Pre-generated text, visual designs and
-                                more - all already integrated into the resume maker. Just fill in your details.</p>
+                            <h5 class="fs-20 fw-7 text-blue-dark font-poppins">Viết CV - quá dễ dàng</h5>
+                            <p class="text text-left fw-5 ls-1 font-manrope">Viết CV chưa bao giờ dễ dàng đến thế. Văn bản được tạo trước, thiết kế trực quan và hơn thế nữa - tất cả đều đã được tích hợp vào trình tạo sơ yếu lý lịch. Chỉ cần điền thông tin chi tiết của bạn.</p>
                         </div>
                     </div>
                 </div>
@@ -109,10 +100,8 @@
                                 alt="">
                         </div>
                         <div>
-                            <h5 class="fs-20 fw-7 text-blue-dark font-poppins">A recruiter-tested CV maker tool</h5>
-                            <p class="text text-left fw-5 ls-1 font-manrope">Our resume builder and its pre-generated
-                                content are tested by recruiters and IT experts.
-                                We help your CV become truly competitive in the hiring process.</p>
+                            <h5 class="fs-20 fw-7 text-blue-dark font-poppins">Công cụ tạo CV đã được nhà tuyển dụng thử nghiệm</h5>
+                            <p class="text text-left fw-5 ls-1 font-manrope">Trình tạo CV của chúng tôi và nội dung được tạo trước của nó đã được các nhà tuyển dụng và chuyên gia CNTT kiểm tra. Chúng tôi giúp CV của bạn thực sự có tính cạnh tranh trong quá trình tuyển dụng.</p>
                         </div>
                     </div>
                 </div>

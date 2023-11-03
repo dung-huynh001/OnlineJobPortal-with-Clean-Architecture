@@ -55,6 +55,10 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
                     createLocationCommand.Location = location;
                     await mediator.Send(createLocationCommand);
 
+
+                    if (!model.Salary.ToLower().Contains("triệu") && !model.Salary.ToLower().Contains("thỏa thuận"))
+                        model.Salary += " triệu";
+
                     var createJobPostCommand = new CreateJobPostCommand();
                     createJobPostCommand.CreateJobPostDto = mapper.Map<CreateJobPostDto>(model);
                     var result = await mediator.Send(createJobPostCommand);

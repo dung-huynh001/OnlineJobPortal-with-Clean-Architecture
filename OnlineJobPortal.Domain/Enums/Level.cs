@@ -8,6 +8,6 @@
         Junior,
         Middle,
         Senior,
-        Expert
+        Expert,
     }
 }
