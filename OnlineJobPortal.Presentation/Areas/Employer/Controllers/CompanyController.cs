@@ -40,7 +40,7 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
         [HttpGet]
         public IActionResult CompanyProfile(int employerId)
         {
-            Company company = mediator.Send(new GetCompanyDetailQuery(employerId)).GetAwaiter().GetResult();
+            Company company = mediator.Send(new GetCompanyProfileQuery(employerId)).GetAwaiter().GetResult();
             ViewData["BussinessIndustrys"] = mediator.Send(new GetAllBussinessIndustryQuery()).GetAwaiter().GetResult();
             var data = mapper.Map<CompanyProfileViewModel>(company);
             return View(data);

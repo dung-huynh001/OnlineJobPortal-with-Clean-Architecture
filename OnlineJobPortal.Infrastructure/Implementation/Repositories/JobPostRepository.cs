@@ -32,8 +32,8 @@ namespace OnlineJobPortal.Application.Interfaces.Repositories
         public async Task<int> GetTotalJobPostWithCompanyId(int companyId)
         {
             var total = context.JobPosts
-                .Include(j => j.Employer)
-                .Where(jp => jp.Employer.CompanyId == companyId)
+                .Include(jp => jp.Employer)
+                .Where(e => e.Employer.CompanyId.Equals(companyId))
                 .Count();
 
             return total;

@@ -1,13 +1,17 @@
-﻿@*
-For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using System.Text.RegularExpressions
+@using OnlineJobPortal.Application.Responses
+@using OnlineJobPortal.Application.DTOs.CompanyDto
+@model PaginatedResult<GetCompanyWithPaginationDto>
 
-
+<style>
+    .card:hover {
+        box-shadow: none !important;
+    }
+</style>
 <!-- Header End -->
 <div class="container p-0 pt-4">
-    <div class="container m-0 mb-2 pt-5 pb-4 row align-item-around" style="background-image: linear-gradient(to right, #effdfa, #1fc3a8);">
+    <div class="container m-0 mb-2 pt-5 pb-4 row align-item-around"
+        style="background-image: linear-gradient(to right, #effdfa, #1fc3a8);">
         <div class="col-12 col-sm-12 col-md-7 box-search-company">
             <h1 class="title">
                 Tìm kiếm thông tin công ty để <span class="text-primary glow">
@@ -32,89 +36,40 @@ For more information on enabling MVC for empty projects, visit https://go.micros
     <div class="container m-0 bg-white mb-5 row p-0 g-0 g-sm-0 g-md-5 text-center">
         <h3 class="text-uppercase">Danh sách công ty nổi bật</h3>
         <div class="container px-0">
-            <div class="row no-gutters justify-content-start">
-                <div class="col-12 col-sm-6 col-md-4 pb-4">
-                   <a asp-controller="Company" asp-action="CompanyDetail" class="text-muted">
-                        <div class="card rounded shadow">
-                            <img src="https://static.topcv.vn/top_lists/88919b2888f93566676c3aead9ccad2c-5c3c110131e72.jpg"
-                                class="card-img-top rounded" style="max-height: 200px" alt="...">
-                            <div class="card-body text-start">
-                                <h5 class="card-title">Card 1</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the card's content.</p>
+            <div class="row">
+                @{
+                    if (Model.Items != null && Model.Items.Count > 0)
+                    {
+                        foreach (var item in Model.Items)
+                        {
+                            <div class="col-6 col-sm-3 pb-4">
+                                <a asp-controller="Company" asp-action="CompanyDetail" asp-route-id="@item.Id" class="text-muted">
+                                    <div class="card rounded shadow">
+                                        <img src=".@item.LogoUrl" class="card-img-top rounded"
+                                            style="height: 150px; object-fit: contain" alt="...">
+                                        <div class="card-body text-start">
+                                            <h5 class="card-title text-nowrap overflow-hidden">@item.CompanyName</h5>
+                                            <p class="card-text overflow-hidden" style="height: 6rem">
+                                                @Regex.Replace(item.Description ?? "", @"<p>|</p>", "")</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </div>
-                   </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 pb-4">
-                    <a asp-controller="Company" asp-action="CompanyDetail" class="text-muted">
-                        <div class="card rounded shadow">
-                            <img src="https://static.topcv.vn/top_lists/ee42f870851bdb21f12e43aa0e58e8c3-5c3c0721000a4.jpg"
-                                class="card-img-top rounded" style="max-height: 200px" alt="...">
-                            <div class="card-body text-start">
-                                <h5 class="card-title">Card 2</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the card's content.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 pb-4">
-                    <a asp-controller="Company" asp-action="CompanyDetail" class="text-muted">
-                        <div class="card rounded shadow">
-                            <img src="https://static.topcv.vn/top_lists/ee42f870851bdb21f12e43aa0e58e8c3-5c3c0721000a4.jpg"
-                                class="card-img-top rounded" style="max-height: 200px" alt="...">
-                            <div class="card-body text-start">
-                                <h5 class="card-title">Card 3</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the card's content.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 pb-4">
-                    <a asp-controller="Company" asp-action="CompanyDetail" class="text-muted">
-                        <div class="card rounded shadow">
-                            <img src="http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQlO_2ts2YDGtpdafB8JDZzGVfyKlmFCn7paIJmTsKhfbev0I3O-OoMwgHJUDjSTc-KbjZge4_FgB2BUqVblVM"
-                                class="card-img-top rounded" style="max-height: 200px" alt="...">
-                            <div class="card-body text-start">
-                                <h5 class="card-title">Card 4</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the card's content.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 pb-4">
-                    <div class="card rounded shadow">
-                        <img src="http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQlO_2ts2YDGtpdafB8JDZzGVfyKlmFCn7paIJmTsKhfbev0I3O-OoMwgHJUDjSTc-KbjZge4_FgB2BUqVblVM"
-                            class="card-img-top rounded" style="max-height: 200px" alt="...">
-                        <div class="card-body text-start">
-                            <h5 class="card-title">Card 5</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 pb-4">
-                    <a asp-controller="Company" asp-action="CompanyDetail" class="text-muted">
-                        <div class="card rounded shadow">
-                            <img src="http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQlO_2ts2YDGtpdafB8JDZzGVfyKlmFCn7paIJmTsKhfbev0I3O-OoMwgHJUDjSTc-KbjZge4_FgB2BUqVblVM"
-                                class="card-img-top rounded" style="max-height: 200px" alt="...">
-                            <div class="card-body text-start">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the card's content.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        }
+                    }
+                }
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+                @{
+                    var pagingModel = new PagingModel()
+                    {
+                        currentPage = Model.PageNumber.Value,
+                        countPages = Model.TotalPages.Value,
+                        generateUrl = (int? page) => Url.Action("TopCompany", "Company", new { area = "", pageNumber = page })
+                    };
+
+                }
+                <partial name="/Views/Shared/_PagingPartial.cshtml" model="@pagingModel" />
             </div>
         </div>
     </div>
