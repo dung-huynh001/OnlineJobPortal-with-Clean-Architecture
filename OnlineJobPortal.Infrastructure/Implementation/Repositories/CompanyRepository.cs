@@ -23,5 +23,16 @@ namespace OnlineJobPortal.Application.Interfaces.Repositories
 
             return company;
         }
+
+        public async Task<Company> GetCompanyDetailById(int companyId)
+        {
+            var result = await context.Companies
+                .Include(c => c.District)
+                .ThenInclude(d => d.Province)
+                .Include(c => c.Employers!)
+                .ThenInclude(e => e.JobPosts)
+                .FirstOrDefaultAsync(c => c.Id.Equals(companyId));
+            return result;
+        }
     }
 }

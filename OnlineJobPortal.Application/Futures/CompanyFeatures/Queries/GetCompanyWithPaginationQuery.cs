@@ -42,8 +42,8 @@ namespace OnlineJobPortal.Application.Futures.CompanyFeatures.Queries
             foreach (var company in Companies)
             {
                 var companyDto = mapper.Map<GetCompanyWithPaginationDto>(company);
-                //var totalJob = await unitOfWork.JobPostRepository.GetTotalJobPostWithCompanyId(companyDto.Id);
-                //companyDto.TotalJob = totalJob;
+                var totalJob = await unitOfWork.JobPostRepository.GetTotalJobPostWithCompanyId(companyDto.Id);
+                companyDto.TotalJob = totalJob;
                 result.Add(companyDto);
             }
             return await result.ToPaginatedListAsync<GetCompanyWithPaginationDto>(request.PageNumber, request.PageSize, cancellationToken);

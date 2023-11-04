@@ -1,8 +1,9 @@
 ﻿@*
-For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+CompanyName, Address, WebsiteUrl, LogoUrl, Description, Location, JobPost
 *@
-@{
-}
+@using OnlineJobPortal.Domain.Entities
+@model Company
+
 <link href="~/css/CompanyPage/company.css" rel="stylesheet" />
 
 <div class="container py-4">
@@ -11,22 +12,26 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             <div class="company-cover rounded position-relative">
                 <img class="w-100 rounded-top"
                     src="https://static.topcv.vn/v4/image/normal-company/cover/company_cover_1.jpg" alt="">
+                <input type="text" hidden id="company-id" value="@Model.Id">
                 <div class="position-absolute company-cover-logo">
-                    <img src="https://cdn-new.topcv.vn/unsafe/140x/filters:format(webp)/https://static.topcv.vn/company_logos/fpt-telecom-595c8c48f0e07_rs.jpg"
-                        class="img-responsive rounded-circle" alt="">
+                    @{
+                        var logoUrl = Model.LogoUrl.Substring(1);
+                    }
+                    <img src="@logoUrl" class="img-responsive rounded-circle" alt="">
                 </div>
                 <div class="p-3 position-relative company-cover-detail">
-                    <h5 class="text-light">FPT Telecome</h5>
+                    <h5 class="text-light">@Model.CompanyName</h5>
                     <div class="row text-light text-start">
                         <div class="col-12 col-sm-12 col-md-3 company-cover-detail-item"><i
                                 class="fa-solid fa-globe"></i>
-                            <a class="text-light" href="">http://fpttelecom.net.vn</a>
+                            <a class="text-light" href=""> @Model.WebsiteUrl</a>
                         </div>
                         <div class="col-12 col-sm-12 col-md-2 company-cover-detail-item"><i
                                 class="fa-solid fa-users"></i> 42
                             nhân viên</div>
                         <div class="col-12 col-sm-12 col-md-7 company-cover-detail-item"><i
-                                class="fa-solid fa-location-dot"></i> Quận 5, TP Hồ Chí Minh</div>
+                                class="fa-solid fa-location-dot"></i> @Model.District.DistrictName,
+                            @Model.District.Province.ProvinceName</div>
                     </div>
                 </div>
             </div>
@@ -39,133 +44,16 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 <div class="company-intro mb-4 rounded">
                     <h2 class="py-2 px-3 company-intro-title text-light rounded-top">Giới thiệu công ty</h2>
                     <div class="bg-light fw-lighter rounded-bottom px-3 py-2 text-mute">
-                        <p>
-                            FPT Telecom – Công ty thành viên có lợi nhuận lớn nhất, quản lý số thành viên đông đảo
-                            nhất
-                            trong Tập đoàn FPT. Đồng thời FPT Telecom cũng là đơn vị FPT đạt nhiều giải thưởng Sao
-                            Khuê
-                            nhất trong 3 năm liền, lọt TOP FAST 500 – Doanh nghiệp tăng trưởng nhanh nhất. Hiện nay,
-                            FPT
-                            Telecom đang ngày càng lớn mạnh và phát triển không ngừng. Với tiêu chí “Sáng tạo – Tăng
-                            trưởng”, chúng tôi đã có mặt tại tại 59 tỉnh, thành trên toàn quốc.
-                        </p>
-                        <p>
-                            Ở FPT Telecom bạn sẽ tìm thấy sức trẻ, lòng nhiệt huyết và tinh thần dám đương đầu với
-                            thử
-                            thách. Hãy cho chúng tôi thấy được sự cam kết và tiềm năng của bạn để giúp chúng tôi đạt
-                            được những mục tiêu chiến lược của công ty, chúng tôi sẽ mở ra cho bạn cơ hội để vươn
-                            tới
-                            những mục tiêu phát triển sự nghiệp của bản thân bạn!
-                        </p>
+                        @Html.Raw(Model.Description)
                     </div>
                 </div>
                 <div class="company-recruit pb-4">
                     <h2 class="py-2 px-3 company-intro-title text-light col-12 rounded-top">Tuyển dụng</h2>
                     <div class="bg-light fw-lighter rounded-bottom px-3 py-2 text-mute" style="min-height: 50vh;">
-                        <div class="job-item p-4 mb-4">
-                            <div class="row g-4">
-                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-5.jpg"
-                                        alt="" style="width: 80px; height: 80px;">
-                                    <div class="text-start ps-4">
-                                        <h5 class="mb-3">Wordpress Developer</h5>
-                                        <span class="text-truncate me-3">
-                                            <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                            INDIA
-                                        </span>
-                                        <span class="text-truncate me-3">
-                                            <i class="far fa-clock text-primary me-2"></i>Full Time
-                                        </span>
-                                        <span class="text-truncate me-0">
-                                            <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                            $456
-                                        </span>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                    <div class="d-flex mb-3">
-                                        <a class="btn btn-light btn-square me-3" href="">
-                                            <i class="far fa-heart text-primary"></i>
-                                        </a>
-                                        <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                    </div>
-                                    <small class="text-truncate">
-                                        <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                        2045
-                                    </small>
-                                </div>
-                            </div>
+                        <div id="job-post-list">
                         </div>
-                        <div class="job-item p-4 mb-4">
-                            <div class="row g-4">
-                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-5.jpg"
-                                        alt="" style="width: 80px; height: 80px;">
-                                    <div class="text-start ps-4">
-                                        <h5 class="mb-3">Wordpress Developer</h5>
-                                        <span class="text-truncate me-3">
-                                            <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                            INDIA
-                                        </span>
-                                        <span class="text-truncate me-3">
-                                            <i class="far fa-clock text-primary me-2"></i>Full Time
-                                        </span>
-                                        <span class="text-truncate me-0">
-                                            <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                            $456
-                                        </span>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                    <div class="d-flex mb-3">
-                                        <a class="btn btn-light btn-square me-3" href="">
-                                            <i class="far fa-heart text-primary"></i>
-                                        </a>
-                                        <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                    </div>
-                                    <small class="text-truncate">
-                                        <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                        2045
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job-item p-4 mb-4">
-                            <div class="row g-4">
-                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid border rounded" src="././img/com-logo-5.jpg"
-                                        alt="" style="width: 80px; height: 80px;">
-                                    <div class="text-start ps-4">
-                                        <h5 class="mb-3">Wordpress Developer</h5>
-                                        <span class="text-truncate me-3">
-                                            <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                            INDIA
-                                        </span>
-                                        <span class="text-truncate me-3">
-                                            <i class="far fa-clock text-primary me-2"></i>Full Time
-                                        </span>
-                                        <span class="text-truncate me-0">
-                                            <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                            $456
-                                        </span>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                    <div class="d-flex mb-3">
-                                        <a class="btn btn-light btn-square me-3" href="">
-                                            <i class="far fa-heart text-primary"></i>
-                                        </a>
-                                        <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                    </div>
-                                    <small class="text-truncate">
-                                        <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                        2045
-                                    </small>
-                                </div>
-                            </div>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <a role="button" class="btn btn-primary" id="btn-see-more">Xem thêm</a>
                         </div>
                     </div>
                 </div>
@@ -179,11 +67,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         <i class="fa-solid fa-location-dot"></i>
                         <span class="text-dark px-3">Địa chỉ công ty</span>
                     </p>
-                    <p>
-                        29B-31B-33B, Đường Tân Thuận, Khu chế xuất Tân Thuận, Phường Tân Thuận Đông, Quận 7, Thành
-                        phố
-                        Hồ Chí Minh
-                    </p>
+                    <p>@Model.Address</p>
                     <hr class="dropdown-divided">
                 </div>
                 <div class="fw-lighter rounded-bottom px-3 text-mute pb-4">
@@ -192,7 +76,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         <span class="text-dark px-3">Chia sẻ công việc tới bạn bè</span>
                     </p>
                     <div class="border border-muted rounded py-2 ps-2 pe-5 position-relative">
-                        <input id="share-job-link" readonly value="https://www.topcv.vn/cong-ty/fpt-telecom/4362.html"
+                        <input id="share-job-link" readonly value="@Model.WebsiteUrl"
                             class="fw-lighter text-muted bg-transparent border-0 w-100" style="outline: none;">
                         <button
                             class="position-absolute btn btn-sm btn-outline-none btn-outline-primary top-50 translate-middle-y ms-2"
@@ -206,10 +90,150 @@ For more information on enabling MVC for empty projects, visit https://go.micros
     </div>
 </div>
 
-<script>
-    function copyToClipboard() {
-        var input = document.getElementById("share-job-link");
-        input.select();
-        document.execCommand("copy");
-    }
-</script>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            const jobPostList = $('#job-post-list');
+            const btnMore = $('#btn-see-more');
+            const companyId = $('#company-id').val();
+
+            function copyToClipboard() {
+                var input = document.getElementById("share-job-link");
+                input.select();
+                document.execCommand("copy");
+            }
+            renderSpinner();
+            $.ajax({
+                type: "get",
+                dataType: "json",
+                url: "/Company/GetJobWithPaginationByCompanyId",
+                data: { id: companyId, currentItems: 0 },
+                success: function (res) {
+                    if (res.items != null && res.items.length > 0) {
+                        for (let i = 0; i < res.items.length; i++) {
+                            renderJobPost(res.items[i]);
+                        }
+                        if (res.items.length >= res.totalCount) {
+                            btnMore.hide();
+                        } else {
+                            btnMore.show();
+                        }
+                    } else {
+                        btnMore.hide();
+                        renderEmptyPage();
+                    }
+                    removeSpinner();
+                },
+                error: function (err) {
+                    btnMore.hide();
+                    removeSpinner();
+                    renderEmptyPage();
+                }
+            });
+
+            function fetchData(id, currentItems) {
+                $.ajax({
+                    type: "get",
+                    dataType: "json",
+                    url: "/Company/GetJobWithPaginationByCompanyId",
+                    data: { id: id, currentItems: currentItems },
+                    success: function (res) {
+                        if (res.items != null && res.items.length > 0) {
+                            for (let i = 0; i < res.items.length; i++) {
+                                renderJobPost(res.items[i]);
+                            }
+                            if (res.items.length + currentItems >= res.totalCount) {
+                                btnMore.hide();
+                            } else {
+                                btnMore.show();
+                            }
+                        } else {
+                            btnMore.hide();
+                            if(currentItems == 0)
+                                renderEmptyPage();
+                        }
+                        removeSpinner();
+                    },
+                    error: function (err) {
+                        btnMore.hide();
+                        removeSpinner();
+                        if(currentItems == 0)
+                            renderEmptyPage();
+                    }
+                });
+            }
+
+            btnMore.click(function () {
+                var currentItems = $('.job-item').length;
+                fetchData(companyId, currentItems)
+            })
+
+            function renderSpinner() {
+                const spinner = `
+                            <div class="d-flex justify-content-center align-items-center spinner">
+                                <div class="spinner-border text-success" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>`;
+                jobPostList.append(spinner);
+            }
+
+            function removeSpinner() {
+                $('.spinner').remove();
+            }
+
+            function renderEmptyPage() {
+                const emptyPage = `
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="../../img/no-result-found.jpg" alt="" style="max-width: 550px; max-height: 280px;" />
+                        </div>`;
+                jobPostList.append(emptyPage);
+            }
+
+            function renderJobPost(item) {
+                var jobPostHtml = `
+                        <div class="job-item p-4 mb-4">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded-3" src="../../${item.logoUrl}" alt=""
+                                        style="width: 90px; height: 90px;">
+                                    <div class="text-start ps-4">
+                                        <a href="/JobPost/JobDetail/${item.id}" target="_blank"><h5 class="mb-2">${item.title}</h5></a>
+                                        <div class="p-0 mb-2 ">
+                                            <a href="/Company/CompanyDetail/${item.companyId}"
+                                                target="_blank" class="text-uppercase text-muted">${item.companyName}</a>
+                                        </div>
+                                        <div
+                                            class="d-flex flex-wrap gap-3 mb-2 text-capitalize text-primary skills-wrapper">
+                                            ${item.skills.map((skill) => `<span>${skill}</span>`).join("")}
+                                        </div>
+                                        <span class="text-truncate me-3">
+                                            <i class="fa fa-map-marker-alt text-primary me-2"></i>${item.province}
+                                        </span>
+                                        <span class="text-truncate me-3">
+                                            <i class="far fa-clock text-primary me-2"></i>${item.employmentType}
+                                        </span>
+                                        <span class="text-truncate me-0">
+                                            <i class="far fa-money-bill-alt text-primary me-2"></i>${item.salary}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href="">
+                                            <i class="far fa-heart text-primary"></i>
+                                        </a>
+                                        <a class="btn btn-primary" href="">Ứng tuyển</a>
+                                    </div>
+                                    <span class="text-truncate">
+                                        <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: ${item.expiredDate}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>`;
+                jobPostList.append(jobPostHtml);
+            }
+        });
+    </script>
+}

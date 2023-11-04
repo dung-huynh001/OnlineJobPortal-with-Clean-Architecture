@@ -10,17 +10,12 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.Futures.CompanyFeatures.Queries
 {
-    public class GetCompanyDetailQuery: IRequest<Company>
+    public class GetCompanyDetailQuery : IRequest<Company>
     {
-        public int employerId { get; set; }
-        public GetCompanyDetailQuery()
+        public int Id { get; set; }
+        public GetCompanyDetailQuery(int id)
         {
-            
-        }
-
-        public GetCompanyDetailQuery(int employerId)
-        {
-            this.employerId = employerId;
+            Id = id;
         }
     }
 
@@ -36,9 +31,8 @@ namespace OnlineJobPortal.Application.Futures.CompanyFeatures.Queries
         }
         public async Task<Company> Handle(GetCompanyDetailQuery request, CancellationToken cancellationToken)
         {
-            var result = await unitOfWork.CompanyRepository.GetCompanyByEmployerId(request.employerId);
+            var result = await unitOfWork.CompanyRepository.GetCompanyDetailById(request.Id);
             return result;
         }
     }
-
 }
