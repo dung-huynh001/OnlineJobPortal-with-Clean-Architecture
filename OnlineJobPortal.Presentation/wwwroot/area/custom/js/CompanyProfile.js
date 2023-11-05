@@ -36,22 +36,20 @@ $(document).ready(function () {
     }
     $("input[name='Address']").val(address);
   });
-
-  
 });
 $("#CompanyLogo").change(function (e) {
   var img = $("#logoCompanyImg");
 
   if (e.target.files.length > 0) {
-      var file = e.target.files[0];
-      var reader = new FileReader();
+    var file = e.target.files[0];
+    var reader = new FileReader();
 
-      reader.onload = function (event) {
-          img.attr("src", event.target.result);
-      };
+    reader.onload = function (event) {
+      img.attr("src", event.target.result);
+    };
 
-      reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
   } else {
-      img.attr("src", "");
+    img.attr("src", "");
   }
 });

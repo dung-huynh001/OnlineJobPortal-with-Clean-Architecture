@@ -17,6 +17,7 @@ namespace OnlineJobPortal.Application.DTOs.JobPostDto
         public string Province { get; set; }
         public string ExpiredDate { get; set; }
         public ICollection<string> Skills { get; set; }
+        public string Level { get; set; }
         public int EmployerId { get; set; }
         public int CompanyId { get; set; }
         public string CompanyName { get; set; }

@@ -61,7 +61,7 @@
             </div>
             <div class="d-flex justify-content-center mt-2">
                 @{
-                    var pagingModel = new PagingModel()
+                    var pagingModel = new PagingMPAModel()
                     {
                         currentPage = Model.PageNumber.Value,
                         countPages = Model.TotalPages.Value,
@@ -69,7 +69,7 @@
                     };
 
                 }
-                <partial name="/Views/Shared/_PagingPartial.cshtml" model="@pagingModel" />
+                <partial name="/Views/Shared/_PagingMPAPartial.cshtml" model="@pagingModel" />
             </div>
         </div>
     </div>
