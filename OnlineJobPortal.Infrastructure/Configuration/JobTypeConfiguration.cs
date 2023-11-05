@@ -41,7 +41,12 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 new JobType { Id = 9, JobTypeName = "Design & Creative", JobTypeIcon = "fa-paint-brush" },
                 new JobType { Id = 10, JobTypeName = "System Admin", JobTypeIcon = "fa-server" },
                 new JobType { Id = 11, JobTypeName = "DevOps", JobTypeIcon = "fa-cogs" },
-                new JobType { Id = 12, JobTypeName = "System Security", JobTypeIcon = "fa-shield-alt" }
+                new JobType { Id = 12, JobTypeName = "System Security", JobTypeIcon = "fa-shield-alt" },
+                new JobType { Id = 13, JobTypeName = "IT Support", JobTypeIcon = "fa-headset" },
+                new JobType { Id = 14, JobTypeName = "IT Helpdesk", JobTypeIcon = "fa-circle-question" },
+                new JobType { Id = 15, JobTypeName = "Frontend Developer", JobTypeIcon = "fa-code" },
+                new JobType { Id = 16, JobTypeName = "Backend Developer", JobTypeIcon = "fa-database" },
+                new JobType { Id = 17, JobTypeName = "Fullstack Developer", JobTypeIcon = "fa-layer-group" },
             };
             builder.HasData(jobTypes);
         }

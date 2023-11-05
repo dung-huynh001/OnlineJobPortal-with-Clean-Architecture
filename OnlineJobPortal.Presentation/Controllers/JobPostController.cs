@@ -1,10 +1,15 @@
 ﻿using AutoMapper;
+using Humanizer;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using OnlineJobPortal.Application;
+using OnlineJobPortal.Application.DTOs.JobPostDto;
 using OnlineJobPortal.Application.Futures.JobPostFeatures.Queries;
 using OnlineJobPortal.Domain.Enums;
 using OnlineJobPortal.Presentation.Models;
+using System.Globalization;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace OnlineJobPortal.Presentation.Controllers
 {
@@ -24,58 +29,56 @@ namespace OnlineJobPortal.Presentation.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetJobWithPagination(ConditionViewModel condition)
+        public IActionResult GetJobWithPagination(ConditionViewModel condition)
         {
             try
             {
                 int pageSize = 5;
-                int currentItems = condition.currentItems ?? 0;
-                int pageNumber = currentItems / pageSize + 1;
-
-                pageNumber = currentItems % pageSize == 0 ? currentItems / pageSize + 1 : pageNumber = currentItems / pageSize + 2;
-
-                if (currentItems % pageSize != 0)
-                    throw new Exception();
-
-                var request = new GetJobPostWithPaginationQuery(pageNumber, pageSize);
-                var items = mediator.Send(request).GetAwaiter().GetResult();
+                int pageNumber = condition.pageNumber ?? 0;
+                var request = new GetAllJobPostQuery();
+                var response = mediator.Send(request).GetAwaiter().GetResult();
 
                 if (condition.sortBy != null)
                 {
                     switch (condition.sortBy.ToLower())
                     {
-                        case "all":
-                            items.Items = items.Items.OrderByDescending(i => i.CreateAt).ToList();
-                            break;
                         case "fulltime":
-                            items.Items = items.Items.Where(i => i.EmploymentType.Equals("FullTime")).ToList();
+                            response = response.Where(i => i.EmploymentType.ToLower().Equals("fulltime")).ToList();
                             break;
                         case "parttime":
-                            items.Items = items.Items.Where(i => i.EmploymentType.Equals("PartTime")).ToList();
+                            response = response.Where(i => i.EmploymentType.ToLower().Equals("parttime")).ToList();
                             break;
                         case "remote":
-                            items.Items = items.Items.Where(i => i.EmploymentType.Equals("Remote")).ToList();
+                            response = response.Where(i => i.EmploymentType.ToLower().Equals("remote")).ToList();
                             break;
                         case "freelancer":
-                            items.Items = items.Items.Where(i => i.EmploymentType.Equals("Freelancer")).ToList();
+                            response = response.Where(i => i.EmploymentType.ToLower().Equals("freelancer")).ToList();
                             break;
                     }
                 }
 
-                items.Items = items.Items.OrderByDescending(i => i.CreateAt).ToList();
 
-
+                response = response.OrderByDescending(i => i.CreateAt).ToList();
                 string? keyword = condition.keyword?.ToLower();
                 string? level = condition.level?.ToLower();
-                string? provinceName = condition.provinceName?.ToLower();
-                string? salary = condition.salary?.ToLower();
+                level = (level != null && (level.Contains("kinh nghiệm") || level.Contains("tất cả"))) ? "" : level;
+                
+                string? provinceName = condition.provinceName?.Trim().ToLower();
+                provinceName = (provinceName != null && provinceName.Contains("tất cả thành phố")) ? "" : provinceName;
+                int? salary = condition.salary;
 
-                items.Items = items.Items
-                        .Where(i => i.Title.ToLower().Contains(keyword ?? "") 
-                        && i.Province.ToLower().Contains(provinceName ?? ""))
-                        .ToList();
+                //Lọc theo các điều kiện
+                response = response.Where(i => (i.Title.ToLower().Contains(keyword ?? "") 
+                || i.Title.ToLower().Contains(keyword ?? "") 
+                || i.CompanyName.ToLower().Contains(keyword ?? "")
+                || i.Skills.Any(s => s.ToLower().Contains(keyword ?? "")))
+                    && i.Province.ToLower().Contains(provinceName ?? "") 
+                    && isSalaryInRange(salary, i.Salary)
+                    && i.Level.ToLower().Contains(level ?? ""))
+                    .ToList();
 
-                return Json(items);
+                var data = response.ToPaginatedListAsync(pageNumber, pageSize, new CancellationToken()).GetAwaiter().GetResult();
+                return Json(data);
             }
             catch (Exception ex)
             {
@@ -83,30 +86,86 @@ namespace OnlineJobPortal.Presentation.Controllers
             }
         }
 
+        private bool isSalaryInRange(int? salary, string range)
+        {
+            if (salary == null) return true;
+            range = range.Replace("triệu", "");
+            range = range.ToLower().Trim();
+            if (range.Equals("thỏa thuận"))
+                return true;
 
-
-
-        public IActionResult FindJob()
+            if (range.Contains("-"))
             {
-                return View();
+                int min;
+                Int32.TryParse(range.Substring(0, range.IndexOf(" ")).Trim(), out min);
+                int max;
+                Int32.TryParse(range.Substring(range.LastIndexOf(" ")).Trim(), out max);
+                switch (salary)
+                {
+                    case 0:
+                        return true;
+                    case 1:
+                        return max <= 10;
+                    case 2:
+                        return (max < 10 || 15 < min) ? false : true;
+                    case 3:
+                        return (max < 15 || 20 < min) ? false : true;
+                    case 4:
+                        return (max < 20 || 25 < min) ? false : true;
+                    case 5:
+                        return (max > 25 || min > 25);
+                    default:
+                        return true;
+                }
             }
-
-            [HttpGet]
-            public IActionResult JobDetail(int id)
+            else
             {
-                var data = mediator.Send(new GetJobPostDetailQuery(id)).GetAwaiter().GetResult();
-                return View(data);
-            }
-
-
-            public IActionResult GetJobListWithCondition(ConditionViewModel condition)
-            {
-                return View();
-            }
-
-            public IActionResult FresherJob()
-            {
-                return View();
+                int about;
+                Int32.TryParse(range.Trim(), out about);
+                switch (salary)
+                {
+                    case 0:
+                        return true;
+                    case 1:
+                        return about <= 10;
+                    case 2:
+                        return (about > 10 && about <= 15);
+                    case 3:
+                        return (about > 15 || about <= 20);
+                    case 4:
+                        return (about > 20 || about <= 25);
+                    case 5:
+                        return (about >= 25);
+                    default:
+                        return true;
+                }
             }
         }
+
+        [HttpGet]
+        public IActionResult GetPagingPartial(int currentPage, int countPages)
+        {
+            var pagingModel = new PagingSPAModel();
+            pagingModel.currentPage = currentPage;
+            pagingModel.countPages = countPages;
+            return PartialView("_PagingSPAPartial", pagingModel);
+        }
+
+        public IActionResult FindJob()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult JobDetail(int id)
+        {
+            var data = mediator.Send(new GetJobPostDetailQuery(id)).GetAwaiter().GetResult();
+            return View(data);
+        }
+
+        public IActionResult FresherJob()
+        {
+            return View();
+        }
     }
+}

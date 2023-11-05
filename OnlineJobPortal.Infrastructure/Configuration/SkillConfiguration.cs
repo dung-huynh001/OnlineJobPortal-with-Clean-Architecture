@@ -31,7 +31,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
 
             var itSkills = new List<string> {
                 "Java", "C#", "Python", "JavaScript", "SQL", "HTML/CSS", "React", "Angular", "Node.js", "AWS", 
-                "Docker", "Ruby", "Swift", "PHP", "Kotlin", "C++", "Spring Framework", "ASP.NET", "Ruby on Rails", 
+                "Docker", "Ruby", "Swift", "PHP", "Kotlin", "C++", "Spring Framework", ".NET", "ASP.NET", "Ruby on Rails", 
                 "Git", "Linux", "Android Development", "iOS Development", "Machine Learning", "Data Science", 
                 "Cybersecurity", "Networking", "Cloud Computing", "Big Data", "DevOps", "Agile/Scrum", "UI/UX Design", 
                 "Blockchain", "IoT (Internet of Things)", "Game Development", "Front-end Development", "Back-end Development", 

@@ -45,7 +45,7 @@ namespace OnlineJobPortal.Presentation.Controllers
 
                 GetJobTypeWithPaginationQuery request = new GetJobTypeWithPaginationQuery(pageNumber, pageSize);
                 var data = mediator.Send(request).GetAwaiter().GetResult();
-
+                data.Items = data.Items.OrderByDescending(i => i.TotalJobPost).ToList();
                 return Json(data);
             }
             catch(Exception ex)
