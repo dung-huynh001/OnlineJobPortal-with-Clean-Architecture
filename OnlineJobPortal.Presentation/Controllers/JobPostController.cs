@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using OnlineJobPortal.Application;
 using OnlineJobPortal.Application.DTOs.JobPostDto;
+using OnlineJobPortal.Application.Futures.CompanyFeatures.Queries;
 using OnlineJobPortal.Application.Futures.JobPostFeatures.Queries;
+using OnlineJobPortal.Application.Futures.JobTypeFeatures.Queries;
 using OnlineJobPortal.Domain.Enums;
 using OnlineJobPortal.Presentation.Models;
 using System.Globalization;
@@ -165,7 +167,83 @@ namespace OnlineJobPortal.Presentation.Controllers
 
         public IActionResult FresherJob()
         {
-            return View();
+            try
+            {
+                var request = new GetCompanyWithPaginationQuery(0, 10);
+                var data = mediator.Send(request).GetAwaiter().GetResult();
+
+                data.Items = data.Items.OrderByDescending(i => i.TotalJob).ToList();
+                return View(data);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public async Task<IActionResult> JobByCategory(int categoryId) 
+        {
+            var request = new GetJobTypeByIdQuery(categoryId);
+            var result = await mediator.Send(request); 
+            return View(result);
+        }
+
+        [HttpGet]
+        public IActionResult GetJobByCategory(int categoryId, ConditionViewModel condition)
+        {
+            try
+            {
+                int pageSize = 5;
+                int pageNumber = condition.pageNumber ?? 0;
+                var request = new GetJobPostByCategoryQuery(categoryId);
+                var response = mediator.Send(request).GetAwaiter().GetResult();
+
+                if (condition.sortBy != null)
+                {
+                    switch (condition.sortBy.ToLower())
+                    {
+                        case "fulltime":
+                            response = response.Where(i => i.EmploymentType.ToLower().Equals("fulltime")).ToList();
+                            break;
+                        case "parttime":
+                            response = response.Where(i => i.EmploymentType.ToLower().Equals("parttime")).ToList();
+                            break;
+                        case "remote":
+                            response = response.Where(i => i.EmploymentType.ToLower().Equals("remote")).ToList();
+                            break;
+                        case "freelancer":
+                            response = response.Where(i => i.EmploymentType.ToLower().Equals("freelancer")).ToList();
+                            break;
+                    }
+                }
+
+
+                response = response.OrderByDescending(i => i.CreateAt).ToList();
+                string? keyword = condition.keyword?.ToLower();
+                string? level = condition.level?.ToLower();
+                level = (level != null && (level.Contains("kinh nghiệm") || level.Contains("tất cả"))) ? "" : level;
+
+                string? provinceName = condition.provinceName?.Trim().ToLower();
+                provinceName = (provinceName != null && provinceName.Contains("tất cả thành phố")) ? "" : provinceName;
+                int? salary = condition.salary;
+
+                //Lọc theo các điều kiện
+                response = response.Where(i => (i.Title.ToLower().Contains(keyword ?? "")
+                || i.Title.ToLower().Contains(keyword ?? "")
+                || i.CompanyName.ToLower().Contains(keyword ?? "")
+                || i.Skills.Any(s => s.ToLower().Contains(keyword ?? "")))
+                    && i.Province.ToLower().Contains(provinceName ?? "")
+                    && isSalaryInRange(salary, i.Salary)
+                    && i.Level.ToLower().Contains(level ?? ""))
+                    .ToList();
+
+                var data = response.ToPaginatedListAsync(pageNumber, pageSize, new CancellationToken()).GetAwaiter().GetResult();
+                return Json(data);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = ex.Message });
+            }
         }
     }
 }

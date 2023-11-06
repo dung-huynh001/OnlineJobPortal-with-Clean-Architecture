@@ -1,0 +1,141 @@
+﻿@using OnlineJobPortal.Domain.Entities
+@model JobType
+<link href="~/area/assets/plugins/chosen/chosen.min.css" rel="stylesheet">
+
+<!-- Header End -->
+<div class="container-fluid py-5 bg-dark page-header mb-3">
+    <div class="container my-5 pt-5 pb-4">
+        <input id="job-type-id" type="text" hidden value="@Model.Id">
+        <h2 class="display-3 text-white mb-3 animated slideInDown text-uppercase">@Model.JobTypeName</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+                <li class="breadcrumb-item text-white">
+                    <a asp-area="" asp-controller="JobPost" asp-action="FindJob">
+                        Tìm
+                        kiếm việc làm
+                    </a>
+                </li>
+                <li class="breadcrumb-item text-white active" aria-current="page">@Model.JobTypeName</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Header End -->
+<div class="container-fluid py-0">
+    <div class="container">
+        <h1 class="text-center my-5 wow fadeInUp" data-wow-delay="0.1s">Việc làm @Model.JobTypeName</h1>
+        <!-- Search Start -->
+        <div class="container-fluid bg-primary mb-3 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+            <div class="container">
+                <div class="row g-2">
+                    <div class="col-md-10">
+                        <div class="row g-2">
+                            <div class="col-md-3">
+                                <input type="text" class="form-control border-0" placeholder="Tìm theo từ khóa"
+                                    id="search-job" />
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select border-0" id="exp-selector">
+                                    <option style="display:none" value="">Kinh nghiệm</option>
+                                    <option value="7">Tất cả</option>
+                                    <option value="1">Intern</option>
+                                    <option value="2">Fresher</option>
+                                    <option value="3">Junior</option>
+                                    <option value="4">Middle</option>
+                                    <option value="5">Senior</option>
+                                    <option value="6">Expert</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select ls_province" style="height: 36px;"></select>
+                                <select class="form-select ls_district" hidden></select>
+                                <select class="form-select ls_ward" hidden></select>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select border-0" id="salary-selector">
+                                    <option style="display:none"><i class="fa-regular fa-star"></i>Mức lương</option>
+                                    <option value="0">Tất cả</option>
+                                    <option value="1">Dưới 10 triệu</option>
+                                    <option value="2">10 - 15 triệu</option>
+                                    <option value="3">15 - 20 triệu</option>
+                                    <option value="4">20 - 25 triệu</option>
+                                    <option value="5">Trên 25 triệu</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-dark border-0 w-100" id="btn-find">Tìm kiếm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search End -->
+        <!-- Jobs Start -->
+        <div class="container-fluid py-3">
+            <div class="container">
+                <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <ul class="nav nav-pills d-inline-flex justify-content-between max-vh-100  border-bottom mb-4">
+                        <li class="nav-item">
+                            <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active filter-btn"
+                                data-sort="all" data-bs-toggle="pill" href="#tab-1">
+                                <h6 class="mt-n1 mb-0">Tất cả</h6>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex align-items-center text-start mx-3 pb-3 filter-btn" data-sort="fulltime"
+                                data-bs-toggle="pill" href="#tab-1">
+                                <h6 class="mt-n1 mb-0">Full Time</h6>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 filter-btn"
+                                data-sort="parttime" data-bs-toggle="pill" href="#tab-1">
+                                <h6 class="mt-n1 mb-0">Part Time</h6>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 filter-btn" data-sort="remote"
+                                data-bs-toggle="pill" href="#tab-1">
+                                <h6 class="mt-n1 mb-0">Remote</h6>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 filter-btn"
+                                data-sort="freelancer" data-bs-toggle="pill" href="#tab-1">
+                                <h6 class="mt-n1 mb-0">Freelancer</h6>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                            <div class="d-flex justify-content-between align-items-baseline">
+                                <div class="text-start">
+                                    Có <span class="text-primary fw-bold total-job">0</span> công việc <span
+                                        class="d-none d-lg-inline-block">phù hợp</span>
+                                </div>
+                                <div class="text-nowrap paging-partial-container"></div>
+                            </div>
+                            <div class="job-post-list min-vh-100"></div>
+                            <div class="d-flex justify-content-between align-items-baseline">
+                                <div class="text-start">
+                                    Có <span class="text-primary fw-bold total-job">0</span> công việc <span
+                                        class="d-none d-lg-inline-block">phù hợp</span>
+                                </div>
+                                <div class="text-nowrap paging-partial-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Jobs End -->
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/area/assets/plugins/vietnamlocal/vietnamlocalselector.min.js"></script>
+    <script src="~/js/JobByCategoryPage/jobbycategory.js"></script>
+}

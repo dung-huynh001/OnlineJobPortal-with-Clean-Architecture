@@ -1,8 +1,6 @@
-﻿@*
-For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using OnlineJobPortal.Application.Responses
+@using OnlineJobPortal.Application.DTOs.CompanyDto
+@model PaginatedResult<GetCompanyWithPaginationDto>
 
 <link href="~/area/assets/plugins/chosen/chosen.min.css" rel="stylesheet">
 
@@ -10,7 +8,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
     .company-item {
         border: 1px solid transparent;
         border-radius: 2px;
-        box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
         transition: 0.5s;
     }
 
@@ -36,38 +34,22 @@ For more information on enabling MVC for empty projects, visit https://go.micros
     <div class="container">
         <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Danh sách việc làm IT Fresher</h1>
         <!-- Search Start -->
-        <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+        <div class="container-fluid bg-primary mb-3 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
             <div class="container">
                 <div class="row g-2">
                     <div class="col-md-10">
                         <div class="row g-2">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <input type="text" class="form-control border-0" placeholder="Tìm theo từ khóa"
                                     id="search-job" />
                             </div>
-                            <div class="col-md-3">
-                                <select class="form-select border-0 form-control" id="exp-selector">
-                                    <option style="display:none"><i class="fa-regular fa-star"></i> Kinh nghiệm</option>
-                                    <option value="7">Tất cả</option>
-                                    <option value="1">Intern</option>
-                                    <option value="2">Fresher</option>
-                                    <option value="3">Junior</option>
-                                    <option value="4">Middle</option>
-                                    <option value="5">Senior</option>
-                                    <option value="6">Expert</option>
-                                    <option value="0">Không yêu cầu</option>
-                                </select>
+
+                            <div class="col-md-4">
+                                <select class="form-select ls_province" style="height: 36px;"></select>
+                                <select class="form-select ls_district" hidden></select>
+                                <select class="form-select ls_ward" hidden></select>
                             </div>
-                            <div class="col-md-3">
-                                <select class="form-select border-0 form-control" id="local-selector">
-                                    <option style="display:none"><i class="fa-regular fa-star"></i>Địa điểm</option>
-                                    <option value="0">Tất cả</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <select class="form-select border-0" id="salary-selector">
                                     <option style="display:none"><i class="fa-regular fa-star"></i>Mức lương</option>
                                     <option value="0">Tất cả</option>
@@ -78,10 +60,21 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                     <option value="5">Trên 25 triệu</option>
                                 </select>
                             </div>
+                            <div class="d-none">
+                                <select class="form-select border-0" id="exp-selector">
+                                    <option value="7">Tất cả</option>
+                                    <option value="1">Intern</option>
+                                    <option value="2" selected>Fresher</option>
+                                    <option value="3">Junior</option>
+                                    <option value="4">Middle</option>
+                                    <option value="5">Senior</option>
+                                    <option value="6">Expert</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-dark border-0 w-100">Tìm kiếm</button>
+                        <button class="btn btn-dark border-0 w-100" id="btn-find">Tìm kiếm</button>
                     </div>
                 </div>
             </div>
@@ -91,597 +84,90 @@ For more information on enabling MVC for empty projects, visit https://go.micros
         <div class="container-fluid py-5 g-0">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-lg-9 tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
-                        <ul class="nav nav-pills d-inline-flex justify-content-around border-bottom mb-5 w-100">
+                    <div class="col-12 col-lg-8 tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
+                        <ul class="nav nav-pills d-inline-flex justify-content-around w-100  border-bottom mb-4">
                             <li class="nav-item">
-                                <a class="d-flex align-items-center text-start mx-3 pb-3 active" data-bs-toggle="pill"
-                                    href="#tab-2">
+                                <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active filter-btn"
+                                    data-sort="all" data-bs-toggle="pill" href="#tab-1">
+                                    <h6 class="mt-n1 mb-0">Tất cả</h6>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="d-flex align-items-center text-start mx-3 pb-3 filter-btn"
+                                    data-sort="fulltime" data-bs-toggle="pill" href="#tab-1">
                                     <h6 class="mt-n1 mb-0">Full Time</h6>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill"
-                                    href="#tab-3">
+                                <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 filter-btn"
+                                    data-sort="parttime" data-bs-toggle="pill" href="#tab-1">
                                     <h6 class="mt-n1 mb-0">Part Time</h6>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill"
-                                    href="#tab-3">
+                                <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 filter-btn"
+                                    data-sort="remote" data-bs-toggle="pill" href="#tab-1">
                                     <h6 class="mt-n1 mb-0">Remote</h6>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill"
-                                    href="#tab-3">
+                                <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 filter-btn"
+                                    data-sort="freelancer" data-bs-toggle="pill" href="#tab-1">
                                     <h6 class="mt-n1 mb-0">Freelancer</h6>
                                 </a>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane fade show p-0 active">
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-1.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Software Engineer</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <div class="text-start">
+                                        Có <span class="text-primary fw-bold total-job"></span> công việc <span
+                                            class="d-none d-lg-inline-block">phù hợp</span>
                                     </div>
+                                    <div class="text-nowrap paging-partial-container my-4"></div>
                                 </div>
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-2.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Marketing Manager</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
+                                <div class="job-post-list min-vh-100"></div>
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <div class="text-start">
+                                        Có <span class="text-primary fw-bold total-job"></span> công việc <span
+                                            class="d-none d-lg-inline-block">phù hợp</span>
                                     </div>
+                                    <div class="text-nowrap paging-partial-container"></div>
                                 </div>
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-3.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Product Designer</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-4.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Creative Director</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-5.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Wordpress Developer</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a class="btn btn-primary py-3 px-5" href="">Xem thêm việc làm</a>
-                            </div>
-                            <div id="tab-2" class="tab-pane fade show p-0">
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-1.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Software Engineer</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-2.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Marketing Manager</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-3.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Product Designer</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-4.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Creative Director</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-5.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Wordpress Developer</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a class="btn btn-primary py-3 px-5" href="">Xem thêm việc làm</a>
-                            </div>
-                            <div id="tab-3" class="tab-pane fade show p-0">
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-1.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Software Engineer</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-2.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Marketing Manager</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-3.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Product Designer</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-4.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Creative Director</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-item p-4 mb-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid border rounded"
-                                                src="~/img/com-logo-5.jpg" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-4">
-                                                <h5 class="mb-3">Wordpress Developer</h5>
-                                                <span class="text-truncate me-3">
-                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa,
-                                                    INDIA
-                                                </span>
-                                                <span class="text-truncate me-3">
-                                                    <i class="far fa-clock text-primary me-2"></i>Full Time
-                                                </span>
-                                                <span class="text-truncate me-0">
-                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>$123 -
-                                                    $456
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                            <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href="">
-                                                    <i class="far fa-heart text-primary"></i>
-                                                </a>
-                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
-                                            </div>
-                                            <small class="text-truncate">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: 01 Jan,
-                                                2045
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a class="btn btn-primary py-3 px-5" href="">Xem thêm công việc</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 d-none d-lg-block">
-                        <div class="row gap-3 ps-3">
-                            <h5 class="col-12 border-bottom p-2 mb-3 text-center">Top công ty nổi bật</h5>
-                            <div class="col-12 col-12 company-item d-flex gap-3 bg-white p-3 rounded-2 ">
-                                <img src="https://cdn-new.topcv.vn/unsafe/48x/filters:format(webp)/https://static.topcv.vn/company_logos/fpt-software-6073b38a10cb4.jpg"
-                                    alt="" style="width: 40px; height: 40px;">
-                                <div class="d-flex flex-column">
-                                    <p class="fw-bold my-0 text-black" style="font-size: 16px;">FPT Software</p>
-                                    <p class="m-0 text-muted" style="font-size: 13px;">55 tin ứng tuyển</p>
-                                </div>
+                    <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-3 d-none d-lg-block align-self-start border rounded-2 p-3 wow fadeInUp"
+                        data-wow-delay="0.3s">
+                        <div class="d-flex flex-column justify-content-center align-items-stretch gap-3">
+                            <div class="text-center border-bottom">
+                                <span
+                                    class="fw-bold fs-5 text-primary animated hinge flash infinite text-capitalize ">Top
+                                    công ty nổi bật</span>
                             </div>
-                            <div class="col-12 company-item d-flex gap-3 bg-white p-3 rounded-2 ">
-                                <img src="https://cdn-new.topcv.vn/unsafe/48x/filters:format(webp)/https://static.topcv.vn/company_logos/fpt-software-6073b38a10cb4.jpg"
-                                    alt="" style="width: 40px; height: 40px;">
-                                <div class="d-flex flex-column">
-                                    <p class="fw-bold my-0 text-black" style="font-size: 16px;">FPT Software</p>
-                                    <p class="m-0 text-muted" style="font-size: 13px;">55 tin ứng tuyển</p>
-                                </div>
-                            </div>
-                            <div class="col-12 company-item d-flex gap-3 bg-white p-3 rounded-2 ">
-                                <img src="https://cdn-new.topcv.vn/unsafe/48x/filters:format(webp)/https://static.topcv.vn/company_logos/fpt-software-6073b38a10cb4.jpg"
-                                    alt="" style="width: 40px; height: 40px;">
-                                <div class="d-flex flex-column">
-                                    <p class="fw-bold my-0 text-black" style="font-size: 16px;">FPT Software</p>
-                                    <p class="m-0 text-muted" style="font-size: 13px;">55 tin ứng tuyển</p>
-                                </div>
-                            </div>
+                            @{
+                                if (Model.Items != null && Model.Items.Count > 0)
+                                {
+                                    foreach (var item in Model.Items)
+                                    {
+                                        <a class="company-item d-flex gap-3 bg-white p-3 rounded-2" asp-area=""
+                                            asp-controller="Company" asp-action="CompanyDetail" asp-route-id="@item.Id">
+                                            <img src=".@item.LogoUrl" alt="" style="width: 40px; height: 40px;">
+                                            <div class="d-flex flex-column">
+                                                <p class="fw-bold my-0 text-black" style="font-size: 16px;">@item.CompanyName</p>
+                                                <p class="m-0 text-muted" style="font-size: 13px;">@item.TotalJob tin tuyển dụng</p>
+                                            </div>
+                                        </a>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img src="../img/no-result-found.jpg" alt="" style="width: 150px"/>
+                                    </div>
+                                }
+                            }
                         </div>
                     </div>
                 </div>
@@ -693,13 +179,273 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 
 @section Scripts
 {
-    <script src="~/area/assets/plugins/chosen/chosen.jquery.min.js"></script>
+    <script src="~/area/assets/plugins/vietnamlocal/vietnamlocalselector.min.js"></script>
     <script>
         $(document).ready(function () {
-            $("#exp-selector, #local-selector, #salary-selector").chosen({
-                enable_search: true,
-                no_results_text: "Your Custom Title"
+            const jobPostList = $(".job-post-list");
+            const jobTypeList = $(".job-type-list");
+            const pagingPartialContainer = $(".paging-partial-container");
+            const btnMore = $(".btn-see-more");
+            const btnFind = $("#btn-find");
+            const totalJob = $(".total-job");
+            var sortBy = "";
+
+
+            $(".filter-btn").click(function () {
+                jobPostList.empty();
+                sortBy = $(this).data("sort");
+                fetchData(0, sortBy);
             });
+
+            // Khởi tạo filter
+            var keyword = "";
+            var level = "Fresher";
+            var provinceName = "";
+            var salary = "";
+
+            fetchData(0, sortBy);
+
+
+            $("#search-job").on("change", function () {
+                keyword = $(this).val();
+            });
+
+            $(".ls_province").on("change", function () {
+                provinceName = $(this).find("option:selected").text();
+            });
+
+            $("#salary-selector").on("change", function () {
+                salary = $(this).val();
+            });
+
+            btnFind.click(function () {
+                fetchData(0, sortBy);
+            });
+
+            $("input, select").on("change", function () {
+                btnFind.trigger("click");
+            });
+
+            function fetchData(pageNumber, sortBy) {
+                jobPostList.empty();
+                renderSpinner(jobPostList);
+                var filter = {
+                    pageNumber: pageNumber,
+                    sortBy: sortBy,
+                    keyword: keyword,
+                    level: level,
+                    provinceName: provinceName,
+                    salary: salary,
+                };
+                $.ajax({
+                    type: "get",
+                    dataType: "json",
+                    url: "/JobPost/GetJobWithPagination",
+                    cache: false,
+                    data: filter,
+                    success: function (res) {
+                        totalJob.text(res.totalCount);
+                        if (res.items != null && res.items.length > 0) {
+                            for (let i = 0; i < res.items.length; i++) {
+                                renderJobPost(res.items[i], jobPostList);
+                            }
+                            renderPagingPartial(
+                                res.pageNumber,
+                                res.totalPages,
+                                pagingPartialContainer
+                            );
+                        } else {
+                            renderEmptyPage(jobPostList);
+                        }
+                        removeSpinner(jobPostList);
+                    },
+                    error: function (err) {
+                        console.log("Không thể kết nối tới Server" + err.Message);
+                        removeSpinner(jobPostList);
+                        renderEmptyPage(jobPostList);
+                    },
+                });
+            }
+
+            function renderJobPost(jobPost, container) {
+                var jobPostHtml = `
+                                <div class="job-item p-4 mb-4">
+                                    <div class="row g-4">
+                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                            <img class="flex-shrink-0 img-fluid border rounded-3" src="${"." + jobPost.logoUrl
+                    }" alt=""
+                                                style="width: 90px; height: 90px;">
+                                            <div class="text-start ps-4">
+                                                <a href="/JobPost/JobDetail/${jobPost.id
+                    }" target="_blank"><h5 class="mb-2">${jobPost.title
+                    }</h5></a>
+                                                <div class="p-0 mb-2 ">
+                                                    <a href="/Company/CompanyDetail/${jobPost.companyId
+                    }"
+                                                        target="_blank" class="text-uppercase text-muted">${jobPost.companyName
+                    }</a>
+                                                </div>
+                                                <div
+                                                    class="d-flex flex-wrap gap-3 mb-2 text-capitalize text-primary skills-wrapper">
+                                                    ${jobPost.skills
+                        .map((skill) => `<span>${skill}</span>`)
+                        .join("")}
+                                                </div>
+                                                <span class="text-truncate me-3">
+                                                    <i class="fa fa-map-marker-alt text-primary me-2"></i>${jobPost.province
+                    }
+                                                </span>
+                                                <span class="text-truncate me-3">
+                                                    <i class="far fa-clock text-primary me-2"></i>${jobPost.employmentType
+                    }
+                                                </span>
+                                                <span class="text-truncate me-0">
+                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>${jobPost.salary
+                    }
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                            <div class="d-flex mb-3">
+                                                <a class="btn btn-light btn-square me-3" href="">
+                                                    <i class="far fa-heart text-primary"></i>
+                                                </a>
+                                                <a class="btn btn-primary" href="">Ứng tuyển</a>
+                                            </div>
+                                            <span class="text-truncate">
+                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: ${jobPost.expiredDate
+                    }
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>`;
+                container.append(jobPostHtml);
+            }
+
+            function renderSpinner(container) {
+                var spinnerHtml = `
+                                <div class="d-flex justify-content-center">
+                                    <div class="spinner-border text-primary spinner" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>`;
+                container.append(spinnerHtml);
+            }
+
+            function removeSpinner(container) {
+                container.find(".spinner").remove();
+            }
+
+            function renderEmptyPage(container) {
+                var emptyPageHtml = `
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <img src="../img/no-result-found.jpg" alt="" style="width: 350px; " />
+                                </div>`;
+                container.append(emptyPageHtml);
+            }
+
+            function renderPagingPartial(currentPage, countPages, container) {
+                if (currentPage > countPages) {
+                    currentPage = countPages;
+                }
+
+                if (countPages <= 1) {
+                    return container.html("");
+                }
+
+                var preview = null;
+                var next = null;
+
+                if (currentPage > 1) {
+                    preview = currentPage - 1;
+                }
+
+                if (currentPage < countPages) {
+                    next = currentPage + 1;
+                }
+
+                var delta = 5;
+                var remain = delta * 2;
+
+                var pagesRanges = [];
+                pagesRanges.push(currentPage);
+
+                for (var i = 1; i <= delta; i++) {
+                    if (currentPage + i <= countPages) {
+                        pagesRanges.push(currentPage + i);
+                        remain--;
+                    }
+
+                    if (currentPage - i >= 1) {
+                        pagesRanges.unshift(currentPage - i);
+                        remain--;
+                    }
+                }
+
+                if (remain > 0) {
+                    if (pagesRanges[0] === 1) {
+                        for (var i = 1; i <= remain; i++) {
+                            if (pagesRanges[pagesRanges.length - 1] + 1 <= countPages) {
+                                pagesRanges.push(pagesRanges[pagesRanges.length - 1] + 1);
+                            }
+                        }
+                    } else {
+                        for (var i = 1; i <= remain; i++) {
+                            if (pagesRanges[0] - 1 > 1) {
+                                pagesRanges.unshift(pagesRanges[0] - 1);
+                            }
+                        }
+                    }
+                }
+
+                var pagingHtml = '<ul class="pagination">';
+
+                if (preview !== null) {
+                    pagingHtml += `<li class="page-item"><a class="page-link" data-page="${preview}" role="button"><i class="d-inline-block d-lg-none fa-solid fa-angle-left"></i><span class="d-none d-lg-block">Trang trước</span></a></li>`;
+                } else {
+                    pagingHtml +=
+                        '<li class="page-item disabled"><a class="page-link" href="#" role="button" tabindex="-1" aria-disabled="true"><i class="d-inline-block d-lg-none fa-solid fa-angle-left"></i><span class="d-none d-lg-block">Trang trước</span></a></li>';
+                }
+
+                pagesRanges.forEach(function (pageitem) {
+                    if (pageitem !== currentPage) {
+                        pagingHtml += `<li class="page-item"><a class="page-link" data-page="${pageitem}" role="button">${pageitem}</a></li>`;
+                    } else {
+                        pagingHtml +=
+                            '<li class="page-item active" aria-current="page"><a class="page-link" role="button">' +
+                            pageitem +
+                            '<span class="sr-only">(current)</span></a></li>';
+                    }
+                });
+
+                if (next !== null) {
+                    pagingHtml += `<li class="page-item"><a class="page-link" data-page="${next}" role="button"><span class="d-none d-lg-block">Trang sau</span><i class="d-inline-block d-lg-none fa-solid fa-angle-right"></i></a></li>`;
+                } else {
+                    pagingHtml +=
+                        '<li class="page-item disabled"><a class="page-link" href="#" role="button" tabindex="-1" aria-disabled="true"><span class="d-none d-lg-block">Trang sau</span><i class="d-inline-block d-lg-none fa-solid fa-angle-right"></i></a></li>';
+                }
+
+                pagingHtml += "</ul>";
+                container.html(pagingHtml);
+
+                // Bắt sự kiện click trên các phần tử <a> trong thanh phân trang
+                container.find("a.page-link").click(function (event) {
+                    var page = $(this).data("page");
+                    fetchData(page, sortBy);
+                });
+            }
+
+            //Khởi tạo dữ liệu tĩnh
+            new LocalPicker({
+                province: "ls_province",
+                district: "ls_district",
+                ward: "ls_ward",
+            });
+
+            var option = $("<option>").val("").text("Tất cả thành phố");
+            $(".ls_province").prepend(option);
         });
+
     </script>
 }
