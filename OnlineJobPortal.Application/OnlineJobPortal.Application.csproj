@@ -20,7 +20,6 @@
     <Folder Include="DTOs\UserDto\" />
     <Folder Include="Futures\ApplyFeatures\Queries\" />
     <Folder Include="Futures\CandidateSkillFeatures\Queries\" />
-    <Folder Include="Futures\CandidateFeatures\Queries\" />
     <Folder Include="Futures\CompanyImageFeatures\Queries\" />
     <Folder Include="Futures\DistrictFeatures\Queries\" />
     <Folder Include="Futures\EducationFeatures\Queries\" />

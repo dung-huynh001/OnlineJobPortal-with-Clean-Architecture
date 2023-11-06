@@ -1,0 +1,214 @@
+﻿<style>
+    a:hover {
+        color: #17b85f !important;
+    }
+
+    .avatar-section {
+        height: 150px;
+        width: 150px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .avatar-section img {
+        height: 150px;
+        width: 150px;
+        object-fit: fill;
+    }
+
+    .avatar-section__button {
+        background-color: #ccc;
+        width: 100%;
+        overflow: hidden;
+        top: 75%;
+        padding: 5px;
+        font-size: 1.2rem;
+        display: none;
+    }
+
+    .avatar-section__button:hover {
+        color: #17b85f;
+        background-color: #ccddd3;
+    }
+
+    .avatar-section:hover .avatar-section__button {
+        display: block;
+    }
+</style>
+
+<main class="container-fluid min-vh-100 bg-light py-4">
+    <div class="container min-vh-100 p-4">
+        <form class="row g-3">
+            <div class="col-12">
+                <section id=""
+                    class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 gap-lg-5 bg-white p-3 rounded-3">
+                    <div class="avatar-section position-relative">
+                        <img src="~/img/default_user.png" alt="">
+                        <div class="position-absolute text-center avatar-section__button" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" title="Đổi ảnh đại diện">
+                            <a role="button"><i class="fa-solid fa-camera"></i></a>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h3>Huỳnh Chí Dũng</h3>
+                        <div class="d-flex gap-3 align-items-baseline">
+                            <span class="text-muted fw-bold fs-5">Web Developer</span>
+                            <span class="text-muted fw-bold fs-6">1YOE</span>
+                        </div>
+                        <span class="text-muted fs-6">Ninh Kiều, TP Cần Thơ</span>
+                    </div>
+                </section>
+            </div>
+            <div class="col-12">
+                <section id="person-info" class="d-flex justify-content-between align-items-stretch bg-white rounded-3">
+                    <div class="flex-grow-1 d-flex flex-column gap-2 px-3 pt-3 pb-5">
+                        <h5 class="text-muted text-capitalize">Thông tin cá nhân</h5>
+                        <div class="row g-3">
+                            <div class="col-lg-6 d-flex flex-column">
+                                <label class="form-label" for="">Họ và tên</label>
+                                <input disabled class="form-control" type="text" placeholder="Vd. Huỳnh Chí Dũng">
+                            </div>
+                            <div class="col-lg-6 d-flex flex-column">
+                                <label class="form-label" for="">Ngày sinh</label>
+                                <input disabled class="form-control" type="date">
+                            </div>
+                            <div class="col-lg-6 d-flex flex-column">
+                                <label class="form-label" for="">Căn cước/CMND</label>
+                                <input disabled class="form-control" type="text" placeholder="Vd. 385822918">
+                            </div>
+                            <div class="col-lg-6 d-flex flex-column">
+                                <label class="form-label" for="">Giới tính</label>
+                                <div class="d-flex gap-4">
+                                    <div class="form-check form-check-inline">
+                                        <input disabled class="form-check-input" type="radio" name="sex" id="male"
+                                            value="0">
+                                        <label class="form-check-label" for="male">Nam</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input disabled class="form-check-input" type="radio" name="sex" id="female"
+                                            value="1">
+                                        <label class="form-check-label" for="inlineRfemaleadio2">Nữ</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input disabled class="form-check-input" type="radio" name="sex" id="others"
+                                            value="2">
+                                        <label class="form-check-label" for="others">Khác</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center gap-4">
+                                <a role="button" class="btn btn-danger btn-cancel" data-info-area="person-info" style="display: none;">Hủy</a>
+                                <a role="button" class="btn btn-primary btn-save" data-info-area="person-info" style="display: none;">Lưu lại</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="p-3 text-center text-muted btn-edit" role="button" data-info-area="person-info">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                </section>
+            </div>
+            <div class="col-12">
+                <section id="contact-info"
+                    class="d-flex justify-content-between align-items-stretch bg-white rounded-3">
+                    <div class="flex-grow-1 d-flex flex-column gap-2 px-3 pt-3 pb-5">
+                        <h5 class="text-muted text-capitalize">Thông tin liên lạc</h5>
+                        <div class="row g-3">
+                            <div class="col-lg-6 d-flex flex-column">
+                                <label class="form-label" for="">Địa chỉ email</label>
+                                <input disabled class="form-control" type="text" placeholder="Vd. dunghuynh@gmail.com">
+                            </div>
+                            <div class="col-lg-6 d-flex flex-column">
+                                <label class="form-label" for="">Số điện thoại</label>
+                                <input disabled class="form-control" type="text" placeholder="Vd. 0776573854">
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center gap-4">
+                                <a role="button" class="btn btn-danger btn-cancel" data-info-area="contact-info" style="display: none;">Hủy</a>
+                                <a role="button" class="btn btn-primary btn-save" data-info-area="contact-info" style="display: none;">Lưu lại</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="p-3 text-center text-muted btn-edit" role="button" data-info-area="contact-info">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                </section>
+            </div>
+            <div class="col-12">
+                <section id="address-info"
+                    class="d-flex justify-content-between align-items-stretch bg-white rounded-3">
+                    <div class="flex-grow-1 d-flex flex-column gap-2 px-3 pt-3 pb-5">
+                        <h5 class="text-muted text-capitalize">Địa chỉ thường trú</h5>
+                        <div class="row g-3">
+                            <div class="col-lg-6 d-flex flex-column">
+                                <label class="form-label" for="">Tỉnh/Thành phố</label>
+                                <select disabled class="form-select ls_province"></select>
+                            </div>
+                            <div class="col-lg-6 d-flex flex-column">
+                                <label class="form-label" for="">Quận/Huyện</label>
+                                <select disabled class="form-select ls_district"></select>
+                            </div>
+                            <div class="col-lg-6 d-flex flex-column" style="display: none;">
+                                <select disabled class="form-select ls_ward" style="display: none;"></select>
+                            </div>
+                            <div class="col-12 d-flex flex-column">
+                                <label class="form-label" for="">Địa điểm</label>
+                                <input disabled class="form-control" type="text"
+                                    placeholder="Vd. Hẻm 51, đường 3/2, phường Xuân Khánh, quận Ninh Kiều, TP Cần Thơ">
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center gap-4">
+                                <a role="button" class="btn btn-danger btn-cancel" data-info-area="address-info" style="display: none;">Hủy</a>
+                                <a role="button" class="btn btn-primary btn-save" data-info-area="address-info" style="display: none;">Lưu lại</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="p-3 text-center text-muted btn-edit" role="button" data-info-area="address-info">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                </section>
+            </div>
+        </form>
+    </div>
+</main>
+
+@section Scripts {
+    <script src="~/area/assets/plugins/vietnamlocal/vietnamlocalselector.min.js"></script>
+
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+
+        $(document).ready(function () {
+            const btnEdit = $('.btn-edit');
+            const btnSave = $('.btn-save');
+            const btnCancel = $('.btn-cancel');
+
+            btnEdit.click(function () {
+                var areaClassName = '#' + $(this).data("info-area");
+                $(`${areaClassName} input, ${areaClassName} select`).removeAttr("disabled");
+                $(`${areaClassName} .btn-cancel, ${areaClassName} .btn-save`).show();
+            });
+
+            btnCancel.click(function(){
+                var areaClassName = '#' + $(this).data("info-area");
+                $(`${areaClassName} input, ${areaClassName} select`).prop("disabled", true);
+                $(`${areaClassName} .btn-save, ${areaClassName} .btn-cancel`).hide();
+            });
+
+            //Khởi tạo dữ liệu tĩnh
+            new LocalPicker({
+                province: "ls_province",
+                district: "ls_district",
+                ward: "ls_ward",
+            });
+
+            setTimeout(function () {
+                $(".ls_province").val(89);
+                $(".ls_province")[0].dispatchEvent(new Event("change"));
+                $(".ls_district").val(886);
+                $(".ls_district")[0].dispatchEvent(new Event("change"));
+            }, 50);
+        });
+    </script>
+}

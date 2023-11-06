@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GugVAvthdBrNYQv/6GyROm6Dv/vNrv7dijlcYmX2pKM=",
+  "Hash": "4l3Lc5h5ayfHukpcIL5hTpdWC14wd54xkVvpHUUUF60=",
   "Source": "OnlineJobPortal.Presentation",
   "BasePath": "_content/OnlineJobPortal.Presentation",
   "Mode": "Default",
@@ -39897,6 +39897,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\HomePage\\main.js"
+    },
+    {
+      "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\JobByCategoryPage\\jobbycategory.js",
+      "SourceId": "OnlineJobPortal.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\",
+      "BasePath": "_content/OnlineJobPortal.Presentation",
+      "RelativePath": "js/JobByCategoryPage/jobbycategory.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\JobByCategoryPage\\jobbycategory.js"
     },
     {
       "Identity": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\LoginPage\\login.js",

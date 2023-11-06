@@ -43,7 +43,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasForeignKey<Candidate>(c => c.UserId)
                 .IsRequired();
 
-            builder.HasMany(c => c.Applications)
+            builder.HasMany(c => c.Applies)
                 .WithOne(a => a.Candidate)
                 .HasForeignKey(a => a.CandidateId)
                 .OnDelete(DeleteBehavior.Cascade);

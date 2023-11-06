@@ -9465,6 +9465,10 @@
       "PackagePath": "staticwebassets\\js\\HomePage\\main.js"
     },
     {
+      "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\JobByCategoryPage\\jobbycategory.js",
+      "PackagePath": "staticwebassets\\js\\JobByCategoryPage\\jobbycategory.js"
+    },
+    {
       "Id": "D:\\LVTN\\Project_V1_03102023\\OnlineJobPortal\\OnlineJobPortal.Presentation\\wwwroot\\js\\LoginPage\\login.js",
       "PackagePath": "staticwebassets\\js\\LoginPage\\login.js"
     },

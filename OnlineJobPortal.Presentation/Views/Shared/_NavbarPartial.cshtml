@@ -117,8 +117,8 @@ For more information on enabling MVC for empty projects, visit http://go.microso
                     <img src="~/img/default_user.png" class="profile-img" />
                     @CurrentUserService.GetFullNameById()
                 </a>
-                <div class="dropdown-menu dropdown-menu-end rounded-0 m-0" data-bs-popper="none" style="max-width: 280px">
-                    <a href="job-list.html" class="dropdown-item">
+                <div class="dropdown-menu dropdown-menu-end rounded-0 m-0" data-bs-popper="none" style="max-width: 280px; right: 0!important;">
+                    <a asp-area="" asp-controller="Profile" asp-action="Index" class="dropdown-item">
                         <span><i class="icon fa-solid fa-gear"></i>Cập nhật hồ sơ</span>
                         <i class="fas fa-arrow-right arrow-right"></i>
                     </a>

@@ -118,10 +118,10 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 var logoUrl = Model.Company.LogoUrl;
                                 logoUrl = "~" + logoUrl.Substring(1);
                             }
-                            <a asp-area="" asp-controller="Company" asp-action="CompanyDetail" target="_blank" class="job-detail__company-logo">
+                            <a asp-area="" asp-controller="Company" asp-action="CompanyDetail" asp-route-id="@Model.Company.Id" target="_blank" class="job-detail__company-logo">
                                 <img class="img-responsive" src=@logoUrl alt="" asp-append-version="true">
                             </a>
-                            <a asp-area="" asp-controller="Company" asp-action="CompanyDetail" target="_blank" class="job-detail__company-name">@Model.Company.CompanyName</a>
+                            <a asp-area="" asp-controller="Company" asp-action="CompanyDetail" asp-route-id="@Model.Company.Id" target="_blank" class="job-detail__company-name">@Model.Company.CompanyName</a>
                         </div>
                         <div class="d-flex gap-3 align-items-center">
                             <div class="job-detail__company-title flex-shrink-0"><i
