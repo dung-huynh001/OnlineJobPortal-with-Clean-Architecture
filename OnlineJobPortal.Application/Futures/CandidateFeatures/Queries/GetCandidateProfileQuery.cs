@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Domain.Entities;
 using System;
@@ -31,9 +32,10 @@ namespace OnlineJobPortal.Application.Futures.CandidateFeatures.Queries
         }
         public async Task<Candidate?> Handle(GetCandidateProfileQuery request, CancellationToken cancellationToken)
         {
-            var candidate = await unitOfWork.Repository<Candidate>().GetByIdAsync(request.Id);
-
-            if (candidate == null) return null;
+            var candidate = await unitOfWork.Repository<Candidate>().GetAll
+            .Include(c => c.User)
+            .Include(c => c.Resume)
+            .FirstOrDefaultAsync(c => c.Id.Equals(request.Id));
             return candidate;
         }
     }

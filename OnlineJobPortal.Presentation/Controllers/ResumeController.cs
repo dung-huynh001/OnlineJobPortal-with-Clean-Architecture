@@ -29,19 +29,9 @@ namespace OnlineJobPortal.Presentation.Controllers
         {
             HtmlToPdf Renderer = new HtmlToPdf();
 
-            // Renderer.PrintOptions.SetCustomPaperSizeInInches(8.5, 11);
             Renderer.PrintOptions.PaperSize = PdfPrintOptions.PdfPaperSize.A4;
             Renderer.PrintOptions.PaperOrientation = IronPdf.Rendering.PdfPaperOrientation.Portrait;
             Renderer.PrintOptions.Title = "Download PDF CV";
-
-            // Renderer.PrintOptions.RenderDelay = 50; //ms
-            // Renderer.PrintOptions.CssMediaType = PdfPrintOptions.PdfCssMediaType.Screen;
-            // Renderer.PrintOptions.DPI = 300;
-            // Renderer.PrintOptions.JpegQuality = 80;
-            // Renderer.PrintOptions.GrayScale = false;
-            // Renderer.PrintOptions.InputEncoding = Encoding.UTF8;
-            // Renderer.PrintOptions.Zoom = 100;
-            // Renderer.PrintOptions.ViewPortWidth = 1280;
             Renderer.PrintOptions.CreatePdfFormsFromHtml = true;
             Renderer.PrintOptions.CustomCssUrl = ".\\wwwroot\\css\\ResumePage\\main.css";
             Renderer.PrintOptions.MarginTop = 0;

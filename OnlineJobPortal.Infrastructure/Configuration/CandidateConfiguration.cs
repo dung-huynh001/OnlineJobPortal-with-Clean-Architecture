@@ -43,6 +43,13 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasForeignKey<Candidate>(c => c.UserId)
                 .IsRequired();
 
+            builder.HasOne(c => c.Resume)
+                .WithOne()
+                .HasForeignKey<Candidate>(c => c.ResumeId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Cascade);
+
+
             builder.HasMany(c => c.Applies)
                 .WithOne(a => a.Candidate)
                 .HasForeignKey(a => a.CandidateId)
@@ -51,11 +58,6 @@ namespace OnlineJobPortal.Infrastructure.Configuration
             builder.HasMany(c => c.JobFavorites)
                 .WithOne(jf => jf.Candidate)
                 .HasForeignKey(jf => jf.CandidateId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasMany(c => c.Resumes)
-                .WithOne(p => p.Candidate)
-                .HasForeignKey(p => p.CandidateId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(c => c.Messages)

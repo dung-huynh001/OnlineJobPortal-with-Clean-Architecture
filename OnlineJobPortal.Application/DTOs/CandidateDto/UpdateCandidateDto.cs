@@ -1,4 +1,5 @@
 ﻿using OnlineJobPortal.Application.DTOs.Common;
+using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Domain.Enums;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,6 @@ namespace OnlineJobPortal.Application.DTOs.CandidateDto
         public string Address { get; set; }
         public string AvatarUrl { get; set; }
         public string UserId { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

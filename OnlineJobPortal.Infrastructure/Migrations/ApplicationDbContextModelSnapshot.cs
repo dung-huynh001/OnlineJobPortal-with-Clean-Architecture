@@ -500,6 +500,9 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<int>("ResumeId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("datetime2");
 
@@ -1232,28 +1235,37 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CareerGoal")
-                        .IsRequired()
                         .HasColumnType("ntext");
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CvUrl")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("JobSearchMode")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Position")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("YearOfExperiences")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CandidateId");
+                    b.HasIndex("CandidateId")
+                        .IsUnique();
 
                     b.ToTable("Resumes");
                 });
@@ -2378,7 +2390,7 @@ namespace OnlineJobPortal.Infrastructure.Migrations
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Apply", b =>
                 {
                     b.HasOne("OnlineJobPortal.Domain.Entities.Candidate", "Candidate")
-                        .WithMany("Applications")
+                        .WithMany("Applies")
                         .HasForeignKey("CandidateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -2601,8 +2613,8 @@ namespace OnlineJobPortal.Infrastructure.Migrations
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Resume", b =>
                 {
                     b.HasOne("OnlineJobPortal.Domain.Entities.Candidate", "Candidate")
-                        .WithMany("Resumes")
-                        .HasForeignKey("CandidateId")
+                        .WithOne("Resume")
+                        .HasForeignKey("OnlineJobPortal.Domain.Entities.Resume", "CandidateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2616,13 +2628,13 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Candidate", b =>
                 {
-                    b.Navigation("Applications");
+                    b.Navigation("Applies");
 
                     b.Navigation("JobFavorites");
 
                     b.Navigation("Messages");
 
-                    b.Navigation("Resumes");
+                    b.Navigation("Resume");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Company", b =>
