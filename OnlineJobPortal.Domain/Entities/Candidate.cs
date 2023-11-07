@@ -15,11 +15,12 @@ namespace OnlineJobPortal.Domain.Entities
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 
+        public int ResumeId { get; set; }
+        public Resume? Resume { get; set; }
+
         public ICollection<Apply>? Applies { get; set; }
 
         public ICollection<JobFavorite>? JobFavorites { get; set; }
-
-        public ICollection<Resume>? Resumes { get; set; }
 
         public ICollection<Message>? Messages { get; set; }
 

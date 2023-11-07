@@ -14,7 +14,11 @@ namespace OnlineJobPortal.Application.Futures.CandidateFeatures.Commands
 {
     public class UpdateCandidateCommand : IRequest<ApiResponse>
     {
-        public UpdateCandidateDto UpdateCandidateDto { get; set; }
+        public UpdateCandidateDto candidateDto { get; set; }
+        public UpdateCandidateCommand(UpdateCandidateDto candidateDto)
+        {
+           this. candidateDto = candidateDto;
+        }
     }
 
     public class UpdateCandidateCommandHandler : IRequestHandler<UpdateCandidateCommand, ApiResponse>
@@ -29,9 +33,10 @@ namespace OnlineJobPortal.Application.Futures.CandidateFeatures.Commands
         }
         public async Task<ApiResponse> Handle(UpdateCandidateCommand request, CancellationToken cancellationToken)
         {
+            unitOfWork.BeginTransaction();
             try
             {
-                var candidate = await unitOfWork.Repository<Candidate>().GetByIdAsync(request.UpdateCandidateDto.Id);
+                var candidate = await unitOfWork.Repository<Candidate>().GetByIdAsync(request.candidateDto.Id);
                 if (candidate == null)
                 {
                     return new ApiResponse
@@ -41,10 +46,11 @@ namespace OnlineJobPortal.Application.Futures.CandidateFeatures.Commands
                     };
                 }
 
-                candidate = mapper.Map<Candidate>(request.UpdateCandidateDto);
-                await unitOfWork.Repository<Candidate>().UpdateAsync(candidate);
+                candidate = mapper.Map<Candidate>(request.candidateDto);
+                await unitOfWork.CandidateRepository.UpdateCandidateAsync(candidate);
                 await unitOfWork.SaveAsync(cancellationToken);
 
+                unitOfWork.Commit();
                 return new ApiResponse
                 {
                     Success = true,
@@ -54,6 +60,7 @@ namespace OnlineJobPortal.Application.Futures.CandidateFeatures.Commands
             }
             catch
             {
+                unitOfWork.Rollback();
                 return new ApiResponse
                 {
                     Success = true,
