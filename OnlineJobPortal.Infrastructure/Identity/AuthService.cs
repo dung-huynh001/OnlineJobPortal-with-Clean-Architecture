@@ -12,6 +12,7 @@ using OnlineJobPortal.Application.DTOs.EmployerDto;
 using OnlineJobPortal.Application.Futures.AdminFeatures.Commands;
 using OnlineJobPortal.Application.Futures.CandidateFeatures.Commands;
 using OnlineJobPortal.Application.Futures.EmployerFeatures.Commands;
+using OnlineJobPortal.Application.Futures.ResumeFeatures.Commands;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Application.Models.Identity;
 using OnlineJobPortal.Application.Responses;
@@ -159,6 +160,8 @@ namespace OnlineJobPortal.Infrastructure.Identity
 
                     createCandidateCommand.CreateCandidateDto = candidatedto;
                     var createCandidateResponse = await mediator.Send(createCandidateCommand);
+
+                    
 
                     if (!createCandidateResponse.Success)
                     {

@@ -30,13 +30,14 @@ namespace OnlineJobPortal.Application.Futures.CandidateFeatures.Commands
 
         public async Task<ApiResponse> Handle(CreateCandidateCommand request, CancellationToken cancellationToken)
         {
+            unitOfWork.BeginTransaction();
             try
             {
                 var candidate = mapper.Map<Candidate>(request.CreateCandidateDto);
 
-                await unitOfWork.Repository<Candidate>().AddAsync(candidate);
-                await unitOfWork.SaveAsync(cancellationToken);
+                await unitOfWork.CandidateRepository.CreateCandidateAsync(candidate);
 
+                unitOfWork.Commit();
                 return new ApiResponse
                 {
                     Success = true,
@@ -46,6 +47,7 @@ namespace OnlineJobPortal.Application.Futures.CandidateFeatures.Commands
             }
             catch
             {
+                unitOfWork.Rollback();
                 return new ApiResponse
                 {
                     Success = false,

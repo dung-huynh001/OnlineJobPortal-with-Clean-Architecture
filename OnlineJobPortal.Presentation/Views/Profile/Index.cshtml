@@ -50,7 +50,7 @@
                         <input type="text" hidden asp-for="@Model.UserId">
                         @if (Model.AvatarUrl != null)
                         {
-                            <img src="@Model.AvatarUrl" alt="">
+                            <img id="avatar_image" src="@Model.AvatarUrl" alt="">
 
                         }
                         else
@@ -233,7 +233,6 @@
             const btnEdit = $('.btn-edit');
             const btnSave = $('.btn-save');
             const btnCancel = $('.btn-cancel');
-
             btnEdit.click(function () {
                 $('input, select').removeAttr("disabled");
                 btnCancel.show();
@@ -246,13 +245,30 @@
 
                 if (e.target.files.length > 0) {
                     var file = e.target.files[0];
-                    var reader = new FileReader();
+                    var reader = new FileReader();                    
 
                     reader.onload = function (event) {
                         avatarImg.attr("src", event.target.result);
                     };
 
                     reader.readAsDataURL(file);
+
+                    var formData = new FormData();
+                    formData.append("avatarFile", file);
+
+                    $.ajax({
+                        url: "/Profile/UpdateAvatar",
+                        type: "POST",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            $('#AvatarUrl').val(response);
+                        },
+                        error: function (error) {
+                            console.error("Lỗi khi tải lên hình ảnh: " + error);
+                        }
+                    });
                 } else {
                     avatarImg.attr("src", "");
                 }

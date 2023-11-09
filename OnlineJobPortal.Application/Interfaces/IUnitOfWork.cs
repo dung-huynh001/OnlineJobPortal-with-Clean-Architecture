@@ -27,6 +27,7 @@ namespace OnlineJobPortal.Application.Interfaces
         IForeignLanguageRepository ForeignLanguageRepository { get; }
         IDistrictRepository DistrictRepository { get; }
         IProvinceRepository ProvinceRepository { get; }
+        IProjectRepository ProjectRepository { get; }
         void BeginTransaction();
         void Commit();
         void Rollback();

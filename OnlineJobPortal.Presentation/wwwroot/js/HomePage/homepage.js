@@ -53,7 +53,7 @@
   function renderJobType(jobType, container) {
     var jobTypeHtml = `
           <div class="col-lg-3 col-sm-6 wow fadeInUp job-type-item" data-wow-delay="0.1s">
-              <a class="cat-item rounded p-4" href="/JobPost/JobByCategory?categoryId=${jobType.Id}" target="_blank">
+              <a class="cat-item rounded p-4" href="/JobPost/JobByCategory?categoryId=${jobType.id}" target="_blank">
                   <i class="fa fa-3x ${jobType.jobTypeIcon} text-primary mb-4"></i>
                   <h6 class="mb-3">${jobType.jobTypeName}</h6>
                   <p class="mb-0">${jobType.totalJobPost} Vị trí</p>

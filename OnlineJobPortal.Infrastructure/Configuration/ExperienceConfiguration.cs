@@ -15,21 +15,30 @@ namespace OnlineJobPortal.Infrastructure.Configuration
         {
             builder.HasKey(e => e.Id);
 
-            builder.Property(e => e.JobTitle)
-                .IsRequired()
+            builder.Property(e => e.Position)
+                .IsRequired(false)
                 .HasMaxLength(256);
 
             builder.Property(e => e.CompanyName)
-                .IsRequired()
+                .IsRequired(false)
                 .HasMaxLength(100);
 
             builder.Property(e => e.Description)
-                .HasColumnType("ntext");
+                .HasColumnType("ntext")
+                .IsRequired(false);
 
             builder.HasOne(e => e.Resume)
                 .WithMany(p => p.Experiences)
                 .HasForeignKey(e => e.ResumeId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(e => e.Projects)
+                .WithOne()
+                .IsRequired(false);
+
+            builder.HasMany(e => e.Skills)
+                .WithOne()
+                .IsRequired(false);
         }
     }
 }

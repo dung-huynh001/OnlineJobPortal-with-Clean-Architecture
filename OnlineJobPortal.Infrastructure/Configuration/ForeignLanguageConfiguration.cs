@@ -19,9 +19,6 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .IsRequired()
                 .HasMaxLength(256);
 
-            builder.Property(fl => fl.Proficiency)
-                .HasMaxLength(256);
-
             builder.Property(fl => fl.Degree)
                 .HasMaxLength(256);
 
