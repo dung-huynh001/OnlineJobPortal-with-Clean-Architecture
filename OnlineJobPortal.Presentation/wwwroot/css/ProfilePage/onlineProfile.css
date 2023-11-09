@@ -1,0 +1,36 @@
+a:hover {
+    color: #17b85f !important;
+}
+
+.avatar-section {
+    height: 150px;
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar-section img {
+    height: 150px;
+    width: 150px;
+    object-fit: fill;
+}
+
+.avatar-section__button {
+    background-color: #ccc;
+    width: 100%;
+    overflow: hidden;
+    top: 80%;
+    padding: 2px;
+    font-size: 1.2rem;
+    display: none;
+}
+
+.avatar-section__button:hover {
+    color: #17b85f;
+    background-color: #ccddd3;
+}
+
+.avatar-section:hover .avatar-section__button {
+    display: block;
+}

@@ -14,6 +14,8 @@ namespace OnlineJobPortal.Domain.Entities
         public int CandidateId { get; set; }
         public Candidate Candidate { get; set; }
 
+        public ICollection<Project>? Project { get; set; }
+
         public ICollection<CandidateSkill> CandidateSkills { get; set; }
 
         public ICollection<Education>? Educations { get; set; }

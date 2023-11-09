@@ -4,12 +4,23 @@ using IronPdf;
 using System.IO;
 using IronPdf.Rendering;
 using System.Text;
+using OnlineJobPortal.Application.Futures.SkillFeatures.Queries;
+using MediatR;
+using AutoMapper;
 
 namespace OnlineJobPortal.Presentation.Controllers
 {
     //[Authorize(Roles = "Candidate")]
     public class ResumeController : Controller
     {
+        private readonly IMediator mediator;
+        private readonly IMapper mapper;
+
+        public ResumeController(IMediator mediator, IMapper mapper)
+        {
+            this.mediator = mediator;
+            this.mapper = mapper;
+        }
         public IActionResult Index()
         {
             return View();
@@ -23,6 +34,12 @@ namespace OnlineJobPortal.Presentation.Controllers
         public IActionResult EditResume()
         {
             return View();
+        }
+
+        public async Task<IActionResult> GetAllSkill()
+        {
+            var data = await mediator.Send(new GetAllSkillsQuery());
+            return Json(data);
         }
 
         public IActionResult UploadCV(string htmlContent)
@@ -44,7 +61,6 @@ namespace OnlineJobPortal.Presentation.Controllers
 
             string uploadsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Uploads/CVs");
 
-
             if (!Directory.Exists(uploadsPath))
             {
                 Directory.CreateDirectory(uploadsPath);
@@ -54,7 +70,6 @@ namespace OnlineJobPortal.Presentation.Controllers
             string pdfFilePath = Path.Combine(uploadsPath, pdfFileName);
 
             System.IO.File.WriteAllBytes(pdfFilePath, pdf.BinaryData);
-
 
             var contentLength = pdf.BinaryData.Length;
 

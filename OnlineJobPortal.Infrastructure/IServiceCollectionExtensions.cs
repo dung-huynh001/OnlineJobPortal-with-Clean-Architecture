@@ -90,9 +90,6 @@ namespace OnlineJobPortal.Infrastructure
                     .AddScoped<IAuthService, AuthService>()
                     .AddScoped<ICurrentUserService, CurrentUserSevice>()
                     .AddScoped<IUploadService, UploadService>();
-
-
-
             services
                 .AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork))
                 .AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>))
@@ -116,7 +113,8 @@ namespace OnlineJobPortal.Infrastructure
                 .AddScoped<ISkillRepository, SkillRepository>()
                 .AddScoped<ICurrentUserService, CurrentUserSevice>()
                 .AddScoped<IDistrictRepository, DistrictRepository>()
-                .AddScoped<IProvinceRepository, ProvinceRepository>();
+                .AddScoped<IProvinceRepository, ProvinceRepository>()
+                .AddScoped<IProjectRepository, ProjectRepository>();
         }
     }
 }

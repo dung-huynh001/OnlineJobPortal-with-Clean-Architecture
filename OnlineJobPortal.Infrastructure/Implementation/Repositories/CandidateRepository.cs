@@ -13,6 +13,16 @@ namespace OnlineJobPortal.Application.Interfaces.Repositories
             this.context = context;
         }
 
+        public async Task<Candidate> CreateCandidateAsync(Candidate candidate)
+        {
+            var Candidate = candidate;
+            var result = await context.AddAsync(Candidate);
+            var resume = new Resume();
+            resume.Candidate = Candidate;
+            await context.AddAsync(resume);
+            return result.Entity;
+        }
+
         public async Task<Candidate> UpdateCandidateAsync(Candidate candidate)
         {
             Candidate exist = await context.Candidates.FindAsync(candidate.Id);

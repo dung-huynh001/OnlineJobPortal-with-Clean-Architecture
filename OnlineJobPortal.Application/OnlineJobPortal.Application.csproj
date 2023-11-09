@@ -33,8 +33,6 @@
     <Folder Include="Futures\RequirementSkillFeatures\Queries\" />
     <Folder Include="Futures\MessageFeatures\Commands\" />
     <Folder Include="Futures\MessageFeatures\Queries\" />
-    <Folder Include="Futures\ResumeFeatures\Commands\" />
-    <Folder Include="Futures\ResumeFeatures\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

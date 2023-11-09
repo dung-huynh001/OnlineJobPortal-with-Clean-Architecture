@@ -29,6 +29,7 @@ namespace OnlineJobPortal.Application.Interfaces
         DbSet<Message> Messages { get; set; }
         DbSet<Resume> Resumes { get; set; }
         DbSet<Skill> Skills { get; set; }
+        DbSet<Project> Projects { get; set; }
 
         Task<int> SaveChangesAsync(); 
         Task<int> SaveChangesAsync(CancellationToken cancellation);

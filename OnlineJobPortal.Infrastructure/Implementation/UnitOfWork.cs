@@ -40,6 +40,7 @@ namespace OnlineJobPortal.Infrastructure.Implementation
         private IForeignLanguageRepository _foreignLanguageRepository;
         private IDistrictRepository _districtRepository;
         private IProvinceRepository _provinceRepository;
+        private IProjectRepository _projectRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -67,7 +68,7 @@ namespace OnlineJobPortal.Infrastructure.Implementation
         public IForeignLanguageRepository ForeignLanguageRepository => _foreignLanguageRepository ??= new ForeignLanguageRepository(_context);
         public IDistrictRepository DistrictRepository => _districtRepository ??= new DistrictRepository(_context);
         public IProvinceRepository ProvinceRepository => _provinceRepository ??= new ProvinceRepository(_context);
-
+        public IProjectRepository ProjectRepository => _projectRepository ??= new ProjectRepository(_context);
         public IGenericRepository<T> Repository<T>() where T : BaseEntity
         {
             if (_repositories == null)

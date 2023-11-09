@@ -1,41 +1,7 @@
-﻿<style>
-    a:hover {
-        color: #17b85f !important;
-    }
-
-    .avatar-section {
-        height: 150px;
-        width: 150px;
-        border: 1px solid #ccc;
-        border-radius: 50%;
-        overflow: hidden;
-    }
-
-    .avatar-section img {
-        height: 150px;
-        width: 150px;
-        object-fit: fill;
-    }
-
-    .avatar-section__button {
-        background-color: #ccc;
-        width: 100%;
-        overflow: hidden;
-        top: 80%;
-        padding: 2px;
-        font-size: 1.2rem;
-        display: none;
-    }
-
-    .avatar-section__button:hover {
-        color: #17b85f;
-        background-color: #ccddd3;
-    }
-
-    .avatar-section:hover .avatar-section__button {
-        display: block;
-    }
-</style>
+﻿@model OnlineProfileViewModel
+<link rel="stylesheet" href="~/css/ProfilePage/onlineProfile.css">
+<!--Toastr Plugin CSS-->
+<link href="~/area/assets/plugins/toastr/toastr.min.css" rel="stylesheet">
 
 <main class="container-fluid min-vh-100 bg-light py-4">
     <div class="container min-vh-100 p-4">
@@ -44,7 +10,14 @@
                 <section
                     class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 gap-lg-5 bg-white p-3 rounded-3">
                     <div class="avatar-section position-relative">
-                        <img id="avatar_image" src="~/img/default_user.png" alt="">
+                        @if (Model.Candidate.AvatarUrl != null)
+                        {
+                            <img id="avatar_image" src=".@Model.Candidate.AvatarUrl" alt="">
+                        }
+                        else
+                        {
+                            <img id="avatar_image" src="~/img/default_user.png" alt="">
+                        }
 
                         <input id="avatar_image-file" type="file" accept="image/*" hidden>
                         <input type="text" hidden>
@@ -56,12 +29,27 @@
                     </div>
                     <div class="flex-grow-1">
                         <div class="border-bottom">
-                            <h3>Poppy</h3>
+                            <h3>@Model.Candidate.FullName</h3>
                             <div class="d-flex gap-3 align-items-baseline">
-                                <span class="text-muted fw-bold fs-5">Web Developer</span>
-                                <span class="text-muted fw-bold fs-6">1YOE</span>
+                                @if (@Model.Resume != null && @Model.Resume.Position != null)
+                                {
+                                    <span class="text-muted fw-bold fs-5">@Model.Resume?.Position</span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted fw-bold fs-5">Vị trí công việc</span>
+                                }
+                                @if (@Model.Resume != null && @Model.Resume.Position != null)
+                                {
+                                    <span class="text-muted fw-bold fs-6">@Model.Resume?.YearOfExperiences</span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted fw-bold fs-6">Số năm kinh nghiệm</span>
+
+                                }
                             </div>
-                            <span class="text-muted fs-6">Chưa cập nhật địa chỉ</span>
+                            <span class="text-muted fs-6">@Model.Candidate.Address</span>
                         </div>
                         <div class="py-3">
                             <a role="button" class="btn btn-outline-primary"
@@ -80,94 +68,364 @@
             <div class="col-lg-8">
                 <div class="row g-3">
                     <div class="col-12">
-                        <section class="d-flex bg-white rounded-3 p-3 gap-3">
-                            <div class="flex-grow-1 d-flex flex-column">
-                                <h5>Tóm tắt</h5>
-                                <p>Cung cấp thông tin chi tiết giúp chúng tôi dễ dàng tìm kiếm những công việc phù hợp
-                                    với bạn.</p>
+                        <input type="text" asp-for="@Model.Resume.Id" hidden>
+                        <section class="d-flex flex-column bg-white rounded-3 p-3">
+                            <div class="d-flex gap-3 border-bottom">
+                                <div class="flex-grow-1 d-flex flex-column">
+                                    <h5>Tóm tắt</h5>
+                                    <p>Cung cấp thông tin chi tiết giúp chúng tôi dễ dàng tìm kiếm những công việc phù
+                                        hợp
+                                        với bạn.</p>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <img src="~/img/summary.svg" alt="">
+                                </div>
+                                <div class="flex-shrink-0 ps-4">
+                                    <a role="button" class="fw-bold fs-5 text-muted btn-show-modal"><i
+                                            class="fa-regular fa-pen-to-square" data-info-area="Tóm tắt"
+                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
+                                </div>
                             </div>
-                            <div class="flex-shrink-0">
-                                <img src="~/img/summary.svg" alt="">
-                            </div>
-                            <div class="flex-shrink-0 ps-4">
-                                <a role="button" class="fw-bold fs-5 text-muted btn-show-modal"><i
-                                        class="fa-regular fa-pen-to-square" data-info-area="Tóm tắt"
-                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="col-12">
-                        <section class="d-flex bg-white rounded-3 p-3">
-                            <div class="flex-grow-1 d-flex flex-column">
-                                <h5>Kỹ năng</h5>
-                                <p>Chọn những kỹ năng thể hiện bạn phù hợp với vị trí, giúp bạn thu hút sự chú ý của nhà
-                                    tuyển dụng và xem bạn là lựa chọn phù hợp.</p>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <img src="~/img/skill.svg" alt="">
-                            </div>
-                            <div class="flex-shrink-0 ps-4">
-                                <a role="button" class="fw-bold fs-5 text-muted btn-show-modal"><i
-                                        class="fa-regular fa-pen-to-square" data-info-area="Kỹ năng"
-                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
+                            <div class="summary-container">
+                                @if (Model.Resume != null && Model.Resume.CareerGoal != null)
+                                {
+                                    <p class="my-3 p-2" style="background-color: #f5f5f5; font-size: 0.9rem;">
+                                        @Model.Resume.CareerGoal</p>
+                                }
                             </div>
                         </section>
                     </div>
                     <div class="col-12">
-                        <section class="d-flex bg-white rounded-3 p-3">
-                            <div class="flex-grow-1 d-flex flex-column">
-                                <h5>Kinh nghiệm làm việc</h5>
-                                <p>Kinh nghiệm chi tiết phản ánh kỹ năng, giá trị và đóng góp của bạn trong thời gian
-                                    bạn làm việc tại các công ty trước đây.</p>
+                        <section class="d-flex flex-column bg-white rounded-3 p-3">
+                            <div class="d-flex border-bottom">
+                                <div class="flex-grow-1 d-flex flex-column">
+                                    <h5>Kỹ năng</h5>
+                                    <p>Chọn những kỹ năng thể hiện bạn phù hợp với vị trí, giúp bạn thu hút sự chú ý của
+                                        nhà
+                                        tuyển dụng và xem bạn là lựa chọn phù hợp.</p>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <img src="~/img/skill.svg" alt="">
+                                </div>
+                                <div class="flex-shrink-0 ps-4">
+                                    <a role="button" class="fw-bold fs-5 text-muted btn-show-modal"><i
+                                            class="fa-regular fa-pen-to-square" data-info-area="Kỹ năng"
+                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
+                                </div>
                             </div>
-                            <div class="flex-shrink-0">
-                                <img src="~/img/work-experience.svg" alt="">
-                            </div>
-                            <div class="flex-shrink-0 ps-4">
-                                <a role="button" class="fw-bold fs-5 text-muted btn-show-modal"><i
-                                        class="fa-regular fa-pen-to-square" data-info-area="Kinh nghiệm làm việc"
-                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="col-12">
-                        <section class="d-flex bg-white rounded-3 p-3">
-                            <div class="flex-grow-1 d-flex flex-column">
-                                <h5>Học vấn</h5>
-                                <p>Thêm thông tin học vấn vào hồ sơ giúp tóm tắt nền tảng và giá trị mà bạn đã đạt được
-                                    và có thể hỗ trợ cho công việc</p>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <img src="~/img/education.svg" alt="">
-                            </div>
-                            <div class="flex-shrink-0 ps-4">
-                                <a role="button" class="fw-bold fs-5 text-muted btn-show-modal"><i
-                                        class="fa-regular fa-pen-to-square" data-info-area="Học vấn"
-                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
+                            <div class="skill-container">
+                                @if (Model.Resume != null && Model.Resume.CandidateSkills.Count > 0)
+                                {
+                                    <p class="d-flex gap-3 my-3 p-2 flex-wrap" style="background-color: #f5f5f5;">
+                                        @foreach (var skill in Model.Resume.CandidateSkills)
+                                        {
+                                            <span class="py-1 px-2 bg-white border"
+                                                style="font-size: 0.9rem;">@skill.Skill.SkillName</span>
+                                        }
+                                    </p>
+                                }
                             </div>
                         </section>
                     </div>
                     <div class="col-12">
-                        <section class="d-flex bg-white rounded-3 p-3">
-                            <div class="flex-grow-1 d-flex flex-column">
-                                <h5>Dự án</h5>
+                        <section class="d-flex flex-column bg-white rounded-3 p-3">
+                            <div class="d-flex border-bottom">
+                                <div class="flex-grow-1 d-flex flex-column">
+                                    <h5>Kinh nghiệm làm việc</h5>
+                                    <p>Kinh nghiệm chi tiết phản ánh kỹ năng, giá trị và đóng góp của bạn trong thời
+                                        gian
+                                        bạn làm việc tại các công ty trước đây.</p>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <img src="~/img/work-experience.svg" alt="">
+                                </div>
+                                <div class="flex-shrink-0 ps-4">
+                                    <a role="button" class="fw-bold fs-5 text-muted btn-show-modal"><i
+                                            class="fa-regular fa-pen-to-square" data-info-area="Kinh nghiệm làm việc"
+                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
+                                </div>
                             </div>
-                            <div class="flex-shrink-0 ps-4">
-                                <a role="button" class="fw-bold fs-5 text-muted btn-show-modal"><i
-                                        class="fa-regular fa-pen-to-square" data-info-area="Dự án"
-                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
+                            <div class="work-experience-container">
+                                @if (Model.Resume != null && Model.Resume.Experiences?.Count > 0)
+                                {
+                                    foreach (var experience in Model.Resume.Experiences)
+                                    {
+                                        <div class="d-flex gap-3 my-3 p-2" style="font-size: 0.9rem;">
+                                            <div class="text-nowrap">
+                                                @experience.StartDate.ToString("MM/yyyy") -
+                                                @experience.EndDate.ToString("MM/yyyy")
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <p class="mb-1">
+                                                    <span class="text-danger fw-bold">@experience.Position</span> tại <span
+                                                        class="fw-bold">@experience.CompanyName</span>
+                                                </p>
+                                                <p class="mb-1">
+                                                    @experience.CompanyName
+                                                </p>
+                                                <p class="fw-bold mb-1">Kỹ năng</p>
+                                                <p class="d-flex gap-3">
+                                                    @if (experience.Skills?.Count > 0)
+                                                    {
+                                                        foreach (var skill in experience.Skills)
+                                                        {
+                                                            <span class="py-1 px-2 bg-white border">@skill.SkillName</span>
+                                                        }
+                                                    }
+                                                </p>
+                                                @if (experience.Projects?.Count > 0)
+                                                {
+                                                    foreach (var project in experience.Projects)
+                                                    {
+                                                        <div class="d-flex gap-3 my-3 p-2 experienc-project-container"
+                                                            style="background-color: #f5f5f5;">
+                                                            <div class="py-1 px-2 fw-bold w-100">
+                                                                <p class="d-flex justify-content-between align-items-baseline mb-2">
+                                                                    <span class="">Dự án</span>
+                                                                    <a role="button" class="btn-sm btn-outline-danger rounded-pill"
+                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                        title="Xóa dự án">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </a>
+                                                                </p>
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <span class="text-dark">Online Doctor Appointment System</span>
+                                                                    <span>@project.StartDate.ToString("MM/yyyy") -
+                                                                        @project.EndDate.ToString("MM/yyyy")</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                                <div class="d-flex">
+                                                    <a role="button"
+                                                        class="btn btn-sm btn-outline-dark rounded-3 btn-add-project"
+                                                        data-bs-toggle="modal" data-bs-target="#experience-project-modal">
+                                                        <i class="fa-solid fa-circle-plus me-2"></i>Thêm dự án
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="ms-auto align-self-center">
+                                                <button class="btn" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Xóa">
+                                                    <i class="fa-regular fa-trash-can"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                <div class="d-flex gap-3 my-3 px-2 pt-2 pb-4 border-bottom" style="font-size: 0.9rem;">
+                                    <div class="text-nowrap">
+                                        05/2023 - 07/2023
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-1"><span class="text-danger fw-bold">Intern</span> tại <span
+                                                class="fw-bold">Trung tâm công nghệ phần mềm CUSC</span></p>
+                                        <p class="mb-1">
+                                            Phân tích và xây dựng hệ thống đặt lịch hẹn bác sĩ `Online Doctor
+                                            Appointment System`
+                                        </p>
+                                        <p class="fw-bold mb-1">Kỹ năng</p>
+                                        <p class="d-flex gap-3">
+                                            <span class="py-1 px-2 bg-white border">ASP.NET</span>
+                                            <span class="py-1 px-2 bg-white border">SQL</span>
+                                        </p>
+                                        <div class="d-flex gap-3 my-3 p-2 experienc-project-container"
+                                            style="background-color: #f5f5f5;">
+                                            <div class="py-1 px-2 fw-bold w-100">
+                                                <p class="d-flex justify-content-between align-items-baseline mb-2">
+                                                    <span class="">Dự án</span>
+                                                    <a role="button" class="btn-sm btn-outline-danger rounded-pill"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Xóa dự án">
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                    </a>
+                                                </p>
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <span class="text-dark">Online Doctor Appointment System</span>
+                                                    <span>05/2023 - 07/2023</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex gap-3 my-3 p-2 experienc-project-container"
+                                            style="background-color: #f5f5f5;">
+                                            <div class="py-1 px-2 fw-bold w-100">
+                                                <p class="d-flex justify-content-between align-items-baseline mb-2">
+                                                    <span class="">Dự án</span>
+                                                    <a role="button" class="btn-sm btn-outline-danger rounded-pill"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Xóa dự án">
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                    </a>
+                                                </p>
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <span class="text-dark">Online Doctor Appointment System</span>
+                                                    <span>05/2023 - 07/2023</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <a role="button"
+                                                class="btn btn-sm btn-outline-dark rounded-3 btn-add-project"
+                                                data-bs-toggle="modal" data-bs-target="#experience-project-modal">
+                                                <i class="fa-solid fa-circle-plus me-2"></i>Thêm dự án
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ms-auto align-self-center">
+                                        <button class="btn" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Xóa"><i class="fa-regular fa-trash-can"></i></button>
+                                    </div>
+                                </div>
                             </div>
                         </section>
                     </div>
                     <div class="col-12">
-                        <section class="d-flex bg-white rounded-3 p-3">
-                            <div class="flex-grow-1 d-flex flex-column">
-                                <h5>Ngoại ngữ</h5>
+                        <section class="d-flex flex-column bg-white rounded-3 p-3">
+                            <div class="d-flex border-bottom">
+                                <div class="flex-grow-1 d-flex flex-column">
+                                    <h5>Học vấn</h5>
+                                    <p>Thêm thông tin học vấn vào hồ sơ giúp tóm tắt nền tảng và giá trị mà bạn đã đạt
+                                        được
+                                        và có thể hỗ trợ cho công việc</p>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <img src="~/img/education.svg" alt="">
+                                </div>
+                                <div class="flex-shrink-0 ps-4">
+                                    <a role="button" class="fw-bold fs-5 text-muted btn-show-modal"><i
+                                            class="fa-regular fa-pen-to-square" data-info-area="Học vấn"
+                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
+                                </div>
                             </div>
-                            <div class="flex-shrink-0 ps-4">
-                                <a role="button" class="fw-bold fs-5 text-muted btn-show-modal"><i
-                                        class="fa-regular fa-pen-to-square" data-info-area="Ngoại ngữ"
-                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
+                            <div class="education-container">
+                                @if (Model.Resume != null && Model.Resume.Educations?.Count > 0)
+                                {
+                                    foreach (var education in Model.Resume.Educations)
+                                    {
+                                        <div class="d-flex gap-3 my-3 p-2" style="font-size: 0.9rem;">
+                                            <div class="text-nowrap">
+                                                @education.StartDate.ToString("MM-yyyy") -
+                                                @education.CompletionDate.ToString("MM-yyyy")
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <p class="mb-1 fw-bold">@education.University</p>
+                                                <p class="mb-1">@education.Major</p>
+                                                <p class="mb-1" style="font-size: .8rem; font-style: italic;">GPA @education.GPA
+                                                </p>
+                                            </div>
+                                            <div class="ms-auto align-self-center">
+                                                <button class="btn" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Xóa"><i class="fa-regular fa-trash-can"></i></button>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                <div class="d-flex gap-3 my-3 p-2" style="font-size: 0.9rem;">
+                                    <div class="text-nowrap">
+                                        05/2023 - 07/2023
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-1 fw-bold">Đại học Cần Thơ</p>
+                                        <p class="mb-1">Kỹ thuật phần mềm</p>
+                                        <p class="mb-1" style="font-size: .8rem; font-style: italic;">GPA 3.64</p>
+                                    </div>
+                                    <div class="ms-auto align-self-center">
+                                        <button class="btn" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Xóa"><i class="fa-regular fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-12">
+                        <section class="d-flex flex-column bg-white rounded-3 p-3">
+                            <div class="d-flex border-bottom">
+                                <div class="flex-grow-1 d-flex flex-column">
+                                    <h5>Dự án</h5>
+                                </div>
+                                <div class="flex-shrink-0 ps-4">
+                                    <a role="button" class="fw-bold fs-5 text-muted btn-show-modal"><i
+                                            class="fa-regular fa-pen-to-square" data-info-area="Dự án"
+                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
+                                </div>
+                            </div>
+                            <div class="project-container">
+                                @if (Model.Resume != null && Model.Resume.Project?.Count > 0)
+                                {
+                                    foreach (var project in Model.Resume.Project)
+                                    {
+                                        <div class="d-flex gap-3 my-3 p-2" style="font-size: 0.9rem;">
+                                            <div class="text-nowrap">
+                                                @project.StartDate.ToString("MM/YYYY") - @project.EndDate.ToString("MM/YYYY")
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <p class="mb-1 fw-bold">@project.Title</p>
+                                                <p class="mb-1 fw-bold text-danger">@project.Position</p>
+                                                <p class="mb-1">@project.Description</p>
+                                            </div>
+                                            <div class="ms-auto align-self-center">
+                                                <button class="btn" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Xóa"><i class="fa-regular fa-trash-can"></i></button>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                <div class="d-flex gap-3 my-3 p-2" style="font-size: 0.9rem;">
+                                    <div class="text-nowrap">
+                                        05/2023 - 07/2023
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-1 fw-bold">Web bán thời trang trẻ em KidShop</p>
+                                        <p class="mb-1 fw-bold text-danger">Developer</p>
+                                        <p class="mb-1">Tham gia xây dựng và phát triển website bán hàng thời trang trẻ
+                                            em</p>
+                                    </div>
+                                    <div class="ms-auto align-self-center">
+                                        <button class="btn" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Xóa"><i class="fa-regular fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-12">
+                        <section class="d-flex flex-column bg-white rounded-3 p-3">
+                            <div class="d-flex border-bottom">
+                                <div class="flex-grow-1 d-flex flex-column">
+                                    <h5>Ngoại ngữ</h5>
+                                </div>
+                                <div class="flex-shrink-0 ps-4">
+                                    <a role="button" class="fw-bold fs-5 text-muted btn-show-modal"><i
+                                            class="fa-regular fa-pen-to-square" data-info-area="Ngoại ngữ"
+                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
+                                </div>
+                            </div>
+                            <div class="language-container">
+                                @if (Model.Resume != null && Model.Resume.ForeignLanguages?.Count > 0)
+                                {
+                                    foreach (var language in Model.Resume.ForeignLanguages)
+                                    {
+                                        <div class="d-flex gap-3 my-3 p-2" style="background-color: #f5f5f5;">
+                                            <span class="py-1 px-2 fw-bold"
+                                                style="font-size: 0.9rem;">@language.LanguageName</span>
+                                            <span class="py-1 px-2" style="font-size: 0.9rem;">@language.Degree</span>
+                                            <div class="ms-auto align-self-center">
+                                                <button class="btn" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Xóa"><i class="fa-regular fa-trash-can"></i></button>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                <div class="d-flex justify-content-baseline gap-3 my-3 p-2"
+                                    style="background-color: #f5f5f5;">
+                                    <span class="py-1 px-2 fw-bold" style="font-size: 0.9rem;">English</span>
+                                    <span class="py-1 px-2" style="font-size: 0.9rem;">B1-VSTEP</span>
+                                    <div class="ms-auto align-self-center">
+                                        <button class="btn" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Xóa"><i class="fa-regular fa-trash-can"></i></button>
+                                    </div>
+                                </div>
                             </div>
                         </section>
                     </div>
@@ -232,166 +490,72 @@
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger rounded-3 btn-cancel" data-bs-dismiss="modal">Hủy
+                    bỏ</button>
+                <button type="button" class="btn btn-outline-primary rounded-3 btn-save">Lưu lại</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="experience-project-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="project-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="project-modal-label"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Dự án đã tham gia</label>
+                    <div class="d-flex p-3 experience-project-container"
+                        style="background-color: #f5f5f5; font-size: 0.9rem;">
+                        <div class="flex-grow-1 d-flex flex-column gap-2">
+                            <div>
+                                <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Tên dự án</label>
+                                <input class="form-control" type="text">
+                            </div>
+                            <div>
+                                <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Vai trò</label>
+                                <input class="form-control" type="text">
+                            </div>
+                            <div class="d-flex gap-3">
+                                <div class="flex-grow-1">
+                                    <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Thời gian bắt
+                                        đầu</label>
+                                    <input class="form-control" type="date">
+                                </div>
+                                <div class="flex-grow-1">
+                                    <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Thời gian kết
+                                        thúc</label>
+                                    <input class="form-control" type="date">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger rounded-3 btn-cancel" data-bs-dismiss="modal">Hủy
+                    bỏ</button>
+                <button type="button" class="btn btn-outline-primary rounded-3 btn-save">Lưu lại</button>
+            </div>
         </div>
     </div>
 </div>
 
 
 
+
 @section Scripts {
     <script src="~/area/assets/plugins/vietnamlocal/vietnamlocalselector.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
-    <script>
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-
-        $(document).ready(function () {
-            const btnShowModal = $('.btn-show-modal');
-            const modalContent = $('.modal-content');
-
-            btnShowModal.click(function () {
-                var title = $(this).find("i").data("info-area");
-                renderModalContent(title);
-            });
-
-                function renderModalContent(title) {
-                    var modalHeaderHtml = `
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">${title}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>`;
-
-                    var modalFooterHtml = `
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-danger rounded-3" data-bs-dismiss="modal">Hủy bỏ</button>
-                                <button type="button" class="btn btn-outline-primary rounded-3">Lưu lại</button>
-                            </div>`;
-
-                    var modalBodyHtml = "";
-                    switch (title.toLowerCase()) {
-                        case "tóm tắt":
-                            modalBodyHtml = `
-                                    <div class="modal-body">
-                                        <textarea class="form-control text-editor"></textarea>
-                                    </div>`;
-                            break;
-                        case "kỹ năng":
-                            modalBodyHtml = `
-                                    <div class="modal-body">
-                                        <select class="chosen-select" data-placeholder="Vd: C#, ASP.NET,..." multiple></select>
-                                    </div>`;
-                            break;
-                        case "kinh nghiệm làm việc":
-                            modalBodyHtml = `
-                                    <div class="modal-body">
-                                        <div class="d-flex flex-column gap-3">
-                                            <div>
-                                                <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Vị trí công việc</label>
-                                                <input class="form-control" type="text">
-                                            </div>
-                                            <div>
-                                                <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Tên công ty</label>
-                                                <input class="form-control" type="text">
-                                            </div>
-                                            <div class="d-flex gap-3">
-                                                <div class="flex-grow-1">
-                                                    <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Ngày bắt đầu</label>
-                                                    <input class="form-control" type="date">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Ngày kết thúc</label>
-                                                    <input class="form-control" type="date">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Mô tả</label>
-                                                <textarea class="form-control text-editor"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>`;
-                            break;
-                        case "học vấn":
-                            modalBodyHtml = `
-                                    <div class="modal-body">
-                                        <div class="d-flex flex-column gap-3">
-                                            <div>
-                                                <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Tên trường</label>
-                                                <input class="form-control" type="text">
-                                            </div>
-                                            <div>
-                                                <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Chuyên ngành</label>
-                                                <input class="form-control" type="text">
-                                            </div>
-                                            <div class="d-flex gap-3">
-                                                <div class="flex-grow-1">
-                                                    <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Ngày bắt đầu</label>
-                                                    <input class="form-control" type="date">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Ngày kết thúc</label>
-                                                    <input class="form-control" type="date">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Mô tả</label>
-                                                <textarea class="form-control text-editor"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>`;
-                            break;
-                        case "dự án":
-                            modalBodyHtml = `
-                                    <div class="modal-body">
-                                        dự án
-                                    </div>`;
-                            break;
-                        case "ngoại ngữ":
-                            modalBodyHtml = `
-                                    <div class="modal-body">
-                                        ngoại ngữ
-                                    </div>`;
-                            break;
-                        default: break;
-                    }
-                    modalContentHtml = modalHeaderHtml + modalBodyHtml + modalFooterHtml;
-                    modalContent.html(modalContentHtml);
-
-                    // Khởi tạo ck text editors
-                    const editors = $(".text-editor");
-                    editors.each((index, el) => {
-                        ClassicEditor.create(el).catch((error) => {
-                            console.error(error);
-                        });
-                    });
-
-                    // Khởi tạo chosen selector
-                    $(".chosen-select").chosen({
-                        allow_single_deselect: true,
-                        width: "100%",
-                        no_results_text: "Không tìm thấy kết quả :",
-                    });
-                }
-
-
-            //Tải ảnh lên tag img khi input thay đổi
-            $("#avatar_image-file").change(function (e) {
-                var avatarImg = $("#avatar_image");
-
-                if (e.target.files.length > 0) {
-                    var file = e.target.files[0];
-                    var reader = new FileReader();
-
-                    reader.onload = function (event) {
-                        avatarImg.attr("src", event.target.result);
-                    };
-
-                    reader.readAsDataURL(file);
-                } else {
-                    avatarImg.attr("src", "");
-                }
-            });
-        });
-    </script>
+    <script src="~/js/ProfilePage/createOnlineProfile.js"></script>
 }
