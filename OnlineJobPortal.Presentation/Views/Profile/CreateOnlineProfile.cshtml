@@ -87,11 +87,12 @@
                                 </div>
                             </div>
                             <div class="summary-container">
-                                @if (Model.Resume != null && Model.Resume.CareerGoal != null)
-                                {
-                                    <p class="my-3 p-2" style="background-color: #f5f5f5; font-size: 0.9rem;">
-                                        @Model.Resume.CareerGoal</p>
-                                }
+                                <p class="my-3 p-2" style="background-color: #f5f5f5; font-size: 0.9rem;">
+                                    @if (Model.Resume != null && Model.Resume.CareerGoal != null)
+                                    {
+                                        @Model.Resume.CareerGoal
+                                    }
+                                </p>                               
                             </div>
                         </section>
                     </div>
@@ -114,16 +115,16 @@
                                 </div>
                             </div>
                             <div class="skill-container">
-                                @if (Model.Resume != null && Model.Resume.CandidateSkills.Count > 0)
-                                {
-                                    <p class="d-flex gap-3 my-3 p-2 flex-wrap" style="background-color: #f5f5f5;">
+                                <p class="d-flex gap-3 my-3 p-2 flex-wrap" style="background-color: #f5f5f5;">
+                                    @if (Model.Resume != null && Model.Resume.CandidateSkills.Count > 0)
+                                    {
                                         @foreach (var skill in Model.Resume.CandidateSkills)
                                         {
                                             <span class="py-1 px-2 bg-white border"
                                                 style="font-size: 0.9rem;">@skill.Skill.SkillName</span>
                                         }
-                                    </p>
-                                }
+                                    }
+                                </p>
                             </div>
                         </section>
                     </div>
@@ -150,7 +151,7 @@
                                 {
                                     foreach (var experience in Model.Resume.Experiences)
                                     {
-                                        <div class="d-flex gap-3 my-3 p-2" style="font-size: 0.9rem;">
+                                        <div class="d-flex gap-3 my-3 px-2 pt-2 pb-4 border-bottom" style="font-size: 0.9rem;">
                                             <div class="text-nowrap">
                                                 @experience.StartDate.ToString("MM/yyyy") -
                                                 @experience.EndDate.ToString("MM/yyyy")
@@ -161,15 +162,15 @@
                                                         class="fw-bold">@experience.CompanyName</span>
                                                 </p>
                                                 <p class="mb-1">
-                                                    @experience.CompanyName
+                                                    @experience.Description
                                                 </p>
                                                 <p class="fw-bold mb-1">Kỹ năng</p>
-                                                <p class="d-flex gap-3">
-                                                    @if (experience.Skills?.Count > 0)
+                                                <p class="d-flex flex-wrap gap-3">
+                                                    @if (experience.ExperienceSkills?.Count > 0)
                                                     {
-                                                        foreach (var skill in experience.Skills)
+                                                        foreach (var experienceSkill in experience.ExperienceSkills)
                                                         {
-                                                            <span class="py-1 px-2 bg-white border">@skill.SkillName</span>
+                                                            <span class="py-1 px-2 bg-white border">@experienceSkill.Skill.SkillName</span>
                                                         }
                                                     }
                                                 </p>
@@ -177,14 +178,14 @@
                                                 {
                                                     foreach (var project in experience.Projects)
                                                     {
-                                                        <div class="d-flex gap-3 my-3 p-2 experienc-project-container"
+                                                        <div class="d-flex gap-3 my-3 p-2 experience-project-container"
                                                             style="background-color: #f5f5f5;">
                                                             <div class="py-1 px-2 fw-bold w-100">
                                                                 <p class="d-flex justify-content-between align-items-baseline mb-2">
                                                                     <span class="">Dự án</span>
                                                                     <a role="button" class="btn-sm btn-outline-danger rounded-pill"
                                                                         data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Xóa dự án">
+                                                                        title="Xóa dự án" data-project-id="@project.Id">
                                                                         <i class="fa-solid fa-xmark"></i>
                                                                     </a>
                                                                 </p>
@@ -200,83 +201,20 @@
                                                 <div class="d-flex">
                                                     <a role="button"
                                                         class="btn btn-sm btn-outline-dark rounded-3 btn-add-project"
-                                                        data-bs-toggle="modal" data-bs-target="#experience-project-modal">
+                                                        data-bs-toggle="modal" data-bs-target="#experience-project-modal" data-experience-id="@experience.Id">
                                                         <i class="fa-solid fa-circle-plus me-2"></i>Thêm dự án
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="ms-auto align-self-center">
-                                                <button class="btn" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Xóa">
+                                                <button class="btn btn-delete-experience" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Xóa" data-experience-id="@experience.Id">
                                                     <i class="fa-regular fa-trash-can"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     }
                                 }
-                                <div class="d-flex gap-3 my-3 px-2 pt-2 pb-4 border-bottom" style="font-size: 0.9rem;">
-                                    <div class="text-nowrap">
-                                        05/2023 - 07/2023
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <p class="mb-1"><span class="text-danger fw-bold">Intern</span> tại <span
-                                                class="fw-bold">Trung tâm công nghệ phần mềm CUSC</span></p>
-                                        <p class="mb-1">
-                                            Phân tích và xây dựng hệ thống đặt lịch hẹn bác sĩ `Online Doctor
-                                            Appointment System`
-                                        </p>
-                                        <p class="fw-bold mb-1">Kỹ năng</p>
-                                        <p class="d-flex gap-3">
-                                            <span class="py-1 px-2 bg-white border">ASP.NET</span>
-                                            <span class="py-1 px-2 bg-white border">SQL</span>
-                                        </p>
-                                        <div class="d-flex gap-3 my-3 p-2 experienc-project-container"
-                                            style="background-color: #f5f5f5;">
-                                            <div class="py-1 px-2 fw-bold w-100">
-                                                <p class="d-flex justify-content-between align-items-baseline mb-2">
-                                                    <span class="">Dự án</span>
-                                                    <a role="button" class="btn-sm btn-outline-danger rounded-pill"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Xóa dự án">
-                                                        <i class="fa-solid fa-xmark"></i>
-                                                    </a>
-                                                </p>
-                                                <div class="d-flex w-100 justify-content-between">
-                                                    <span class="text-dark">Online Doctor Appointment System</span>
-                                                    <span>05/2023 - 07/2023</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex gap-3 my-3 p-2 experienc-project-container"
-                                            style="background-color: #f5f5f5;">
-                                            <div class="py-1 px-2 fw-bold w-100">
-                                                <p class="d-flex justify-content-between align-items-baseline mb-2">
-                                                    <span class="">Dự án</span>
-                                                    <a role="button" class="btn-sm btn-outline-danger rounded-pill"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Xóa dự án">
-                                                        <i class="fa-solid fa-xmark"></i>
-                                                    </a>
-                                                </p>
-                                                <div class="d-flex w-100 justify-content-between">
-                                                    <span class="text-dark">Online Doctor Appointment System</span>
-                                                    <span>05/2023 - 07/2023</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <a role="button"
-                                                class="btn btn-sm btn-outline-dark rounded-3 btn-add-project"
-                                                data-bs-toggle="modal" data-bs-target="#experience-project-modal">
-                                                <i class="fa-solid fa-circle-plus me-2"></i>Thêm dự án
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="ms-auto align-self-center">
-                                        <button class="btn" data-bs-toggle="tooltip" data-bs-placement="top"
-                                            title="Xóa"><i class="fa-regular fa-trash-can"></i></button>
-                                    </div>
-                                </div>
                             </div>
                         </section>
                     </div>
@@ -485,6 +423,55 @@
     </div>
 </main>
 
+
+<div class="modal fade" id="experience-project-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="project-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="project-modal-label">Dự án đã tham gia</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="modal-body" id="add-experience-project-form">
+                <div>
+                    <div class="d-flex p-3 mb-3 experience-project-container"
+                        style="background-color: #f5f5f5; font-size: 0.9rem;">
+                        <div class="flex-grow-1 d-flex flex-column gap-2">
+                            <div>
+                                <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Tên dự án<span class="text-danger ms-1">(*)</span></label>
+                                <input class="form-control" type="text" id="experience-project-name-field" required>
+                            </div>
+                            <div>
+                                <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Vai trò<span class="text-danger ms-1">(*)</span></label>
+                                <input class="form-control" type="text" id="experience-project-position-field" required>
+                            </div>
+                            <div class="d-flex gap-3">
+                                <div class="flex-grow-1">
+                                    <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Thời gian bắt
+                                        đầu<span class="text-danger ms-1">(*)</span></label>
+                                    <input class="form-control" type="date" id="experience-project-start-date-field" required>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Thời gian kết
+                                        thúc<span class="text-danger ms-1">(*)</span></label>
+                                    <input class="form-control" type="date" id="experience-project-end-date-field" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="text-danger ms-1" style="font-size: .8rem;">(*) Bắt buộc</span>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger rounded-3 btn-cancel" data-bs-dismiss="modal">Hủy
+                    bỏ</button>
+                <button type="submit" form="add-experience-prokject-form" class="btn btn-outline-primary rounded-3 btn-save-project">Lưu lại</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -494,58 +481,11 @@
                 <h5 class="modal-title" id="staticBackdropLabel"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body"></div>
+            <form id="update-resume-form" class="modal-body"></form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger rounded-3 btn-cancel" data-bs-dismiss="modal">Hủy
                     bỏ</button>
-                <button type="button" class="btn btn-outline-primary rounded-3 btn-save">Lưu lại</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="experience-project-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="project-modal-label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="project-modal-label"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Dự án đã tham gia</label>
-                    <div class="d-flex p-3 experience-project-container"
-                        style="background-color: #f5f5f5; font-size: 0.9rem;">
-                        <div class="flex-grow-1 d-flex flex-column gap-2">
-                            <div>
-                                <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Tên dự án</label>
-                                <input class="form-control" type="text">
-                            </div>
-                            <div>
-                                <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Vai trò</label>
-                                <input class="form-control" type="text">
-                            </div>
-                            <div class="d-flex gap-3">
-                                <div class="flex-grow-1">
-                                    <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Thời gian bắt
-                                        đầu</label>
-                                    <input class="form-control" type="date">
-                                </div>
-                                <div class="flex-grow-1">
-                                    <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Thời gian kết
-                                        thúc</label>
-                                    <input class="form-control" type="date">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger rounded-3 btn-cancel" data-bs-dismiss="modal">Hủy
-                    bỏ</button>
-                <button type="button" class="btn btn-outline-primary rounded-3 btn-save">Lưu lại</button>
+                <button type="submit" form="update-resume-form" class="btn btn-outline-primary rounded-3 btn-save">Lưu lại</button>
             </div>
         </div>
     </div>

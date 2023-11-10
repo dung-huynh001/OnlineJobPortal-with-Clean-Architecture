@@ -40,14 +40,25 @@ namespace OnlineJobPortal.Infrastructure.Implementation
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T?> GetByIdAsync(int id)
         {
             return await _context.Set<T>().FindAsync(id);
         }
 
+        public async Task<int?> DeleteByIdAsync(int id)
+        {
+            T? exist = await _context.Set<T>().FindAsync(id);
+            if (exist != null)
+            {
+                _context.Set<T>().Remove(exist);
+                return id;
+            }
+            return 0;
+        }
+
         public Task UpdateAsync(T entity)
         {
-            T exist = _context.Set<T>().Find(entity.Id);
+            T? exist = _context.Set<T>().Find(entity.Id);
             _context.Entry(exist).CurrentValues.SetValues(entity);
             return Task.CompletedTask;
         }

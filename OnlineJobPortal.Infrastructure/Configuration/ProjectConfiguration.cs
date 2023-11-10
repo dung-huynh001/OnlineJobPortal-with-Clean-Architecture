@@ -24,7 +24,6 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .IsRequired(false);
             builder.Property(p => p.Position)
                 .IsRequired();
-
             builder.HasOne(p => p.Resume)
                 .WithMany(r => r.Project)
                 .HasForeignKey(r => r.ResumeId);

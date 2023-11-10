@@ -6,6 +6,7 @@ using OnlineJobPortal.Application.DTOs.CandidateDto;
 using OnlineJobPortal.Application.Futures.CandidateFeatures.Commands;
 using OnlineJobPortal.Application.Futures.CandidateFeatures.Queries;
 using OnlineJobPortal.Application.Futures.ExperienceFeatures.Commands;
+using OnlineJobPortal.Application.Futures.ProjectFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ResumeFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ResumeFeatures.Queries;
 using OnlineJobPortal.Application.Interfaces;
@@ -102,9 +103,24 @@ namespace OnlineJobPortal.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddExperience(int resumeId, List<int>Skills, Experience experience)
+        public async Task<IActionResult> AddExperience(int resumeId, List<int> Skills, Experience experience)
         {
             var result = await mediator.Send(new CreateExperienceCommand(resumeId, Skills, experience));
+            return Json(result);
+        }
+
+        public async Task<IActionResult> DeleteExperience(int id)
+        {
+            var result = await mediator.Send(new DeleteExperienceCommand(id));
+            if(result.Success)
+                return Json(new { success = true });
+
+            return Json(new { success = false });
+        }
+
+        public async Task<IActionResult> AddExperienceProject(int experienceId, Project project)
+        {
+            var result = await mediator.Send(new AddExperienceProjectCommand(experienceId, project));
             return Json(result);
         }
     }

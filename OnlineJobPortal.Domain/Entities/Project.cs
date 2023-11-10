@@ -16,6 +16,8 @@ namespace OnlineJobPortal.Domain.Entities
         public string LinkGit { get; set; }
         public string Description { get; set; }
         public int ResumeId { get; set; }
-        public Resume Resume { get; set; }
+        public Resume? Resume { get; set; }
+        /*public int ExperienceId { get; set; }
+        public Experience? Experience { get; set; }*/
     }
 }

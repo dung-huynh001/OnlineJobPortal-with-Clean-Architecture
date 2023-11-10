@@ -33,9 +33,9 @@ namespace OnlineJobPortal.Application.Futures.CandidateFeatures.Queries
         public async Task<Candidate?> Handle(GetCandidateProfileQuery request, CancellationToken cancellationToken)
         {
             var candidate = await unitOfWork.Repository<Candidate>().GetAll
-            .Include(c => c.User)
-            .Include(c => c.Resume).ThenInclude(r => r.Experiences).ThenInclude(e => e.Projects)
-            .Include(c => c.Resume).ThenInclude(r => r.Experiences).ThenInclude(e => e.Skills)
+            .Include(c => c.User!)
+            .Include(c => c.Resume).ThenInclude(r => r.Experiences).ThenInclude(e => e.ExProjects)
+            .Include(c => c.Resume).ThenInclude(r => r.Experiences).ThenInclude(e => e.ExperienceSkills).ThenInclude(es => es.Skill)
             .Include(c => c.Resume).ThenInclude(r => r.Project)
             .FirstOrDefaultAsync(c => c.Id.Equals(request.Id));
             return candidate;

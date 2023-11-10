@@ -33,11 +33,8 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(e => e.Projects)
-                .WithOne()
-                .IsRequired(false);
-
-            builder.HasMany(e => e.Skills)
-                .WithOne()
+                .WithOne(p => p.Experience)
+                .HasForeignKey(e => e.ExperienceId)
                 .IsRequired(false);
         }
     }

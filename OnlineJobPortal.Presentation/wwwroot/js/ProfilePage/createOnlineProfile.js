@@ -11,12 +11,18 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 $(document).ready(function () {
   const btnShowModal = $(".btn-show-modal");
   const modalTitle = $(".modal-title");
-  const modalBody = $(".modal-body");
+  const experienceModalBody = $("#staticBackdrop .modal-body");
   const summaryContainer = $(".summary-container");
   const skillContainer = $(".skill-container");
   const workExperienceContainer = $(".work-experience-container");
+  const updateResumeForm = $("#update-resume-form")[0];
+  const btnSaveProject = $(".btn-save-project");
+  const btnAddProject = $(".btn-add-project");
+  const addExperienceProjectForm = $("#add-experience-project-form")[0];
+
   var btnSave = $(".btn-save");
   var btnCancel = $(".btn-cancel");
+  var btnDeleteExperience = $(".btn-delete-experience");
 
   btnShowModal.click(function () {
     var title = $(this).find("i").data("info-area");
@@ -39,7 +45,8 @@ $(document).ready(function () {
     return skills;
   }
 
-  btnSave.click(function () {
+  btnSave.click(function (event) {
+    event.preventDefault();
     var targetSection = $(this).data("target-section");
     var data;
     switch (targetSection.toLowerCase()) {
@@ -57,19 +64,84 @@ $(document).ready(function () {
         };
         break;
       case "kinh nghiệm làm việc":
+        if (!updateResumeForm.checkValidity()){
+          toastr.warning("Vui lòng nhập đầy đủ các trường bắt buộc");
+          return;
+        }
         data = {
           resumeId: RESUME_ID,
-          position: $('#experience-position-field').val(),
-          companyName: $('#experience-company-name-field').val(),
-          startDate: $('#experience-start-date-field').val(),
-          endDate: $('#experience-end-date-field').val(),
-          skills: $('#experience-skills-list-field').val(),
-          description: $(".ck-content").text()
+          position: $("#experience-position-field").val(),
+          companyName: $("#experience-company-name-field").val(),
+          startDate: $("#experience-start-date-field").val(),
+          endDate: $("#experience-end-date-field").val(),
+          skills: $("#experience-skills-list-field").val(),
+          description: $(".ck-content").text(),
         };
+        if(data.startDate > data.endDate) {
+          toastr.warning("Ngày kết thúc phải sau ngày bắt đầu");
+          return;
+        }
         break;
     }
     updateSection(targetSection, data);
   });
+
+  btnDeleteExperience.click(function(event) {
+    event.preventDefault();
+    $(this).closest('.d-flex').remove();
+    let id = $(this).data("experience-id");
+    callAjaxToDeleteResources(id, "/Profile/DeleteExperience");
+  });
+
+  btnAddProject.click(function(){
+    let experienceId = $(this).data("experience-id");
+    btnSaveProject.data("experience-id", experienceId);
+  });
+
+  btnSaveProject.click(function(event){
+    event.preventDefault();
+    let experienceId = $(this).data("experience-id");
+    let data = {
+      experienceId: experienceId,
+      title: $('#experience-project-name-field').val(),
+      position: $('#experience-project-position-field').val(),
+      startDate: $('#experience-project-start-date-field').val(),
+      endDate: $('#experience-project-end-date-field').val()
+    };
+    if(!addExperienceProjectForm.checkValidity()) {
+      toastr.warning('Vui lòng điền đầy đủ các trường bắt buộc');
+    }
+    console.log(data);
+    $.ajax({
+      type: 'POST',
+      dataType: 'json',
+      url: '/Profile/AddExperienceProject',
+      data: data,
+      success: function(res){
+
+      },
+      error: function(err){
+
+      }
+    });
+  });
+
+  function callAjaxToDeleteResources(id, url){
+    $.ajax({
+      type: "Delete",
+      url: url,
+      data: {id: id},
+      success: function(res){
+        if(res.success)
+          toastr.success("Xóa thành công");
+        else
+          toastr.error("Xóa thất bại");
+      },
+      error: function(err){
+        console.log("Không thể kết nối tới server");
+      }
+    });
+  }
 
   async function renderModalContent(title) {
     var skillList = await getAllSkills();
@@ -99,25 +171,25 @@ $(document).ready(function () {
         modalBodyHtml =
           `<div class="d-flex flex-column gap-3">
           <div>
-              <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Vị trí công việc</label>
-              <input class="form-control" type="text" id="experience-position-field">
+              <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Vị trí công việc<span class="text-danger fw-light ms-1">(*)</span></label>
+              <input class="form-control" type="text" id="experience-position-field" required>
           </div>
           <div>
-              <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Tên công ty</label>
-              <input class="form-control" type="text" id="experience-company-name-field">
+              <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Tên công ty<span class="text-danger fw-light ms-1">(*)</span></label>
+              <input class="form-control" type="text" id="experience-company-name-field" required>
           </div>
           <div class="d-flex gap-3">
               <div class="flex-grow-1">
-                  <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Ngày bắt đầu</label>
-                  <input class="form-control" type="date" id="experience-start-date-field">
+                  <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Ngày bắt đầu<span class="text-danger fw-light ms-1">(*)</span></label>
+                  <input class="form-control" type="date" id="experience-start-date-field" required>
               </div>
               <div class="flex-grow-1">
-                  <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Ngày kết thúc</label>
-                  <input class="form-control" type="date" id="experience-end-date-field">
+                  <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Ngày kết thúc<span class="text-danger fw-light ms-1">(*)</span></label>
+                  <input class="form-control" type="date" id="experience-end-date-field" required>
               </div>
           </div>
           <div>
-              <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Kỹ năng tích lũy</label>
+              <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Kỹ năng tích lũy<span class="text-danger fw-light ms-1">(*)</span></label>
               <select class="chosen-select" data-placeholder="Vd: C#, ASP.NET,..." multiple id="experience-skills-list-field">
               ` +
           optionElements +
@@ -126,7 +198,9 @@ $(document).ready(function () {
           <div>
               <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Mô tả</label>
               <textarea class="form-control text-editor" id="experience-description-field"></textarea>
-          </div>        
+          </div>
+          <span class="text-danger me-auto" style="font-weight: 300; font-size: 0.8rem;">(*) Bắt buộc</span>
+
       </div>`;
         break;
       case "học vấn":
@@ -205,7 +279,7 @@ $(document).ready(function () {
       default:
         break;
     }
-    modalBody.html(modalBodyHtml);
+    experienceModalBody.html(modalBodyHtml);
 
     const editors = $(".text-editor");
     editors.each((index, el) => {
@@ -239,7 +313,43 @@ $(document).ready(function () {
     }
   }
 
-  function renderExperienceContainerContent(data){
+  function renderExperienceContainerContent(data) {
+    var experienceSkillList = [];
+    if (data.experienceSkills != null && data.experienceSkills.length > 0) {
+      experienceSkillList = data.experienceSkills.map((es) => {
+        return `<span class="py-1 px-2 bg-white border">${es.skill.skillName}</span>`;
+      });
+    }
+    var experienceContainerHtml =
+      `<div class="d-flex gap-3 my-3 px-2 pt-2 pb-4 border-bottom" style="font-size: 0.9rem;">
+      <div class="text-nowrap">05/2023 - 07/2023</div>
+      <div class="flex-grow-1">
+        <p class="mb-1">
+          <span class="text-danger fw-bold">${data.position}</span> tại
+          <span class="fw-bold">${data.companyName}</span>
+        </p>
+        <p class="mb-1">${data.description}</p>
+        <p class="fw-bold mb-1">Kỹ năng</p>
+        <p class="d-flex gap-3">` +
+      experienceSkillList.join("") +
+      `</p>
+        <div class="d-flex flex-column flex-wrap gap-3 experience-project-container"></div>
+        <div class="d-flex">
+          <a role="button" class="btn btn-sm btn-outline-dark rounded-3 btn-add-project"
+            data-bs-toggle="modal"
+            data-bs-target="#experience-project-modal"
+            data-experience-id="${data.id}">
+            <i class="fa-solid fa-circle-plus me-2"></i>Thêm dự án
+          </a>
+        </div>
+      </div>
+      <div class="ms-auto align-self-center">
+        <button class="btn btn-delete-experience" data-bs-toggle="tooltip" data-bs-placement="top" title="Xóa" data-experience-id="${data.id}">
+          <i class="fa-regular fa-trash-can"></i>
+        </button>
+      </div>
+    </div>`;
+    workExperienceContainer.append(experienceContainerHtml);
   }
 
   function callAjaxToUpdateSections(url, data, callback) {
