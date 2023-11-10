@@ -40,16 +40,24 @@ namespace OnlineJobPortal.Application.Futures.ExperienceFeatures.Commands
             {
                 var experience = request.Experience;
                 experience.ResumeId = request.ResumeId;
-                experience.Skills = new List<Skill>();
-                foreach (var skillId in request.Skills)
+                experience.ExperienceSkills = new List<ExperienceSkill>();
+                var skills = unitOfWork.Repository<Skill>().GetAll
+                                .Where(s => request.Skills.Contains(s.Id))
+                                .ToList();
+
+                foreach (var skill in skills)
                 {
-                    var skill = await unitOfWork.Repository<Skill>().GetByIdAsync(skillId);
-                    experience.Skills.Add(skill);
+                    var experienceSkill = new ExperienceSkill
+                    {
+                        Skill = skill,
+                        Experience = experience
+                    };
+                    await unitOfWork.Repository<ExperienceSkill>().AddAsync(experienceSkill);
                 }
 
                 await unitOfWork.Repository<Experience>().AddAsync(experience);
-
                 unitOfWork.Commit();
+
                 return experience;
             }
             catch

@@ -32,12 +32,10 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasForeignKey(e => e.ResumeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasMany(e => e.Projects)
-                .WithOne()
-                .IsRequired(false);
-
-            builder.HasMany(e => e.Skills)
-                .WithOne()
+            builder.HasMany(e => e.ExperienceProjects)
+                .WithOne(p => p.Experience)
+                .HasForeignKey(e => e.ExperienceId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .IsRequired(false);
         }
     }

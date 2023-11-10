@@ -825,6 +825,73 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.ToTable("Experiences");
                 });
 
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ExperienceProject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ExperienceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExperienceId");
+
+                    b.ToTable("ExperienceProjects");
+                });
+
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ExperienceSkill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ExperienceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SkillId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExperienceId");
+
+                    b.HasIndex("SkillId");
+
+                    b.ToTable("ExperienceSkills");
+                });
+
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ForeignLanguage", b =>
                 {
                     b.Property<int>("Id")
@@ -1186,9 +1253,6 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ExperienceId")
-                        .HasColumnType("int");
-
                     b.Property<string>("LinkGit")
                         .HasColumnType("nvarchar(max)");
 
@@ -1210,8 +1274,6 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ExperienceId");
 
                     b.HasIndex("ResumeId");
 
@@ -1328,9 +1390,6 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ExperienceId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SkillName")
                         .IsRequired()
                         .HasMaxLength(256)
@@ -1340,8 +1399,6 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ExperienceId");
 
                     b.ToTable("Skills");
 
@@ -2567,6 +2624,35 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Navigation("Resume");
                 });
 
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ExperienceProject", b =>
+                {
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Experience", "Experience")
+                        .WithMany("ExperienceProjects")
+                        .HasForeignKey("ExperienceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Experience");
+                });
+
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ExperienceSkill", b =>
+                {
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Experience", "Experience")
+                        .WithMany("ExperienceSkills")
+                        .HasForeignKey("ExperienceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Skill", "Skill")
+                        .WithMany("ExperienceSkills")
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Experience");
+
+                    b.Navigation("Skill");
+                });
+
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ForeignLanguage", b =>
                 {
                     b.HasOne("OnlineJobPortal.Domain.Entities.Resume", "Resume")
@@ -2645,10 +2731,6 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Project", b =>
                 {
-                    b.HasOne("OnlineJobPortal.Domain.Entities.Experience", null)
-                        .WithMany("Projects")
-                        .HasForeignKey("ExperienceId");
-
                     b.HasOne("OnlineJobPortal.Domain.Entities.Resume", "Resume")
                         .WithMany("Project")
                         .HasForeignKey("ResumeId")
@@ -2686,13 +2768,6 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Candidate");
-                });
-
-            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Skill", b =>
-                {
-                    b.HasOne("OnlineJobPortal.Domain.Entities.Experience", null)
-                        .WithMany("Skills")
-                        .HasForeignKey("ExperienceId");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.BussinessIndustry", b =>
@@ -2734,9 +2809,9 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Experience", b =>
                 {
-                    b.Navigation("Projects");
+                    b.Navigation("ExperienceProjects");
 
-                    b.Navigation("Skills");
+                    b.Navigation("ExperienceSkills");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.JobPost", b =>
@@ -2774,6 +2849,8 @@ namespace OnlineJobPortal.Infrastructure.Migrations
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Skill", b =>
                 {
                     b.Navigation("CandidateSkills");
+
+                    b.Navigation("ExperienceSkills");
 
                     b.Navigation("RequirementSkills");
                 });

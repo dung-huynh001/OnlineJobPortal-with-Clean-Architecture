@@ -11,7 +11,7 @@ namespace OnlineJobPortal.Domain.Entities
         public DateTime EndDate { get; set; }
         public int ResumeId { get; set; }
         public Resume Resume { get; set; }
-        public ICollection<Skill>? Skills { get; set; }
-        public ICollection<Project>? Projects { get; set; }
+        public ICollection<ExperienceSkill>? ExperienceSkills { get; set; }
+        public ICollection<ExperienceProject>? ExperienceProjects { get; set; }
     }
 }

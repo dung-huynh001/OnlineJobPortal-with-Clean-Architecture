@@ -41,6 +41,8 @@ namespace OnlineJobPortal.Infrastructure.Context
         public DbSet<Province> Provinces { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<ExperienceSkill> ExperienceSkills { get; set; }
+        public DbSet<ExperienceProject> ExperienceProjects { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -72,6 +74,7 @@ namespace OnlineJobPortal.Infrastructure.Context
             builder.ApplyConfiguration(new ProvinceConfiguration());
             builder.ApplyConfiguration(new DistrictConfiguration());
             builder.ApplyConfiguration(new ProjectConfiguration());
+            builder.ApplyConfiguration(new ExperienceSkillConfiguration());
         }
 
         public virtual async Task<int> SaveChangesAsync()
