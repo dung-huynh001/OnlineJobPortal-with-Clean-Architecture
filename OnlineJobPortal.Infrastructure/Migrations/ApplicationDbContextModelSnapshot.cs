@@ -825,6 +825,44 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.ToTable("Experiences");
                 });
 
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ExperienceProject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ExperienceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExperienceId");
+
+                    b.ToTable("ExperienceProjects");
+                });
+
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ExperienceSkill", b =>
                 {
                     b.Property<int>("Id")
@@ -1215,9 +1253,6 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ExperienceId")
-                        .HasColumnType("int");
-
                     b.Property<string>("LinkGit")
                         .HasColumnType("nvarchar(max)");
 
@@ -1239,8 +1274,6 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ExperienceId");
 
                     b.HasIndex("ResumeId");
 
@@ -2591,6 +2624,16 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Navigation("Resume");
                 });
 
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ExperienceProject", b =>
+                {
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Experience", "Experience")
+                        .WithMany("ExperienceProjects")
+                        .HasForeignKey("ExperienceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Experience");
+                });
+
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ExperienceSkill", b =>
                 {
                     b.HasOne("OnlineJobPortal.Domain.Entities.Experience", "Experience")
@@ -2688,17 +2731,11 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Project", b =>
                 {
-                    b.HasOne("OnlineJobPortal.Domain.Entities.Experience", "Experience")
-                        .WithMany("Projects")
-                        .HasForeignKey("ExperienceId");
-
                     b.HasOne("OnlineJobPortal.Domain.Entities.Resume", "Resume")
                         .WithMany("Project")
                         .HasForeignKey("ResumeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Experience");
 
                     b.Navigation("Resume");
                 });
@@ -2772,9 +2809,9 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Experience", b =>
                 {
-                    b.Navigation("ExperienceSkills");
+                    b.Navigation("ExperienceProjects");
 
-                    b.Navigation("Projects");
+                    b.Navigation("ExperienceSkills");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.JobPost", b =>

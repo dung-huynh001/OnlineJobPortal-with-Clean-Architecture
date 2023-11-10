@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.Interfaces.Repositories
 {
-    public interface IExperienceSkillRepository : IGenericRepository<Experience>
+    public interface IExperienceSkillRepository : IGenericRepository<ExperienceSkill>
     {
     }
 }

@@ -28,6 +28,8 @@ namespace OnlineJobPortal.Application.Interfaces
         IDistrictRepository DistrictRepository { get; }
         IProvinceRepository ProvinceRepository { get; }
         IProjectRepository ProjectRepository { get; }
+        IExperienceProjectRepository ExperienceProjectRepository { get; }
+        IExperienceSkillRepository ExperienceSkillRepository { get; }
         void BeginTransaction();
         void Commit();
         void Rollback();

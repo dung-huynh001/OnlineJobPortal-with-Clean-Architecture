@@ -41,6 +41,8 @@ namespace OnlineJobPortal.Infrastructure.Implementation
         private IDistrictRepository _districtRepository;
         private IProvinceRepository _provinceRepository;
         private IProjectRepository _projectRepository;
+        private IExperienceProjectRepository _experienceProjectRepository;
+        private IExperienceSkillRepository _experienceSkillRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -69,6 +71,8 @@ namespace OnlineJobPortal.Infrastructure.Implementation
         public IDistrictRepository DistrictRepository => _districtRepository ??= new DistrictRepository(_context);
         public IProvinceRepository ProvinceRepository => _provinceRepository ??= new ProvinceRepository(_context);
         public IProjectRepository ProjectRepository => _projectRepository ??= new ProjectRepository(_context);
+        public IExperienceProjectRepository ExperienceProjectRepository => _experienceProjectRepository ??= new ExperienceProjectRepository(_context);
+        public IExperienceSkillRepository ExperienceSkillRepository => _experienceSkillRepository ??= new ExperienceSkillRepository(_context);
         public IGenericRepository<T> Repository<T>() where T : BaseEntity
         {
             if (_repositories == null)

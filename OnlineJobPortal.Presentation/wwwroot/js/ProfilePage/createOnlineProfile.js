@@ -322,7 +322,7 @@ $(document).ready(function () {
     }
     var experienceContainerHtml =
       `<div class="d-flex gap-3 my-3 px-2 pt-2 pb-4 border-bottom" style="font-size: 0.9rem;">
-      <div class="text-nowrap">05/2023 - 07/2023</div>
+      <div class="text-nowrap">${data.startDate} - ${data.endDate}</div>
       <div class="flex-grow-1">
         <p class="mb-1">
           <span class="text-danger fw-bold">${data.position}</span> tại

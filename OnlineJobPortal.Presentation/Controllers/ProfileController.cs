@@ -118,9 +118,9 @@ namespace OnlineJobPortal.Presentation.Controllers
             return Json(new { success = false });
         }
 
-        public async Task<IActionResult> AddExperienceProject(int experienceId, Project project)
+        public async Task<IActionResult> AddExperienceProject(int experienceId, ExperienceProject experienceProject)
         {
-            var result = await mediator.Send(new AddExperienceProjectCommand(experienceId, project));
+            var result = await mediator.Send(new AddExperienceProjectCommand(experienceId, experienceProject));
             return Json(result);
         }
     }

@@ -10,18 +10,18 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.Futures.ProjectFeatures.Commands
 {
-    public class AddExperienceProjectCommand : IRequest<Project?>
+    public class AddExperienceProjectCommand : IRequest<ExperienceProject?>
     {
-        public AddExperienceProjectCommand(int experienceId, Project project)
+        public AddExperienceProjectCommand(int experienceId, ExperienceProject project)
         {
             ExperienceId = experienceId;
             Project = project;
         }
 
         public int ExperienceId { get; }
-        public Project Project { get; }
+        public ExperienceProject Project { get; }
     }
-    public class AddExperienceProjectCommandHandler : IRequestHandler<AddExperienceProjectCommand, Project?>
+    public class AddExperienceProjectCommandHandler : IRequestHandler<AddExperienceProjectCommand, ExperienceProject?>
     {
         private readonly IMapper mapper;
         private readonly IUnitOfWork unitOfWork;
@@ -31,7 +31,7 @@ namespace OnlineJobPortal.Application.Futures.ProjectFeatures.Commands
             this.mapper = mapper;
             this.unitOfWork = unitOfWork;
         }
-        public async Task<Project?> Handle(AddExperienceProjectCommand request, CancellationToken cancellationToken)
+        public async Task<ExperienceProject?> Handle(AddExperienceProjectCommand request, CancellationToken cancellationToken)
         {
             unitOfWork.BeginTransaction();
             try
@@ -39,7 +39,7 @@ namespace OnlineJobPortal.Application.Futures.ProjectFeatures.Commands
                 var project = request.Project;
                 project.ExperienceId = request.ExperienceId;
 
-                await unitOfWork.Repository<Project>().AddAsync(project);
+                await unitOfWork.Repository<ExperienceProject>().AddAsync(project);
 
                 unitOfWork.Commit();
                 return project;

@@ -42,6 +42,7 @@ namespace OnlineJobPortal.Infrastructure.Context
         public DbSet<District> Districts { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<ExperienceSkill> ExperienceSkills { get; set; }
+        public DbSet<ExperienceProject> ExperienceProjects { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
