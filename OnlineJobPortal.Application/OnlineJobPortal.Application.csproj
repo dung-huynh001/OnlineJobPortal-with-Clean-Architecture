@@ -24,6 +24,7 @@
     <Folder Include="Futures\EducationFeatures\Queries\" />
     <Folder Include="Futures\EmployerFeatures\Queries\" />
     <Folder Include="Futures\ExperienceFeatures\Queries\" />
+    <Folder Include="Futures\ExperienceProjectFeature\Queries\" />
     <Folder Include="Futures\ForeignLangugeFeatures\Queries\" />
     <Folder Include="Futures\JobFavoriteFeatures\Queries\" />
     <Folder Include="Futures\LocationFeatures\Queries\" />

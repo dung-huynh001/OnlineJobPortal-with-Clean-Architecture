@@ -15,11 +15,6 @@ namespace OnlineJobPortal.Infrastructure.Configuration
         {
             builder.HasKey(e => e.Id);
 
-            // Configure properties
-            builder.Property(e => e.Certificate)
-                .IsRequired()
-                .HasMaxLength(256);
-
             builder.Property(e => e.Major)
                 .IsRequired()
                 .HasMaxLength(256);

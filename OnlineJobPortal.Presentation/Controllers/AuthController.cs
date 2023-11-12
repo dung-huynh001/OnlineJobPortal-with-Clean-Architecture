@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OnlineJobPortal.Application.Contracts.Identity;
 using OnlineJobPortal.Application.DTOs.CompanyDto;
 using OnlineJobPortal.Application.DTOs.LocationDto;
+using OnlineJobPortal.Application.Futures.CandidateFeatures.Queries;
 using OnlineJobPortal.Application.Futures.CompanyFeatures.Commands;
 using OnlineJobPortal.Application.Futures.DistrictFeatures.Commands;
 using OnlineJobPortal.Application.Futures.LocationFeatures.Commands;
@@ -52,6 +54,7 @@ namespace OnlineJobPortal.Presentation.Controllers
 
         [TempData]
         public string SuccessMessage { get; set; }
+
 
         [Route("/login")]
         public IActionResult Login()
@@ -184,6 +187,40 @@ namespace OnlineJobPortal.Presentation.Controllers
         public IActionResult ChangePassword()
         {
             return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var userId = currentUserService.UserId;
+                var request = new ChangePasswordRequest();
+                request.CurrentPassword = model.CurrentPassword;
+                request.NewPassword = model.NewPassword;
+                request.Id = userId;
+                var result = await authService.ChangePassword(request);
+                if (result)
+                {
+                    SuccessMessage = "Đổi mật khẩu thành công. Vui lòng đăng nhập lại";
+                    await authService.Logout();
+                    return RedirectToAction("Login"); ;
+                }
+                else
+                {
+                    ViewBag.PasswordChangeFailed = true;
+                    return View();
+                }
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> GetInfo()
+        {
+            var actorId = currentUserService.GetActorId();
+            var result = await mediator.Send(new GetCandidateProfileQuery(actorId));
+            return Json(result);
         }
 
         public async Task<IActionResult> Logout()

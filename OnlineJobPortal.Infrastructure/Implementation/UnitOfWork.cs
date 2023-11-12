@@ -19,7 +19,6 @@ namespace OnlineJobPortal.Infrastructure.Implementation
         private readonly ApplicationDbContext _context;
         private Hashtable _repositories;
         private IDbContextTransaction _transaction;
-
         private IAdminRepository _adminRepository;
         private IApplyRepository _applyRepository;
         private IBussinessIndustryRepository _bussinessIndustryRepository;

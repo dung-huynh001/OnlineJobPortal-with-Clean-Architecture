@@ -41,6 +41,7 @@
     <Folder Include="wwwroot\lib\jquery\" />
     <Folder Include="wwwroot\lib\jquery\dist\" />
     <Folder Include="wwwroot\Uploads\CompanyImg\" />
+    <Folder Include="wwwroot\Uploads\CVs\" />
   </ItemGroup>
 
 </Project>
