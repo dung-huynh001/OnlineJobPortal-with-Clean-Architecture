@@ -11,7 +11,6 @@ namespace OnlineJobPortal.Application.DTOs.ForeignLanguageDto
     public class ForeignLanguageDto : BaseDto
     {
         public string LanguageName { get; set; }
-        public string Proficiency { get; set; }
         public string Degree { get; set; }
 
         public int ResumeId { get; set; }

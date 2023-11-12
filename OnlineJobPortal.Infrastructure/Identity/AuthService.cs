@@ -14,6 +14,7 @@ using OnlineJobPortal.Application.Futures.CandidateFeatures.Commands;
 using OnlineJobPortal.Application.Futures.EmployerFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ResumeFeatures.Commands;
 using OnlineJobPortal.Application.Interfaces;
+using OnlineJobPortal.Application.Interfaces.Repositories;
 using OnlineJobPortal.Application.Models.Identity;
 using OnlineJobPortal.Application.Responses;
 using OnlineJobPortal.Domain.Entities;
@@ -36,10 +37,13 @@ namespace OnlineJobPortal.Infrastructure.Identity
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IMediator mediator;
+        private readonly IUnitOfWork unitOfWork;
+        private readonly IApplicationUserRepository applicationUserRepository;
 
         public AuthService(UserManager<ApplicationUser> userManager, 
             SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager,
-            IConfiguration configuration, IMapper mapper, IMediator mediator)
+            IConfiguration configuration, IMapper mapper, IMediator mediator, IUnitOfWork unitOfWork,
+            IApplicationUserRepository applicationUserRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -47,6 +51,8 @@ namespace OnlineJobPortal.Infrastructure.Identity
             _configuration = configuration;
             _mapper = mapper;
             this.mediator = mediator;
+            this.unitOfWork = unitOfWork;
+            this.applicationUserRepository = applicationUserRepository;
         }
 
         public async Task<ApiResponse> LoginAsync(AuthRequest request)
@@ -309,6 +315,12 @@ namespace OnlineJobPortal.Infrastructure.Identity
                 };
             }
         }
+
+        public async Task<bool> ChangePassword(ChangePasswordRequest request)
+        {
+            return await applicationUserRepository.ChangePassword(request);
+        }
+        
         public async Task Logout()
         {
             await _signInManager.SignOutAsync();

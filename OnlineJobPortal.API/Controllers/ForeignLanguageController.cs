@@ -18,15 +18,5 @@ namespace OnlineJobPortal.API.Controllers
             this.mediator = mediator;
             this.mapper = mapper;
         }
-        [HttpPost]
-        public async Task<IActionResult> Create(CreateForeignLanguageCommand request)
-        {
-            var result = await mediator.Send(request);
-            if (!result.Success)
-            {
-                return BadRequest(result);
-            }
-            return await Create(request);
-        }
     }
 }

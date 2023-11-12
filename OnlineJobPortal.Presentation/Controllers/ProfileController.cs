@@ -5,7 +5,10 @@ using Microsoft.Extensions.FileProviders;
 using OnlineJobPortal.Application.DTOs.CandidateDto;
 using OnlineJobPortal.Application.Futures.CandidateFeatures.Commands;
 using OnlineJobPortal.Application.Futures.CandidateFeatures.Queries;
+using OnlineJobPortal.Application.Futures.EducationFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ExperienceFeatures.Commands;
+using OnlineJobPortal.Application.Futures.ExperienceProjectFeature.Commands;
+using OnlineJobPortal.Application.Futures.ForeignLangugeFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ProjectFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ResumeFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ResumeFeatures.Queries;
@@ -112,7 +115,7 @@ namespace OnlineJobPortal.Presentation.Controllers
         public async Task<IActionResult> DeleteExperience(int id)
         {
             var result = await mediator.Send(new DeleteExperienceCommand(id));
-            if(result.Success)
+            if (result.Success)
                 return Json(new { success = true });
 
             return Json(new { success = false });
@@ -122,6 +125,83 @@ namespace OnlineJobPortal.Presentation.Controllers
         {
             var result = await mediator.Send(new AddExperienceProjectCommand(experienceId, experienceProject));
             return Json(result);
+        }
+
+        public async Task<IActionResult> DeleteExperienceProject(int id)
+        {
+            var result = await mediator.Send(new DeleteExperienceProjectCommand(id));
+            if (result == null)
+                return Json(new { success = false });
+            return Json(new { success = true });
+        }
+
+        public async Task<IActionResult> AddEducation(Education education)
+        {
+            var result = await mediator.Send(new CreateEducationCommand(education));
+            return Json(result);
+        }
+
+        public async Task<IActionResult> DeleteEducation(int id)
+        {
+            var result = await mediator.Send(new DeleteEducationCommand(id));
+            if (result == null)
+                return Json(new { success = false });
+            return Json(new { success = true });
+        }
+
+        public async Task<IActionResult> AddProject(Project project)
+        {
+            var result = await mediator.Send(new AddProjectCommand(project));
+            return Json(result);
+        }
+
+        public async Task<IActionResult> DeleteProject(int id)
+        {
+            var result = await mediator.Send(new DeleteProjectCommand(id));
+            if (result == null)
+                return Json(new { success = false });
+            return Json(new { success = true });
+
+        }
+
+        public async Task<IActionResult> AddForeignLanguage(ForeignLanguage foreignLanguage)
+        {
+            var result = await mediator.Send(new AddForeignLanguageCommand(foreignLanguage));
+            return Json(result);
+        }
+
+        public async Task<IActionResult> DeleteForeignLanguage(int id)
+        {
+            var result = await mediator.Send(new DeleteForeignLanguageCommand(id));
+            if(result == null)
+                return Json(new { success = false });
+            return Json(new { success = true });
+
+        }
+
+        public async Task<IActionResult> ChangeJobSearchMode(int resumeId, bool searching)
+        {
+            var result = await mediator.Send(new ChangeJobSearchModeCommand(resumeId, searching));
+            return Json(result);
+        }
+
+        [HttpPatch]
+        public async Task<IActionResult> UploadCV(IFormFile cv)
+        {
+            try
+            {
+                int actorId = currentUserService.GetActorId();
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Uploads/CVs");
+                string cvUrl = await uploadService.UploadImageAsync(cv, uploadsFolder);
+
+                var result = await mediator.Send(new UploadCVUrlCommand(actorId, cvUrl));
+
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = ex.Message });
+            }
         }
     }
 }
