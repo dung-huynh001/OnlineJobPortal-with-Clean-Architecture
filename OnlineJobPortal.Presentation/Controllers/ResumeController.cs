@@ -10,7 +10,7 @@ using AutoMapper;
 
 namespace OnlineJobPortal.Presentation.Controllers
 {
-    //[Authorize(Roles = "Candidate")]
+    [Authorize(Roles = "Candidate")]
     public class ResumeController : Controller
     {
         private readonly IMediator mediator;

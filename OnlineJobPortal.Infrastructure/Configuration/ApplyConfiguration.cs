@@ -14,8 +14,17 @@ namespace OnlineJobPortal.Infrastructure.Configuration
         public void Configure(EntityTypeBuilder<Apply> builder)
         {
             builder.HasKey(e => e.Id);
+
+
             builder.Property(e => e.Status)
-                .IsRequired();
+                .IsRequired(false);
+
+            builder.Property(e => e.CoverLetter)
+                .IsRequired(false);
+
+            builder.Property(e => e.CvUrl)
+                .IsRequired(false);
+
             builder.HasOne<Candidate>(e => e.Candidate)
                 .WithOne()
                 .IsRequired()

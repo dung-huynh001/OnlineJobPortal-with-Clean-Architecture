@@ -1,0 +1,137 @@
+﻿@using OnlineJobPortal.Domain.Entities
+@using OnlineJobPortal.Application.Responses
+@model PaginatedResult<JobFavorite>
+
+<style>
+    .job-item {
+        background-color: #fff;
+    }
+</style>
+
+<div class="container-fluid bg-light">
+    <div class="container py-4 min-vh-100">
+        <div class="row gap-3 bg-white rounded-3">
+            <div class="col-12 rounded-top" style="background-image: linear-gradient(to right, #095038, #cef5df);">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="py-4 px-3">
+                            <h4 class="text-white">Việc làm đã lưu</h4>
+                            <p class="text-white">Xem lại danh sách những việc làm mà bạn đã lưu trước đó. Ứng tuyển
+                                ngay để
+                                không bỏ lỡ cơ hội nghề
+                                nghiệp dành cho bạn.</p>
+                        </div>
+                    </div>
+                    <img class="ms-auto" src="~/img/robo-1.png" alt="" style="width: 200px;">
+                </div>
+
+            </div>
+            <div class="col-12">Đã lưu <span class="text-primary" id="total-saved-jobs">@Model.TotalCount</span> tin
+                tuyển dụng</div>
+            <div class="col-12">
+                <div class="d-flex flex-column job-post-container" style="min-height: 500px;">
+                    @{
+                        if (Model.Items.Count > 0)
+                            foreach (var favoriteJob in Model.Items)
+                            {
+                                <div class="job-item p-4 mb-4">
+                                    <div class="row g-4">
+                                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                            <img src=".@favoriteJob.JobPost.Employer.Company.LogoUrl"
+                                                class="flex-shrink-0 img-fluid border rounded-3" alt=""
+                                                style="width: 90px; height: 90px;">
+                                            <div class="text-start ps-4">
+                                                <a href="/JobPost/JobDetail/@favoriteJob.JobPost.Employer.Company.Id"
+                                                    target="_blank">
+                                                    <h5 class="mb-2">@favoriteJob.JobPost.Title</h5>
+                                                </a>
+                                                <div class="p-0 mb-2">
+                                                    <a href="/Company/CompanyDetail/@favoriteJob.JobPost.Employer.Company.Id"
+                                                        target="_blank"
+                                                        class="text-uppercase text-muted">@favoriteJob.JobPost.Employer.Company.CompanyName</a>
+                                                </div>
+                                                <div
+                                                    class="d-flex flex-wrap gap-3 mb-2 text-capitalize text-primary skills-wrapper">
+                                                    @if (favoriteJob.JobPost.RequirementSkills.Count > 0)
+                                                    {
+                                                        foreach (var skill in favoriteJob.JobPost.RequirementSkills)
+                                                        {
+                                                            <span>@skill.Skill.SkillName</span>
+                                                        }
+                                                    }
+                                                </div>
+                                                <span class="text-truncate me-3">
+                                                    <i
+                                                        class="fa fa-map-marker-alt text-primary me-2"></i>@favoriteJob.JobPost.Employer.Company.District.Province.ProvinceName
+                                                </span>
+                                                <span class="text-truncate me-3">
+                                                    <i
+                                                        class="far fa-clock text-primary me-2"></i>@favoriteJob.JobPost.EmploymentType
+                                                </span>
+                                                <span class="text-truncate me-0">
+                                                    <i class="far fa-money-bill-alt text-primary me-2"></i>
+                                                    @favoriteJob.JobPost.Salary
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-around">
+                                            <a class="btn btn-primary" href="">Ứng tuyển</a>
+
+                                            <span class="text-truncate">
+                                                <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối:
+                                                @favoriteJob.JobPost.ExpiredDate.ToString("dd MMM yyyy")
+                                            </span>
+                                            <a class="btn btn-light btn-square" data-job-post-id="@favoriteJob.JobPostId"
+                                                data-bs-target="tooltip" data-bs-placement="bottom" title="Bỏ lưu">
+                                                <i class="fa-regular fa-trash-can text-primary"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        else
+                        {
+                            <img class="align-self-center" src="../img/no-result-found.jpg" alt="" style="width: 400px" />
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            const jobPostContainer = $(".job-post-container");
+            const totalSavedJobs = $("#total-saved-jobs");
+            $(".btn-square").click(function () {
+                let btnDelete = $(this);
+                let jobPostId = btnDelete.data("job-post-id");
+                let container = btnDelete.closest(".job-item");
+                container.remove();
+                callAjaxToDeleteFavoriteJob(jobPostId);
+                totalSavedJobs.html($(".job-item").length);
+                if ($(".job-item").length == 0) {
+                    renderEmptyImage();
+                }
+                toastr.success("Hủy lưu tin tuyển dụng thành công");
+            })
+
+            function callAjaxToDeleteFavoriteJob(jobId) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    data: { jobId: jobId },
+                    url: "/Apply/DeleteFavorite",
+                });
+            }
+
+            function renderEmptyImage() {
+                imgHtml = `<img class="align-self-center" src="../img/no-result-found.jpg" alt="" style="width: 400px"/>`
+                jobPostContainer.html(imgHtml);
+            }
+        });
+    </script>
+}

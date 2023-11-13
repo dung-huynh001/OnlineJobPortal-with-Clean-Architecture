@@ -37,6 +37,9 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
             this.webHostEnvironment = webHostEnvironment;
         }
 
+        [TempData]
+        public bool isSuccess { get; set; } = false;
+
         [HttpGet]
         public IActionResult CompanyProfile(int employerId)
         {
@@ -70,7 +73,7 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
                     var company = mapper.Map<UpdateCompanyDto>(model);
                     var updateCompanyCommand = new UpdateCompanyCommand(company);
                     var result = await mediator.Send(updateCompanyCommand);
-
+                    isSuccess = true;
                     return RedirectToAction("CompanyProfile", "Company", new { area = "Employer", employerId = id });
 
                 }

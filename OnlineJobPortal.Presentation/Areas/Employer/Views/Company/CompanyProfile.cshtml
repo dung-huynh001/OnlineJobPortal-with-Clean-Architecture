@@ -5,9 +5,12 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 @model CompanyProfileViewModel
 
 <link rel="stylesheet" href="~/area/custom/css/CompanyProfile.css">
+<!--Toastr Plugin CSS-->
+<link rel="stylesheet" href="~/area/assets/plugins/toastr/toastr.min.css">
 
 <div class="container min-vh-100">
-    <form method="post" class="row bg-white p-3 rounded" style="min-height: 50vh;" asp-area="Employer" asp-controller="Company" asp-action="CompanyProfile" enctype="multipart/form-data">
+    <form method="post" class="row bg-white p-3 rounded" style="min-height: 50vh;" asp-area="Employer"
+        asp-controller="Company" asp-action="CompanyProfile" enctype="multipart/form-data">
         <div class="col-12 mb-3">
             <label class="form-label">Logo công ty <span class="text-danger">*</span></label>
             <div class="d-flex align-items-end gap-3">
@@ -17,7 +20,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 }
                 <img id="logoCompanyImg" src="@logoUrl" alt="" class="rounded com-logo" asp-append-version="true">
                 <a role="button" class="btn btn-success text-white" onclick="$('#CompanyLogo').click()">Đổi logo</a>
-                <input asp-for="@Model.CompanyLogo" type="file" accept="image/*" hidden >
+                <input asp-for="@Model.CompanyLogo" type="file" accept="image/*" hidden>
                 <input asp-for="@Model.LogoUrl" type="text" hidden />
             </div>
         </div>
@@ -33,7 +36,8 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 <label class="form-label">Lĩnh vực kinh doanh <span class="text-danger">*</span></label>
                 @{
                     @using OnlineJobPortal.Application.DTOs.BussinessIndustryDto;
-                    List<GetBussinessIndustryDto> bussinessIndustries = ViewData["BussinessIndustrys"] as List<GetBussinessIndustryDto>;
+                    List<GetBussinessIndustryDto> bussinessIndustries = ViewData["BussinessIndustrys"] as
+                    List<GetBussinessIndustryDto>;
                     var bussinessId = Model.BussinessIndustryId ??= 1;
                 }
 
@@ -52,7 +56,8 @@ For more information on enabling MVC for empty projects, visit https://go.micros
         <div class="col-6 mb-3">
             <div class="d-flex flex-column position-relative">
                 <label class="form-label">Ngày thành lập <span class="text-danger">*</span></label>
-                <input type="Date" class="form-control" asp-for="@Model.EstablishmentDate" value="@Model.EstablishmentDate.ToString("yyyy-MM-dd")">
+                <input type="Date" class="form-control" asp-for="@Model.EstablishmentDate"
+                    value="@Model.EstablishmentDate.ToString("yyyy-MM-dd")">
                 <span asp-validation-for="@Model.EstablishmentDate" class="text-danger"></span>
             </div>
         </div>
@@ -107,7 +112,8 @@ For more information on enabling MVC for empty projects, visit https://go.micros
         <div class="col-4 mb-4">
             <div class="d-flex flex-column position-relative">
                 <label class="form-label">Website <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" placeholder="Địa chỉ Website công ty" asp-for="@Model.WebsiteUrl">
+                <input type="text" class="form-control" placeholder="Địa chỉ Website công ty"
+                    asp-for="@Model.WebsiteUrl">
                 <span asp-validation-for="@Model.WebsiteUrl" class="text-danger"></span>
             </div>
         </div>
@@ -138,7 +144,6 @@ For more information on enabling MVC for empty projects, visit https://go.micros
         </div>
     </form>
 </div>
-
 @section Scripts {
     <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
     <script src="~/area/assets/plugins/vietnamlocal/vietnamlocalselector.js"></script>
@@ -153,5 +158,15 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             }, 100);
         })
     </script>
+    @{
+        var isSuccess = TempData["isSuccess"] as bool?;
+
+        if (isSuccess != null && isSuccess == true)
+        {
+            <script>
+                toastr.success("Cập nhật thông tin thành công");
+            </script>
+        }
+    }
     <partial name="_ValidationScriptsPartial" />
 }

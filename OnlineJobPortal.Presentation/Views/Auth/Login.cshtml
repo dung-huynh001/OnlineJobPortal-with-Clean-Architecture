@@ -127,30 +127,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/waitme@1.19.0/waitMe.min.js"></script>
     @{
-        var err = ViewBag.ErrorMessage as string;
-        @if (err != null)
+        try
         {
-            <script>
-                toastr.options = {
+            var err = ViewBag.ErrorMessage as string;
+            @if (err != null)
+            {
+                <script>
+                    toastr.options = {
                     timeOut: 2500
-                };
-                toastr.warning('@err');
-            </script>
-            ViewBag.ErrorMessage = null;
+                    };
+                    toastr.warning('@err');
+                </script>
+                ViewBag.ErrorMessage = null;
+            }
+
         }
+        catch
+        {
+
+        }
+
     }
 
     @{
-        var msg = TempData["SuccessMessage"] as string;
-        if (msg != null)
+        try
         {
-            <script>
-                toastr.options = {
-                    timeOut: 2500
-                };
-                toastr.success('@msg');
-            </script>
-            TempData["StatusMessage"] = null;
+            var msg = TempData["SuccessMessage"] as string;
+            if (msg != null)
+            {
+                <script>
+                    toastr.options = {
+                        timeOut: 2500
+                    };
+                    toastr.success('@msg');
+                </script>
+                TempData["StatusMessage"] = null;
+            }
+        }
+        catch
+        {
+            
         }
     }
 

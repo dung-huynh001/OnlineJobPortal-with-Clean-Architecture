@@ -17,8 +17,10 @@ For more information on enabling MVC for empty projects, visit http://go.microso
             @if (User!.Identity!.IsAuthenticated)
             {
                 <div class="nav-item dropdown d-block d-sm-block d-lg-none">
-                    <a href="#" class="nav-link nav-item d-flex justify-content-center align-items-center" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="~/img/default_user.png" class="profile-img noti-icon col-2" style="width: 40px; height: 40px" />
+                    <a href="#" class="nav-link nav-item d-flex justify-content-center align-items-center" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="~/img/default_user.png" class="profile-img noti-icon col-2"
+                            style="width: 40px; height: 40px" />
                         <div class="col-10 pt-4 px-3">
                             @CurrentUserService.GetFullNameById()
                             <p class="fw-lighter">@User!.Identity!.Name</p>
@@ -50,6 +52,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
                     </div>
                 </div>
             }
+            <a href="/Home/Index" class="nav-link">Trang chủ</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link active" data-bs-toggle="dropdown">Việc làm IT</a>
                 <div class="dropdown-menu rounded-0 m-0">
@@ -83,7 +86,8 @@ For more information on enabling MVC for empty projects, visit http://go.microso
                         <i class="fas fa-arrow-right arrow-right"></i>
                     </a>
                     <hr class="dropdown-divider">
-                    <a asp-area="" asp-controller="Profile" asp-action="CreateOnlineProfile" target="_blank" class="dropdown-item">
+                    <a asp-area="" asp-controller="Profile" asp-action="CreateOnlineProfile" target="_blank"
+                        class="dropdown-item">
                         <span><i class="icon fa-regular fa-file-lines"></i>Quản lý hồ sơ & CV</span>
                         <i class="fas fa-arrow-right arrow-right"></i>
                     </a>
@@ -117,17 +121,18 @@ For more information on enabling MVC for empty projects, visit http://go.microso
                     <img src="~/img/default_user.png" class="profile-img" />
                     @CurrentUserService.GetFullNameById()
                 </a>
-                <div class="dropdown-menu dropdown-menu-end rounded-0 m-0" data-bs-popper="none" style="max-width: 280px; right: 0!important;">
+                <div class="dropdown-menu dropdown-menu-end rounded-0 m-0" data-bs-popper="none"
+                    style="max-width: 280px; right: 0!important;">
                     <a asp-area="" asp-controller="Profile" asp-action="Index" class="dropdown-item">
                         <span><i class="icon fa-solid fa-gear"></i>Cập nhật hồ sơ</span>
                         <i class="fas fa-arrow-right arrow-right"></i>
                     </a>
                     <hr class="dropdown-divider">
-                    <a href="job-list.html" class="dropdown-item">
+                    <a asp-area="" asp-controller="Apply" asp-action="AppliedJobs" class="dropdown-item">
                         <span><i class="icon fa-solid fa-eye"></i>Lịch sử ứng tuyển</span>
                         <i class="fas fa-arrow-right arrow-right"></i>
                     </a>
-                    <a href="job-list.html" class="dropdown-item">
+                    <a asp-area="" asp-controller="Apply" asp-action="SavedJobs" class="dropdown-item">
                         <span><i class="icon fa-solid fa-heart"></i>Việc làm đã lưu</span>
                         <i class="fas fa-arrow-right arrow-right"></i>
                     </a>

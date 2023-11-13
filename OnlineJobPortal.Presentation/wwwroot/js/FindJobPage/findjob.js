@@ -131,6 +131,19 @@ $(document).ready(function () {
   }
 
   function renderJobPost(jobPost, container) {
+    var btnFavorite = (jobPost) => {
+      if (jobPost.saved == true) {
+        return `
+          <a class="btn btn-primary btn-square text-white me-3" data-job-post-id="${jobPost.id}" data-bs-target="tooltip" data-bs-placement="bottom" title="Đã lưu lại">
+            <i class="far fa-heart text-white"></i>
+          </a>`;
+      } else {
+        return `
+          <a class="btn btn-light btn-square me-3" data-job-post-id="${jobPost.id}" data-bs-target="tooltip" data-bs-placement="bottom" title="Lưu lại">
+            <i class="far fa-heart text-primary"></i>
+          </a>`;
+      }
+    };
     var jobPostHtml = `
             <div class="job-item p-4 mb-4">
                 <div class="row g-4">
@@ -179,9 +192,9 @@ $(document).ready(function () {
                     <div
                         class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                         <div class="d-flex mb-3">
-                            <a class="btn btn-light btn-square me-3" href="">
-                                <i class="far fa-heart text-primary"></i>
-                            </a>
+                            `
+                            + btnFavorite(jobPost) +
+                            `
                             <a class="btn btn-primary" href="">Ứng tuyển</a>
                         </div>
                         <span class="text-truncate">
@@ -194,6 +207,53 @@ $(document).ready(function () {
             </div>`;
     container.append(jobPostHtml);
   }
+
+  function favoriteJob(jobPostId) {
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      data: { jobId: jobPostId },
+      url: "/Apply/FavoriteJob",
+    });
+  }
+
+  function deleteFavorite(jobPostId) {
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      data: { jobId: jobPostId },
+      url: "/Apply/DeleteFavorite",
+    });
+  }
+
+  $(document).on("click", ".btn.btn-square", function () {
+    let btn = $(this);
+    var jobPostId = btn.data("job-post-id");
+
+    if (btn.hasClass("btn-primary")) {
+      btn.removeClass("btn-primary");
+      btn.addClass("btn-light");
+
+      let icon = btn.find("i");
+      icon.removeClass("text-white");
+      icon.addClass("text-primary");
+
+      toastr.warning("Bỏ lưu tin tuyển dụng");
+
+      deleteFavorite(jobPostId);
+    } else {
+      btn.removeClass("btn-light");
+      btn.addClass("btn-primary");
+
+      let icon = btn.find("i");
+      icon.removeClass("text-primary");
+      icon.addClass("text-white");
+
+      toastr.success("Đã lưu lại tin tuyển dụng");
+
+      favoriteJob(jobPostId);
+    }
+  });
 
   function renderJobType(jobType, container) {
     var jobTypeHtml = `

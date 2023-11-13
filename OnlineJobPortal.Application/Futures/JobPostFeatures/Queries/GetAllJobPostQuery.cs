@@ -14,6 +14,16 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Queries
 {
     public record GetAllJobPostQuery : IRequest<List<GetJobPostWithPaginationDto>>
     {
+        public int CandidateId { get; set; }
+
+        public GetAllJobPostQuery(int candidateId)
+        {
+            CandidateId = candidateId;
+        }
+        public GetAllJobPostQuery()
+        {
+            
+        }
     }
 
     public class GetAllJobPostQueryHandler : IRequestHandler<GetAllJobPostQuery, List<GetJobPostWithPaginationDto>>
@@ -49,7 +59,18 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Queries
                     jobPostDto.Skills.Add(requirementSkill.Skill.SkillName);
                     jobPostDto.Level = requirementSkill.Level.ToString();
                 }
-
+                if(request.CandidateId != 0)
+                {
+                    var jobFavorite = await unitOfWork.Repository<JobFavorite>().GetAll
+                    .FirstOrDefaultAsync(
+                        j => j.JobPostId.Equals(jobPostDto.Id) &&
+                        j.CandidateId.Equals(request.CandidateId));
+                    if(jobFavorite != null)
+                    {
+                        jobPostDto.Saved = true;
+                    }
+                }
+                
                 result.Add(jobPostDto);
             }
             return result;

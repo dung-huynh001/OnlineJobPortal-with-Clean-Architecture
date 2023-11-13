@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 using OnlineJobPortal.Application.DTOs.CandidateDto;
@@ -19,6 +20,7 @@ using OnlineJobPortal.Presentation.Models;
 namespace OnlineJobPortal.Presentation.Controllers
 {
 
+    [Authorize(Roles = "Candidate")]
     public class ProfileController : Controller
     {
         private readonly IMapper mapper;

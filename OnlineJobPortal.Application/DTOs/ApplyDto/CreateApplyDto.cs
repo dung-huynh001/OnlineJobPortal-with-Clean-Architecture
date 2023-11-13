@@ -9,7 +9,9 @@ namespace OnlineJobPortal.Application.DTOs.ApplyDto
 {
     public class CreateApplyDto
     {
-        public int Status { get; set; }
+        public string Status { get; set; }
+        public string CvUrl { get; set; }
+        public string CoverLetter { get; set; }
         public int CandidateId { get; set; }
         public int JobPostId { get; set; }
     }

@@ -66,7 +66,11 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
                     {
                         throw new Exception();
                     }
-                    return RedirectToAction("Index", "Home", new {area = "Employer"});
+
+                    ModelState.Clear();
+                    ViewBag.Message = "Đăng tin tuyển dụng thành công";
+                    return View();
+                    //return RedirectToAction("Index", "Home", new {area = "Employer"});
                 }
                 throw new Exception();
             }
@@ -77,7 +81,7 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
 
                 ViewBag.SkillList = skillList;
                 ViewBag.JobTypeList = jobTypeList;
-
+                ViewBag.Message = "Vui lòng kiểm tra lại thông tin tuyển dụng";
                 return View(model);
             }
         }
