@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using OnlineJobPortal.Application.DTOs.JobPostDto;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Application.Interfaces.Repositories;
@@ -18,7 +19,13 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Queries
     {
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
-        public GetJobPostWithPaginationQuery() { }
+        public int CandidateId { get; set; }
+        public GetJobPostWithPaginationQuery(int candidateId, int pageNumber, int pageSize)
+        {
+            CandidateId = candidateId;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
+        }
         public GetJobPostWithPaginationQuery(int pageNumber, int pageSize)
         {
             this.PageNumber = pageNumber;
@@ -50,6 +57,16 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Queries
                     jobPostDto.CompanyId = company.Id;
                     jobPostDto.CompanyName = company.CompanyName;
                     jobPostDto.LogoUrl = company.LogoUrl;
+                }
+                if(request.CandidateId != 0)
+                {
+                    var jobFavorite = await unitOfWork.Repository<JobFavorite>().GetAll
+                        .FirstOrDefaultAsync(j => j.CandidateId.Equals(request.CandidateId) &&
+                        j.JobPostId.Equals(jobPostDto.Id));
+                    if(jobFavorite != null)
+                    {
+                        jobPostDto.Saved = true;
+                    }
                 }
                 jobPostDto.Skills = skills;
                 jobPostDto.Province = await unitOfWork.ProvinceRepository.GetProvinceNameById(jobPost.ProvinceId);

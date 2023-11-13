@@ -8,6 +8,7 @@ using OnlineJobPortal.Application.DTOs.JobPostDto;
 using OnlineJobPortal.Application.Futures.CompanyFeatures.Queries;
 using OnlineJobPortal.Application.Futures.JobPostFeatures.Queries;
 using OnlineJobPortal.Application.Futures.JobTypeFeatures.Queries;
+using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Domain.Enums;
 using OnlineJobPortal.Presentation.Models;
 using System.Globalization;
@@ -19,11 +20,13 @@ namespace OnlineJobPortal.Presentation.Controllers
     {
         private readonly IMapper mapper;
         private readonly IMediator mediator;
+        private readonly ICurrentUserService currentUserService;
 
-        public JobPostController(IMapper mapper, IMediator mediator)
+        public JobPostController(IMapper mapper, IMediator mediator, ICurrentUserService currentUserService)
         {
             this.mapper = mapper;
             this.mediator = mediator;
+            this.currentUserService = currentUserService;
         }
         public IActionResult Index()
         {
@@ -35,9 +38,15 @@ namespace OnlineJobPortal.Presentation.Controllers
         {
             try
             {
+                int candidateId = 0;
+                if (User.Identity.IsAuthenticated)
+                {
+                    candidateId = currentUserService.GetActorId();
+                }
+
                 int pageSize = 5;
                 int pageNumber = condition.pageNumber ?? 0;
-                var request = new GetAllJobPostQuery();
+                var request = new GetAllJobPostQuery(candidateId);
                 var response = mediator.Send(request).GetAwaiter().GetResult();
 
                 if (condition.sortBy != null)

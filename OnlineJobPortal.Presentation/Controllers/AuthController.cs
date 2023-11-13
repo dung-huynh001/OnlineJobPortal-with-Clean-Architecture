@@ -184,6 +184,7 @@ namespace OnlineJobPortal.Presentation.Controllers
             }
         }
 
+        [Authorize]
         public IActionResult ChangePassword()
         {
             return View();

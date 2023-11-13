@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using OnlineJobPortal.Application.DTOs.AdminDto;
 using OnlineJobPortal.Application.DTOs.ApplicationDto;
+using OnlineJobPortal.Application.DTOs.ApplyDto;
 using OnlineJobPortal.Application.DTOs.BussinessIndustryDto;
 using OnlineJobPortal.Application.DTOs.CandidateDto;
 using OnlineJobPortal.Application.DTOs.CandidateSkillDto;
@@ -70,6 +71,7 @@ namespace OnlineJobPortal.Application.Mapping
             CreateMap<UpdateCompanyDto, Company>()
                 .ForMember(dest => dest.LogoUrl, opt => opt.MapFrom((src, dest) => src.LogoUrl != null ? src.LogoUrl : dest.LogoUrl));
             CreateMap<GetCompanyWithPaginationDto, Company>().ReverseMap();
+            CreateMap<CreateApplyDto, Apply>().ReverseMap();
         }
     }
 }

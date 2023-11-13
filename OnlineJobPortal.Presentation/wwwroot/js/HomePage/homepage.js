@@ -5,13 +5,11 @@
   const pagingPartialContainer = $(".paging-partial-container");
   const totalJob = $(".total-job");
 
-
   var sortBy = "";
-  var keyword= "";
-  var level= "";
+  var keyword = "";
+  var level = "";
   var provinceName = "";
   var salary = "";
-
 
   btnShowMore.hide();
   fetchData(0, sortBy);
@@ -63,65 +61,107 @@
   }
 
   function renderJobPost(jobPost, container) {
+    var btnFavorite = (jobPost) => {
+      if (jobPost.saved == true) {
+        return `
+          <a class="btn btn-primary btn-square text-white me-3" data-job-post-id="${jobPost.id}" data-bs-target="tooltip" data-bs-placement="bottom" title="Đã lưu lại">
+            <i class="far fa-heart text-white"></i>
+          </a>`;
+      } else {
+        return `
+          <a class="btn btn-light btn-square me-3" data-job-post-id="${jobPost.id}" data-bs-target="tooltip" data-bs-placement="bottom" title="Lưu lại">
+            <i class="far fa-heart text-primary"></i>
+          </a>`;
+      }
+    };
     var jobPostHtml = `
-            <div class="job-item p-4 mb-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                        <img class="flex-shrink-0 img-fluid border rounded-3" src="${"." + jobPost.logoUrl}" alt=""
-                            style="width: 90px; height: 90px;">
-                        <div class="text-start ps-4">
-                            <a href="/JobPost/JobDetail/${
-                              jobPost.id
-                            }" target="_blank"><h5 class="mb-2">${jobPost.title}</h5></a>
-                            <div class="p-0 mb-2 ">
-                                <a href="/Company/CompanyDetail/${
-                                  jobPost.companyId
-                                }"
-                                    target="_blank" class="text-uppercase text-muted">${
-                                      jobPost.companyName
-                                    }</a>
-                            </div>
-                            <div
-                                class="d-flex flex-wrap gap-3 mb-2 text-capitalize text-primary skills-wrapper">
-                                ${jobPost.skills
-                                  .map((skill) => `<span>${skill}</span>`)
-                                  .join("")}
-                            </div>
-                            <span class="text-truncate me-3">
-                                <i class="fa fa-map-marker-alt text-primary me-2"></i>${
-                                  jobPost.province
-                                }
-                            </span>
-                            <span class="text-truncate me-3">
-                                <i class="far fa-clock text-primary me-2"></i>${
-                                  jobPost.employmentType
-                                }
-                            </span>
-                            <span class="text-truncate me-0">
-                                <i class="far fa-money-bill-alt text-primary me-2"></i>${
-                                  jobPost.salary
-                                }
-                            </span>
-                        </div>
-                    </div>
-                    <div
-                        class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                        <div class="d-flex mb-3">
-                            <a class="btn btn-light btn-square me-3" href="">
-                                <i class="far fa-heart text-primary"></i>
-                            </a>
-                            <a class="btn btn-primary" href="">Ứng tuyển</a>
-                        </div>
-                        <span class="text-truncate">
-                            <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: ${
-                              jobPost.expiredDate
-                            }
-                        </span>
-                    </div>
-                </div>
-            </div>`;
+    <div class="job-item p-4 mb-4">
+      <div class="row g-4">
+          <div class="col-sm-12 col-md-8 d-flex align-items-center">
+              <img class="flex-shrink-0 img-fluid border rounded-3" src="${"." + jobPost.logoUrl}" alt=""
+                  style="width: 90px; height: 90px;">
+              <div class="text-start ps-4">
+                  <a href="/JobPost/JobDetail/${jobPost.id}" target="_blank">
+                      <h5 class="mb-2">${jobPost.title}</h5>
+                  </a>
+                  <div class="p-0 mb-2">
+                      <a href="/Company/CompanyDetail/${jobPost.companyId}" target="_blank"
+                          class="text-uppercase text-muted">${jobPost.companyName}</a>
+                  </div>
+                  <div class="d-flex flex-wrap gap-3 mb-2 text-capitalize text-primary skills-wrapper">
+                      ${jobPost.skills.map((skill) => `<span>${skill}</span>`).join("")}
+                  </div>
+                  <span class="text-truncate me-3">
+                      <i class="fa fa-map-marker-alt text-primary me-2"></i>${jobPost.province}
+                  </span>
+                  <span class="text-truncate me-3">
+                      <i class="far fa-clock text-primary me-2"></i>${jobPost.employmentType}
+                  </span>
+                  <span class="text-truncate me-0">
+                      <i class="far fa-money-bill-alt text-primary me-2"></i>${jobPost.salary}
+                  </span>
+              </div>
+          </div>
+          <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+              <div class="d-flex mb-3">
+                  ${btnFavorite(jobPost)}
+                  <a class="btn btn-primary" href="">Ứng tuyển</a>
+              </div>
+              <span class="text-truncate">
+                  <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: ${jobPost.expiredDate}
+              </span>
+          </div>
+      </div>
+    </div>`;
     container.append(jobPostHtml);
   }
+
+  function favoriteJob(jobPostId) {
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      data: { jobId: jobPostId },
+      url: "/Apply/FavoriteJob",
+    });
+  }
+
+  function deleteFavorite(jobPostId) {
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      data: { jobId: jobPostId },
+      url: "/Apply/DeleteFavorite",
+    });
+  }
+
+  $(document).on("click", ".btn.btn-square", function () {
+    let btn = $(this);
+    var jobPostId = btn.data("job-post-id");
+
+    if (btn.hasClass("btn-primary")) {
+      btn.removeClass("btn-primary");
+      btn.addClass("btn-light");
+
+      let icon = btn.find("i");
+      icon.removeClass("text-white");
+      icon.addClass("text-primary");
+
+      toastr.warning("Bỏ lưu tin tuyển dụng");
+
+      deleteFavorite(jobPostId);
+    } else {
+      btn.removeClass("btn-light");
+      btn.addClass("btn-primary");
+
+      let icon = btn.find("i");
+      icon.removeClass("text-primary");
+      icon.addClass("text-white");
+
+      toastr.success("Đã lưu lại tin tuyển dụng");
+
+      favoriteJob(jobPostId);
+    }
+  });
 
   function fetchJobTypes(currentJobTypes) {
     renderSpinner(jobTypeList);
@@ -165,11 +205,11 @@
     renderSpinner(jobPostList);
     var filter = {
       pageNumber: pageNumber,
-      sortBy: sortBy,   
+      sortBy: sortBy,
       keyword: keyword,
       level: level,
       provinceName: provinceName,
-      salary: salary
+      salary: salary,
     };
     $.ajax({
       type: "get",

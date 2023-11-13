@@ -14,7 +14,7 @@ namespace OnlineJobPortal.Application.Futures.ApplyFeatures.Commands
     public class UpdateApplyCommand : IRequest<ApiResponse>
     {
         public int Id { get; set; }
-        public int Status { get; set; }
+        public string Status { get; set; }
     }
 
     public class UpdateApplyCommandHandler : IRequestHandler<UpdateApplyCommand, ApiResponse>

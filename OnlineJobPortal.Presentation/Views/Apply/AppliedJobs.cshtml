@@ -1,0 +1,45 @@
+﻿<div class="container-fluid bg-light">
+    <div class="container pt-4 pb-3">
+        <div class="row pb-5 gap-3 bg rounded-3 bg-white">
+            <div class="col-12 rounded-top" style="background-image: linear-gradient(to right, #095038, #cef5df);">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="py-4 px-3">
+                            <h4 class="text-white">Việc làm đã ứng tuyển</h4>
+                            <p class="text-white">Xem lại danh sách những việc làm mà bạn đã ứng tuyển trước đó và theo
+                                dõi quá
+                                trình ứng tuyển. Ứng tuyển ngay để
+                                không bỏ lỡ cơ hội nghề
+                                nghiệp dành cho bạn.</p>
+                        </div>
+                    </div>
+                    <img class="ms-auto" src="~/img/robo-2.png" alt="" style="width: 200px;">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="d-flex">
+                    <p class="flex-grow-1">
+                        Đã ứng tuyển <span class="text-primary" id="total-saved-jobs">0</span> công việc
+                    </p>
+                    <div class="">
+                        <select class="form-select" name="" id="">
+                            <option value="">Tất cả</option>
+                            <option value="">Hồ sơ mới</option>
+                            <option value="">NTD đã xem hồ sơ</option>
+                            <option value="">Chờ phỏng vấn</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="d-flex flex-column align-items-center">
+                    <img src="../img/no-result-found.jpg" alt="" style="width: 400px" />
+                    <p class="fw-bold">Bạn chưa ứng tuyển công việc nào!</p>
+                    <p class="m-1 fw-light">Có rất nhiều công việc hấp dẫn phù hợp với bạn</p>
+                    <p>Bắt đầu sự nghiệp mơ ước với việc làm chất lượng tại IT Jobs</p>
+                    <a class="btn btn-primary" asp-area="" asp-controller="JobPost" asp-action="FindJob">Tìm việc ngay</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

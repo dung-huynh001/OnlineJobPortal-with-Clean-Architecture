@@ -273,6 +273,23 @@
     <script src="~/area/custom/js/PostANewJob.js"></script>
     <script src="~/area/assets/plugins/vietnamlocal/vietnamlocalselector.min.js"></script>
 
+    @{
+        var message = ViewBag.Message as string;
+        if(message != null){
+            if(message.ToLower().Contains("thành công")){
+                <script>
+                    toastr.success("Đăng tin thành công")
+                </script>
+                ViewBag.Message = null;
+            }
+            else{
+                <script>
+                    toastr.warning("Vui lòng điền đủ thông tin")
+                </script>
+                ViewBag.Message = null;
+            }
+        }
+    }
     <script>
         //Khởi tạo chosen select
         $(document).ready(function () {
