@@ -4,6 +4,7 @@
   const jobPostList = $(".job-post-list");
   const pagingPartialContainer = $(".paging-partial-container");
   const totalJob = $(".total-job");
+  const applyJobModal = $("#apply-job-modal");
 
   var sortBy = "";
   var keyword = "";
@@ -105,7 +106,7 @@
           <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
               <div class="d-flex mb-3">
                   ${btnFavorite(jobPost)}
-                  <a class="btn btn-primary" href="">Ứng tuyển</a>
+                  <a class="btn btn-primary btn-apply-job" data-job-post-title="${jobPost.title}" data-job-post-id="${jobPost.id}" data-bs-toggle="modal" data-bs-target="#apply-job-modal">Ứng tuyển</a>
               </div>
               <span class="text-truncate">
                   <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối: ${jobPost.expiredDate}
@@ -114,6 +115,61 @@
       </div>
     </div>`;
     container.append(jobPostHtml);
+  }
+
+  $(document).on("click", ".btn-apply-job", function(e){
+    e.preventDefault();
+    let btnApplyJob = $(this);
+    let jobId = btnApplyJob.data("job-post-id");
+    let title = btnApplyJob.data("job-post-title");
+    applyJobModal.find("#job-post-title").text(title);
+    $(".btn-save").data("job-post-id", jobId);
+  });
+
+  var cvFile = null;
+  $("#upload-cv").change(function (e) {
+    if (e.target.files.length > 0) {
+      cvFile = e.target.files[0];
+    } 
+  });
+
+  $(document).on("click", ".btn-save", function(e) {
+    let btnSave = $(this);
+    let jobId = btnSave.data("job-post-id");
+    let formData = new FormData();
+    formData.append("jobPostId", jobId);
+    formData.append("coverLetter", $("#cover-letter").val());
+    if($("input[name='radio-cv']:checked").val() == 0){
+      formData.append("cv", null);
+    }else{
+      formData.append("cv", cvFile);
+      if(cvFile == null){
+        toastr.warning("Vui lòng chọn CV trước");
+        return;
+      }
+    }
+    callAjaxToApplyJob(formData);
+  });
+
+  function callAjaxToApplyJob(formData) {
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      contentType: false,
+      processData: false,
+      data: formData,
+      url: "/Apply/ApplyJob",
+      success: function(res) {
+        $(".btn-cancel").trigger("click");
+        $(".modal-body input, .modal-body textarea").val("");
+        if(res.success) {
+          toastr.success("Đã gửi hồ sơ đến nhà tuyển dụng");
+        }else{
+          toastr.warning("Bạn đã ứng tuyển công việc này trước đó");
+        }
+      },
+      error: function(err){}
+    });
   }
 
   function favoriteJob(jobPostId) {

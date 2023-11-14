@@ -1,4 +1,7 @@
-﻿<div class="container-fluid bg-light">
+﻿@using OnlineJobPortal.Domain.Entities
+@model List<Apply>
+
+<div class="container-fluid bg-light">
     <div class="container pt-4 pb-3">
         <div class="row pb-5 gap-3 bg rounded-3 bg-white">
             <div class="col-12 rounded-top" style="background-image: linear-gradient(to right, #095038, #cef5df);">
@@ -19,27 +22,257 @@
             <div class="col-12">
                 <div class="d-flex">
                     <p class="flex-grow-1">
-                        Đã ứng tuyển <span class="text-primary" id="total-saved-jobs">0</span> công việc
+                        Đã ứng tuyển <span class="text-primary" id="total-saved-jobs">@Model.Count</span> công việc
                     </p>
                     <div class="">
-                        <select class="form-select" name="" id="">
-                            <option value="">Tất cả</option>
-                            <option value="">Hồ sơ mới</option>
-                            <option value="">NTD đã xem hồ sơ</option>
-                            <option value="">Chờ phỏng vấn</option>
+                        <select class="form-select" id="filter">
+                            <option value="0">Tất cả</option>
+                            <option value="1">Hồ sơ mới</option>
+                            <option value="2">NTD đã xem hồ sơ</option>
+                            <option value="3">Chờ phỏng vấn</option>
+                            <option value="4">Đã thu hồi</option>
                         </select>
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                <div class="d-flex flex-column align-items-center">
-                    <img src="../img/no-result-found.jpg" alt="" style="width: 400px" />
-                    <p class="fw-bold">Bạn chưa ứng tuyển công việc nào!</p>
-                    <p class="m-1 fw-light">Có rất nhiều công việc hấp dẫn phù hợp với bạn</p>
-                    <p>Bắt đầu sự nghiệp mơ ước với việc làm chất lượng tại IT Jobs</p>
-                    <a class="btn btn-primary" asp-area="" asp-controller="JobPost" asp-action="FindJob">Tìm việc ngay</a>
-                </div>
+            <div class="col-12 applied-job-container" style="min-height: 500px">
+                @if (Model.Count > 0)
+                {
+                    foreach (var applied in Model)
+                    {
+                        <div class="job-item p-4 mb-4">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img src=".@applied.JobPost.Employer.Company.LogoUrl"
+                                        class="flex-shrink-0 img-fluid border rounded-3" alt=""
+                                        style="width: 90px; height: 90px;">
+                                    <div class="text-start ps-4">
+                                        <a href="/JobPost/JobDetail/@applied.JobPost.Employer.Company.Id" target="_blank">
+                                            <h5 class="mb-2">@applied.JobPost.Title</h5>
+                                        </a>
+                                        <div class="p-0 mb-2">
+                                            <a href="/Company/CompanyDetail/@applied.JobPost.Employer.Company.Id"
+                                                target="_blank"
+                                                class="text-uppercase text-muted">@applied.JobPost.Employer.Company.CompanyName</a>
+                                        </div>
+                                        <div class="d-flex flex-wrap gap-3 mb-2 text-capitalize text-primary skills-wrapper">
+                                            @if (applied.JobPost.RequirementSkills.Count > 0)
+                                            {
+                                                foreach (var skill in applied.JobPost.RequirementSkills)
+                                                {
+                                                    <span>@skill.Skill.SkillName</span>
+                                                }
+                                            }
+                                        </div>
+                                        <span class="text-truncate me-3">
+                                            <i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>@applied.JobPost.District.Province.ProvinceName
+                                        </span>
+                                        <span class="text-truncate me-3">
+                                            <i class="far fa-clock text-primary me-2"></i>@applied.JobPost.EmploymentType
+                                        </span>
+                                        <span class="text-truncate me-0">
+                                            <i class="far fa-money-bill-alt text-primary me-2"></i>
+                                            @applied.JobPost.Salary
+                                        </span>
+                                        <p class="text-truncate mt-3 mb-0">
+                                            <i class="far fa-calendar-alt text-primary me-2"></i>Hạn cuối:
+                                            @applied.JobPost.ExpiredDate.ToString("dd MMM yyyy")
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 ms-auto d-flex flex-column align-items-end justify-content-between gap-3">
+                                    @if (@applied.Status.ToUpper() == "PENDING")
+                                    {
+                                        <span class="badge badge__new px-2">@applied.Status.ToUpper()</span>
+                                    }
+                                    else if (@applied.Status.ToUpper() == "VIEWED")
+                                    {
+                                        <span class="badge badge__primary px-2">@applied.Status.ToUpper()</span>
+                                    }
+                                    else if (@applied.Status.ToUpper() == "PASSED")
+                                    {
+                                        <span class="badge badge__primary px-2">@applied.Status.ToUpper()</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge__hot px-2">@applied.Status.ToUpper()</span>
+                                    }
+                                    <div class="d-flex gap-3">
+                                        <a class="btn btn-primary btn-show-cv" data-applied-job-id="@applied.Id"
+                                            data-cover-letter="@applied.CoverLetter" data-cv-url="@applied.CvUrl"
+                                            data-bs-toggle="modal" data-bs-target="#apply-job-modal">
+                                            <i class="fa-solid fa-eye me-2"></i>Xem hồ sơ</a>
+                                        <a class="btn btn-outline-danger btn-cancel-cv" data-job-apply-id="@applied.Id"
+                                            data-bs-target="tooltip" data-bs-placement="bottom" title="Thu hồi hồ sơ">
+                                            <i class="fa-solid fa-rotate-left me-2"></i>Thu hồi
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="../img/no-result-found.jpg" alt="" style="width: 400px" />
+                        <p class="fw-bold">Bạn chưa ứng tuyển công việc nào!</p>
+                        <p class="m-1 fw-light">Có rất nhiều công việc hấp dẫn phù hợp với bạn</p>
+                        <p>Bắt đầu sự nghiệp mơ ước với việc làm chất lượng tại IT Jobs</p>
+                        <a class="btn btn-primary" asp-area="" asp-controller="JobPost" asp-action="FindJob">Tìm việc
+                            ngay</a>
+                    </div>
+
+                }
             </div>
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="apply-job-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header shadow-sm">
+                <h5 class="modal-title" id="staticBackdropLabel">Hồ sơ ứng tuyển</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body shadow-sm">
+                <div class="d-flex flex-column gap-3">
+                    <div class="fw-bold">
+                        <i class="fa-regular fa-folder-open text-primary me-2">
+                        </i> CV ứng tuyển: <i id="cv-url" class="fw-light me-3"></i>
+                        <a class="fst-italic btn-view-cv" role="button">Xem cv</a>
+                    </div>
+
+
+                    <div class="fw-bold"><i class="fa-solid fa-feather text-primary me-2"></i>Thư giới thiệu</div>
+                    <textarea class="form-control rounded-3" id="cover-letter" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-cancel" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        const appliedJobContainer = $(".applied-job-container");
+        const totalJobAfterFilter = $("#total-saved-jobs");
+        function openPDF(url) {
+            window.open(url, '_blank');
+        }
+        $(document).on("click", ".btn-show-cv", function () {
+            let btnShow = $(this);
+            let coverLetter = btnShow.data("cover-letter");
+            let cvUrl = btnShow.data("cv-url");
+            $("#cover-letter").val(coverLetter);
+            $("#cv-url").text(cvUrl.slice(cvUrl.lastIndexOf("-") + 1));
+            $(".btn-view-cv").data("cv-url", '.' + cvUrl);
+        });
+
+        $(document).on("click", ".btn-view-cv", function () {
+            btnView = $(this);
+            let cvUrl = btnView.data("cv-url");
+            openPDF(cvUrl);
+        });
+
+        $(document).on("click", ".btn-cancel-cv", function (){
+            let btnCancelCV = $(this);
+            let container = btnCancelCV.closest(".job-item");
+            let appliedJobId = btnCancelCV.data("job-apply-id");
+            $.ajax({
+                type: "patch",
+                dataType: "json",
+                data: {id: appliedJobId},
+                url: "/Apply/CancelJob",
+                success: function(res){
+                    let status = container.find(".badge");
+                    status.removeClass();
+                    status.addClass("badge badge__hot px-2");
+                    status.text("CANCELLED");
+                    toastr.success("Thu hổi hồ sơ thành công");
+                },
+                error: function(err){
+
+                }
+            });
+        });
+
+        $(document).on("change", "#filter", function () {
+            let filter = $(this);
+            let filterValue = parseInt(filter.val());
+            let appliedJobs = $(".job-item");
+            var totalJobs = 0;
+
+            switch (filterValue) {
+                case 0:
+                    appliedJobs.show();
+                    totalJobs = appliedJobs.filter(":visible").length;
+                    break;
+                case 1:
+                    appliedJobs.show();
+                    appliedJobs.each(function () {
+                        let badgeText = $(this).find(".badge").text().trim();
+                        if (badgeText !== "PENDING") {
+                            $(this).hide();
+                        }
+                    });
+                    totalJobs = appliedJobs.filter(":visible").length;
+                    break;
+                case 2:
+                    appliedJobs.each(function () {
+                        let badgeText = $(this).find(".badge").text().trim();
+                        if (badgeText !== "VIEWED") {
+                            $(this).hide();
+                        }
+                    });
+                    totalJobs = appliedJobs.filter(":visible").length;
+                    break;
+                case 3:
+                    appliedJobs.each(function () {
+                        let badgeText = $(this).find(".badge").text().trim();
+                        if (badgeText !== "PASSED") {
+                            $(this).hide();
+                        }
+                    });
+                    totalJobs = appliedJobs.filter(":visible").length;
+                    break;
+                case 4:
+                    appliedJobs.each(function () {
+                        let badgeText = $(this).find(".badge").text().trim();
+                        if (badgeText !== "CANCELLED") {
+                            $(this).hide();
+                        }
+                    });
+                    totalJobs = appliedJobs.filter(":visible").length;
+                    break;
+                default:
+                    break;
+            }
+            totalJobAfterFilter.text(totalJobs);
+            if(totalJobs == 0) {
+                renderEmptyImage();
+            }else{
+                $(".empty-image-container").remove();
+            }
+        });
+
+        function renderEmptyImage(){
+            imgHtml = `
+            <div class="d-flex flex-column align-items-center empty-image-container">
+                <img src="../img/no-result-found.jpg" alt="" style="width: 400px" />
+                <p class="fw-bold">Không có công việc nào đang trong trạng thái này</p>
+                <p class="m-1 fw-light">Có rất nhiều công việc hấp dẫn phù hợp với bạn</p>
+                <p>Bắt đầu sự nghiệp mơ ước với việc làm chất lượng tại IT Jobs</p>
+            </div>`;
+            appliedJobContainer.append(imgHtml);
+        }
+    </script>
+}
