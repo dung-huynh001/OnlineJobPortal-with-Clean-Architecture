@@ -20,6 +20,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .IsRequired(false);
 
             builder.Property(e => e.CoverLetter)
+                .HasColumnType("ntext")
                 .IsRequired(false);
 
             builder.Property(e => e.CvUrl)

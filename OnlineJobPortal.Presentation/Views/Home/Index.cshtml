@@ -229,44 +229,40 @@
     </div>
 </div>
 
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#apply-job">
-    Launch static backdrop modal
-</button>
-
 <!-- Modal -->
-<div class="modal fade" id="apply-job" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade" id="apply-job-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header shadow-sm">
-                <h5 class="modal-title" id="staticBackdropLabel">Ứng tuyển <span class="text-primary">Lập Trình Viên
-                        .Net/Net Core - Đi Làm Ngay</span></h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Ứng tuyển <span id="job-post-title"
+                        class="text-primary"></span></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body shadow-sm">
                 <div class="d-flex flex-column gap-3">
                     <div class="fw-bold"><i class="fa-regular fa-folder-open text-primary me-2"></i> Chọn CV ứng tuyển:
                     </div>
-                    <div class="border rounded-3 p-2">
-                        <input id="cv-it-jobs" class="form-check-input" type="radio" name="radio-cv" checked>
-                        <label class="ms-3" for="flexRadioDefault2">
+                    <div role="button" class="border rounded-3 p-2">
+                        <input id="cv-it-jobs" class="form-check-input" type="radio" name="radio-cv" value="0" checked>
+                        <label class="ms-3">
                             Sử dụng CV online của IT Jobs
                         </label>
                     </div>
                     <div class="border rounded-3 p-2">
                         <div class="d-flex">
-                            <input id="others-cv" class="form-check-input" type="radio" name="radio-cv">
-                            <div class="ms-3">
+                            <input id="others-cv" class="form-check-input" type="radio" value="1" name="radio-cv">
+                            <label role="button" class="ms-3">
                                 Tải CV từ máy tính
-                            </div>
+                            </label>
                         </div>
                         <div>
                             <div class="d-flex flex-column justify-content-center align-items-center">
                                 <div><i class="fa-solid fa-5x fa-cloud-arrow-up text-primary"></i></div>
                                 <p>Hỗ trợ định dạng .doc, .docx, pdf có kích thước dưới 5MB</p>
-                                <div><input class="form-control" id="upload-cv" type="file" accept=".pdf, .doc, .docx">
+                                <div>
+                                    <input class="form-control" id="upload-cv" type="file" accept=".pdf, .doc, .docx"
+                                        style="background-color: #fff !important;">
                                 </div>
                             </div>
                         </div>
@@ -276,19 +272,14 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Ứng tuyển</button>
+                <button type="button" class="btn btn-danger btn-cancel" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary btn-save">Ứng tuyển</button>
             </div>
         </div>
     </div>
 </div>
 
-
-<!-- Testimonial End -->
 @section Scripts
 {
     <script src="~/js/HomePage/homepage.js"></script>
-    <script>
-
-    </script>
 }

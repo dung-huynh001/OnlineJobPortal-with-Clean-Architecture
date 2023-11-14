@@ -279,14 +279,20 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Property<int>("CandidateId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CoverLetter")
+                        .HasColumnType("ntext");
+
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CvUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("JobPostId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("datetime2");

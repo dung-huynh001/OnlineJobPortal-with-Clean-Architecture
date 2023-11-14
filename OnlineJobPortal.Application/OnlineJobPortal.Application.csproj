@@ -18,7 +18,6 @@
     <Folder Include="DTOs\MessageDto\" />
     <Folder Include="DTOs\ResumeDto\" />
     <Folder Include="DTOs\UserDto\" />
-    <Folder Include="Futures\ApplyFeatures\Queries\" />
     <Folder Include="Futures\CompanyImageFeatures\Queries\" />
     <Folder Include="Futures\DistrictFeatures\Queries\" />
     <Folder Include="Futures\EducationFeatures\Queries\" />

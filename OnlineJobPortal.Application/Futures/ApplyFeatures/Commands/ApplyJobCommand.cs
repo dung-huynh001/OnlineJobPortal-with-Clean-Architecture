@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using OnlineJobPortal.Application.DTOs.ApplicationDto;
 using OnlineJobPortal.Application.DTOs.ApplyDto;
 using OnlineJobPortal.Application.Interfaces;
@@ -13,16 +14,15 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.Futures.ApplyFeatures.Commands
 {
-    public record CreateApplyCommand : IRequest<ApiResponse>
+    public record ApplyJobCommand : IRequest<ApiResponse>
     {
         public CreateApplyDto CreateApplyDto { get; set; }
-
-        public CreateApplyCommand(CreateApplyDto createApplyDto)
+        public ApplyJobCommand(CreateApplyDto createApplyDto)
         {
             CreateApplyDto = createApplyDto;
         }
     }
-    public class CreateApplyCommandHandler : IRequestHandler<CreateApplyCommand, ApiResponse>
+    public class CreateApplyCommandHandler : IRequestHandler<ApplyJobCommand, ApiResponse>
     {
         private readonly IMapper mapper;
         private readonly IUnitOfWork unitOfWork;
@@ -33,13 +33,21 @@ namespace OnlineJobPortal.Application.Futures.ApplyFeatures.Commands
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<ApiResponse> Handle(CreateApplyCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(ApplyJobCommand request, CancellationToken cancellationToken)
         {
             unitOfWork.BeginTransaction();
             try
             {
                 var apply = mapper.Map<Apply>(request.CreateApplyDto);
+                var exist = await unitOfWork.Repository<Apply>().GetAll
+                    .FirstOrDefaultAsync(
+                    e => e.CandidateId.Equals(request.CreateApplyDto.CandidateId) 
+                    && e.JobPostId.Equals(request.CreateApplyDto.JobPostId));
 
+                if (exist != null)
+                {
+                    throw new Exception();
+                }
                 await unitOfWork.Repository<Apply>().AddAsync(apply);
 
                 unitOfWork.Commit();
