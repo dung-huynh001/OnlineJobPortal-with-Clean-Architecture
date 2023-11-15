@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OnlineJobPortal.Application.Contracts.Identity;
 using OnlineJobPortal.Application.DTOs.CompanyDto;
@@ -19,6 +20,7 @@ using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Domain.Enums;
 using OnlineJobPortal.Infrastructure.Identity;
 using OnlineJobPortal.Presentation.Models;
+using OnlineJobPortal.Presentation.SignalR;
 using System.Net.Http;
 using System.Net.Http.Json;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -39,7 +41,8 @@ namespace OnlineJobPortal.Presentation.Controllers
         public AuthController(ILogger<AuthController> logger, 
             HttpClient httpClient, ICurrentUserService currentUserService, 
             IAuthService authService, IMapper mapper, IMediator mediator, 
-            IWebHostEnvironment webHostEnvironment, IUploadService uploadService)
+            IWebHostEnvironment webHostEnvironment, 
+            IUploadService uploadService)
         {
             this.logger = logger;
             this.httpClient = httpClient;
@@ -76,7 +79,6 @@ namespace OnlineJobPortal.Presentation.Controllers
                     {
                         throw new Exception();
                     }
-
                     switch (result.Data)
                     {
                         case UserType.Candidate:

@@ -8,6 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="IronPdf" Version="2023.11.7" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.Json" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -31,6 +35,9 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Employer\Data\" />
     <Folder Include="Data\" />
+    <Folder Include="wwwroot\area\assets\plugins\datatables\css\" />
+    <Folder Include="wwwroot\area\assets\plugins\datatables\js\" />
+    <Folder Include="wwwroot\area\assets\plugins\signalr\" />
     <Folder Include="wwwroot\css\RegisterPage\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\lib\bootstrap\" />

@@ -6,9 +6,11 @@ using OnlineJobPortal.Application.DTOs.JobPostDto;
 using OnlineJobPortal.Application.DTOs.LocationDto;
 using OnlineJobPortal.Application.DTOs.SkillDto;
 using OnlineJobPortal.Application.Futures.JobPostFeatures.Commands;
+using OnlineJobPortal.Application.Futures.JobPostFeatures.Queries;
 using OnlineJobPortal.Application.Futures.JobTypeFeatures.Queries;
 using OnlineJobPortal.Application.Futures.LocationFeatures.Commands;
 using OnlineJobPortal.Application.Futures.SkillFeatures.Queries;
+using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Presentation.Areas.Employer.Models;
 
@@ -20,16 +22,30 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
     {
         private readonly IMapper mapper;
         private readonly IMediator mediator;
+        private readonly ICurrentUserService currentUserService;
 
-        public JobPostController(IMapper mapper, IMediator mediator)
+        public JobPostController(IMapper mapper, IMediator mediator, ICurrentUserService currentUserService)
         {
             this.mapper = mapper;
             this.mediator = mediator;
+            this.currentUserService = currentUserService;
         }
 
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult ManageJobPosts()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> GetAllJobPost()
+        {
+            var employerId = currentUserService.GetActorId();
+            var data = await mediator.Send(new GetAllJobPostByEmployerIdQuery(employerId));
+            return Json(new {data = data});
         }
 
         public async Task<IActionResult> PostANewJob()
@@ -40,6 +56,11 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
             ViewBag.SkillList = skillList;
             ViewBag.JobTypeList = jobTypeList;
 
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ShowJobPostDetail(int id){
             return View();
         }
 
