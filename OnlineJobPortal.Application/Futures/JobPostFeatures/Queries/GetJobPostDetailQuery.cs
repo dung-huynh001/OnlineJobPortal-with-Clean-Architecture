@@ -42,7 +42,6 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Queries
             GetJobPostDetailDto result = mapper.Map<GetJobPostDetailDto>(jobPost);
             result.ProvinceName = jobPost.District.Province.ProvinceName;
             result.Company = mapper.Map<GetCompanyDto>(jobPost.Employer.Company);
-            //result.RequirementSkills = mapper.Map<ICollection<GetSkillDto>>(jobPost.RequirementSkills);
             return result;
         }
     }

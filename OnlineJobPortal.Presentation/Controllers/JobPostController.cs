@@ -28,7 +28,7 @@ namespace OnlineJobPortal.Presentation.Controllers
             this.mediator = mediator;
             this.currentUserService = currentUserService;
         }
-        public IActionResult Index()
+        public IActionResult ManageJobPosts()
         {
             return View();
         }

@@ -1,0 +1,44 @@
+﻿<!-- Views/Home/Index.cshtml -->
+
+<div>
+    <input type="text" id="toUserInput" placeholder="To User" />
+    <input type="text" id="messageInput" placeholder="Message" />
+    <button onclick="sendMessageToUser()">Send</button>
+</div>
+
+<ul id="messagesList"></ul>
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.12/signalr.min.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chat")
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        connection.start().then(function () {
+            console.log("SignalR Connected.");
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        connection.on("ReceiveMessage", function (user, message) {
+            var encodedUser = $("<div />").text(user).html();
+            var encodedMsg = $("<div />").text(message).html();
+            $("#messagesList").append("<li><strong>" + encodedUser + "</strong>: " + encodedMsg + "</li>");
+        });
+
+        function sendMessageToUser() {
+            var toUser = $("#toUserInput").val(); // Người nhận
+            var message = $("#messageInput").val();
+
+            connection.invoke("SendMessageToUser", toUser, message).catch(function (err) {
+                return console.error(err.toString());
+            });
+
+            $("#messageInput").val("");
+        }
+
+    </script>
+}

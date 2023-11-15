@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "microsoft-signalr@7.0.12",
+      "destination": "wwwroot/area/assets/plugins/signalr/"
+    },
+    {
+      "library": "datatable@2.0.2",
+      "destination": "wwwroot/area/assets/plugins/datatable/datatable/",
+      "files": [
+        "js/datatable.min.js",
+        "img/sort_both.png",
+        "css/datatable-bootstrap.min.css",
+        "img/sort_asc.png",
+        "css/datatable.min.css",
+        "img/sort_desc.png",
+        "js/datatable.jquery.min.js"
+      ]
+    },
+    {
+      "library": "datatables-responsive@2.5.0",
+      "destination": "wwwroot/area/assets/plugins/datatables/js/",
+      "files": [
+        "dataTables.responsive.min.js"
+      ]
+    },
+    {
+      "library": "datatables@1.10.21",
+      "destination": "wwwroot/area/assets/plugins/datatables/"
+    }
+  ]
+}

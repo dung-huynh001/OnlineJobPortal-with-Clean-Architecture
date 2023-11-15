@@ -21,7 +21,6 @@
     <Folder Include="Futures\CompanyImageFeatures\Queries\" />
     <Folder Include="Futures\DistrictFeatures\Queries\" />
     <Folder Include="Futures\EducationFeatures\Queries\" />
-    <Folder Include="Futures\EmployerFeatures\Queries\" />
     <Folder Include="Futures\ExperienceFeatures\Queries\" />
     <Folder Include="Futures\ExperienceProjectFeature\Queries\" />
     <Folder Include="Futures\ForeignLangugeFeatures\Queries\" />

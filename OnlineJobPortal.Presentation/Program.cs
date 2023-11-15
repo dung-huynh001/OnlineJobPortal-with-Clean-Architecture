@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using OnlineJobPortal.Application;
@@ -9,6 +10,7 @@ using OnlineJobPortal.Infrastructure;
 using OnlineJobPortal.Infrastructure.Context;
 using OnlineJobPortal.Infrastructure.Identity;
 using OnlineJobPortal.Presentation;
+using OnlineJobPortal.Presentation.SignalR;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -19,10 +21,13 @@ builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddPresentation(builder.Configuration);
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddTransient<ITJobsHub>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddMvc()
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+builder.Services.AddSignalR();
 
 builder.Services.AddRazorPages();
 builder.Services.AddHttpClient();
@@ -47,6 +52,8 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.MapHub<ITJobsHub>("/chat");
 
 app.MapAreaControllerRoute(
     name: "AdminArea",
