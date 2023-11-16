@@ -3,7 +3,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 *@
 @{
 }
-
+<link rel="stylesheet" href="~/css/JobDetailPage/jobdetail.css">
 <style>
     .section a {
         color: #333
@@ -12,6 +12,15 @@ For more information on enabling MVC for empty projects, visit https://go.micros
     .section a.active {
         color: #5b99ea;
         border-bottom: 3px solid #5b99ea;
+    }
+
+    .list-group .list-group-item div .fa-caret-right {
+        rotate: 0deg;
+        transition: transform 0.5s ease;
+    }
+
+    .list-group .list-group-item.active div .fa-caret-right {
+        transform: rotate(90deg);
     }
 </style>
 
@@ -29,109 +38,314 @@ For more information on enabling MVC for empty projects, visit https://go.micros
         </div>
         <div class="d-flex justify-content-around section" role="tablist">
             <a role="button" class="py-3 mb-1 flex-grow-1 text-center active btn-change-section" id="applicant-section"
-                data-bs-toggle="tab" data-bs-target="#applicant-section-content" type="button" role="tab" aria-controls="applicant-section-content"
-                aria-selected="true">Ứng viên</a>
+                data-bs-toggle="tab" data-bs-target="#applicant-section-content" type="button" role="tab"
+                aria-controls="applicant-section-content" aria-selected="true">Ứng viên</a>
             <a role="button" class="py-3 mb-1 flex-grow-1 text-center btn-change-section" id="job-post-section"
-                data-bs-toggle="tab" data-bs-target="#job-post-section-content" type="button" role="tab" aria-controls="job-post-section-content"
-                aria-selected="false">Chi tiết
+                data-bs-toggle="tab" data-bs-target="#job-post-section-content" type="button" role="tab"
+                aria-controls="job-post-section-content" aria-selected="false">Chi tiết
                 tuyển dụng</a>
         </div>
     </div>
     <div class="col-12 bg-white rounded-3 tab-content">
-        <div class="d-flex flex-column p-3 tab-pane fade show active" id="applicant-section-content" role="tabpanel"
+        <div class="tab-pane fade show active" id="applicant-section-content" role="tabpanel"
             aria-labelledby="applicant-section">
-            <div class="d-flex align-items-center border-bottom py-3">
-                <div class="m-0 p-0 d-flex gap-3" role="tablist">
-                    <a class="btn btn-outline-info active" id="applicant-tab" data-bs-toggle="tab"
-                        data-bs-target="#applicant-tab-content" type="button" role="tab"
-                        aria-controls="applicant-tab-content" aria-selected="true">Tất cả ứng viên</a>
-                    <a class="btn btn-outline-info" id="suggest-tab" data-bs-toggle="tab"
-                        data-bs-target="#suggest-tab-content" type="button" role="tab"
-                        aria-controls="suggest-tab-content" aria-selected="true">Gợi ý phù hợp</a>
+            <div class="d-flex flex-column p-3 ">
+                <div class="d-flex align-items-center border-bottom py-3">
+                    <div class="m-0 p-0 d-flex gap-3" role="tablist">
+                        <a class="btn btn-outline-info active" id="applicant-tab" data-bs-toggle="tab"
+                            data-bs-target="#applicant-tab-content" type="button" role="tab"
+                            aria-controls="applicant-tab-content" aria-selected="true">Tất cả ứng viên</a>
+                        <a class="btn btn-outline-info" id="suggest-tab" data-bs-toggle="tab"
+                            data-bs-target="#suggest-tab-content" type="button" role="tab"
+                            aria-controls="suggest-tab-content" aria-selected="true">Gợi ý phù hợp</a>
+                    </div>
+                    <p class="m-0 ms-auto d-flex align-items-baseline">
+                        <span class="me-2 text-nowrap fw-bold">Lọc theo</span>
+                        <select class="form-select" name="" id="">
+                            <option value="">Tất cả</option>
+                            <option value="">Ngày nộp</option>
+                        </select>
+                    </p>
                 </div>
-                <p class="m-0 ms-auto d-flex align-items-baseline">
-                    <span class="me-2 text-nowrap fw-bold">Lọc theo</span>
-                    <select class="form-select" name="" id="">
-                        <option value="">Tất cả</option>
-                        <option value="">Ngày nộp</option>
-                    </select>
-                </p>
-            </div>
-            <div class="w-100 py-3">
-                <div class="rounded-3 vh-100" style="background-color: #fbfbfc;">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="applicant-tab-content" role="tabpanel"
-                            aria-labelledby="applicant-tab">
-                            <div class="d-flex flex-column gap-3 p-3">
-                                <div class="d-flex gap-3 bg-white p-3 rounded-3 shadow-sm">
-                                    <img class="flex-shrink-0 rounded-pill" src="~/img/about-1.jpg" alt=""
-                                        style="width: 50px; height: 50px; object-fit: fill;">
-                                    <div class="flex-grow-1 d-flex flex-column">
-                                        <span class="fw-bold">Hai Nguyen</span>
-                                        <span class="">Job post title</span>
-                                        <span class="fst-italic" style="font-size: .8rem;">Application date: 11 mar
-                                            2023</span>
-                                    </div>
-                                    <div class="d-flex align-items-start gap-2">
-                                        <a href="" class="btn btn-outline-info fs-5 rounded-3 border px-2 py-1"
-                                            role="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                            title="Xem hồ sơ"><i class="fa-solid fa-eye"></i></a>
-                                        <a href="" class="btn btn-outline-primary fs-5 rounded-3 border px-2 py-1"
-                                            role="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                            title="Duyệt hồ sơ"><i class="fa-solid fa-circle-check"></i></a>
-                                        <a href="" class="btn btn-outline-danger fs-5 rounded-3 border px-2 py-1"
-                                            role="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                            title="Từ chối hồ sơ"><i class="fa-solid fa-circle-xmark"></i></a>
-                                    </div>
-                                </div>
-                                <div class="d-flex gap-3 bg-white p-3 rounded-3 shadow-sm">
-                                    <img class="flex-shrink-0 rounded-pill" src="~/img/about-1.jpg" alt=""
-                                        style="width: 50px; height: 50px; object-fit: fill;">
-                                    <div class="flex-grow-1 d-flex flex-column">
-                                        <span class="fw-bold">Hai Nguyen</span>
-                                        <span class="">Job post title</span>
-                                        <span class="fst-italic" style="font-size: .8rem;">Application date: 11 mar
-                                            2023</span>
-                                    </div>
-                                    <div class="d-flex align-items-start gap-2">
-                                        <a href="" class="btn btn-outline-info fs-5 rounded-1 border px-2 py-1"
-                                            role="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                            title="Xem hồ sơ"><i class="fa-solid fa-eye"></i></a>
-                                        <a href="" class="btn btn-outline-primary fs-5 rounded-1 border px-2 py-1"
-                                            role="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                            title="Duyệt hồ sơ"><i class="fa-solid fa-circle-check"></i></a>
-                                        <a href="" class="btn btn-outline-danger fs-5 rounded-1 border px-2 py-1"
-                                            role="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                            title="Từ chối hồ sơ"><i class="fa-solid fa-circle-xmark"></i></a>
+                <div class="w-100 py-3">
+                    <div class="rounded-3 vh-100" style="background-color: #fbfbfc;">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="applicant-tab-content" role="tabpanel"
+                                aria-labelledby="applicant-tab">
+                                <div class="d-flex flex-column gap-3 p-3">
+                                    <div class="d-flex gap-3 bg-white p-3 rounded-3 shadow-sm">
+                                        <img class="flex-shrink-0 rounded-pill" src="~/img/about-1.jpg" alt=""
+                                            style="width: 50px; height: 50px; object-fit: fill;">
+                                        <div class="flex-grow-1 d-flex flex-column">
+                                            <span class="fw-bold">Hai Nguyen</span>
+                                            <span class="">Job post title</span>
+                                            <span class="fst-italic" style="font-size: .8rem;">Application date: 11 mar
+                                                2023</span>
+                                        </div>
+                                        <div class="d-flex align-items-start gap-2">
+                                            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xem hồ sơ">
+                                                <a class="btn btn-outline-info fs-5 rounded-3 border px-2 py-1"
+                                                    role="button" data-bs-toggle="modal"
+                                                    data-bs-target="#candidate-info-modal"><i
+                                                        class="fa-solid fa-eye"></i></a>
+                                            </span>
+                                            <span data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                title="Duyệt hồ sơ">
+                                                <a class="btn btn-outline-primary fs-5 rounded-3 border px-2 py-1"
+                                                    role="button" data-candidate-id=""><i
+                                                        class="fa-solid fa-circle-check"></i></a>
+                                            </span>
+                                            <span data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                title="Từ chối hồ sơ" data-candidate-id="">
+                                                <a class="btn btn-outline-danger fs-5 rounded-3 border px-2 py-1"
+                                                    role="button"><i class="fa-solid fa-circle-xmark"></i></a>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="suggest-tab-content" role="tabpanel"
-                            aria-labelledby="suggest-tab">
-                            <div class="d-flex flex-column">
-                                <div></div>
+                            <div class="tab-pane fade" id="suggest-tab-content" role="tabpanel"
+                                aria-labelledby="suggest-tab">
+                                <div class="d-flex flex-column">
+                                    <div></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="d-flex flex-column p-3 tab-pane fade" id="job-post-section-content" role="tabpanel"
-            aria-labelledby="job-post-section">
-            
+        <div class="p-3 tab-pane fade" id="job-post-section-content" role="tabpanel" aria-labelledby="job-post-section">
+            <div class="row">
+                <div class="col-lg-8 tab-content d-lg-block">
+                    <div class="bg-light p-4 mb-4 rounded-3">
+                        <div class="job-detail__info--title">Tiêu đề tin
+                        </div>
+                        <div class="d-flex justify-content-between my-4">
+                            <div class="job-detail__info--section d-flex flex-column flex-lg-row">
+                                <div class="job-detail__info--section-icon">
+                                    <i class="far fa-money-bill-alt"></i>
+                                </div>
+                                <div class="job-detail__info--section-content">
+                                    <div class="job-detail__info--section-content-title">Mức lương</div>
+                                    <div class="job-detail__info--section-content-value">10 triệu</div>
+                                </div>
+                            </div>
+                            <div class="job-detail__info--section d-flex flex-column flex-lg-row">
+                                <div class="job-detail__info--section-icon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="job-detail__info--section-content">
+                                    <div class="job-detail__info--section-content-title">Địa điểm</div>
+                                    <div class="job-detail__info--section-content-value">Cần Thơ</div>
+                                </div>
+                            </div>
+                            <div class="job-detail__info--section d-flex flex-column flex-lg-row">
+                                <div class="job-detail__info--section-icon">
+                                    <i class="fa-solid fa-hourglass-half"></i>
+                                </div>
+                                <div class="job-detail__info--section-content">
+                                    <div class="job-detail__info--section-content-title">Hạn cuối</div>
+                                    <div class="job-detail__info--section-content-value">10/11/2023</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="bg-light p-4 mb-4 rounded-3">
+                        <h5 class="mb-3 fw-bold">Chi tiết tuyển dụng</h5>
+                        <div class="d-flex flex-column my-2">
+                            <p class="fw-bold fs-6 mb-2">Mô tả công việc</p>
+                            <div class="">
+                                Mô tả công việc
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column my-2">
+                            <p class="fw-bold fs-6 mb-2">Yêu cầu ứng viên</p>
+                            <div class="">
+                                Yêu cầu ứng viên
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column my-2">
+                            <p class="fw-bold fs-6 mb-2">Quyền lợi</p>
+                            <div class="">
+                                Quyền lợi
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column my-2">
+                            <p class="fw-bold fs-6">Địa điểm làm việc</p>
+                            <div class="">
+                                Hòa Bình, Bạc Liêu
+                            </div>
+                        </div>
+
+                        <p>Hạn cuối: 10/11/2023</p>
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="p-4 mb-4 bg-light rounded-3">
+                        <div class="job-detail__company d-flex flex-column gap-3">
+                            <div class="d-flex gap-4">
+                                <div target="_blank" class="job-detail__company-logo">
+                                    <img class="img-responsive" alt="">
+                                </div>
+                                <span target="_blank" class="job-detail__company-name">Tên công ty</span>
+                            </div>
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="job-detail__company-title flex-shrink-0"><i
+                                        class="fa-solid fa-location-dot pe-2 text-primary"></i><span>Địa điểm</span>
+                                </div>
+                                <div class="job-detail__company-value">Can Tho</div>
+                            </div>
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="job-detail__company-title flex-shrink-0"><i
+                                        class="fa-solid fa-globe pe-2 text-primary"></i><span>Website</span></div>
+                                <div class="job-detail__company-value"><a>www.facebook.com</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 mb-4 bg-light rounded-3">
+                        <div class="job-detail__company d-flex flex-column gap-3">
+                            <h5>Thông tin chung</h5>
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="job-detail__info--section-icon text-white">
+                                    <i class="fa-solid fa-medal"></i>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <p class="m-0">Cấp bậc</p>
+                                    <p class="m-0 fw-bold">Senior</p>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="job-detail__info--section-icon text-white">
+                                    <i class="fa-solid fa-hourglass-half"></i>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <p class="m-0">Kinh nghiệm</p>
+                                    <p class="m-0 fw-bold">Khong yeu cau</p>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="job-detail__info--section-icon text-white">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <p class="m-0">Số lượng tuyển</p>
+                                    <p class="m-0 fw-bold">6 người</p>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="job-detail__info--section-icon text-white">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <p class="m-0">Hình thức làm việc</p>
+                                    <p class="m-0 fw-bold">FullTime</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 mb-4 bg-light rounded-3">
+                        <div class="job-detail__company d-flex flex-column gap-3">
+                            <h5 class="mb-0">Danh mục</h5>
+                            <div class="d-flex mb-3">
+                                <a href="" class="text-dark px-2 rounded-pill" target="_blank"
+                                    style="background-color: #f1eeee;">Danh mục</a>
+                            </div>
+                            <h5 class="mb-0">Kỹ năng</h5>
+                            <div class="d-flex flex-wrap gap-3">
+                                @{
+                                    for (int i = 1; i < 3; i++)
+                                    {
+                                        <a href="" class="text-dark px-2 rounded-pill" target="_blank"
+                                            style="background-color: #f1eeee;">SkillName</a>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="candidate-info-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Thông tin ứng viên</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex gap-4 py-3">
+                    <img class="rounded-3 flex-shrink-0" src="~/img/about-1.jpg" alt=""
+                        style="width: 90px; height: 90px;">
+                    <div class="flex-grow-1">
+                        <p class="mb-1">Họ tên: <span class="fw-bold">Huỳnh Chí Dũng</span></p>
+                        <p class="mb-1">Ứng tuyển vị trí <span class="fw-bold text-primary">Web Developer</span></p>
+                        <p class="mb-1">Ngày nộp: <span class="fst-italic">10/11/2023</span></p>
+                    </div>
+                    <div class="ms-auto btn btn-info text-white align-self-start">
+                        <a role="button"><i class="fa-solid fa-file me-2"></i>Xem CV</a>
+                    </div>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action btn-show-collapse active position-relative" aria-current="true"
+                        data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="">Kỹ năng <div class=" position-absolute top-50 translate-middle-y"
+                                style="right: 15px;"><i
+                                class="fa-solid fa-caret-right"></i></div></a>
+                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="">Kinh nghiệm <div class=" position-absolute top-50 translate-middle-y"
+                                style="right: 15px;"><i
+                                class="fa-solid fa-caret-right"></i></div></a>
+                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="">Project <div class=" position-absolute top-50 translate-middle-y"
+                                style="right: 15px;"><i
+                                class="fa-solid fa-caret-right"></i></div></a>
+                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="">Học vấn <div class=" position-absolute top-50 translate-middle-y"
+                                style="right: 15px;"><i
+                                class="fa-solid fa-caret-right"></i></div></a>
+                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="">Chứng chỉ <div class=" position-absolute top-50 translate-middle-y"
+                                style="right: 15px;"><i
+                                class="fa-solid fa-caret-right"></i></div></a>
+                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="">Thư xin việc <div class=" position-absolute top-50 translate-middle-y"
+                                style="right: 15px;"><i
+                                class="fa-solid fa-caret-right"></i></div></a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @section Scripts {
     <script>
 
         $(document).ready(function () {
             const btnChangeSection = $(".btn-change-section");
-
+            const btnShowCollapse = $(".btn-show-collapse");
             btnChangeSection.click(function (e) {
                 e.preventDefault();
                 $(".btn-change-section").each(function () {
+                    $(this).removeClass("active");
+                })
+                $(this).addClass("active");
+            });
+
+            btnShowCollapse.click(function (e) {
+                e.preventDefault();
+                $(".btn-show-collapse").each(function () {
                     $(this).removeClass("active");
                 })
                 $(this).addClass("active");

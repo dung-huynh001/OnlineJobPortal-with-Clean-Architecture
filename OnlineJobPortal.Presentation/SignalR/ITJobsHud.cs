@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
+using OnlineJobPortal.Application.Futures.ApplicationUser.Queries;
 using System;
 using System.Threading.Tasks;
 
@@ -9,6 +12,12 @@ namespace OnlineJobPortal.Presentation.SignalR
     public class ITJobsHub : Hub
     {
         private static List<UserConnection> ConnectedUsers = new List<UserConnection>();
+        private readonly IMediator mediator;
+
+        public ITJobsHub(IMediator mediator)
+        {
+            this.mediator = mediator;
+        }
 
         public override async Task OnConnectedAsync()
         {
@@ -39,11 +48,12 @@ namespace OnlineJobPortal.Presentation.SignalR
         public async Task SendMessageToUser(string toUserId, string message)
         {
             var fromUserId = Context.UserIdentifier;
+            var result = mediator.Send(new GetAvatarUserQuery(fromUserId));
             var toUser = ConnectedUsers.SingleOrDefault(x => x.UserId == toUserId);
 
             if (toUser != null)
             {
-                await Clients.Client(toUser.ConnectionId).SendAsync("ReceiveMessage", fromUserId, message);
+                await Clients.Client(toUser.ConnectionId).SendAsync("ReceiveMessage", result, message);
             }
         }
 

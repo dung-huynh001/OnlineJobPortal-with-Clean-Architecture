@@ -15,19 +15,29 @@ namespace OnlineJobPortal.Infrastructure.Configuration
         {
             builder.HasKey(m => m.Id);
 
-            builder.Property(m => m.Content)
-                .IsRequired()
-                .HasColumnType("ntext");
+            builder.Property(x => x.Content).IsRequired();
+            builder.Property(x => x.Timestamp).IsRequired();
 
-            builder.HasOne(m => m.Candidate)
+            builder
+                .HasOne(m => m.User)
+                .WithMany(u => u.Messages)
+                .HasForeignKey(m => m.UserId);
+
+            builder
+                .HasOne(m => m.Conversation)
+                .WithMany(c => c.Messages)
+                .HasForeignKey(m => m.ConversationId);
+
+
+            /*builder.HasOne(m => m.Candidate)
                 .WithMany(c => c.Messages)
                 .HasForeignKey(m => m.CandidateId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict);*/
 
-            builder.HasOne(m => m.Employer)
+            /*builder.HasOne(m => m.Employer)
                 .WithMany(e => e.Messages)
                 .HasForeignKey(m => m.EmployerId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict);*/
         }
 
     }

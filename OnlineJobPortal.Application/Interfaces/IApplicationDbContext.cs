@@ -19,6 +19,7 @@ namespace OnlineJobPortal.Application.Interfaces
         DbSet<CandidateSkill> CandidateSkills { get; set; }
         DbSet<Company> Companies { get; set; }
         DbSet<CompanyImage> CompanyImages { get; set; }
+        DbSet<Conversations> Conversations { get; set; }
         DbSet<Education> Educations { get; set; }
         DbSet<Employer> Employers { get; set; }
         DbSet<Experience> Experiences { get; set; }
@@ -29,9 +30,11 @@ namespace OnlineJobPortal.Application.Interfaces
         DbSet<Message> Messages { get; set; }
         DbSet<Resume> Resumes { get; set; }
         DbSet<Skill> Skills { get; set; }
+        DbSet<Participation> Participations { get; set; }
         DbSet<Project> Projects { get; set; }
         DbSet<ExperienceSkill> ExperienceSkills { get; set; }
         DbSet<ExperienceProject> ExperienceProjects { get; set; }
+        DbSet<Notification> Notifications { get; set; }
 
         Task<int> SaveChangesAsync(); 
         Task<int> SaveChangesAsync(CancellationToken cancellation);

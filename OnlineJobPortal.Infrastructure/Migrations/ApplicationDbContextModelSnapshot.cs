@@ -660,6 +660,25 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.ToTable("CompanyImages");
                 });
 
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Conversations", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Conversations");
+                });
+
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.District", b =>
                 {
                     b.Property<int>("Id")
@@ -1212,29 +1231,110 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CandidateId")
+                    b.Property<int?>("CandidateId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("ntext");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ConversationId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("EmployerId")
+                    b.Property<int?>("EmployerId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CandidateId");
 
+                    b.HasIndex("ConversationId");
+
                     b.HasIndex("EmployerId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ResourceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ResourceName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
+                });
+
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Participation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ConversationId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConversationId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Participations");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Project", b =>
@@ -2713,21 +2813,59 @@ namespace OnlineJobPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Message", b =>
                 {
-                    b.HasOne("OnlineJobPortal.Domain.Entities.Candidate", "Candidate")
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Candidate", null)
                         .WithMany("Messages")
-                        .HasForeignKey("CandidateId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasForeignKey("CandidateId");
+
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Conversations", "Conversation")
+                        .WithMany("Messages")
+                        .HasForeignKey("ConversationId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineJobPortal.Domain.Entities.Employer", "Employer")
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Employer", null)
                         .WithMany("Messages")
-                        .HasForeignKey("EmployerId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasForeignKey("EmployerId");
+
+                    b.HasOne("OnlineJobPortal.Domain.Entities.ApplicationUser", "User")
+                        .WithMany("Messages")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Candidate");
+                    b.Navigation("Conversation");
 
-                    b.Navigation("Employer");
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Notification", b =>
+                {
+                    b.HasOne("OnlineJobPortal.Domain.Entities.ApplicationUser", "User")
+                        .WithMany("Notifications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Participation", b =>
+                {
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Conversations", "Conversations")
+                        .WithMany("Participations")
+                        .HasForeignKey("ConversationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OnlineJobPortal.Domain.Entities.ApplicationUser", "User")
+                        .WithMany("Participations")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Conversations");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Project", b =>
@@ -2771,6 +2909,15 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Navigation("Candidate");
                 });
 
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ApplicationUser", b =>
+                {
+                    b.Navigation("Messages");
+
+                    b.Navigation("Notifications");
+
+                    b.Navigation("Participations");
+                });
+
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.BussinessIndustry", b =>
                 {
                     b.Navigation("Companies");
@@ -2792,6 +2939,13 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Navigation("CompanyImages");
 
                     b.Navigation("Employers");
+                });
+
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Conversations", b =>
+                {
+                    b.Navigation("Messages");
+
+                    b.Navigation("Participations");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.District", b =>

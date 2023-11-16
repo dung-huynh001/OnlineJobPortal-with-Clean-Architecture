@@ -9,7 +9,6 @@ using OnlineJobPortal.Presentation.SignalR;
 
 namespace OnlineJobPortal.Presentation.Controllers
 {
-    // Trong một Controller hoặc Razor Page
     [Authorize]
     public class NotificationController : Controller
     {
