@@ -48,10 +48,10 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasForeignKey<Employer>(e => e.UserId)
                 .IsRequired();
 
-            builder.HasMany(e => e.Messages)
+            /*builder.HasMany(e => e.Messages)
                 .WithOne(m => m.Employer)
                 .HasForeignKey(m => m.EmployerId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict);*/
 
             builder.HasOne(e => e.Company)
                 .WithMany(c => c.Employers)

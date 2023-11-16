@@ -115,7 +115,10 @@ namespace OnlineJobPortal.Infrastructure
                 .AddScoped<IDistrictRepository, DistrictRepository>()
                 .AddScoped<IProvinceRepository, ProvinceRepository>()
                 .AddScoped<IProjectRepository, ProjectRepository>()
-                .AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
+                .AddScoped<IApplicationUserRepository, ApplicationUserRepository>()
+                .AddScoped<INotificationRepository, NotificationRepository>()
+                .AddScoped<IConversationsRepository, ConversationsRepository>()
+                .AddScoped<IParticipationRepository, ParticipationRepository>();
         }
     }
 }

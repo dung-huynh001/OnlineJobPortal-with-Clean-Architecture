@@ -8,7 +8,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-4 col-sm-3 max-vh-100 border-end position-relative">
+        <div class="col-5 col-sm-4 max-vh-100 border-end position-relative">
             <div class="d-flex flex-column overflow-auto p-3 gap-3">
                 <div class="d-flex justify-content-between align-items-baseline">
                     <h5 class="d-sm-block d-none">Chat</h5>
@@ -37,92 +37,23 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 <div class="d-flex flex-column gap-2" id="recipient-container"></div>
             </div>
         </div>
-        <div class="col-8 col-sm-9">
-            <ul class="list-group list-group-horizontal-xxl overflow-auto my-3 d-flex gap-3" style="height: 75vh;">
-                <li class="d-flex gap-2 recipient-message">
-                    <img class="btn-square rounded-pill" src="~/img/about-2.jpg" alt="">
-                    <div class="d-flex flex-column content-container">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ultrices dolor, ac maximus
-                            ligula. Donec ex orci, mollis ac purus vel, tempor pulvinar justo. Praesent nibh massa,
-                            posuere
-                            non mollis vel, molestie non mauris. Aenean consequat facilisis orci, sed sagittis mauris
-                            interdum at.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ultrices dolor, ac maximus
-                            ligula. Donec ex orci, mollis ac purus vel, tempor pulvinar justo. Praesent nibh massa,
-                            posuere
-                            non mollis vel, molestie non mauris. Aenean consequat facilisis orci, sed sagittis mauris
-                            interdum at.
-                        </p>
+        <div class="col-7 col-sm-8">
+            <div class="collapse" id="chat-section">
+                <ul class="list-group list-group-horizontal-xxl overflow-auto my-3 d-flex justify-content-end gap-3"
+                    id="messageList" style="height: 75vh;">
+                </ul>
+                <div class="d-flex align-items-center gap-3 p-1">
+                    <span class="fs-5"><i class="fa-solid fa-circle-plus text-info"></i></span>
+                    <span class="fs-5"><i class="fa-regular fa-image text-info"></i></span>
+                    <span class="fs-5"><i class="fa-solid fa-face-smile text-info"></i></span>
+                    <span class="fs-5"><i class="bi bi-filetype-gif text-info"></i></span>
+                    <div class="position-relative w-100 bottom-0">
+                        <input type="text" class="form-control rounded-pill" placeholder="Aa" id="messageInput"
+                            autocomplete="off">
+                        <a role="button" class="position-absolute top-50 translate-middle-y" style="right: 15px;">
+                            <i class="bi bi-send-fill text-info"></i>
+                        </a>
                     </div>
-                </li>
-                <li class="d-flex gap-2 ms-auto sender-message">
-                    <div class="d-flex flex-column content-container">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ultrices dolor, ac maximus
-                            ligula. Donec ex orci, mollis ac purus vel, tempor pulvinar justo. Praesent nibh massa,
-                            posuere
-                            non mollis vel, molestie non mauris. Aenean consequat facilisis orci, sed sagittis mauris
-                            interdum at.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ultrices dolor, ac maximus
-                            ligula. Donec ex orci, mollis ac purus vel, tempor pulvinar justo. Praesent nibh massa,
-                            posuere
-                            non mollis vel, molestie non mauris. Aenean consequat facilisis orci, sed sagittis mauris
-                            interdum at.
-                        </p>
-                    </div>
-                </li>
-                <li class="d-flex gap-2 recipient-message">
-                    <img class="btn-square rounded-pill" src="~/img/about-2.jpg" alt="">
-                    <div class="d-flex flex-column content-container">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ultrices dolor, ac maximus
-                            ligula. Donec ex orci, mollis ac purus vel, tempor pulvinar justo. Praesent nibh massa,
-                            posuere
-                            non mollis vel, molestie non mauris. Aenean consequat facilisis orci, sed sagittis mauris
-                            interdum at.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ultrices dolor, ac maximus
-                            ligula. Donec ex orci, mollis ac purus vel, tempor pulvinar justo. Praesent nibh massa,
-                            posuere
-                            non mollis vel, molestie non mauris. Aenean consequat facilisis orci, sed sagittis mauris
-                            interdum at.
-                        </p>
-                    </div>
-                </li>
-                <li class="d-flex gap-2 ms-auto sender-message">
-                    <div class="d-flex flex-column content-container">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ultrices dolor, ac maximus
-                            ligula. Donec ex orci, mollis ac purus vel, tempor pulvinar justo. Praesent nibh massa,
-                            posuere
-                            non mollis vel, molestie non mauris. Aenean consequat facilisis orci, sed sagittis mauris
-                            interdum at.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ultrices dolor, ac maximus
-                            ligula. Donec ex orci, mollis ac purus vel, tempor pulvinar justo. Praesent nibh massa,
-                            posuere
-                            non mollis vel, molestie non mauris. Aenean consequat facilisis orci, sed sagittis mauris
-                            interdum at.
-                        </p>
-                    </div>
-                </li>
-            </ul>
-            <div class="d-flex align-items-center gap-3 p-1">
-                <span class="fs-5"><i class="fa-solid fa-circle-plus text-secondary"></i></span>
-                <span class="fs-5"><i class="fa-regular fa-image text-secondary"></i></span>
-                <span class="fs-5"><i class="fa-solid fa-face-smile text-secondary"></i></span>
-                <span class="fs-5"><i class="bi bi-filetype-gif text-secondary"></i></span>
-                <div class="position-relative w-100 bottom-0">
-                    <input type="text" class="form-control rounded-pill" placeholder="Aa">
-                    <a role="button" class="position-absolute top-50 translate-middle-y" style="right: 15px;"><i
-                            class="bi bi-send-fill text-secondary"></i></a>
                 </div>
             </div>
         </div>
@@ -151,7 +82,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         for (let i = 0; i < res.length; i++) {
                             renderRecipientContainer(res[i].jobPost.employer)
                         }
-                    }else{
+                    } else {
                         renderNoResult()
                     }
                 },
@@ -163,27 +94,27 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 
         function renderRecipientContainer(data) {
             let recipientHtml = `
-                <div>
-                    <a class="d-flex flex-column py-1 px-2 rounded-3 recipient" data-user-id="${data.userId}">
-                        <div class="d-flex align-items-center gap-3">
-                            <img class="rounded-pill" src="${'.' + data.company.logoUrl}" alt="" style="width: 55px; height: 55px;">
-                            <div class="d-sm-flex flex-column d-none">
-                                <span class="fw-bold employer-name">${data.fullName}</span>
-                                <span style="font-size: .9rem; color: #888">${'NTD của ' + data.company.companyName}</span>
-                            </div>
+            <div>
+                <a class="d-flex flex-column py-1 px-2 rounded-3 recipient" data-user-id="${data.userId}" data-bs-toggle="collapse" href="#chat-section" role="button" aria-expanded="false" aria-controls="chat-section">
+                    <div class="d-flex align-items-center gap-3">
+                        <img class="rounded-pill" src="${'.' + data.company.logoUrl}" alt="" style="width: 55px; height: 55px;">
+                        <div class="flex-grow-1 d-sm-flex flex-column d-none">
+                            <span class="fw-bold employer-name">${data.fullName}</span>
+                            <span style="font-size: .9rem; color: #888">${'NTD của ' + data.company.companyName}</span>
                         </div>
-                    </a>
-                </div>`;
+                        <span class="text-danger mark-new-message" style="display: none; font-size: 0.7rem;"><i class="fa-solid fa-circle"></i></span>
+                    </div>
+                </a>
+            </div>`;
             recipientsContainer.append(recipientHtml)
         }
 
         function renderNoResult() {
-            imgHtml = `
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                    <img src="../img/no-result-found.jpg" alt="" style="width: 200px" />
-                    <span class="fw-bold m-1">Bạn chưa ứng tuyển công việc nào</span>
-                </div>
-            `;
+            let imgHtml = `
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <img src="../img/no-result-found.jpg" alt="" style="width: 200px" />
+                <span class="fw-bold m-1">Bạn chưa ứng tuyển công việc nào</span>
+            </div>`;
             recipientsContainer.html(imgHtml);
         }
 
@@ -201,6 +132,111 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 } else {
                     item.hide();
                 }
+            });
+        });
+    </script>
+
+    <!--SignalR-->
+    <script src="~/area/assets/plugins/signalr/signalr.min.js"></script>
+    <script>
+        const messageList = $("#messageList");
+        var recipientId = 0;
+
+
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chat")
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        connection.start().then(function () {
+            console.log("SignalR Connected.");
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        connection.on("ReceiveMessage", function (user, message) {
+            if (messageList.data("connect-with-data-id") == user) {
+                console.log(user, messageList.data("connect-with-data-id"));
+            }
+            @* let userId = user.result.userId;
+            $(`.recipient[data-user-id="${userId}"]`).first().find(".mark-new-message").show()
+            console.log(userId, user); *@
+            renderMessageFromRecipient(user, message);
+            scrollToBottom();
+        });
+
+
+        function sendMessageToUser() {
+            var toUser = recipientId; // Người nhận
+            var message = $("#messageInput").val();
+
+            if (message == null || message == "") return;
+
+            connection.invoke("SendMessageToUser", toUser, message).catch(function (err) {
+                return console.error(err.toString());
+            });
+
+            renderMessageFromSender(message);
+            scrollToBottom();
+
+            $("#messageInput").val("");
+        }
+
+        function renderMessageFromSender(message) {
+            var lastUser = messageList.find("li").last();
+            if (lastUser.hasClass("sender-message")) {
+                var createNewMessageHtml = `<p>${message}</p>`;
+                let lastArea = $(".sender-message .content-container").last();
+                lastArea.append(createNewMessageHtml);
+            } else {
+                var createNewSenderMessageHtml =`
+                <li class="d-flex gap-2 ms-auto justify-content-end sender-message">
+                    <div class="d-flex flex-column align-items-end content-container">
+                        <p>
+                            ${message}
+                        </p>
+                    </div>
+                </li>`;
+                messageList.append(createNewSenderMessageHtml);
+            }
+        }
+
+        function renderMessageFromRecipient(user, message) {
+            var lastUser = messageList.find("li").last();
+            if (lastUser.hasClass("recipient-message")) {
+                var createNewMessageHtml = `<p>${message}</p>`;
+                let lastArea = $(".recipient-message .content-container").last();
+                lastArea.append(createNewMessageHtml);
+            } else {
+                var createNewRecipientMessageHtml =`
+                <li class="d-flex gap-2 recipient-message">
+                    <img class="btn-square rounded-pill" src="${user.result.avatarUrl != null ?'.' + user.result.avatarUrl : '../../img/default_user.png'}" alt="">
+                    <div class="d-flex flex-column align-items-start content-container">
+                        <p>${message}</p>
+                    </div>
+                </li>`;
+                messageList.append(createNewRecipientMessageHtml);
+            }
+        }
+
+        function scrollToBottom() {
+            let container = $('#messageList');
+            container.scrollTop(container[0].scrollHeight);
+        }
+
+        $(document).ready(function () {
+            scrollToBottom();
+
+            $('#messageInput').on('keydown', function (event) {
+                if (event.keyCode === 13) {
+                    sendMessageToUser();
+                    event.preventDefault();
+                }
+            });
+
+            $(document).on("click", ".recipient", function () {
+                recipientId = $(this).data("user-id");
+                messageList.data("connect-with-user-id", recipientId);
             });
         });
     </script>

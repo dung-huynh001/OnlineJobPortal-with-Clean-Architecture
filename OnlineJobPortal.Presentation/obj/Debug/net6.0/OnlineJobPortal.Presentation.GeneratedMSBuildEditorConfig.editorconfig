@@ -48,6 +48,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Employer/Views/Candidate/AllCandidates.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcQ2FuZGlkYXRlXEFsbENhbmRpZGF0ZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Employer/Views/Candidate/SavedCandidates.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcQ2FuZGlkYXRlXFNhdmVkQ2FuZGlkYXRlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Employer/Views/Candidate/ViewCandidateDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcQ2FuZGlkYXRlXFZpZXdDYW5kaWRhdGVEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

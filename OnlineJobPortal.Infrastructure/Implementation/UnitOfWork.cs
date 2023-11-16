@@ -42,6 +42,9 @@ namespace OnlineJobPortal.Infrastructure.Implementation
         private IProjectRepository _projectRepository;
         private IExperienceProjectRepository _experienceProjectRepository;
         private IExperienceSkillRepository _experienceSkillRepository;
+        private INotificationRepository _notificationRepository;
+        private IConversationsRepository _conversationsRepository;
+        private IParticipationRepository _participationRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -72,6 +75,9 @@ namespace OnlineJobPortal.Infrastructure.Implementation
         public IProjectRepository ProjectRepository => _projectRepository ??= new ProjectRepository(_context);
         public IExperienceProjectRepository ExperienceProjectRepository => _experienceProjectRepository ??= new ExperienceProjectRepository(_context);
         public IExperienceSkillRepository ExperienceSkillRepository => _experienceSkillRepository ??= new ExperienceSkillRepository(_context);
+        public INotificationRepository NotificationRepository => _notificationRepository ??= new NotificationRepository(_context);
+        public IConversationsRepository ConversationsRepository => _conversationsRepository ??= new ConversationsRepository(_context);
+        public IParticipationRepository ParticipationRepository => _participationRepository ??= new ParticipationRepository(_context);
         public IGenericRepository<T> Repository<T>() where T : BaseEntity
         {
             if (_repositories == null)

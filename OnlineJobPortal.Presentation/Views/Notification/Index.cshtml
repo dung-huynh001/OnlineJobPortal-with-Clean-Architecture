@@ -9,8 +9,9 @@
 <ul id="messagesList"></ul>
 
 @section scripts {
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.12/signalr.min.js"></script>
+    @* <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> *@
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.12/signalr.min.js"></script> *@
+    <script src="~/area/assets/plugins/signalr/signalr.min.js"></script>
     <script>
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/chat")
@@ -39,6 +40,5 @@
 
             $("#messageInput").val("");
         }
-
     </script>
 }

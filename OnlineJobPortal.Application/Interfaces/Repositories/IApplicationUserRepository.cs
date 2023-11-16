@@ -1,4 +1,5 @@
-﻿using OnlineJobPortal.Application.Models.Identity;
+﻿using OnlineJobPortal.Application.DTOs.ApplicationUserDto;
+using OnlineJobPortal.Application.Models.Identity;
 using OnlineJobPortal.Application.Responses;
 using OnlineJobPortal.Domain.Entities;
 using System;
@@ -12,5 +13,6 @@ namespace OnlineJobPortal.Application.Interfaces.Repositories
     public interface IApplicationUserRepository
     {
         Task<bool> ChangePassword(ChangePasswordRequest request);
+        Task<UserWithAvatarDto> GetAvatarUser(string userId);
     }
 }

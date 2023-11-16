@@ -30,6 +30,9 @@ namespace OnlineJobPortal.Application.Interfaces
         IProjectRepository ProjectRepository { get; }
         IExperienceProjectRepository ExperienceProjectRepository { get; }
         IExperienceSkillRepository ExperienceSkillRepository { get; }
+        INotificationRepository NotificationRepository { get; }
+        IConversationsRepository ConversationsRepository { get; }
+        IParticipationRepository ParticipationRepository { get; }
         void BeginTransaction();
         void Commit();
         void Rollback();

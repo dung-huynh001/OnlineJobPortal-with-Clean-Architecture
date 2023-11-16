@@ -60,10 +60,10 @@ namespace OnlineJobPortal.Infrastructure.Configuration
                 .HasForeignKey(jf => jf.CandidateId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasMany(c => c.Messages)
+            /*builder.HasMany(c => c.Messages)
                 .WithOne(m => m.Candidate)
                 .HasForeignKey(m => m.CandidateId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Cascade);*/
         }
     }
 }
