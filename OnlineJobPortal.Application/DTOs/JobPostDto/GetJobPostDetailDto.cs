@@ -26,6 +26,7 @@ namespace OnlineJobPortal.Application.DTOs.JobPostDto
         public int NumberOfRecruits { get; set; }
         public string ExpiredDate { get; set; }
         public int JobTypeId { get; set; }
+        public bool Saved { get; set; } = false;
         public GetJobTypeDto JobType { get; set; }
         public GetCompanyDto Company { get; set; }
         public ICollection<GetRequirementSkillDto> RequirementSkills { get; set; }

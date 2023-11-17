@@ -1,17 +1,21 @@
 ﻿using AutoMapper;
 using Humanizer;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using OnlineJobPortal.Application;
 using OnlineJobPortal.Application.DTOs.JobPostDto;
 using OnlineJobPortal.Application.Futures.CompanyFeatures.Queries;
+using OnlineJobPortal.Application.Futures.JobFavoriteFeatures.Queries;
 using OnlineJobPortal.Application.Futures.JobPostFeatures.Queries;
 using OnlineJobPortal.Application.Futures.JobTypeFeatures.Queries;
+using OnlineJobPortal.Application.Futures.ResumeFeatures.Queries;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Domain.Enums;
 using OnlineJobPortal.Presentation.Models;
 using System.Globalization;
+using System.Text;
 using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace OnlineJobPortal.Presentation.Controllers
@@ -29,6 +33,109 @@ namespace OnlineJobPortal.Presentation.Controllers
             this.currentUserService = currentUserService;
         }
         public IActionResult ManageJobPosts()
+        {
+            return View();
+        }
+
+        public class SuggestJobResponse
+        {
+            public List<SuggestJobPostModel>? Recommendations { get; set; }
+        }
+
+        [Authorize(Roles = "Candidate")]
+        [HttpGet]
+        public async Task<IActionResult> GetSuggestJobPosts(ConditionViewModel condition)
+        {
+            // Dữ liệu Resume để gửi đi
+            var defaultResume = new
+            {
+                skills = new List<string>(),
+                experience = "",
+                education = ""
+            };
+            var candidateId = currentUserService.GetActorId();
+            var userResume = await mediator.Send(new GetResumeToSuggestJobsQuery(candidateId));
+
+            // URL của API Python
+            var apiUrl = "http://localhost:5000/recommend";
+
+            // Sử dụng HttpClient để gọi API Python
+            using (var client = new HttpClient())
+            {
+                var jsonContent = new StringContent(JsonConvert.SerializeObject(new { resume = defaultResume }), Encoding.UTF8, "application/json");
+
+                // Chuyển đổi dữ liệu Resume thành chuỗi JSON
+                if (userResume != null)
+                {
+                    jsonContent = new StringContent(JsonConvert.SerializeObject(new { resume = userResume }), Encoding.UTF8, "application/json");
+
+                }
+
+                // Gửi yêu cầu POST đến API Python
+                var response = await client.PostAsync(apiUrl, jsonContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseData = await response.Content.ReadAsStringAsync();
+                    var suggestedJobs = JsonConvert.DeserializeObject<SuggestJobResponse>(responseData);
+
+                    var data = suggestedJobs?.Recommendations;
+                    int pageSize = 5;
+                    int pageNumber = condition.pageNumber ?? 0;
+                    if (condition.sortBy != null)
+                    {
+                        switch (condition.sortBy.ToLower())
+                        {
+                            case "fulltime":
+                                data = data?.Where(i => i.EmploymentType == 0).ToList();
+                                break;
+                            case "parttime":
+                                data = data?.Where(i => i.EmploymentType == 1).ToList();
+                                break;
+                            case "remote":
+                                data = data?.Where(i => i.EmploymentType == 2).ToList();
+                                break;
+                            case "freelancer":
+                                data = data?.Where(i => i.EmploymentType == 3).ToList();
+                                break;
+                        }
+                    }
+
+                    string? keyword = condition.keyword?.ToLower();
+                    string? level = condition.level?.ToLower();
+                    level = (level != null && (level.Contains("kinh nghiệm") || level.Contains("tất cả"))) ? "" : level;
+
+                    string? provinceName = condition.provinceName?.Trim().ToLower();
+                    provinceName = (provinceName != null && provinceName.Contains("tất cả thành phố")) ? "" : provinceName;
+                    int? salary = condition.salary;
+
+                    //Lọc theo các điều kiện
+                    data = data?.Where(i => (i.Title.ToLower().Contains(keyword ?? "")
+                    || i.Title.ToLower().Contains(keyword ?? "")
+                    || i.CompanyName.ToLower().Contains(keyword ?? "")
+                    || i.SkillsRequired.Any(s => s.ToLower().Contains(keyword ?? "")))
+                        && i.ProvinceName.ToLower().Contains(provinceName ?? "")
+                        && isSalaryInRange(salary, i.Salary))
+                        .ToList();
+
+                    var favoriteJobs = await mediator.Send(new GetAllJobFavoriteIdQuery());
+                    foreach (var jobPost in data!)
+                    {
+                        jobPost.Saved = favoriteJobs.Any(id => id == jobPost.JobPostId);
+                    }
+                    var result = await data!.ToPaginatedListAsync(pageNumber, pageSize, new CancellationToken());
+
+                    return Json(result);
+                }
+                else
+                {
+                    // Xử lý lỗi nếu có
+                    return Json("Error");
+                }
+            }
+        }
+
+        public IActionResult SuggestJobPosts()
         {
             return View();
         }
@@ -68,22 +175,21 @@ namespace OnlineJobPortal.Presentation.Controllers
                     }
                 }
 
-
                 response = response.OrderByDescending(i => i.CreateAt).ToList();
                 string? keyword = condition.keyword?.ToLower();
                 string? level = condition.level?.ToLower();
                 level = (level != null && (level.Contains("kinh nghiệm") || level.Contains("tất cả"))) ? "" : level;
-                
+
                 string? provinceName = condition.provinceName?.Trim().ToLower();
                 provinceName = (provinceName != null && provinceName.Contains("tất cả thành phố")) ? "" : provinceName;
                 int? salary = condition.salary;
 
                 //Lọc theo các điều kiện
-                response = response.Where(i => (i.Title.ToLower().Contains(keyword ?? "") 
-                || i.Title.ToLower().Contains(keyword ?? "") 
+                response = response.Where(i => (i.Title.ToLower().Contains(keyword ?? "")
+                || i.Title.ToLower().Contains(keyword ?? "")
                 || i.CompanyName.ToLower().Contains(keyword ?? "")
                 || i.Skills.Any(s => s.ToLower().Contains(keyword ?? "")))
-                    && i.Province.ToLower().Contains(provinceName ?? "") 
+                    && i.Province.ToLower().Contains(provinceName ?? "")
                     && isSalaryInRange(salary, i.Salary)
                     && i.Level.ToLower().Contains(level ?? ""))
                     .ToList();
@@ -190,10 +296,10 @@ namespace OnlineJobPortal.Presentation.Controllers
             }
         }
 
-        public async Task<IActionResult> JobByCategory(int categoryId) 
+        public async Task<IActionResult> JobByCategory(int categoryId)
         {
             var request = new GetJobTypeByIdQuery(categoryId);
-            var result = await mediator.Send(request); 
+            var result = await mediator.Send(request);
             return View(result);
         }
 

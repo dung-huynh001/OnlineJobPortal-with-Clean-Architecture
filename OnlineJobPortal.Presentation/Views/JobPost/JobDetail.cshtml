@@ -68,10 +68,19 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         </div>
                     </div>
                     <div class="d-flex gap-4">
-                        <button class="text-white btn btn-primary flex-grow-1 rounded-3"><i
-                                class="fa-regular fa-paper-plane pe-2"></i>Ứng tuyển ngay</button>
-                        <button class="text-primary btn btn-outline-primary rounded-3"><i
-                                class="fa-regular fa-heart pe-2"></i>Lưu tin</button>
+                        <button class="text-white btn btn-primary flex-grow-1 rounded-3" data-bs-toggle="modal"
+                            data-bs-target="#apply-job-modal"><i class="fa-regular fa-paper-plane pe-2"></i>Ứng tuyển
+                            ngay</button>
+                        @if (Model.Saved == true)
+                        {
+                            <button class="text-white btn btn-primary rounded-3 btn-favorite-job"
+                                data-job-post-id="@Model.Id"><i class="fa-regular fa-heart pe-2"></i>Lưu tin</button>
+                        }
+                        else
+                        {
+                            <button class="text-primary btn btn-outline-primary rounded-3 btn-favorite-job"
+                                data-job-post-id="@Model.Id"><i class="fa-regular fa-heart pe-2"></i>Lưu tin</button>
+                        }
                     </div>
                 </div>
 
@@ -103,8 +112,18 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         </div>
                     </div>
                     <div class="d-flex gap-4 py-3">
-                        <button class="btn btn-primary rounded-3">Ứng tuyển ngay</button>
-                        <button class="text-primary btn btn-outline-primary rounded-3">Lưu tin</button>
+                        <button class="btn btn-primary rounded-3" data-bs-toggle="modal"
+                            data-bs-target="#apply-job-modal">Ứng tuyển ngay</button>
+                        @if (Model.Saved == true)
+                        {
+                            <button class="text-white btn btn-primary rounded-3 btn-favorite-job"
+                                data-job-post-id="@Model.Id">Lưu tin</button>
+                        }
+                        else
+                        {
+                            <button class="text-primary btn btn-outline-primary rounded-3 btn-favorite-job"
+                                data-job-post-id="@Model.Id">Lưu tin</button>
+                        }
                     </div>
                     <p>Hạn cuối: @Model.ExpiredDate</p>
                 </div>
@@ -118,10 +137,13 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 var logoUrl = Model.Company.LogoUrl;
                                 logoUrl = "~" + logoUrl.Substring(1);
                             }
-                            <a asp-area="" asp-controller="Company" asp-action="CompanyDetail" asp-route-id="@Model.Company.Id" target="_blank" class="job-detail__company-logo">
+                            <a asp-area="" asp-controller="Company" asp-action="CompanyDetail"
+                                asp-route-id="@Model.Company.Id" target="_blank" class="job-detail__company-logo">
                                 <img class="img-responsive" src=@logoUrl alt="" asp-append-version="true">
                             </a>
-                            <a asp-area="" asp-controller="Company" asp-action="CompanyDetail" asp-route-id="@Model.Company.Id" target="_blank" class="job-detail__company-name">@Model.Company.CompanyName</a>
+                            <a asp-area="" asp-controller="Company" asp-action="CompanyDetail"
+                                asp-route-id="@Model.Company.Id" target="_blank"
+                                class="job-detail__company-name">@Model.Company.CompanyName</a>
                         </div>
                         <div class="d-flex gap-3 align-items-center">
                             <div class="job-detail__company-title flex-shrink-0"><i
@@ -200,6 +222,57 @@ For more information on enabling MVC for empty projects, visit https://go.micros
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="apply-job-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header shadow-sm">
+                <h5 class="modal-title" id="staticBackdropLabel">Ứng tuyển <span id="job-post-title"
+                        class="text-primary"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body shadow-sm">
+                <div class="d-flex flex-column gap-3">
+                    <div class="fw-bold"><i class="fa-regular fa-folder-open text-primary me-2"></i> Chọn CV ứng tuyển:
+                    </div>
+                    <div role="button" class="border rounded-3 p-2">
+                        <input id="cv-it-jobs" class="form-check-input" type="radio" name="radio-cv" value="0" checked>
+                        <label class="ms-3">
+                            Sử dụng CV online của IT Jobs
+                        </label>
+                    </div>
+                    <div class="border rounded-3 p-2">
+                        <div class="d-flex">
+                            <input id="others-cv" class="form-check-input" type="radio" value="1" name="radio-cv">
+                            <label role="button" class="ms-3">
+                                Tải CV từ máy tính
+                            </label>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <div><i class="fa-solid fa-5x fa-cloud-arrow-up text-primary"></i></div>
+                                <p>Hỗ trợ định dạng .doc, .docx, pdf có kích thước dưới 5MB</p>
+                                <div>
+                                    <input class="form-control" id="upload-cv" type="file" accept=".pdf, .doc, .docx"
+                                        style="background-color: #fff !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fw-bold"><i class="fa-solid fa-feather text-primary me-2"></i>Thư giới thiệu</div>
+                    <textarea class="form-control rounded-3" id="cover-letter" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-cancel" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary btn-save" data-job-post-id="@Model.Id">Ứng tuyển</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @section Scripts {
     <script>
         $(document).ready(function () {
@@ -215,7 +288,108 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 $(this).addClass('active');
                 $('#' + tabId.replace('tab', 'content')).addClass('active');
             });
+
+            $(document).on("click", ".btn-favorite-job", function () {
+                let btn = $(".btn-favorite-job");
+                var jobPostId = btn.data("job-post-id");
+
+                if (btn.hasClass("btn-primary")) {
+                    btn.removeClass("btn-primary");
+                    btn.addClass("btn-outline-primary");
+
+                    btn.removeClass("text-white");
+                    btn.addClass("text-primary");
+
+                    toastr.warning("Bỏ lưu tin tuyển dụng");
+
+                    deleteFavorite(jobPostId);
+                } else {
+                    btn.removeClass("btn-outline-primary");
+                    btn.addClass("btn-primary");
+
+                    btn.removeClass("text-primary");
+                    btn.addClass("text-white");
+
+                    toastr.success("Đã lưu lại tin tuyển dụng");
+
+                    favoriteJob(jobPostId);
+                }
+            });
+
+            function favoriteJob(jobPostId) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    data: { jobId: jobPostId },
+                    url: "/Apply/FavoriteJob",
+                });
+            }
+
+            function deleteFavorite(jobPostId) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    data: { jobId: jobPostId },
+                    url: "/Apply/DeleteFavorite",
+                });
+            }
+
+            $(document).on("click", ".btn-apply-job", function (e) {
+                e.preventDefault();
+                let btnApplyJob = $(this);
+                let jobId = btnApplyJob.data("job-post-id");
+                let title = btnApplyJob.data("job-post-title");
+                console.log(title, jobId);
+                applyJobModal.find("#job-post-title").text(title);
+                $(".btn-save").data("job-post-id", jobId);
+            });
+
+            var cvFile = null;
+            $("#upload-cv").change(function (e) {
+                if (e.target.files.length > 0) {
+                    cvFile = e.target.files[0];
+                }
+            });
+
+            $(document).on("click", ".btn-save", function (e) {
+                let btnSave = $(this);
+                let jobId = btnSave.data("job-post-id");
+                let formData = new FormData();
+                formData.append("jobPostId", jobId);
+                formData.append("coverLetter", $("#cover-letter").val());
+                if ($("input[name='radio-cv']:checked").val() == 0) {
+                    formData.append("cv", null);
+                } else {
+                    formData.append("cv", cvFile);
+                    if (cvFile == null) {
+                        toastr.warning("Vui lòng chọn CV trước");
+                        return;
+                    }
+                }
+                callAjaxToApplyJob(formData);
+            });
+
+            function callAjaxToApplyJob(formData) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    url: "/Apply/ApplyJob",
+                    success: function (res) {
+                        $(".btn-cancel").trigger("click");
+                        $(".modal-body input, .modal-body textarea").val("");
+                        if (res.success) {
+                            toastr.success("Đã gửi hồ sơ đến nhà tuyển dụng");
+                        } else {
+                            toastr.warning("Bạn đã ứng tuyển công việc này trước đó");
+                        }
+                    },
+                    error: function (err) { }
+                });
+            }
+
         });
     </script>
 }
-<!-- Job Detail End -->

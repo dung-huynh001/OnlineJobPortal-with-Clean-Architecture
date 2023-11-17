@@ -42,6 +42,7 @@ namespace OnlineJobPortal.Application.Futures.JobTypeFeatures.Queries
         public async Task<PaginatedResult<GetJobTypeWithPaginationDto>> Handle(GetJobTypeWithPaginationQuery request, CancellationToken cancellationToken)
         {
             var result =  await unitOfWork.JobTypeRepository.GetAllJobTypeWithTotalJobPost();
+            result = result.OrderByDescending(r => r.TotalJobPost).ToList();
             return await result.ToPaginatedListAsync(request.PageNumber, request.PageSize, cancellationToken);
         }
     }
