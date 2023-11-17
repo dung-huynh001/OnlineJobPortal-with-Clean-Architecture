@@ -222,6 +222,8 @@
                         let badgeText = $(this).find(".badge").text().trim();
                         if (badgeText !== "PENDING") {
                             $(this).hide();
+                        }else{
+                            $(this).show();
                         }
                     });
                     totalJobs = appliedJobs.filter(":visible").length;
@@ -231,6 +233,8 @@
                         let badgeText = $(this).find(".badge").text().trim();
                         if (badgeText !== "VIEWED") {
                             $(this).hide();
+                        }else{
+                            $(this).show();
                         }
                     });
                     totalJobs = appliedJobs.filter(":visible").length;
@@ -240,6 +244,8 @@
                         let badgeText = $(this).find(".badge").text().trim();
                         if (badgeText !== "PASSED") {
                             $(this).hide();
+                        }else{
+                            $(this).show();
                         }
                     });
                     totalJobs = appliedJobs.filter(":visible").length;
@@ -249,6 +255,8 @@
                         let badgeText = $(this).find(".badge").text().trim();
                         if (badgeText !== "CANCELLED") {
                             $(this).hide();
+                        }else{
+                            $(this).show();
                         }
                     });
                     totalJobs = appliedJobs.filter(":visible").length;
@@ -272,6 +280,7 @@
                 <p class="m-1 fw-light">Có rất nhiều công việc hấp dẫn phù hợp với bạn</p>
                 <p>Bắt đầu sự nghiệp mơ ước với việc làm chất lượng tại IT Jobs</p>
             </div>`;
+            if($('.applied-job-container').find('.empty-image-container').length == 0)
             appliedJobContainer.append(imgHtml);
         }
     </script>

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using OnlineJobPortal.Application.DTOs.CompanyDto;
 using OnlineJobPortal.Application.DTOs.JobPostDto;
 using OnlineJobPortal.Application.DTOs.SkillDto;
@@ -42,6 +43,13 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Queries
             GetJobPostDetailDto result = mapper.Map<GetJobPostDetailDto>(jobPost);
             result.ProvinceName = jobPost.District.Province.ProvinceName;
             result.Company = mapper.Map<GetCompanyDto>(jobPost.Employer.Company);
+
+            var favoriteJobs =  unitOfWork.Repository<JobFavorite>().GetAll
+                .FirstOrDefault(f => f.JobPostId.Equals(jobPost.Id));
+
+            if (favoriteJobs != null)
+                result.Saved = true;
+
             return result;
         }
     }
