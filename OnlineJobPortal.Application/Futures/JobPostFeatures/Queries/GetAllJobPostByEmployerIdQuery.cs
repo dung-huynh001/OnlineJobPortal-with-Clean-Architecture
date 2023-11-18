@@ -34,7 +34,9 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Queries
         public async Task<List<JobPost>?> Handle(GetAllJobPostByEmployerIdQuery request, CancellationToken cancellationToken)
         {
             var jobPosts = await unitOfWork.Repository<JobPost>().GetAll
+                .Include(jp => jp.Applications)
                 .Where(j => j.EmployerId.Equals(request.EmployerId))
+                .OrderByDescending(j => j.Applications.Count)
                 .ToListAsync();
             return jobPosts;
         }

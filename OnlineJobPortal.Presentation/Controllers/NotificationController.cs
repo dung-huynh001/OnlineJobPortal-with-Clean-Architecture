@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using OnlineJobPortal.Application.Futures.EmployerFeatures.Queries;
 using OnlineJobPortal.Application.Interfaces;
+using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Presentation.Models;
 using OnlineJobPortal.Presentation.SignalR;
 
@@ -45,6 +46,19 @@ namespace OnlineJobPortal.Presentation.Controllers
             var candidateId = currentUserService.GetActorId();
             var data = await mediator.Send(new GetAllAppliedEmployersQuery(candidateId));
             return Json(data);
+        }
+
+        public async Task<IActionResult> SaveMessageAsync(string senderId, int conversationId, string content)
+        {
+            var message = new Message()
+            {
+                UserId = senderId,
+                Content = content,
+                ConversationId = conversationId,
+                Timestamp = DateTime.Now
+            };
+
+            return Json(message);
         }
 
         /*[HttpPost]
