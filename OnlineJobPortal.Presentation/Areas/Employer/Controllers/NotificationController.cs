@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SignalR;
 using OnlineJobPortal.Application.Futures.AdminFeatures.Queries;
 using OnlineJobPortal.Application.Futures.CandidateFeatures.Queries;
 using OnlineJobPortal.Application.Interfaces;
+using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Presentation.SignalR;
 
 namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
@@ -33,6 +34,20 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
         public IActionResult Chat()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveMessageAsync(string senderId, int conversationId, string content)
+        {
+            var message = new Message()
+            {
+                UserId = senderId,
+                Content = content,
+                ConversationId = conversationId,
+                Timestamp = DateTime.Now
+            };
+
+            return Json(message);
         }
 
         public async Task<IActionResult> GetAllAppliedCandidates()

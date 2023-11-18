@@ -1,8 +1,5 @@
-﻿@*
-For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using OnlineJobPortal.Domain.Entities
+@model JobPost?
 <link rel="stylesheet" href="~/css/JobDetailPage/jobdetail.css">
 <style>
     .section a {
@@ -28,12 +25,12 @@ For more information on enabling MVC for empty projects, visit https://go.micros
     <div class="col-12 bg-white rounded-3">
         <div class="d-flex p-3 justify-content-between border-bottom">
             <div class="d-flex flex-column">
-                <h5>Giảng Viên IT - Dạy Lập Trình Fullstack</h5>
-                <div>Full time</div>
-                <div>Ninh Kiều, Cần Thơ</div>
+                <h5>@Model?.Title</h5>
+                <div>@Model?.EmploymentType.ToString()</div>
+                <div>@Model?.Address</div>
             </div>
             <div>
-                Đang có <span class="text-primary fw-bold">10</span> ứng viên
+                Đang có <span class="text-primary fw-bold">@Model?.Applications?.Count</span> ứng viên
             </div>
         </div>
         <div class="d-flex justify-content-around section" role="tablist">
@@ -64,6 +61,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         <select class="form-select" name="" id="">
                             <option value="">Tất cả</option>
                             <option value="">Ngày nộp</option>
+                            <option value="">Trạng thái</option>
                         </select>
                     </p>
                 </div>
@@ -73,35 +71,68 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <div class="tab-pane fade show active" id="applicant-tab-content" role="tabpanel"
                                 aria-labelledby="applicant-tab">
                                 <div class="d-flex flex-column gap-3 p-3">
-                                    <div class="d-flex gap-3 bg-white p-3 rounded-3 shadow-sm">
-                                        <img class="flex-shrink-0 rounded-pill" src="~/img/about-1.jpg" alt=""
-                                            style="width: 50px; height: 50px; object-fit: fill;">
-                                        <div class="flex-grow-1 d-flex flex-column">
-                                            <span class="fw-bold">Hai Nguyen</span>
-                                            <span class="">Job post title</span>
-                                            <span class="fst-italic" style="font-size: .8rem;">Application date: 11 mar
-                                                2023</span>
-                                        </div>
-                                        <div class="d-flex align-items-start gap-2">
-                                            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xem hồ sơ">
-                                                <a class="btn btn-outline-info fs-5 rounded-3 border px-2 py-1"
-                                                    role="button" data-bs-toggle="modal"
-                                                    data-bs-target="#candidate-info-modal"><i
-                                                        class="fa-solid fa-eye"></i></a>
-                                            </span>
-                                            <span data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Duyệt hồ sơ">
-                                                <a class="btn btn-outline-primary fs-5 rounded-3 border px-2 py-1"
-                                                    role="button" data-candidate-id=""><i
-                                                        class="fa-solid fa-circle-check"></i></a>
-                                            </span>
-                                            <span data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Từ chối hồ sơ" data-candidate-id="">
-                                                <a class="btn btn-outline-danger fs-5 rounded-3 border px-2 py-1"
-                                                    role="button"><i class="fa-solid fa-circle-xmark"></i></a>
-                                            </span>
-                                        </div>
-                                    </div>
+                                    @if (Model?.Applications != null && Model?.Applications.Count > 0)
+                                        foreach (var applied in Model!.Applications)
+                                        {
+                                            <div class="d-flex gap-3 bg-white p-3 rounded-3 shadow-sm">
+                                                @{
+                                                    var avatarUrl = "../../img/default_user.png";
+                                                    if (@applied.Candidate?.AvatarUrl != null)
+                                                        avatarUrl = @applied.Candidate?.AvatarUrl;
+                                                }
+                                                <img src="@avatarUrl" class="flex-shrink-0 rounded-pill" alt=""
+                                                    style="width: 50px; height: 50px; object-fit: fill;">
+                                                <div class="flex-grow-1 d-flex flex-column">
+                                                    <span class="fw-bold">@applied.Candidate!.FullName</span>
+                                                    <span class="">@Model.Title</span>
+                                                    <span class="fst-italic" style="font-size: .8rem;">Ngày nộp:
+                                                        @applied.CreateAt</span>
+                                                </div>
+                                                <div class="flex-grow-1 align-self-center">
+                                                @{
+                                                    switch (applied.Status.ToLower())
+                                                    {
+                                                        case "pending":
+                                                            <span class="px-2 py-1 bg-warning rounded-2">@applied.Status.ToUpper()</span>
+                                                            break;
+                                                        case "viewed":
+                                                            <span class="px-2 py-1 bg-info text-white rounded-2">@applied.Status.ToUpper()</span>
+                                                            break;
+                                                        case "passed":
+                                                            <span class="px-2 py-1 bg-success text-white rounded-2">@applied.Status.ToUpper()</span>
+                                                            break;
+                                                        case "rejected":
+                                                            <span class="px-2 py-1 bg-secondary text-white rounded-2">@applied.Status.ToUpper()</span>
+                                                            break;
+                                                        default:
+                                                            <span class="px-2 py-1 bg-danger text-white rounded-2">@applied.Status.ToUpper()</span>
+                                                            break;
+                                                    }
+                                                }
+                                                </div>
+                                                <div class="d-flex align-items-start gap-2">
+                                                    <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xem hồ sơ">
+                                                        <a class="btn btn-outline-info fs-5 rounded-3 border px-2 py-1 btn-view-profile"
+                                                            role="button" data-bs-toggle="modal"
+                                                            data-bs-target="#candidate-info-modal"
+                                                            data-candidate-id="@applied.CandidateId"><i
+                                                                class="fa-solid fa-eye"></i></a>
+                                                    </span>
+                                                    <span data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                        title="Duyệt hồ sơ">
+                                                        <a class="btn btn-outline-primary fs-5 rounded-3 border px-2 py-1 btn-approval"
+                                                            role="button" data-candidate-id="@applied.CandidateId"><i
+                                                                class="fa-solid fa-circle-check"></i></a>
+                                                    </span>
+                                                    <span data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                        title="Từ chối hồ sơ">
+                                                        <a class="btn btn-outline-danger fs-5 rounded-3 border px-2 py-1 btn-reject-profile"
+                                                            role="button" data-candidate-id="@applied.CandidateId"><i
+                                                                class="fa-solid fa-circle-xmark"></i></a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        }
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="suggest-tab-content" role="tabpanel"
@@ -119,8 +150,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             <div class="row">
                 <div class="col-lg-8 tab-content d-lg-block">
                     <div class="bg-light p-4 mb-4 rounded-3">
-                        <div class="job-detail__info--title">Tiêu đề tin
-                        </div>
+                        <div class="job-detail__info--title">@Model?.Title</div>
                         <div class="d-flex justify-content-between my-4">
                             <div class="job-detail__info--section d-flex flex-column flex-lg-row">
                                 <div class="job-detail__info--section-icon">
@@ -128,7 +158,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 </div>
                                 <div class="job-detail__info--section-content">
                                     <div class="job-detail__info--section-content-title">Mức lương</div>
-                                    <div class="job-detail__info--section-content-value">10 triệu</div>
+                                    <div class="job-detail__info--section-content-value">@Model?.Salary</div>
                                 </div>
                             </div>
                             <div class="job-detail__info--section d-flex flex-column flex-lg-row">
@@ -137,7 +167,8 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 </div>
                                 <div class="job-detail__info--section-content">
                                     <div class="job-detail__info--section-content-title">Địa điểm</div>
-                                    <div class="job-detail__info--section-content-value">Cần Thơ</div>
+                                    <div class="job-detail__info--section-content-value">
+                                        @Model?.Employer.Company.District.Province.ProvinceName</div>
                                 </div>
                             </div>
                             <div class="job-detail__info--section d-flex flex-column flex-lg-row">
@@ -146,7 +177,8 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 </div>
                                 <div class="job-detail__info--section-content">
                                     <div class="job-detail__info--section-content-title">Hạn cuối</div>
-                                    <div class="job-detail__info--section-content-value">10/11/2023</div>
+                                    <div class="job-detail__info--section-content-value">
+                                        @Model?.ExpiredDate.ToString("dd/MM/yyyy")</div>
                                 </div>
                             </div>
                         </div>
@@ -158,19 +190,19 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         <div class="d-flex flex-column my-2">
                             <p class="fw-bold fs-6 mb-2">Mô tả công việc</p>
                             <div class="">
-                                Mô tả công việc
+                                @Html.Raw(Model?.Description)
                             </div>
                         </div>
                         <div class="d-flex flex-column my-2">
                             <p class="fw-bold fs-6 mb-2">Yêu cầu ứng viên</p>
                             <div class="">
-                                Yêu cầu ứng viên
+                                @Html.Raw(Model?.Requirement)
                             </div>
                         </div>
                         <div class="d-flex flex-column my-2">
                             <p class="fw-bold fs-6 mb-2">Quyền lợi</p>
                             <div class="">
-                                Quyền lợi
+                                @Html.Raw(Model?.Benefits)
                             </div>
                         </div>
                         <div class="d-flex flex-column my-2">
@@ -189,20 +221,22 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                         <div class="job-detail__company d-flex flex-column gap-3">
                             <div class="d-flex gap-4">
                                 <div target="_blank" class="job-detail__company-logo">
-                                    <img class="img-responsive" alt="">
+                                    <img class="img-responsive" alt="" src="../.@Model?.Employer.Company.LogoUrl">
                                 </div>
-                                <span target="_blank" class="job-detail__company-name">Tên công ty</span>
+                                <span target="_blank"
+                                    class="job-detail__company-name">@Model?.Employer.Company.CompanyName</span>
                             </div>
                             <div class="d-flex gap-3 align-items-center">
                                 <div class="job-detail__company-title flex-shrink-0"><i
                                         class="fa-solid fa-location-dot pe-2 text-primary"></i><span>Địa điểm</span>
                                 </div>
-                                <div class="job-detail__company-value">Can Tho</div>
+                                <div class="job-detail__company-value">
+                                    @Model?.Employer.Company.District.Province.ProvinceName</div>
                             </div>
                             <div class="d-flex gap-3 align-items-center">
                                 <div class="job-detail__company-title flex-shrink-0"><i
                                         class="fa-solid fa-globe pe-2 text-primary"></i><span>Website</span></div>
-                                <div class="job-detail__company-value"><a>www.facebook.com</a></div>
+                                <div class="job-detail__company-value"><a>@Model?.Employer.Company.WebsiteUrl</a></div>
                             </div>
                         </div>
                     </div>
@@ -215,7 +249,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 </div>
                                 <div class="d-flex flex-column">
                                     <p class="m-0">Cấp bậc</p>
-                                    <p class="m-0 fw-bold">Senior</p>
+                                    <p class="m-0 fw-bold">@Model?.RequirementSkills.First().Level</p>
                                 </div>
                             </div>
                             <div class="d-flex gap-3 align-items-center">
@@ -224,7 +258,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 </div>
                                 <div class="d-flex flex-column">
                                     <p class="m-0">Kinh nghiệm</p>
-                                    <p class="m-0 fw-bold">Khong yeu cau</p>
+                                    <p class="m-0 fw-bold">@Model?.YearsOfExperience</p>
                                 </div>
                             </div>
                             <div class="d-flex gap-3 align-items-center">
@@ -233,7 +267,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 </div>
                                 <div class="d-flex flex-column">
                                     <p class="m-0">Số lượng tuyển</p>
-                                    <p class="m-0 fw-bold">6 người</p>
+                                    <p class="m-0 fw-bold">@Model?.NumberOfRecruits người</p>
                                 </div>
                             </div>
                             <div class="d-flex gap-3 align-items-center">
@@ -242,7 +276,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 </div>
                                 <div class="d-flex flex-column">
                                     <p class="m-0">Hình thức làm việc</p>
-                                    <p class="m-0 fw-bold">FullTime</p>
+                                    <p class="m-0 fw-bold">@Model?.EmploymentType.ToString()</p>
                                 </div>
                             </div>
                         </div>
@@ -252,16 +286,17 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <h5 class="mb-0">Danh mục</h5>
                             <div class="d-flex mb-3">
                                 <a href="" class="text-dark px-2 rounded-pill" target="_blank"
-                                    style="background-color: #f1eeee;">Danh mục</a>
+                                    style="background-color: #f1eeee;">@Model.JobType.JobTypeName</a>
                             </div>
                             <h5 class="mb-0">Kỹ năng</h5>
                             <div class="d-flex flex-wrap gap-3">
                                 @{
-                                    for (int i = 1; i < 3; i++)
-                                    {
-                                        <a href="" class="text-dark px-2 rounded-pill" target="_blank"
-                                            style="background-color: #f1eeee;">SkillName</a>
-                                    }
+                                    if (Model?.RequirementSkills != null && Model?.RequirementSkills.Count > 0)
+                                        foreach (var skill in Model?.RequirementSkills!)
+                                        {
+                                            <a href="" class="text-dark px-2 rounded-pill" target="_blank"
+                                                style="background-color: #f1eeee;">@skill.Skill.SkillName</a>
+                                        }
                                 }
                             </div>
                         </div>
@@ -283,8 +318,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             </div>
             <div class="modal-body">
                 <div class="d-flex gap-4 py-3">
-                    <img class="rounded-3 flex-shrink-0" src="~/img/about-1.jpg" alt=""
-                        style="width: 90px; height: 90px;">
+                    <img class="rounded-3 flex-shrink-0" src="" alt="" style="width: 90px; height: 90px;">
                     <div class="flex-grow-1">
                         <p class="mb-1">Họ tên: <span class="fw-bold">Huỳnh Chí Dũng</span></p>
                         <p class="mb-1">Ứng tuyển vị trí <span class="fw-bold text-primary">Web Developer</span></p>
@@ -295,29 +329,29 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                     </div>
                 </div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action btn-show-collapse active position-relative" aria-current="true"
-                        data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="">Kỹ năng <div class=" position-absolute top-50 translate-middle-y"
-                                style="right: 15px;"><i
+                    <a class="list-group-item list-group-item-action btn-show-collapse active position-relative"
+                        aria-current="true" data-bs-toggle="collapse" role="button" aria-expanded="false"
+                        aria-controls="">Kỹ năng <div class=" position-absolute top-50 translate-middle-y"
+                            style="right: 15px;"><i class="fa-solid fa-caret-right"></i></div></a>
+                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse"
+                        role="button" aria-expanded="false" aria-controls="">Kinh nghiệm <div
+                            class=" position-absolute top-50 translate-middle-y" style="right: 15px;"><i
                                 class="fa-solid fa-caret-right"></i></div></a>
-                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="">Kinh nghiệm <div class=" position-absolute top-50 translate-middle-y"
-                                style="right: 15px;"><i
+                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse"
+                        role="button" aria-expanded="false" aria-controls="">Project <div
+                            class=" position-absolute top-50 translate-middle-y" style="right: 15px;"><i
                                 class="fa-solid fa-caret-right"></i></div></a>
-                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="">Project <div class=" position-absolute top-50 translate-middle-y"
-                                style="right: 15px;"><i
+                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse"
+                        role="button" aria-expanded="false" aria-controls="">Học vấn <div
+                            class=" position-absolute top-50 translate-middle-y" style="right: 15px;"><i
                                 class="fa-solid fa-caret-right"></i></div></a>
-                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="">Học vấn <div class=" position-absolute top-50 translate-middle-y"
-                                style="right: 15px;"><i
+                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse"
+                        role="button" aria-expanded="false" aria-controls="">Chứng chỉ <div
+                            class=" position-absolute top-50 translate-middle-y" style="right: 15px;"><i
                                 class="fa-solid fa-caret-right"></i></div></a>
-                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="">Chứng chỉ <div class=" position-absolute top-50 translate-middle-y"
-                                style="right: 15px;"><i
-                                class="fa-solid fa-caret-right"></i></div></a>
-                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="">Thư xin việc <div class=" position-absolute top-50 translate-middle-y"
-                                style="right: 15px;"><i
+                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse"
+                        role="button" aria-expanded="false" aria-controls="">Thư xin việc <div
+                            class=" position-absolute top-50 translate-middle-y" style="right: 15px;"><i
                                 class="fa-solid fa-caret-right"></i></div></a>
                 </div>
             </div>
@@ -331,7 +365,6 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 
 @section Scripts {
     <script>
-
         $(document).ready(function () {
             const btnChangeSection = $(".btn-change-section");
             const btnShowCollapse = $(".btn-show-collapse");
@@ -350,6 +383,66 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 })
                 $(this).addClass("active");
             });
+
+            $(document).on("click", ".btn-view-profile", function () {
+                let btnViewProfile = $(this);
+                let candidateId = btnViewProfile.data("candidate-id");
+            });
+
+            $(document).on("click", ".btn-approval", function () {
+                let btnViewProfile = $(this);
+                let candidateId = btnViewProfile.data("candidate-id");
+            });
+
+            $(document).on("click", ".btn-reject-profile", function () {
+                let btnViewProfile = $(this);
+                let candidateId = btnViewProfile.data("candidate-id");
+            });
+
+            function callAjaxToLoadProfile(candidateId) {
+                $.ajax({
+                    type: "get",
+                    dataType: "json",
+                    data: { candidateId: candidateId },
+                    url: "",
+                    success: function (res) {
+
+                    },
+                    error: function (err) {
+
+                    }
+                });
+            }
+
+            function callAjaxToApproval(candidateId) {
+                $.ajax({
+                    type: "get",
+                    dataType: "json",
+                    data: { candidateId: candidateId },
+                    url: "",
+                    success: function (res) {
+
+                    },
+                    error: function (err) {
+
+                    }
+                });
+            }
+
+            function callAjaxToRejectProfile(candidateId) {
+                $.ajax({
+                    type: "get",
+                    dataType: "json",
+                    data: { candidateId: candidateId },
+                    url: "",
+                    success: function (res) {
+
+                    },
+                    error: function (err) {
+
+                    }
+                });
+            }
         });
     </script>
 }

@@ -45,7 +45,7 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
         {
             var employerId = currentUserService.GetActorId();
             var data = await mediator.Send(new GetAllJobPostByEmployerIdQuery(employerId));
-            return Json(new {data = data});
+            return Json(new { data = data });
         }
 
         public async Task<IActionResult> PostANewJob()
@@ -60,8 +60,10 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
         }
 
         [HttpGet]
-        public IActionResult ShowJobPostDetail(int id){
-            return View();
+        public IActionResult ShowJobPostDetail(int id)
+        {
+            var data = mediator.Send(new GetJobPostByIdQuery(id)).GetAwaiter().GetResult();
+            return View(data);
         }
 
         [HttpPost]
@@ -83,7 +85,7 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
                     var createJobPostCommand = new CreateJobPostCommand();
                     createJobPostCommand.CreateJobPostDto = mapper.Map<CreateJobPostDto>(model);
                     var result = await mediator.Send(createJobPostCommand);
-                    if(!result.Success) 
+                    if (!result.Success)
                     {
                         throw new Exception();
                     }

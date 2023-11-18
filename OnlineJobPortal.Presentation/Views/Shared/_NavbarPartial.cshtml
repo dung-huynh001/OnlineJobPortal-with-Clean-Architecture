@@ -4,6 +4,18 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 @using OnlineJobPortal.Application.Interfaces
 @inject ICurrentUserService CurrentUserService
 
+<style>
+    .icon-badge {
+        padding: 1px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        font-size: .7rem;
+        top: 0;
+        border: 1px solid #fff!important;
+    }
+</style>
+
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm sticky-top p-0">
     <a asp-controller="Home" asp-action="Index"
         class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5 ">
@@ -112,9 +124,11 @@ For more information on enabling MVC for empty projects, visit http://go.microso
         @if (User!.Identity!.IsAuthenticated)
         {
             <div class="position-relative">
-                <a role="button" class="nav-item nav-link noti-icon d-none d-sm-none d-lg-block" data-bs-toggle="collapse"
-                    href="#notification" role="button" aria-expanded="false" aria-controls="notification"><i
-                        class="fas fa-bell"></i></a>
+                <a role="button" class="nav-item nav-link noti-icon d-none d-sm-none d-lg-block position-relative" data-bs-toggle="collapse"
+                    href="#notification" role="button" aria-expanded="false" aria-controls="notification">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="position-absolute border bg-danger text-white icon-badge">3</span>
+                </a>
                 <div class="collapse position-absolute end-0 top-100 mt-1 border rounded-3 bg-white" id="notification">
                     <div class="d-flex flex-column">
                         <p class="fw-bold border-bottom p-2 m-0">Thông báo</p>
@@ -147,69 +161,19 @@ For more information on enabling MVC for empty projects, visit http://go.microso
                                 <span class="flex-shrink-0" style="font-size: 0.8rem; color: #aaa;">2 hrs ago</span>
                             </div>
                         </div>
-                        <a asp-area="" asp-controller="Notification" asp-action="Notifies" class="d-flex justify-content-center align-items-center p-2" style="font-size: 0.8rem;">
+                        <a asp-area="" asp-controller="Notification" asp-action="Notifies"
+                            class="d-flex justify-content-center align-items-center p-2" style="font-size: 0.8rem;">
                             Xem tất cả
                         </a>
                     </div>
                 </div>
             </div>
             <div class="position-relative">
-                <a class="nav-item nav-link noti-icon d-none d-sm-none d-lg-block" asp-area="" asp-controller="Notification" asp-action="Chat"><i class="fas fa-comments"></i></a>
-                @* <div class="collapse position-absolute end-0 top-100 mt-1 border rounded-3 bg-white" id="message">
-                    <div class="d-flex flex-column">
-                        <p class="fw-bold border-bottom p-2 m-0">Tin nhắn</p>
-                        <div class="overflow-auto" style="min-width: 450px; max-height: 350px;">
-                            <div class="d-flex p-2 gap-3 border-bottom">
-                                <img class="flex-shrink-0 align-self-center rounded-pill" src="~/img/about-1.jpg" alt=""
-                                    style="width: 30px; height: 30px; object-fit: fill">
-                                <div class="flex-grow-1 overflow-hidden" style="max-height: 3rem;">
-                                    Multiple or can show and hide an element if they each reference it with their href or
-                                    data-bs-target attribute
-                                </div>
-                                <span class="flex-shrink-0" style="font-size: 0.8rem; color: #aaa;">2 hrs ago</span>
-                            </div>
-                            <div class="d-flex p-2 gap-3 border-bottom">
-                                <img class="flex-shrink-0 align-self-center rounded-pill" src="~/img/about-1.jpg" alt=""
-                                    style="width: 30px; height: 30px; object-fit: fill">
-                                <div class="flex-grow-1 overflow-hidden" style="max-height: 3rem;">
-                                    Multiple or can show and hide an element if they each reference it with their href or
-                                    data-bs-target attribute
-                                </div>
-                                <span class="flex-shrink-0" style="font-size: 0.8rem; color: #aaa;">2 hrs ago</span>
-                            </div>
-                            <div class="d-flex p-2 gap-3 border-bottom">
-                                <img class="flex-shrink-0 align-self-center rounded-pill" src="~/img/about-1.jpg" alt=""
-                                    style="width: 30px; height: 30px; object-fit: fill">
-                                <div class="flex-grow-1 overflow-hidden" style="max-height: 3rem;">
-                                    Multiple or can show and hide an element if they each reference it with their href or
-                                    data-bs-target attribute
-                                </div>
-                                <span class="flex-shrink-0" style="font-size: 0.8rem; color: #aaa;">2 hrs ago</span>
-                            </div>
-                            <div class="d-flex p-2 gap-3 border-bottom">
-                                <img class="flex-shrink-0 align-self-center rounded-pill" src="~/img/about-1.jpg" alt=""
-                                    style="width: 30px; height: 30px; object-fit: fill">
-                                <div class="flex-grow-1 overflow-hidden" style="max-height: 3rem;">
-                                    Multiple or can show and hide an element if they each reference it with their href or
-                                    data-bs-target attribute
-                                </div>
-                                <span class="flex-shrink-0" style="font-size: 0.8rem; color: #aaa;">2 hrs ago</span>
-                            </div>
-                            <div class="d-flex p-2 gap-3 border-bottom">
-                                <img class="flex-shrink-0 align-self-center rounded-pill" src="~/img/about-1.jpg" alt=""
-                                    style="width: 30px; height: 30px; object-fit: fill">
-                                <div class="flex-grow-1 overflow-hidden" style="max-height: 3rem;">
-                                    Multiple or can show and hide an element if they each reference it with their href or
-                                    data-bs-target attribute
-                                </div>
-                                <span class="flex-shrink-0" style="font-size: 0.8rem; color: #aaa;">2 hrs ago</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a asp-area="" asp-controller="Notification" asp-action="Chat" class="d-flex justify-content-center align-items-center p-2" style="font-size: 0.8rem;">
-                        Xem tất cả
-                    </a>
-                </div> *@
+                <a class="nav-item nav-link noti-icon d-none d-sm-none d-lg-block position-relative" asp-area=""
+                    asp-controller="Notification" asp-action="Chat">
+                    <i class="fa-regular fa-comments"></i>
+                    <span class="position-absolute border bg-danger text-white icon-badge">3</span>
+                </a>
             </div>
             <div class="nav-item dropdown d-none d-sm-none d-lg-block ">
                 <a href="#" class="nav-link profile-area" role="button" data-bs-toggle="dropdown" aria-expanded="false">

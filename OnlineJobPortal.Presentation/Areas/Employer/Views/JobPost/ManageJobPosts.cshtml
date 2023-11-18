@@ -5,7 +5,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 }
 <div class="row min-vh-100 bg-white rounded-3 p-3">
     <div class="col-12">
-        <table id="tbl-manage-job-post" class="responsive">
+        <table id="tbl-manage-job-post" class="responsive" style="font-size: .9rem;">
             <thead></thead>
             <tbody></tbody>
         </table>
@@ -21,9 +21,8 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             responsive: true,
             ordering: true,
             searching: true,
-            order: [[0, 'esc']],
             columnDefs: [
-                { "width": "20%", "targets": 2 }
+                { "width": "15%", "targets": 2 }
             ],
             ajax: {
                 url: '/Employer/JobPost/GetAllJobPost',
@@ -39,6 +38,9 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 {
                     data: 'id',
                     title: 'ID',
+                    render: function (data, type, row) {
+                        return type==='display' ? '#' + data : data;
+                    }
                 },
                 {
                     data: 'title',
@@ -77,9 +79,16 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 },
                 {
                     data: 'numberOfRecruits',
-                    title: 'Số lượng',
+                    title: 'SL tuyển'
                 },
-                
+                {
+                    data: 'applications',
+                    title: 'Đã nhận',
+                    render: function(data, type, row){
+                        data = data.length + " hồ sơ"
+                        return type==='display' ? data : 'Chưa có' ;
+                    }
+                },
                 {
                     data: 'expiredDate',
                     title: 'Hết hạn',
