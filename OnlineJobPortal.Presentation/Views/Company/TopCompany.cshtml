@@ -26,7 +26,7 @@
         </div>
         <div class="d-none d-sm-block col-12 col-sm-12 col-md-5 align-self-end text-end">
             <img class="align-middle align-bottom" style="width: 190px;"
-                src="https://static.topcv.vn/v4/image/company-search/img-top.png?v=1.0.0" alt="">
+                src="~/img/img-top.webp" alt="">
         </div>
     </div>
 </div>
@@ -63,9 +63,9 @@
                 @{
                     var pagingModel = new PagingMPAModel()
                     {
-                        currentPage = Model.PageNumber.Value,
-                        countPages = Model.TotalPages.Value,
-                        generateUrl = (int? page) => Url.Action("TopCompany", "Company", new { area = "", pageNumber = page })
+                        currentPage = Model!.PageNumber!.Value,
+                        countPages = Model!.TotalPages!.Value,
+                        generateUrl = (int? page) => Url.Action("TopCompany", "Company", new { area = "", pageNumber = page })!
                     };
 
                 }

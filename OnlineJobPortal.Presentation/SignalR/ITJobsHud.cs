@@ -26,7 +26,7 @@ namespace OnlineJobPortal.Presentation.SignalR
 
             if (ConnectedUsers.All(x => x.UserId != userId))
             {
-                ConnectedUsers.Add(new UserConnection { UserId = userId, ConnectionId = connectionId });
+                ConnectedUsers.Add(new UserConnection { UserId = userId!, ConnectionId = connectionId });
             }
 
             await base.OnConnectedAsync();
@@ -48,7 +48,7 @@ namespace OnlineJobPortal.Presentation.SignalR
         public async Task SendMessageToUser(string toUserId, string message)
         {
             var fromUserId = Context.UserIdentifier;
-            var result = mediator.Send(new GetAvatarUserQuery(fromUserId));
+            var result = mediator.Send(new GetAvatarUserQuery(fromUserId!));
             var toUser = ConnectedUsers.SingleOrDefault(x => x.UserId == toUserId);
 
             if (toUser != null)

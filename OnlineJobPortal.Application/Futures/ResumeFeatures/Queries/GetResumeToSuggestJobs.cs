@@ -46,7 +46,7 @@ namespace OnlineJobPortal.Application.Futures.ResumeFeatures.Queries
                 result.experience = resume.Position;
                 if(resume.Educations != null && resume.Educations.Count > 0)
                 {
-                    result.education = resume.Educations.FirstOrDefault(e => e.ResumeId.Equals(resume.Id)).University;
+                    result.education = resume!.Educations!.FirstOrDefault(e => e.ResumeId.Equals(resume.Id))!.University;
                 }
                 else
                 {

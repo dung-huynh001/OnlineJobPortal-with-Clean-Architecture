@@ -202,7 +202,7 @@ namespace OnlineJobPortal.Presentation.Controllers
                 var request = new ChangePasswordRequest();
                 request.CurrentPassword = model.CurrentPassword;
                 request.NewPassword = model.NewPassword;
-                request.Id = userId;
+                request.Id = userId!;
                 var result = await authService.ChangePassword(request);
                 if (result)
                 {

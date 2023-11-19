@@ -48,13 +48,13 @@ namespace OnlineJobPortal.Infrastructure.Implementation.Repositories
         {
             var user = await context.ApplicationUsers.FindAsync(userId);
             var result = new UserWithAvatarDto();
-            switch (user.UserType)
+            switch (user!.UserType)
             {
                 case UserType.Employer:
                     var employer = context.Employers.Include(e => e.Company)
                         .FirstOrDefault(e => e.UserId.Equals(userId));
                     result.UserId = user.Id;
-                    result.AvatarUrl = employer.Company.LogoUrl;
+                    result.AvatarUrl = employer!.Company.LogoUrl;
                     return result;
                 case UserType.Admin:
                     var admin = context.Admins.FirstOrDefault(a => a.UserId.Equals(user.Id));
@@ -64,7 +64,7 @@ namespace OnlineJobPortal.Infrastructure.Implementation.Repositories
                 case UserType.Candidate:
                     var candidate = context.Candidates.FirstOrDefault(a => a.UserId.Equals(user.Id));
                     result.UserId = user.Id;
-                    result.AvatarUrl = candidate.AvatarUrl;
+                    result.AvatarUrl = candidate!.AvatarUrl;
                     return result;
             }
             throw new NotImplementedException();
