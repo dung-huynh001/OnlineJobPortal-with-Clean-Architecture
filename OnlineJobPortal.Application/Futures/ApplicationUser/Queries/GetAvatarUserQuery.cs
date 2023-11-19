@@ -36,7 +36,7 @@ namespace OnlineJobPortal.Application.Futures.ApplicationUser.Queries
         }
         public async Task<UserWithAvatarDto> Handle(GetAvatarUserQuery request, CancellationToken cancellationToken)
         {
-            var result = applicationUserRepository.GetAvatarUser(request.UserId).Result;
+            var result = await applicationUserRepository.GetAvatarUser(request.UserId);
             return result;
         }
     }

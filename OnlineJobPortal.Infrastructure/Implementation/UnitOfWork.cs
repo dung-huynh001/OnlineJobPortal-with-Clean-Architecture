@@ -94,7 +94,7 @@ namespace OnlineJobPortal.Infrastructure.Implementation
                 _repositories.Add(type, repositoryInstance);
             }
 
-            return (IGenericRepository<T>)_repositories[type];
+            return (IGenericRepository<T>)_repositories[type]!;
         }
 
         public void BeginTransaction()

@@ -1,7 +1,4 @@
-﻿@*
-For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@using OnlineJobPortal.Presentation.Areas.Employer.Models
+﻿@using OnlineJobPortal.Presentation.Areas.Employer.Models
 @model CompanyProfileViewModel
 
 <link rel="stylesheet" href="~/area/custom/css/CompanyProfile.css">
@@ -16,7 +13,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             <div class="d-flex align-items-end gap-3">
                 @{
                     var logoUrl = Model.LogoUrl;
-                    logoUrl = "~" + logoUrl.Substring(1);
+                    logoUrl = "~" + logoUrl!.Substring(1);
                 }
                 <img id="logoCompanyImg" src="@logoUrl" alt="" class="rounded com-logo" asp-append-version="true">
                 <a role="button" class="btn btn-success text-white" onclick="$('#CompanyLogo').click()">Đổi logo</a>
@@ -42,7 +39,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 }
 
                 @Html.DropDownListFor(model => model.BussinessIndustryId, new SelectList(bussinessIndustries, "Id",
-                         "BussinessName"), bussinessIndustries[bussinessId].BussinessName, new { @class = "form-select" })
+                         "BussinessName"), bussinessIndustries![bussinessId].BussinessName, new { @class = "form-select" })
                 <span asp-validation-for="@Model.BussinessIndustryId" class="text-danger"></span>
             </div>
         </div>

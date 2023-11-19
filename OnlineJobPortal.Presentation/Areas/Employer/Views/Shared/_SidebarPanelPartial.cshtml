@@ -27,7 +27,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 			<ul class="app-menu list-unstyled accordion" id="menu-accordion">
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="Index" && ViewContext.RouteData.Values["Controller"].ToString()=="Home" ?"active":"")"
+					<a class="nav-link @(ViewContext.RouteData.Values["Action"]!.ToString()=="Index" && ViewContext.RouteData.Values["Controller"]!.ToString()=="Home" ?"active":"")"
 						asp-area="Employer" asp-controller="Home" asp-action="Index">
 						<span class="nav-icon">
 							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
@@ -45,10 +45,10 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 					@using OnlineJobPortal.Application.Interfaces
 					@inject ICurrentUserService CurrentUserService
 					@{
-						if (User.Identity.IsAuthenticated)
+						if (User!.Identity!.IsAuthenticated)
 						{
 							var currentUserId = CurrentUserService.GetActorId();
-							<a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="CompanyProfile"?"active":"")"
+							<a class="nav-link @(ViewContext.RouteData.Values["Action"]!.ToString()=="CompanyProfile"?"active":"")"
 								asp-area="Employer" asp-controller="Company" asp-action="CompanyProfile"
 								asp-route-employerId="@currentUserId">
 								<span class="nav-icon">
@@ -70,7 +70,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 				</li><!--//nav-item-->
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="PostANewJob" && ViewContext.RouteData.Values["Controller"].ToString()=="JobPost" ?"active":"")"
+					<a class="nav-link @(ViewContext.RouteData.Values["Action"]!.ToString()=="PostANewJob" && ViewContext.RouteData.Values["Controller"]!.ToString()=="JobPost" ?"active":"")"
 						asp-area="Employer" asp-controller="JobPost" asp-action="PostANewJob">
 						<span class="nav-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -85,7 +85,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 				</li><!--//nav-item-->
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="ManageJobPosts"?"active":"")"
+					<a class="nav-link @(ViewContext.RouteData.Values["Action"]!.ToString()=="ManageJobPosts"?"active":"")"
 						asp-area="Employer" asp-controller="JobPost" asp-action="ManageJobPosts">
 						<span class="nav-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -103,7 +103,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 				</li><!--//nav-item-->
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="AllCandidates"?"active":"")"
+					<a class="nav-link @(ViewContext.RouteData.Values["Action"]!.ToString()=="AllCandidates"?"active":"")"
 						asp-area="Employer" asp-controller="Candidate" asp-action="AllCandidates">
 						<span class="nav-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -117,7 +117,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 				</li><!--//nav-item-->
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="SavedCandidates"?"active":"")"
+					<a class="nav-link @(ViewContext.RouteData.Values["Action"]!.ToString()=="SavedCandidates"?"active":"")"
 						asp-area="Employer" asp-controller="Candidate" asp-action="SavedCandidates">
 						<span class="nav-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -134,7 +134,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 		<div class="app-sidepanel-footer">
 			<nav class="app-nav app-nav-footer">
 				<ul class="app-menu footer-menu list-unstyled">
-					<li class="nav-item">
+					@* <li class="nav-item">
 						<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 						<a class="nav-link" href="settings.html">
 							<span class="nav-icon">
@@ -161,7 +161,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 							</span>
 							<span class="nav-link-text text-capitalize">Đổi mật khẩu</span>
 						</a><!--//nav-link-->
-					</li><!--//nav-item-->
+					</li><!--//nav-item--> *@
 					<li class="nav-item">
 						<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 						<a class="nav-link"

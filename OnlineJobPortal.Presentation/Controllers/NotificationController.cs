@@ -48,19 +48,6 @@ namespace OnlineJobPortal.Presentation.Controllers
             return Json(data);
         }
 
-        public async Task<IActionResult> SaveMessageAsync(string senderId, int conversationId, string content)
-        {
-            var message = new Message()
-            {
-                UserId = senderId,
-                Content = content,
-                ConversationId = conversationId,
-                Timestamp = DateTime.Now
-            };
-
-            return Json(message);
-        }
-
         /*[HttpPost]
         [Authorize]
         public async Task<IActionResult> SendMessage(string message)

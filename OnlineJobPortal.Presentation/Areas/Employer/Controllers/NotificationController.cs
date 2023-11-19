@@ -37,7 +37,7 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveMessageAsync(string senderId, int conversationId, string content)
+        public IActionResult SaveMessageAsync(string senderId, int conversationId, string content)
         {
             var message = new Message()
             {

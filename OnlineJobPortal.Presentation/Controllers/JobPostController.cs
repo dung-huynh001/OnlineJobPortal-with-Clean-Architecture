@@ -146,7 +146,7 @@ namespace OnlineJobPortal.Presentation.Controllers
             try
             {
                 int candidateId = 0;
-                if (User.Identity.IsAuthenticated)
+                if (User!.Identity!.IsAuthenticated)
                 {
                     candidateId = currentUserService.GetActorId();
                 }

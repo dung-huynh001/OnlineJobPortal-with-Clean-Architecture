@@ -26,15 +26,15 @@ namespace OnlineJobPortal.Application.Interfaces.Repositories
                 .ThenInclude(r => r.Skill)
                 .Where(c => c.Id.Equals(id))
                 .FirstOrDefaultAsync();
-            return result;
+            return result!;
         }
 
         public async Task<int> GetTotalJobPostWithCompanyId(int companyId)
         {
-            var total = context.JobPosts
+            var total = await context.JobPosts
                 .Include(jp => jp.Employer)
                 .Where(e => e.Employer.CompanyId.Equals(companyId))
-                .Count();
+                .CountAsync();
 
             return total;
         }

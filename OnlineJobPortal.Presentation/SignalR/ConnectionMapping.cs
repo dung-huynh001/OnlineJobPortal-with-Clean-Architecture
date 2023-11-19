@@ -1,6 +1,6 @@
 ﻿namespace OnlineJobPortal.Presentation.SignalR
 {
-    public class ConnectionMapping<T>
+    public class ConnectionMapping<T> where T : notnull
     {
         private readonly Dictionary<T, HashSet<string>> _connections =
             new Dictionary<T, HashSet<string>>();
@@ -18,7 +18,7 @@
             lock (_connections)
             {
                 HashSet<string> connections;
-                if (!_connections.TryGetValue(key, out connections))
+                if (!_connections.TryGetValue(key, out connections!))
                 {
                     connections = new HashSet<string>();
                     _connections.Add(key, connections);
@@ -34,7 +34,7 @@
         public IEnumerable<string> GetConnections(T key)
         {
             HashSet<string> connections;
-            if (_connections.TryGetValue(key, out connections))
+            if (_connections.TryGetValue(key, out connections!))
             {
                 return connections;
             }
@@ -47,7 +47,7 @@
             lock (_connections)
             {
                 HashSet<string> connections;
-                if (!_connections.TryGetValue(key, out connections))
+                if (!_connections.TryGetValue(key, out connections!))
                 {
                     return;
                 }
