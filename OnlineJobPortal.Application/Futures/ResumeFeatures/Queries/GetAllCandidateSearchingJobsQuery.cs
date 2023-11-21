@@ -33,7 +33,6 @@ namespace OnlineJobPortal.Application.Futures.ResumeFeatures.Queries
                 .Include(r => r.CandidateSkills).ThenInclude(cs => cs.Skill)
                 .Include(r => r.ForeignLanguages)
                 .Include(r => r.Educations)
-                .Include(r => r.Experiences).ThenInclude(e => e.ExperienceProjects)
                 .Include(r => r.Experiences).ThenInclude(e => e.ExperienceSkills).ThenInclude(es => es.Skill)
                 .Include(r => r.Project)
                 .Where(r => r.JobSearchMode)

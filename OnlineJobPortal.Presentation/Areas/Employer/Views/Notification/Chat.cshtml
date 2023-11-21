@@ -1,63 +1,104 @@
-﻿<link rel="stylesheet" href="~/area/assets/plugins/bootstrap/css/bootstrap-icons.min.css">
+﻿<link rel="stylesheet" href="~/area/assets/plugins/bootstrap/css/bootstrap-icons/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="~/css/ChatPage/chat.css">
-
 <style>
-    ul li {
+    .overlay {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: linear-gradient(150deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, .6)), url('../../img/chat-4.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        top: -14px;
+        left: -12px;
+        width: 105%;
+        height: calc(100% + 10px);
+        border-radius: 5px;
+    }
+     ul li {
         width: 100%;
     }
-
     ul li.d-flex {
         width: 80%;
     }
+}
 </style>
 
-<div class="row bg-white rounded-3">
-    <div class="col-4 max-vh-100 border-end position-relative">
-        <div class="d-flex flex-column overflow-auto p-3 gap-3">
-            <div class="d-flex justify-content-between align-items-baseline">
-                <h5 class="d-sm-block d-none">Chat</h5>
-                <a role="button" class="btn btn-square rounded-pill fs-5" style="background-color: #e4e6ed;"
-                    data-bs-toggle="collapse" data-bs-target="#find-recipient" aria-expanded="false"
-                    aria-controls="find-recipient">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                </a>
-                <div class="collapse position-absolute start-100" id="find-recipient">
-                    <div class="d-flex flex-column p-3 shadow-sm border-3 rounded-3"
-                        style="width: 300px; height: 300px; background-color: #fafafa;">
-                        <div class="d-flex align-items-baseline gap-3">
-                            <label class="form-label">Đến:</label>
-                            <input type="text" class="form-control rounded-pill ">
+<div class="container-fluid bg-white rounded-3">
+    <div class="row">
+        <div class="col-5 col-sm-4 border-end position-relative overflow-auto" style="height: calc(75vh + 75px)">
+            <div class="d-flex flex-column overflow-auto p-3 gap-3">
+                <div class="d-flex justify-content-between align-items-baseline">
+                    <h5 class="d-sm-block d-none">Chat</h5>
+                    <a role="button" class="btn btn-square rounded-pill fs-5" style="background-color: #e4e6ed;">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </a>
+                    <div class="collapse position-absolute start-100" id="find-recipient">
+                        <div class="d-flex flex-column p-3 shadow-sm border-3 rounded-3"
+                            style="width: 300px; height: 300px; background-color: #fafafa;">
+                            <div class="d-flex align-items-baseline gap-3">
+                                <label class="form-label">Đến:</label>
+                                <input type="text" class="form-control rounded-pill ">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="position-relative">
-                <input class="form-control rounded-pill ps-5" type="text" id="search-recipient"
-                    style="background-color: #e4e6ed;" placeholder="Tìm kiếm người dùng">
-                <span class="position-absolute top-50 translate-middle" style="left: 1.5rem">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </span>
-            </div>
-            <div class="d-flex flex-column gap-2" id="recipient-container"></div>
-        </div>
-    </div>
-    <div class="col-8">
-        <div id="chat-section" class="collapse">
-            <ul class="list-group list-group-horizontal-xxl overflow-auto my-3 d-flex justify-content-end gap-3"
-                id="messageList" style="height: 75vh;">
-            </ul>
-            <div class="d-flex align-items-center gap-3 p-1">
-                <span class="fs-5"><i class="fa-solid fa-circle-plus text-info"></i></span>
-                <span class="fs-5"><i class="fa-regular fa-image text-info"></i></span>
-                <span class="fs-5"><i class="fa-solid fa-face-smile text-info"></i></span>
-                <span class="fs-5"><i class="bi bi-filetype-gif text-info"></i></span>
-                <div class="position-relative w-100 bottom-0">
-                    <input type="text" class="form-control rounded-pill" placeholder="Aa" id="messageInput"
-                        autocomplete="off">
-                    <a role="button" class="position-absolute top-50 translate-middle-y" style="right: 15px;">
-                        <i class="bi bi-send-fill text-info"></i>
-                    </a>
+                <div class="position-relative">
+                    <input class="form-control rounded-pill ps-5" type="text" id="search-recipient"
+                        style="background-color: #e4e6ed;" placeholder="Tìm kiếm người dùng">
+                    <span class="position-absolute top-50 translate-middle" style="left: 1.5rem">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
                 </div>
+                <div class="d-flex flex-column gap-2" id="recipient-container"></div>
+            </div>
+        </div>
+        <div class="col-7 col-sm-8">
+            <div class="position-relative">
+                <div id="chat-section" class="w-100">
+                    <div class="d-flex align-items-center gap-3 shadow-sm px-3 py-2 position-absolute bg-white"
+                        style="width: 103%; top: -10px; left: -11px;">
+                        <div class="position-relative">
+                            <img id="recipient-image" class="rounded-pill" src="~/img/about-1.jpg" alt=""
+                                style="width: 45px; height: 45px; object-fit: fill;">
+                            <span class="position-absolute bg-primary rounded-pill bottom-0"
+                                style="width: 15px; height: 15px; border: 2px solid #fff; right: 0;"></span>
+                        </div>
+                        <div class="flex-grow-1" style="font-size: 1.1rem">
+                            <p id="recipient-name" class="m-0 fw-bold">Hai Nguyen</p>
+                            <p class="m-0" style="font-size: .8rem;">Đang hoạt động</p>
+                        </div>
+                        <div class="d-flex gap-4 text-info" style="font-size: 1.1rem;">
+                            <span><i class="fa-solid fa-phone"></i></span>
+                            <span><i class="fa-solid fa-video"></i></span>
+                            <span><i class="fa-solid fa-circle-info"></i></span>
+                        </div>
+                    </div>
+                    <ul class="list-group my-3 d-flex gap-3 overflow-auto pe-2" id="messageList"
+                        style="height: 73vh; padding-top: calc(45px + 1.3rem);">
+                        <li class="text-center w-100">
+                            <a role="button" class="text-center btn-see-more"
+                                style="font-size: .8rem; font-weight: 300;">Xem thêm</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center gap-3 p-1">
+                        <span class="fs-5"><i class="fa-solid fa-circle-plus text-info"></i></span>
+                        <span class="fs-5"><i class="fa-regular fa-image text-info"></i></span>
+                        <span class="fs-5"><i class="fa-solid fa-face-smile text-info"></i></span>
+                        <span class="fs-5"><i class="bi bi-filetype-gif text-info"></i></span>
+                        <div class="position-relative w-100 bottom-0">
+                            <input type="text" class="form-control rounded-pill" placeholder="Aa" id="messageInput"
+                                autocomplete="off">
+                            <a role="button" class="position-absolute text-info top-50 translate-middle-y"
+                                style="right: 15px;">
+                                <i class="fa-regular fa-paper-plane"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay"></div>
             </div>
         </div>
     </div>
@@ -65,14 +106,21 @@
 
 @section Scripts {
     <script>
-        const recipientsContainer = $("#recipient-container");
+         const recipientsContainer = $("#recipient-container");
         const searchRecipient = $("#search-recipient");
+        const recipientName = $("#recipient-name");
+        const recipientImage = $("#recipient-image");
 
         $(document).on('click', ".recipient", function (e) {
             $(".recipient").removeClass("active");
             let recipient = $(this);
             recipient.addClass("active");
             let userId = $(this).data("user-id");
+            $(".overlay").hide();
+            let name = recipient.find(".employer-name").text();
+            let avatar = recipient.find("img").attr("src");
+            recipientName.text(name);
+            recipientImage.attr("src", avatar);
         });
 
         function loadRecipient() {
@@ -95,11 +143,11 @@
             });
         }
 
-        function renderRecipientContainer(data) {
+        function renderRecipientContainer(data, conversationId) {
             let avatarUrl = data.candidate.avatarUrl != null ? '../.' + data.candidate.avatarUrl : "../../img/default_user.png";
             let recipientHtml = `
             <div>
-                <a class="d-flex flex-column py-1 px-2 rounded-3 recipient" data-user-id="${data.candidate.userId}" data-bs-toggle="collapse" href="#chat-section" role="button" aria-expanded="false" aria-controls="chat-section">
+                <a class="d-flex flex-column py-1 px-2 rounded-3 recipient" data-user-id="${data.candidate.userId}">
                     <div class="d-flex align-items-center gap-3">
                         <img class="rounded-pill" src="${avatarUrl}" alt="" style="width: 55px; height: 55px;">
                         <div class="flex-grow-1 d-sm-flex flex-column d-none">
@@ -147,7 +195,6 @@
         const messageList = $("#messageList");
         var recipientId = 0;
 
-
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/chat")
             .configureLogging(signalR.LogLevel.Information)
@@ -163,16 +210,13 @@
             if (messageList.data("connect-with-data-id") == user) {
                 console.log(user, messageList.data("connect-with-data-id"));
             }
-            @* let userId = user.result.userId;
-            $(`.recipient[data-user-id="${userId}"]`).first().find(".mark-new-message").show()
-            console.log(userId, user); *@
             renderMessageFromRecipient(user, message);
             scrollToBottom();
         });
 
 
         function sendMessageToUser() {
-            var toUser = recipientId;
+            var toUser = recipientId; // Người nhận
             var message = $("#messageInput").val();
 
             if (message == null || message == "") return;

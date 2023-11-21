@@ -72,13 +72,14 @@
                                 aria-labelledby="applicant-tab">
                                 <div class="d-flex flex-column gap-3 p-3">
                                     @if (Model?.Applications != null && Model?.Applications.Count > 0)
+                                    {
                                         foreach (var applied in Model!.Applications)
                                         {
-                                            <div class="d-flex gap-3 bg-white p-3 rounded-3 shadow-sm">
+                                            <div class="d-flex gap-3 bg-white p-3 rounded-3 shadow-sm profile-item">
                                                 @{
                                                     var avatarUrl = "../../img/default_user.png";
                                                     if (@applied.Candidate?.AvatarUrl != null)
-                                                        avatarUrl = @applied.Candidate?.AvatarUrl;
+                                                        avatarUrl = "../." + @applied.Candidate?.AvatarUrl;
                                                 }
                                                 <img src="@avatarUrl" class="flex-shrink-0 rounded-pill" alt=""
                                                     style="width: 50px; height: 50px; object-fit: fill;">
@@ -88,57 +89,77 @@
                                                     <span class="fst-italic" style="font-size: .8rem;">Ngày nộp:
                                                         @applied.CreateAt</span>
                                                 </div>
-                                                <div class="flex-grow-1 align-self-center">
-                                                @{
-                                                    switch (applied.Status.ToLower())
-                                                    {
-                                                        case "pending":
-                                                            <span class="px-2 py-1 bg-warning rounded-2">@applied.Status.ToUpper()</span>
-                                                            break;
-                                                        case "viewed":
-                                                            <span class="px-2 py-1 bg-info text-white rounded-2">@applied.Status.ToUpper()</span>
-                                                            break;
-                                                        case "passed":
-                                                            <span class="px-2 py-1 bg-success text-white rounded-2">@applied.Status.ToUpper()</span>
-                                                            break;
-                                                        case "rejected":
-                                                            <span class="px-2 py-1 bg-secondary text-white rounded-2">@applied.Status.ToUpper()</span>
-                                                            break;
-                                                        default:
-                                                            <span class="px-2 py-1 bg-danger text-white rounded-2">@applied.Status.ToUpper()</span>
-                                                            break;
+                                                <div class="flex-grow-1 align-self-center status">
+                                                    @{
+                                                        switch (applied.Status.ToLower())
+                                                        {
+                                                            case "pending":
+                                                                <span
+                                                                    class="px-2 py-1 bg-warning rounded-2">@applied.Status.ToUpper()</span>
+                                                                break;
+                                                            case "viewed":
+                                                                <span
+                                                                    class="px-2 py-1 bg-info text-white rounded-2">@applied.Status.ToUpper()</span>
+                                                                break;
+                                                            case "passed":
+                                                                <span
+                                                                    class="px-2 py-1 bg-success text-white rounded-2">@applied.Status.ToUpper()</span>
+                                                                break;
+                                                            case "rejected":
+                                                                <span
+                                                                    class="px-2 py-1 bg-secondary text-white rounded-2">@applied.Status.ToUpper()</span>
+                                                                break;
+                                                            default:
+                                                                <span
+                                                                    class="px-2 py-1 bg-danger text-white rounded-2">@applied.Status.ToUpper()</span>
+                                                                break;
+                                                        }
                                                     }
-                                                }
                                                 </div>
                                                 <div class="d-flex align-items-start gap-2">
                                                     <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xem hồ sơ">
                                                         <a class="btn btn-outline-info fs-5 rounded-3 border px-2 py-1 btn-view-profile"
                                                             role="button" data-bs-toggle="modal"
                                                             data-bs-target="#candidate-info-modal"
-                                                            data-candidate-id="@applied.CandidateId"><i
-                                                                class="fa-solid fa-eye"></i></a>
+                                                            data-candidate-id="@applied.CandidateId"
+                                                            data-apply-id="@applied.Id"><i class="fa-solid fa-eye"></i></a>
                                                     </span>
                                                     <span data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                         title="Duyệt hồ sơ">
                                                         <a class="btn btn-outline-primary fs-5 rounded-3 border px-2 py-1 btn-approval"
-                                                            role="button" data-candidate-id="@applied.CandidateId"><i
+                                                            role="button" data-apply-id="@applied.Id"><i
                                                                 class="fa-solid fa-circle-check"></i></a>
                                                     </span>
                                                     <span data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                         title="Từ chối hồ sơ">
                                                         <a class="btn btn-outline-danger fs-5 rounded-3 border px-2 py-1 btn-reject-profile"
-                                                            role="button" data-candidate-id="@applied.CandidateId"><i
+                                                            role="button" data-apply-id="@applied.Id"><i
                                                                 class="fa-solid fa-circle-xmark"></i></a>
                                                     </span>
                                                 </div>
                                             </div>
                                         }
+                                    }
+                                    else
+                                    {
+                                        <div
+                                            class="align-self-center d-flex flex-column justify-content-center align-items-center bg-white rounded-3 p-5">
+                                            <img src="~/img/no-result-found.jpg" alt=""
+                                                style="width: 500px; height: 455px; object-fit: fill;" />
+                                            <h5>Bài đăng chưa nhận được hồ sơ nào</h5>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="suggest-tab-content" role="tabpanel"
                                 aria-labelledby="suggest-tab">
                                 <div class="d-flex flex-column">
-                                    <div></div>
+                                    <div
+                                        class="align-self-center d-flex flex-column justify-content-center align-items-center bg-white rounded-3 p-5">
+                                        <img src="~/img/no-result-found.jpg" alt=""
+                                            style="width: 500px; height: 455px; object-fit: fill;" />
+                                        <h5>Tính năng đang phát triển</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -183,8 +204,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="bg-light p-4 mb-4 rounded-3">
                         <h5 class="mb-3 fw-bold">Chi tiết tuyển dụng</h5>
                         <div class="d-flex flex-column my-2">
@@ -208,11 +227,11 @@
                         <div class="d-flex flex-column my-2">
                             <p class="fw-bold fs-6">Địa điểm làm việc</p>
                             <div class="">
-                                Hòa Bình, Bạc Liêu
+                                @Model!.Address
                             </div>
                         </div>
 
-                        <p>Hạn cuối: 10/11/2023</p>
+                        <p>Hạn cuối: @Model.ExpiredDate.ToString("dd/MM/yyyy")</p>
                     </div>
 
                 </div>
@@ -286,7 +305,7 @@
                             <h5 class="mb-0">Danh mục</h5>
                             <div class="d-flex mb-3">
                                 <a href="" class="text-dark px-2 rounded-pill" target="_blank"
-                                    style="background-color: #f1eeee;">@Model.JobType.JobTypeName</a>
+                                    style="background-color: #f1eeee;">@Model?.JobType.JobTypeName</a>
                             </div>
                             <h5 class="mb-0">Kỹ năng</h5>
                             <div class="d-flex flex-wrap gap-3">
@@ -310,7 +329,7 @@
 <!-- Modal -->
 <div class="modal fade" id="candidate-info-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Thông tin ứng viên</h5>
@@ -318,45 +337,68 @@
             </div>
             <div class="modal-body">
                 <div class="d-flex gap-4 py-3">
-                    <img class="rounded-3 flex-shrink-0" src="" alt="" style="width: 90px; height: 90px;">
+                    <img class="rounded-3 flex-shrink-0" id="modal-avatar-url" src="" alt=""
+                        style="width: 90px; height: 90px;">
                     <div class="flex-grow-1">
-                        <p class="mb-1">Họ tên: <span class="fw-bold">Huỳnh Chí Dũng</span></p>
-                        <p class="mb-1">Ứng tuyển vị trí <span class="fw-bold text-primary">Web Developer</span></p>
-                        <p class="mb-1">Ngày nộp: <span class="fst-italic">10/11/2023</span></p>
+                        <p class="mb-1">Họ tên: <span class="fw-bold" id="modal-candidate-name"></span></p>
+                        <p class="mb-1">Ứng tuyển vị trí <span class="fw-bold text-primary"
+                                id="modal-candidate-position"></span></p>
+                        <p class="mb-1">Ngày nộp: <span class="fst-italic" id="modal-candidate-create-at"></span></p>
                     </div>
                     <div class="ms-auto btn btn-info text-white align-self-start">
-                        <a role="button"><i class="fa-solid fa-file me-2"></i>Xem CV</a>
+                        <a class="text-white" role="button" id="modal-cv-url" target="_blank"><i
+                                class="fa-solid fa-file me-2"></i>Xem CV</a>
                     </div>
                 </div>
-                <div class="list-group list-group-flush">
+                <div class="list-group">
                     <a class="list-group-item list-group-item-action btn-show-collapse active position-relative"
-                        aria-current="true" data-bs-toggle="collapse" role="button" aria-expanded="false"
-                        aria-controls="">Kỹ năng <div class=" position-absolute top-50 translate-middle-y"
-                            style="right: 15px;"><i class="fa-solid fa-caret-right"></i></div></a>
-                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse"
-                        role="button" aria-expanded="false" aria-controls="">Kinh nghiệm <div
+                        href="#skills-collapse" data-bs-toggle="collapse" role="button" aria-expanded="false"
+                        aria-controls="skills-collapse">Kỹ năng <div
                             class=" position-absolute top-50 translate-middle-y" style="right: 15px;"><i
                                 class="fa-solid fa-caret-right"></i></div></a>
-                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse"
-                        role="button" aria-expanded="false" aria-controls="">Project <div
+                    <div id="skills-collapse" class="collapse show">
+                        <p class="d-flex gap-3 p-2 flex-wrap candidate-skill-container" style="background-color: #f5f5f5;"></p>
+                    </div>
+                    <a class="list-group-item list-group-item-action btn-show-collapse" href="#experiences-collapse"
+                        data-bs-toggle="collapse" role="button" aria-expanded="false"
+                        aria-controls="experiences-collapse">Kinh nghiệm <div
                             class=" position-absolute top-50 translate-middle-y" style="right: 15px;"><i
                                 class="fa-solid fa-caret-right"></i></div></a>
-                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse"
-                        role="button" aria-expanded="false" aria-controls="">Học vấn <div
+                    <div id="experiences-collapse" class="collapse p-2">
+                        <div class="work-experience-container"></div>
+                    </div>
+                    <a class="list-group-item list-group-item-action btn-show-collapse" href="#projects-collapse"
+                        data-bs-toggle="collapse" role="button" aria-expanded="false"
+                        aria-controls="projects-collapse">Project <div
                             class=" position-absolute top-50 translate-middle-y" style="right: 15px;"><i
                                 class="fa-solid fa-caret-right"></i></div></a>
-                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse"
-                        role="button" aria-expanded="false" aria-controls="">Chứng chỉ <div
+                    <div id="projects-collapse" class="collapse p-2 project-container"></div>
+                    <a class="list-group-item list-group-item-action btn-show-collapse" href="#educations-collapse"
+                        data-bs-toggle="collapse" role="button" aria-expanded="false"
+                        aria-controls="educations-collapse">Học vấn <div
                             class=" position-absolute top-50 translate-middle-y" style="right: 15px;"><i
                                 class="fa-solid fa-caret-right"></i></div></a>
-                    <a class="list-group-item list-group-item-action btn-show-collapse" data-bs-toggle="collapse"
-                        role="button" aria-expanded="false" aria-controls="">Thư xin việc <div
+                    <div id="educations-collapse" class="collapse p-2 education-container"></div>
+                    <a class="list-group-item list-group-item-action btn-show-collapse" href="#certificates-collapse"
+                        data-bs-toggle="collapse" role="button" aria-expanded="false"
+                        aria-controls="certificates-collapse">Chứng chỉ <div
                             class=" position-absolute top-50 translate-middle-y" style="right: 15px;"><i
                                 class="fa-solid fa-caret-right"></i></div></a>
+                    <div id="certificates-collapse" class="collapse certificate-container"></div>
+                    <a class="list-group-item list-group-item-action btn-show-collapse" href="#cover-lette-collapse"
+                        data-bs-toggle="collapse" role="button" aria-expanded="false"
+                        aria-controls="cover-lette-collapse">Thư xin việc <div
+                            class=" position-absolute top-50 translate-middle-y" style="right: 15px;"><i
+                                class="fa-solid fa-caret-right"></i></div></a>
+                    <div id="cover-lette-collapse" class="collapse">
+                        <p class="bg-white p-2 cover-letter"></p>
+                    </div>
                 </div>
             </div>
+
+
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>
@@ -364,85 +406,5 @@
 
 
 @section Scripts {
-    <script>
-        $(document).ready(function () {
-            const btnChangeSection = $(".btn-change-section");
-            const btnShowCollapse = $(".btn-show-collapse");
-            btnChangeSection.click(function (e) {
-                e.preventDefault();
-                $(".btn-change-section").each(function () {
-                    $(this).removeClass("active");
-                })
-                $(this).addClass("active");
-            });
-
-            btnShowCollapse.click(function (e) {
-                e.preventDefault();
-                $(".btn-show-collapse").each(function () {
-                    $(this).removeClass("active");
-                })
-                $(this).addClass("active");
-            });
-
-            $(document).on("click", ".btn-view-profile", function () {
-                let btnViewProfile = $(this);
-                let candidateId = btnViewProfile.data("candidate-id");
-            });
-
-            $(document).on("click", ".btn-approval", function () {
-                let btnViewProfile = $(this);
-                let candidateId = btnViewProfile.data("candidate-id");
-            });
-
-            $(document).on("click", ".btn-reject-profile", function () {
-                let btnViewProfile = $(this);
-                let candidateId = btnViewProfile.data("candidate-id");
-            });
-
-            function callAjaxToLoadProfile(candidateId) {
-                $.ajax({
-                    type: "get",
-                    dataType: "json",
-                    data: { candidateId: candidateId },
-                    url: "",
-                    success: function (res) {
-
-                    },
-                    error: function (err) {
-
-                    }
-                });
-            }
-
-            function callAjaxToApproval(candidateId) {
-                $.ajax({
-                    type: "get",
-                    dataType: "json",
-                    data: { candidateId: candidateId },
-                    url: "",
-                    success: function (res) {
-
-                    },
-                    error: function (err) {
-
-                    }
-                });
-            }
-
-            function callAjaxToRejectProfile(candidateId) {
-                $.ajax({
-                    type: "get",
-                    dataType: "json",
-                    data: { candidateId: candidateId },
-                    url: "",
-                    success: function (res) {
-
-                    },
-                    error: function (err) {
-
-                    }
-                });
-            }
-        });
-    </script>
+    <script src="~/js/JobPostDetailPage/jobpostdetail.js"></script>
 }

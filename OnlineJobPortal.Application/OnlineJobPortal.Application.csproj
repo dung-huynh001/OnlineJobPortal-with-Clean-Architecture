@@ -12,12 +12,11 @@
 
   <ItemGroup>
     <Folder Include="DTOs\CompanyImageDto\" />
-    <Folder Include="DTOs\EducationDto\" />
-    <Folder Include="DTOs\ExperienceDto\" />
     <Folder Include="DTOs\JobFavoriteDto\" />
     <Folder Include="DTOs\MessageDto\" />
     <Folder Include="DTOs\UserDto\" />
     <Folder Include="Futures\CompanyImageFeatures\Queries\" />
+    <Folder Include="Futures\ConversationFeatures\Queries\" />
     <Folder Include="Futures\DistrictFeatures\Queries\" />
     <Folder Include="Futures\EducationFeatures\Queries\" />
     <Folder Include="Futures\ExperienceFeatures\Queries\" />
@@ -30,6 +29,7 @@
     <Folder Include="Futures\RequirementSkillFeatures\Queries\" />
     <Folder Include="Futures\MessageFeatures\Commands\" />
     <Folder Include="Futures\MessageFeatures\Queries\" />
+    <Folder Include="Futures\StatisticalFeatures\Commands\" />
   </ItemGroup>
 
   <ItemGroup>

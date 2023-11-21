@@ -64,7 +64,7 @@ namespace OnlineJobPortal.Infrastructure.Configuration
 
             foreach (var skillName in itSkills)
             {
-                skillEntities.Add(new Skill { Id = id, SkillName = skillName });
+                skillEntities.Add(new Skill { Id = id, SkillName = skillName, CreateAt = DateTime.Now, UpdateAt = DateTime.Now });
                 id++;
             }
 

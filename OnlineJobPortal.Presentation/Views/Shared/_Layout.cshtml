@@ -20,7 +20,7 @@
 
     <!-- Icon Font Stylesheet -->
     <link href="~/lib/fontawesome/css/all.min.css" rel="stylesheet">
-    <link href="~/area/assets/plugins/bootstrap/css/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/area/assets/plugins/bootstrap/css/bootstrap-icons/font/bootstrap-icons.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
@@ -147,6 +147,11 @@
 
     <!-- Template Javascript -->
     <script src="~/js/HomePage/main.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("input").attr("autocomplete", "off");
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

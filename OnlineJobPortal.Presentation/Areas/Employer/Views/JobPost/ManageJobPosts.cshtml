@@ -34,7 +34,7 @@
                     data: 'id',
                     title: 'ID',
                     render: function (data, type, row) {
-                        return type==='display' ? '#' + data : data;
+                        return type === 'display' ? '#' + data : data;
                     }
                 },
                 {
@@ -79,9 +79,9 @@
                 {
                     data: 'applications',
                     title: 'Đã nhận',
-                    render: function(data, type, row){
+                    render: function (data, type, row) {
                         data = data.length + " hồ sơ"
-                        return type==='display' ? data : 'Chưa có' ;
+                        return type === 'display' ? data : 'Chưa có';
                     }
                 },
                 {
@@ -99,7 +99,7 @@
                     data: 'expiredDate',
                     title: 'Trạng thái',
                     render: function (data, type, row) {
-                        var currentDate = new Date();  
+                        var currentDate = new Date();
                         var expirationDate = new Date(data);
 
                         if (expirationDate < currentDate) {
@@ -142,6 +142,29 @@
 
         $(document).ready(function () {
             loadData();
+        });
+
+        $(document).on('click', '.btn-cancel', function (e) {
+            e.preventDefault();
+            let btnCancel = $(this);
+            let jobPostId = btnCancel.data('job-post-id');
+            $.ajax({
+                type: "DELETE",
+                dataType: "json",
+                data: { jobPostId: jobPostId },
+                url: "/Employer/JobPost/DeleteJobPost",
+                success: function (res) {
+                    if (res) {
+                        toastr.success('Xóa bài đăng thành công');
+                        loadData();
+                    } else {
+                        toastr.error('Xóa bài đăng thất bại');
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
         });
 
     </script>

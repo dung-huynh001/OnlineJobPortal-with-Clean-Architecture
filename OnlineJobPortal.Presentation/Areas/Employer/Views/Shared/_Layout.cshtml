@@ -103,6 +103,10 @@
 		var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			return new bootstrap.Tooltip(tooltipTriggerEl)
 		})
+
+		$(document).ready(function () {
+            $("input").attr("autocomplete", "off");
+		});
 	</script>
 	@await RenderSectionAsync("Scripts", required: false)
 </body>

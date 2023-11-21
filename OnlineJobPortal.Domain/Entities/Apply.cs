@@ -13,5 +13,8 @@ namespace OnlineJobPortal.Domain.Entities
 
         public int JobPostId { get; set; }
         public JobPost JobPost { get; set; }
+
+        public int ConversationId { get; set; }
+        public Conversations? Conversations { get; set; }
     }
 }

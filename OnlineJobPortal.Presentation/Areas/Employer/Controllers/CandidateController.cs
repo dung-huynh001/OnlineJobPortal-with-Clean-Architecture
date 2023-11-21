@@ -32,6 +32,12 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
             return View(data);
         }
 
+        public async Task<IActionResult> GetResumeByCandidateId(int candidateId)
+        {
+            var data = await mediator.Send(new GetResumeQuery(candidateId));
+            return Json(data);
+        }
+
         public IActionResult SavedCandidates()
         {
             return View();

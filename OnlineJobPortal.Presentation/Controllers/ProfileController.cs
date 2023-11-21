@@ -94,6 +94,21 @@ namespace OnlineJobPortal.Presentation.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> UpdatePosition(int id, string position, string yearOfExperiences)
+        {
+            var success = await mediator.Send(new UpdatePositionCommand(id, position, yearOfExperiences));
+            if(!success)
+                return Json(success);
+
+            var data = new {
+                id = id,
+                position = position,
+                yearOfExperiences = yearOfExperiences
+            };
+            return Json(data);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> UpdateSummary(int id, string careerGoal)
         {
             var result = await mediator.Send(new UpdateCareerGoalCommand(id, careerGoal));

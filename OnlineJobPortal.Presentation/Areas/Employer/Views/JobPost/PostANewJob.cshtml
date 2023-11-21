@@ -62,9 +62,9 @@
                                 class="text-danger">*</span></label>
                         <select asp-for="JobTypeId" class="form-select">
                             <option style="display:none">Chọn danh mục</option>
-                            @if(jobTypeList != null)
+                            @if (jobTypeList != null)
                             {
-                                foreach(var jobType in jobTypeList)
+                                foreach (var jobType in jobTypeList)
                                 {
                                     <option value="@jobType.Id">@jobType.JobTypeName</option>
                                 }
@@ -110,7 +110,8 @@
                     <div class="col-6">
                         <label asp-for="NumberOfRecruits" class="form-label">Số lượng tuyển dụng <span
                                 class="text-danger">*</span></label>
-                        <input type="number" asp-for="NumberOfRecruits" min="1" oninput="this.value = Math.abs(this.value)" class="form-control" placeholder="Vd: 2">
+                        <input type="number" asp-for="NumberOfRecruits" min="1"
+                            oninput="this.value = Math.abs(this.value)" class="form-control" placeholder="Vd: 2">
                         <span asp-validation-for="NumberOfRecruits" class="text-danger error-message"></span>
                     </div>
                     <div class="col-6">
@@ -140,7 +141,8 @@
 
 
                     <div class="col-12">
-                        <label asp-for="Address" class="form-label">Nơi làm việc <span class="text-danger">*</span></label>
+                        <label asp-for="Address" class="form-label">Nơi làm việc <span
+                                class="text-danger">*</span></label>
                         <input type="text" asp-for="Address" class="form-control"
                             placeholder="Vd. Số 1, Hẻm 41, Phường 2, Quận 1, TP Hồ Chí Minh">
                         <span asp-validation-for="Address" class="text-danger error-message"></span>
@@ -179,15 +181,24 @@
                     </div>
                     <div class="col-12">
                         <label class="form-label">Kỹ năng <span class="text-danger">*</span></label>
-                        <select id="skillSelector" data-placeholder="Vd: C#, ASP.NET,..." multiple class="chosen-select">
+                        <select id="skillSelector" data-placeholder="Vd: C#, ASP.NET,..." multiple
+                            class="chosen-select">
                             <option value=""></option>
-                            @if (skillList != null)
+                            @try
                             {
-                                foreach (var skill in skillList)
+                                @if (skillList != null)
                                 {
-                                    <option value="@skill.Id">@skill.SkillName</option>
+                                    foreach (var skill in skillList)
+                                    {
+                                        <option value="@skill.Id">@skill.SkillName</option>
+                                    }
                                 }
                             }
+                            catch
+                            {
+
+                            }
+
                         </select>
 
                         <span asp-validation-for="Skills" class="text-danger error-message"></span>
@@ -228,18 +239,18 @@
                         </select>
                         <div class="row g-0 justify-content-start align-items-center pt-2">
                             <div class="col-5 col-lg-2 range-method">
-                                <input type="number" id="minSalary"
-                                       class="form-control" placeholder="Vd. 10" min="1" oninput="this.value = Math.abs(this.value)">
+                                <input type="number" id="minSalary" class="form-control" placeholder="Vd. 10" min="1"
+                                    oninput="this.value = Math.abs(this.value)">
                             </div>
                             <p class="col-1 text-center p-0 m-0 range-method form-label">đến</p>
                             <div class="col-5 col-lg-2 range-method">
-                                <input type="number" id="maxSalary"
-                                       class="form-control" placeholder="Vd. 12" min="1" oninput="this.value = Math.abs(this.value)">
+                                <input type="number" id="maxSalary" class="form-control" placeholder="Vd. 12" min="1"
+                                    oninput="this.value = Math.abs(this.value)">
                             </div>
 
                             <div class="col-12 col-lg-2 about-method">
-                                <input type="number" class="form-control"
-                                       placeholder="Vd. 12" min="1" oninput="this.value = Math.abs(this.value)">
+                                <input type="number" class="form-control" placeholder="Vd. 12" min="1"
+                                    oninput="this.value = Math.abs(this.value)">
                             </div>
                             <p class="col-1 text-center p-0 m-0 period form-label">triệu</p>
 
@@ -248,7 +259,8 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <label asp-for="Benefits" class="form-label">Quyền lợi <span class="text-danger">*</span></label>
+                        <label asp-for="Benefits" class="form-label">Quyền lợi <span
+                                class="text-danger">*</span></label>
                         <textarea asp-for="Benefits" class="text-editor"></textarea>
                         <span asp-validation-for="Benefits" class="text-danger error-message"></span>
                     </div>
@@ -259,7 +271,7 @@
                                 <path fill-rule="evenodd"
                                     d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
                             </svg>Previous</a>
-                            <input asp-for="EmployerId" hidden value="@CurrentUserService.GetActorId()" />
+                        <input asp-for="EmployerId" hidden value="@CurrentUserService.GetActorId()" />
                         <button type="submit" class="btn btn-success ms-auto text-white">Hoàn Tất</button>
                     </div>
                 </div>
@@ -269,20 +281,23 @@
 </div>
 
 @section Scripts {
-    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+    <script src="~/area/assets/plugins/ckeditor/ckeditor5/ckeditor.min.js"></script>
     <script src="~/area/custom/js/PostANewJob.js"></script>
     <script src="~/area/assets/plugins/vietnamlocal/vietnamlocalselector.min.js"></script>
 
     @{
         var message = ViewBag.Message as string;
-        if(message != null){
-            if(message.ToLower().Contains("thành công")){
+        if (message != null)
+        {
+            if (message.ToLower().Contains("thành công"))
+            {
                 <script>
                     toastr.success("Đăng tin thành công")
                 </script>
                 ViewBag.Message = null;
             }
-            else{
+            else
+            {
                 <script>
                     toastr.warning("Vui lòng điền đủ thông tin")
                 </script>

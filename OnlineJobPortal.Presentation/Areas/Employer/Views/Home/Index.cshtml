@@ -1,11 +1,12 @@
-﻿<h1 class="app-page-title text-capitalize">Thống kê tổng quan</h1>
+﻿@model List<int>
+<h1 class="app-page-title text-capitalize">Thống kê tổng quan</h1>
 
 <div class="row g-4 mb-4">
 	<div class="col-6 col-lg-3">
 		<div class="app-card app-card-stat shadow-sm h-100">
 			<div class="app-card-body p-3 p-lg-4">
 				<h4 class="stats-type mb-1 text-muted">Tin tuyển dụng</h4>
-				<div class="stats-figure text-muted">12628</div>
+				<div class="stats-figure text-muted">@Model[0]</div>
 				<div class="stats-meta text">
 					tin tìm kiếm ứng viên
 				</div>
@@ -18,7 +19,7 @@
 		<div class="app-card app-card-stat shadow-sm h-100">
 			<div class="app-card-body p-3 p-lg-4">
 				<h4 class="stats-type mb-1 text-primary">Tổng Hồ sơ</h4>
-				<div class="stats-figure text-primary">2250</div>
+				<div class="stats-figure text-primary">@Model[1]</div>
 				<div class="stats-meta">
 					hồ sơ ứng tuyển
 				</div>
@@ -30,7 +31,7 @@
 		<div class="app-card app-card-stat shadow-sm h-100">
 			<div class="app-card-body p-3 p-lg-4">
 				<h4 class="stats-type mb-1 text-info">Đã xem</h4>
-				<div class="stats-figure text-info">23</div>
+				<div class="stats-figure text-info">@Model[2]</div>
 				<div class="stats-meta">
 					hồ sơ đã xem
 				</div>
@@ -42,7 +43,7 @@
 		<div class="app-card app-card-stat shadow-sm h-100">
 			<div class="app-card-body p-3 p-lg-4">
 				<h4 class="stats-type mb-1 text-warning">Nhận phỏng vấn</h4>
-				<div class="stats-figure text-warning">6</div>
+				<div class="stats-figure text-warning">@Model[3]</div>
 				<div class="stats-meta">
 					ứng viên
 				</div>
@@ -57,7 +58,7 @@
 			<div class="app-card-header p-3">
 				<div class="row justify-content-between align-items-center">
 					<div class="col-auto">
-						<h4 class="app-card-title text-capitalize">Biểu đồ thống kê</h4>
+						<h4 class="app-card-title">Biểu đồ tuyển dụng</h4>
 					</div><!--//col-->
 					<div class="col-auto">
 						<div class="card-header-action">
@@ -76,11 +77,12 @@
 					</select>
 				</div>
 				<div class="chart-container">
-					<canvas id="canvas-linechart"></canvas>
+					<canvas id="canvas-barchart"></canvas>
 				</div>
 			</div><!--//app-card-body-->
 		</div><!--//app-card-->
 	</div><!--//col-->
+
 	<div class="col-12 col-lg-3">
 		<div class=" py-3 bg-white shadow-sm">
 			<div class="d-flex flex-column justify-content-center align-items-center">
@@ -92,14 +94,18 @@
 							d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
 					</svg>
 				</span>
-				<h4 class="fw-bold">232</h4>
+				<h4 class="fw-bold">@Model[4]</h4>
 				<small class="text-muted text-capitalize">Tổng số ứng viên</small>
 			</div>
 			<hr class="divide">
-			<div class="d-flex flex-row flex-lg-column justify-content-around align-items-start px-3 py-2 text-capitalize">
-				<p>CV Đã xem</p>
-				<p>CV Mới</p>
-				<p>Tổng số CV</p>
+			<div
+				class="d-flex flex-row flex-lg-column justify-content-around align-items-start px-3 py-2 text-capitalize">
+				<p class="d-flex align-items-center"><span class="border rounded-pill me-2"
+						style="background-color: #75c181; height: 10px; width: 10px; padding: 5px"></span> CV Đã xem</p>
+				<p class="d-flex align-items-center"><span class="border rounded-pill me-2"
+						style="background-color: #a9b5c9; height: 10px; width: 10px; padding: 5px"></span>CV Mới</p>
+				<p class="d-flex align-items-center"><span class="border rounded-pill me-2"
+						style="background-color: #eec146; height: 10px; width: 10px; padding: 5px"></span>Tổng số CV</p>
 			</div>
 		</div>
 	</div>
