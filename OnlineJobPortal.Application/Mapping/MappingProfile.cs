@@ -6,11 +6,14 @@ using OnlineJobPortal.Application.DTOs.BussinessIndustryDto;
 using OnlineJobPortal.Application.DTOs.CandidateDto;
 using OnlineJobPortal.Application.DTOs.CandidateSkillDto;
 using OnlineJobPortal.Application.DTOs.CompanyDto;
+using OnlineJobPortal.Application.DTOs.EducationDto;
 using OnlineJobPortal.Application.DTOs.EmployerDto;
+using OnlineJobPortal.Application.DTOs.ExperienceDto;
 using OnlineJobPortal.Application.DTOs.ForeignLanguageDto;
 using OnlineJobPortal.Application.DTOs.JobPostDto;
 using OnlineJobPortal.Application.DTOs.JobTypeDto;
 using OnlineJobPortal.Application.DTOs.LocationDto;
+using OnlineJobPortal.Application.DTOs.ProjectDto;
 using OnlineJobPortal.Application.DTOs.RequirementSkillDto;
 using OnlineJobPortal.Application.DTOs.SkillDto;
 using OnlineJobPortal.Application.Futures.DistrictFeatures.Commands;
@@ -72,6 +75,12 @@ namespace OnlineJobPortal.Application.Mapping
                 .ForMember(dest => dest.LogoUrl, opt => opt.MapFrom((src, dest) => src.LogoUrl != null ? src.LogoUrl : dest.LogoUrl));
             CreateMap<GetCompanyWithPaginationDto, Company>().ReverseMap();
             CreateMap<CreateApplyDto, Apply>().ReverseMap();
+            CreateMap<ProfileDto, Apply>().ReverseMap();
+            CreateMap<GetExperienceDto, Experience>().ReverseMap();
+            CreateMap<GetEducationDto, Education>().ReverseMap();
+            CreateMap<GetProjectDto, Project>().ReverseMap();
+            CreateMap<GetForeignLanguageDto, ForeignLanguage>().ReverseMap();
+            CreateMap<GetExperienceProjectDto, ExperienceProject>().ReverseMap();
         }
     }
 }

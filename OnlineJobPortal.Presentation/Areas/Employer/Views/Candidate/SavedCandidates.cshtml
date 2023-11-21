@@ -1,4 +1,21 @@
-﻿<div class="container-fluid min-vh-100">
+﻿@using OnlineJobPortal.Domain.Entities
+@model List<Resume>
+
+<style>
+    .btn-outline-primary {
+        border: 1px solid #15a362;
+        border-radius: 6px;
+        background-color: #fff;
+        color: #15a362;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #15a362;
+            color: #fff;
+        }
+</style>
+
+<div class="container-fluid min-vh-100">
     <div class="row">
         <div class="col-12 h-100 mb-3">
             <div class="d-flex justify-content-between align-items-center bg-white p-3">
@@ -13,166 +30,204 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-6 mb-3">
-            <div class="bg-white p-3 rounded-2">
-                <div class="d-flex align-items-start justify-content-start gap-3">
-                    <img class="align-self-start rounded-3 flex-shrink-0" src="~/img/about-1.jpg" alt=""
-                        style="width: 100; height: 100px;">
-                    <div class="d-flex flex-column">
-                        <p class="mb-1 fw-bold">Huỳnh Chí Dũng</>
-                        </p>
-                        <span class="text-danger fw-bolder fs-5">Web Developer</span>
-                        <p>"Cung cấp thông tin chi tiết giúp chúng tôi dễ dàng tìm kiếm những công việc phù hợp với
-                            bạn."
-                        </p>
-                    </div>
-                </div>
-                <div class="d-flex flex-column">
-                    <div class="d-flex gap-4">
-                        <div class="flex-grow-1 d-flex flex-column">
-                            <span class="fw-bold">Kỹ năng</span>
-                            <p class="d-flex gap-3">
-                                <span>C#</span>
-                                <span>.NET</span>
-                                <span>SQL</span>
+        @if (Model != null && Model.Count > 0)
+            @foreach (var resume in Model)
+            {
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="bg-white p-3 rounded-2">
+                        <div class="d-flex align-items-start justify-content-start gap-3">
+                            @{
+                                var candidateAvatarUrl = resume.Candidate.AvatarUrl != null ? "../." + resume.Candidate.AvatarUrl : "../../img/default_user.png";
+                            }
+                            <img class="align-self-start rounded-3 flex-shrink-0" src="@candidateAvatarUrl" alt=""
+                                 style="width: 100px; height: 100px;">
+                            <div class="d-flex flex-column flex-grow-1">
+                                <p class="mb-1 fw-bold">@resume.Candidate.FullName</p>
+                                <span class="text-danger fw-bolder fs-5">@resume.Position</span>
+                                <span class="text-muted">@resume.YearOfExperiences</span>
+
+                            </div>
+                            @{
+                                var cvUrl = "/." + resume.CvUrl;
+                            }
+                            <a role="button" class="fw-bold btn btn-secondary text-white text-nowrap" onclick="window.open('@cvUrl', '_blank')">Xem CV</a>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <p class="mt-3">
+                                <span class="fw-bold">Tóm tắt</span>
+                                <span>"@resume.CareerGoal"</span>
                             </p>
-                            <span class="fw-bold">Chứng chỉ</span>
-                            <p class="d-flex flex-column ps-3 gap-1">
-                                <span>English - B1</span>
-                            </p>
-                        </div>
-                        <div class="flex-grow-1 d-flex flex-column">
-                            <span class="fw-bold">Học vấn</span>
-                            <span class="fst-italic" style="font-size: .8rem;">08/2023 - 10/2023</span>
-                            <span class="">Đại học Cần Thơ</span>
-                            <span class="fst-italic">GPA 3.65</span>
-                        </div>
-                    </div>
-                    <span class="fw-bold">Thông tin liên lạc</span>
-                    <div class="d-flex gap-3 mb-2">
-                        <p class="mb-1 fst-italic">
-                            Điện thoại: 0776573853
-                        </p>
-                        <p class="mb-1 fst-italic">
-                            Email: dung@gmail.com
-                        </p>
-                    </div>
-                    <div class="position-relative">
-                        <div class="d-flex justify-content-between">
-                            <button class="fw-bold btn btn-info text-white" data-bs-toggle="collapse"
-                                data-bs-target="#work-experience" aria-expanded="false"
-                                aria-controls="work-experience">Kinh
-                                nghiệm làm việc</button>
-                            <a class="fw-bold btn btn-info text-white">Xem CV</a>
-                            <a class="fw-bold btn btn-danger text-white">Bỏ lưu</a>
-                        </div>
-                        <div id="work-experience" class="collapse position-absolute rounded-3 bg-white">
-                            <div class="d-flex gap-2 flex-nowrap">
-                                <div class="flex-grow-1 d-flex flex-column border rounded-2 p-2">
-                                    <span class="fst-italic" style="font-size: .8rem;">08/2023 - 10/2023</span>
-                                    <h5 class="fw-bold" style="color: #555;">FPT Software</h5>
-                                    <p>Vị trí<span class="ms-2 text-danger fw-bold">Web Developer</span></p>
-                                    <span class="fw-bold">Công nghệ sử dụng</span>
+                            <div class="d-flex gap-4">
+                                <div class="flex-grow-1 d-flex flex-column">
+                                    <span class="fw-bold">Kỹ năng</span>
                                     <p class="d-flex gap-3">
-                                        <span>C#</span>
-                                        <span>.NET</span>
-                                        <span>SQL</span>
+                                        @if (resume.CandidateSkills != null && resume.CandidateSkills.Count > 0)
+                                            @foreach (var candidateSkill in resume.CandidateSkills)
+                                            {
+                                                <span>@candidateSkill.Skill.SkillName</span>
+                                            }
                                     </p>
-                                    <p>
-                                        "Cung cấp thông tin chi tiết giúp chúng tôi dễ dàng tìm kiếm những công việc phù
-                                        hợp
-                                        với
-                                        bạn."
+                                    <span class="fw-bold">Chứng chỉ</span>
+                                    <p class="d-flex flex-column gap-1">
+                                        @if (resume.ForeignLanguages != null && resume.ForeignLanguages.Count > 0)
+                                            @foreach (var language in resume.ForeignLanguages)
+                                            {
+                                                <span>@language.LanguageName - @language.Degree</span>
+                                            }
                                     </p>
-                                    <div class="align-self-stretch position-relative">
-                                        <button class="btn btn-info text-white" data-bs-toggle="collapse"
-                                            data-bs-target="#work-experience-project-collapse" aria-expanded="false"
-                                            aria-controls="work-experience-project-collapse">
-                                            Dự án tham gia
-                                        </button>
-                                        <div id="work-experience-project-collapse"
-                                            class="collapse position-absolute bg-white p-3 top-50 start-100 translate-middle">
-                                            <div class="e d-flex gap-3">
-                                                <div class="d-flex flex-column rounded gap-2 p-2"
-                                                    style="background-color: #fcfbfb;">
-                                                    <span class="fst-italic" style="font-size: .8rem;">08/2023 -
-                                                        10/2023</span>
-                                                    <span class="fw-bold">Online Job Portal</span>
-                                                    <span>Vai trò: Web Developer</span>
-                                                </div>
-                                                <div class="d-flex flex-column rounded gap-2 p-2"
-                                                    style="background-color: #fcfbfb;">
-                                                    <span class="fst-italic" style="font-size: .8rem;">08/2023 -
-                                                        10/2023</span>
-                                                    <span class="fw-bold">Online Job Portal</span>
-                                                    <span>Vai trò: Web Developer</span>
-                                                </div>
-                                                <div class="d-flex flex-column rounded gap-2 p-2"
-                                                    style="background-color: #fcfbfb;">
-                                                    <span class="fst-italic" style="font-size: .8rem;">08/2023 -
-                                                        10/2023</span>
-                                                    <span class="fw-bold">Online Job Portal</span>
-                                                    <span>Vai trò: Web Developer</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                </div>
+                                <div class="flex-grow-1 d-flex flex-column">
+                                    <span class="fw-bold">Học vấn</span>
+                                    <div class="d-flex flex-column">
+                                        @if (resume.Educations != null && resume.Educations.Count > 0)
+                                            @foreach (var education in resume.Educations)
+                                            {
+                                                <span class="fst-italic" style="font-size: .8rem;">@education.StartDate.ToString("MM/yyyy") - @education.CompletionDate.ToString("MM/yyyy")</span>
+                                                <span class="">@education.University</span>
+                                                <span class="fst-italic">GPA @education.GPA</span>
+                                            }
                                     </div>
                                 </div>
-                                <div class="flex-grow-1 d-flex flex-column border rounded-2 p-2">
-                                    <span class="fst-italic" style="font-size: .8rem;">08/2023 - 10/2023</span>
-                                    <h5 class="fw-bold" style="color: #555;">FPT Software</h5>
-                                    <p>Vị trí<span class="ms-2 text-danger fw-bold">Web Developer</span></p>
-                                    <span class="fw-bold">Công nghệ sử dụng</span>
-                                    <p class="d-flex gap-3">
-                                        <span>C#</span>
-                                        <span>.NET</span>
-                                        <span>SQL</span>
-                                    </p>
-                                    <p>
-                                        "Cung cấp thông tin chi tiết giúp chúng tôi dễ dàng tìm kiếm những công việc phù
-                                        hợp
-                                        với
-                                        bạn."
-                                    </p>
-                                    <div class="align-self-stretch position-relative">
-                                        <button class="btn btn-info text-white" data-bs-toggle="collapse"
-                                            data-bs-target="#work-experience-project-collapse" aria-expanded="false"
-                                            aria-controls="work-experience-project-collapse">
-                                            Dự án tham gia
-                                        </button>
-                                        <div id="work-experience-project-collapse"
-                                            class="collapse position-absolute bg-white p-3 top-50 start-100 translate-middle">
-                                            <div class="d-flex gap-3">
-                                                <div class="d-flex flex-column rounded gap-2 p-2"
-                                                    style="background-color: #fcfbfb;">
-                                                    <span class="fst-italic" style="font-size: .8rem;">08/2023 -
-                                                        10/2023</span>
-                                                    <span class="fw-bold">Online Job Portal</span>
-                                                    <span>Vai trò: Web Developer</span>
-                                                </div>
-                                                <div class="d-flex flex-column rounded gap-2 p-2"
-                                                    style="background-color: #fcfbfb;">
-                                                    <span class="fst-italic" style="font-size: .8rem;">08/2023 -
-                                                        10/2023</span>
-                                                    <span class="fw-bold">Online Job Portal</span>
-                                                    <span>Vai trò: Web Developer</span>
-                                                </div>
-                                                <div class="d-flex flex-column rounded gap-2 p-2"
-                                                    style="background-color: #fcfbfb;">
-                                                    <span class="fst-italic" style="font-size: .8rem;">08/2023 -
-                                                        10/2023</span>
-                                                    <span class="fw-bold">Online Job Portal</span>
-                                                    <span>Vai trò: Web Developer</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
+                            <span class="fw-bold">Thông tin liên lạc</span>
+                            <div class="d-flex justify-content-between mb-2">
+                                <p class="mb-1 fst-italic">
+                                    Điện thoại: @resume.Candidate.User.PhoneNumber
+                                </p>
+                                <p class="mb-1 fst-italic">
+                                    Email: @resume.Candidate.User.Email
+                                </p>
+                            </div>
+                            <div class="position-relative">
+                                <div class="d-flex justify-content-around">
+                                    <button class="fw-bold btn btn-info text-white btn-view-experience"
+                                            data-bs-toggle="modal" data-bs-target="#experience" data-candidate-id="@resume.CandidateId" data-candidate-name="@resume.Candidate.FullName">
+                                        Kinh
+                                        nghiệm
+                                    </button>
+                                    <a class="fw-bold btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lưu ứng viên">
+                                        <i class="fa-regular fa-heart me-2"></i> <span>Lưu</span>
+                                    </a>
+                                </div>                               
                             </div>
                         </div>
                     </div>
                 </div>
+            }
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="experience" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="exampleModalLabel">Ứng viên <span class="text-danger"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <span class="ps-2 fw-bold" style="border-left: 5px solid #39af79">Kinh nghiệm làm việc</span>
+                <div class="experience-container"></div>
+                <span class="ps-2 fw-bold" style="border-left: 5px solid #39af79">Dự án cá nhân</span>
+                <div class="project-container"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            const experienceContainer = $('.experience-container');
+            const projectContainer = $('.project-container');
+            
+            $(".btn-view-experience").click(function () {
+                let btnViewExperience = $(this);
+                let candidateId = btnViewExperience.data("candidate-id");
+                let candidateName = btnViewExperience.data("candidate-name");
+                $(".modal-title span").text(candidateName);
+                experienceContainer.html("");
+                projectContainer.html("");
+                callAjaxToGetExperience(candidateId);
+            });
+
+            function callAjaxToGetExperience(candidateId) {
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    data: { candidateId: candidateId },
+                    url: "/Employer/Candidate/GetResumeByCandidateId",
+                    success: function (res) {
+                        if(res != null) {
+                            for(let i=0; i<res.experiences.length; i++) {
+                                renderExperience(res.experiences[i]);
+                            }
+                            for(let i=0; i<res.project.length; i++){
+                                renderProject(res.project[i]);
+                            }
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
+
+            function renderExperience(data) {
+                let experienceHtml = `
+                <div class="d-flex flex-lg-row flex-column gap-3 my-3 px-2 pt-2 pb-4 border-bottom" style="font-size: 0.9rem;">
+                    <div class="text-nowrap align-self-start">${formatDate(data.startDate)} - ${formatDate(data.endDate)}</div>
+                    <div class="flex-grow-1">
+                        <p class="mb-1">
+                            <span class="text-danger fw-bold">${data.position}</span> tại <span class="fw-bold">${data.companyName}</span>
+                        </p>
+                        <p class="mb-1">${data.description}</p>
+                        <p class="fw-bold mb-1">Kỹ năng</p>
+                        <p class="d-flex flex-wrap gap-3">
+                            ${data.experienceSkills.map(item => `<span>${item.skill.skillName}</span>`).join("")}
+                        </p>
+                        <div class="d-flex flex-wrap gap-3 my-3 experience-project-container" data-experience-project-id="">
+                            ${data.experienceProjects.map(item => renderExperienceProject(item)).join("")}
+                        </div>
+                    </div>
+                </div>`;
+                experienceContainer.append(experienceHtml);
+            }
+
+            function renderExperienceProject(data) {
+                let experienceProjectHtml = `
+                <div class="py-1 px-2 mb-1 fw-bold w-100" style="background-color: #f5f5f5;">
+                    <p class="mb-2">Dự án</p>
+                    <div class="d-flex w-100 justify-content-between">
+                        <span class="text-dark">${data.title}</span>
+                        <span>${formatDate(data.startDate)} - ${formatDate(data.endDate)}</span>
+                    </div>
+                </div>`;
+                return experienceProjectHtml;
+            }
+
+            function renderProject(data) {
+                let projectHtml = `
+                <div class="d-flex gap-3 my-3 p-2" style="font-size: 0.9rem;">
+                    <div class="text-nowrap">${formatDate(data.startDate)} - ${formatDate(data.endDate)}</div>
+                    <div class="flex-grow-1">
+                        <p class="mb-1 fw-bold">${data.title}</p>
+                        <p class="mb-1 fw-bold text-danger">${data.position}</p>
+                        <p class="mb-1">${data.description}</p>
+                        <p class="mb-1 fw-light">Link git:<span class="ms-2 fst-italic">${data.linkGit}</span></p>
+                    </div>
+                </div>`;
+                projectContainer.append(projectHtml);
+            }
+
+            function formatDate(date) {
+                let result = date.slice(0, 7).split('-');
+                result = result.reverse().join('/');
+                return result;
+            }
+        });
+    </script>
+}

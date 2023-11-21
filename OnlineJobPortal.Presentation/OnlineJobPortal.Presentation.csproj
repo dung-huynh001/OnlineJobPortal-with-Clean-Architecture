@@ -44,6 +44,7 @@
     <Folder Include="Data\" />
     <Folder Include="wwwroot\area\assets\plugins\datatables\css\" />
     <Folder Include="wwwroot\area\assets\plugins\datatables\js\" />
+    <Folder Include="wwwroot\area\assets\plugins\ckeditor\" />
     <Folder Include="wwwroot\area\assets\plugins\signalr\" />
     <Folder Include="wwwroot\css\RegisterPage\" />
     <Folder Include="wwwroot\lib\bootstrap\" />

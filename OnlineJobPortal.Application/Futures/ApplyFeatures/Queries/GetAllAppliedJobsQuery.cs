@@ -37,6 +37,7 @@ namespace OnlineJobPortal.Application.Futures.ApplyFeatures.Queries
                 .Include(a => a.JobPost.RequirementSkills)
                 .ThenInclude(rs => rs.Skill)
                 .Include(a => a.JobPost.Employer.Company)
+                .Include(a => a.Conversations)
                 .Include(a => a.JobPost.District.Province)
                 .Where(a => a.CandidateId == request.CandidateId)
                 .ToListAsync();

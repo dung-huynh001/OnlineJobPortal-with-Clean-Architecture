@@ -203,11 +203,11 @@ $(document).ready(function () {
   
     function renderSpinner(container) {
       var spinnerHtml = `
-              <div class="d-flex justify-content-center">
-                  <div class="spinner-border text-primary spinner" role="status">
-                      <span class="visually-hidden">Loading...</span>
-                  </div>
-              </div>`;
+      <div class="d-flex justify-content-center">
+          <div class="spinner-border text-primary spinner" role="status">
+              <span class="visually-hidden">Loading...</span>
+          </div>
+      </div>`;
       container.append(spinnerHtml);
     }
   
@@ -217,9 +217,9 @@ $(document).ready(function () {
   
     function renderEmptyPage(container) {
       var emptyPageHtml = `
-              <div class="d-flex justify-content-center align-items-center">
-                  <img src="../img/no-result-found.jpg" alt="" style="width: 350px; " />
-              </div>`;
+      <div class="d-flex justify-content-center align-items-center">
+          <img src="../img/no-result-found.jpg" alt="" style="width: 350px; " />
+      </div>`;
       container.append(emptyPageHtml);
     }
   

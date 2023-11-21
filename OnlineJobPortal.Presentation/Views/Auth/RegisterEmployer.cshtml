@@ -13,11 +13,10 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @* <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> *@
     <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
-    <link rel="stylesheet" href="~/area/assets/plugins/toastr/toastr.min.css">
     <link href="~/area/assets/plugins/waitme/waitMe.min.css" rel="stylesheet">
     <link href="~/area/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/area/assets/plugins/toastr/toastr.min.css">
     <title>IT Jobs</title>
     <style>
         .glow {
@@ -38,7 +37,8 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                     <h1 class="text-success glow" style="font-family: Poppins, sans-serif; font-weight: 700">IT<span
                             class="text-dark">Jobs</span></h1>
                 </a>
-                <form method="post" asp-area="" asp-controller="Auth" asp-action="RegisterEmployer" id="registerForm" class="py-4" enctype="multipart/form-data">
+                <form method="post" asp-area="" asp-controller="Auth" asp-action="RegisterEmployer" id="registerForm"
+                    class="py-4" enctype="multipart/form-data">
                     <div class="col-12 py-3">
                         <h4 class="fw-bold ps-2 border-5 border-start border-success">Tài khoản</h4>
                         <div class="d-flex flex-column pb-3">
@@ -71,7 +71,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             <label class="form-label" for="PhoneNumber">Số điện thoại cá nhân <span
                                     class="text-danger">*</span></label>
                             <input class="form-control" type="text" asp-for="PhoneNumber"
-                                placeholder="Số điện thoại cá nhân">
+                                placeholder="Số điện thoại cá nhân" maxlength="10" oninput="validateNumericInput(this)">
                             <span asp-validation-for="PhoneNumber" class="text-danger error-message"></span>
 
                         </div>
@@ -181,6 +181,27 @@ For more information on enabling MVC for empty projects, visit https://go.micros
     <script src="~/area/assets/plugins/toastr/toastr.min.js"></script>
     <script src="~/area/assets/plugins/waitme/waitMe.min.js"></script>
     <script src="~/area/assets/plugins/vietnamlocal/vietnamlocalselector.min.js"></script>
+    @{
+        try
+        {
+            var err = ViewBag.ErrorMessage as string;
+            @if (err != null)
+            {
+                <script>
+                    toastr.options = {
+                    timeOut: 2500
+                    };
+                    toastr.warning('@err');
+                </script>
+                ViewBag.ErrorMessage = null;
+            }
+
+        }
+        catch
+        {
+
+        }
+    }
 
     <script>
         var localpicker = new LocalPicker({
@@ -190,7 +211,15 @@ For more information on enabling MVC for empty projects, visit https://go.micros
         });
     </script>
     <script>
+        function validateNumericInput(inputElement) {
+            var inputValue = inputElement.value;
+            var numericValue = inputValue.replace(/[^0-9]/g, '');
+            inputElement.value = numericValue;
+        }
+
         $(document).ready(function () {
+            $("input").attr("autocomplete", "off");
+
             $(".ls_province").change(function () {
                 var provinceText = $(this).find("option:selected").text();
                 $("input[name='ProvinceName']").val(provinceText);
@@ -207,7 +236,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                     address = districtText + ", TP. " + provinceText;
                 }
                 $("input[name='Address']").val(address);
-                    });
+            });
         });
     </script>
     <partial name="_ValidationScriptsPartial" />

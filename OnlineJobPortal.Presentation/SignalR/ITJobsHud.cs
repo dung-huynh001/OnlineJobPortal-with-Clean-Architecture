@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using OnlineJobPortal.Application.Futures.ApplicationUser.Queries;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Presentation.SignalR
@@ -26,7 +28,7 @@ namespace OnlineJobPortal.Presentation.SignalR
 
             if (ConnectedUsers.All(x => x.UserId != userId))
             {
-                ConnectedUsers.Add(new UserConnection { UserId = userId!, ConnectionId = connectionId });
+                ConnectedUsers.Add(new UserConnection { UserId = userId, ConnectionId = connectionId });
             }
 
             await base.OnConnectedAsync();
@@ -45,10 +47,11 @@ namespace OnlineJobPortal.Presentation.SignalR
 
             await base.OnDisconnectedAsync(exception);
         }
+
         public async Task SendMessageToUser(string toUserId, string message)
         {
             var fromUserId = Context.UserIdentifier;
-            var result = mediator.Send(new GetAvatarUserQuery(fromUserId!));
+            var result = await mediator.Send(new GetAvatarUserQuery(fromUserId));
             var toUser = ConnectedUsers.SingleOrDefault(x => x.UserId == toUserId);
 
             if (toUser != null)
@@ -76,8 +79,5 @@ namespace OnlineJobPortal.Presentation.SignalR
         {
             await Clients.All.SendAsync("ReceiveMessage", message);
         }
-
-
-
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineJobPortal.Application.DTOs.ApplyDto;
 using OnlineJobPortal.Application.Futures.ApplyFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ApplyFeatures.Queries;
+using OnlineJobPortal.Application.Futures.ConversationFeatures.Commands;
 using OnlineJobPortal.Application.Futures.JobFavoriteFeatures.Commands;
 using OnlineJobPortal.Application.Futures.JobFavoriteFeatures.Queries;
 using OnlineJobPortal.Application.Futures.ResumeFeatures.Queries;
@@ -60,7 +61,8 @@ namespace OnlineJobPortal.Presentation.Controllers
                 applyJobDto.CoverLetter = coverLetter ?? "";
                 applyJobDto.CvUrl = cvUrl;
                 var result = mediator.Send(new ApplyJobCommand(applyJobDto)).GetAwaiter().GetResult();
-                if (!result.Success) throw new Exception();
+                var createConversation = mediator.Send(new CreateConversationCommand(jobPostId)).Result;
+                if (!result.Success || !createConversation) throw new Exception();
                 return Json(new { success = true });
             }
             catch

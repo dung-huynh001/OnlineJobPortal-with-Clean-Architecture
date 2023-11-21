@@ -12,12 +12,16 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Commands
 {
-    public class DeleteJobPostCommand : IRequest<ApiResponse>
+    public class DeleteJobPostCommand : IRequest<bool>
     {
-        public JobPostDto JobPostDto { get; set; }
+        public DeleteJobPostCommand(int jobPostId)
+        {
+            JobPostId = jobPostId;
+        }
+        public int JobPostId { get; }
     }
 
-    public class DeleteJobPostCommandHandler : IRequestHandler<DeleteJobPostCommand, ApiResponse>
+    public class DeleteJobPostCommandHandler : IRequestHandler<DeleteJobPostCommand, bool>
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
@@ -27,18 +31,25 @@ namespace OnlineJobPortal.Application.Futures.JobPostFeatures.Commands
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
         }
-        public async Task<ApiResponse> Handle(DeleteJobPostCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(DeleteJobPostCommand request, CancellationToken cancellationToken)
         {
-            var JobPost = mapper.Map<JobPost>(request);
-
-            await unitOfWork.Repository<JobPost>().UpdateAsync(JobPost);
-            await unitOfWork.SaveAsync(cancellationToken);
-
-            return new ApiResponse
+            unitOfWork.BeginTransaction();
+            try
             {
-                Success = true,
-                Message = "Update Job Post success!"
-            };
+                var jobPost = await unitOfWork.Repository<JobPost>().DeleteByIdAsync(request.JobPostId);
+                if (jobPost == 0)
+                {
+                    return false;
+                }
+
+                unitOfWork.Commit();
+                return true;
+            }
+            catch
+            {
+                unitOfWork.Rollback();
+                return false;
+            }
         }
     }
 }

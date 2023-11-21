@@ -9,6 +9,8 @@ namespace OnlineJobPortal.Domain.Entities
 {
     public class Conversations : BaseEntity
     {
+        public int ApplyId { get; set; }
+        public Apply Apply { get; set; }
         public virtual ICollection<Participation> Participations { get; set; } = new List<Participation>();
         public virtual ICollection<Message> Messages { get; set; } = new List<Message>();
     }

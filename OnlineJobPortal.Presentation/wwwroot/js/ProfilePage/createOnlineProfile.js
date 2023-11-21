@@ -13,6 +13,7 @@ $(document).ready(function () {
   const modalTitle = $(".modal-title");
   const experienceModalBody = $("#staticBackdrop .modal-body");
   const summaryContainer = $(".summary-container");
+  const positionContainer = $(".position-container");
   const skillContainer = $(".skill-container");
   const workExperienceContainer = $(".work-experience-container");
   const updateResumeForm = $("#update-resume-form")[0];
@@ -93,6 +94,15 @@ $(document).ready(function () {
     var targetSection = $(this).data("target-section");
     var data;
     switch (targetSection.toLowerCase()) {
+      case "vị trí ứng tuyển":
+        let position = $("#position-field").val();
+        let yearOfExperiences = $("#year-of-experiences-field").val();
+        data = {
+          id: RESUME_ID,
+          position: position,
+          yearOfExperiences: yearOfExperiences
+        };
+        break;
       case "tóm tắt":
         let careerGoal = $(".ck-content").text();
         data = {
@@ -246,6 +256,19 @@ $(document).ready(function () {
 
     var modalBodyHtml = "";
     switch (title.toLowerCase()) {
+      case "vị trí ứng tuyển":
+        modalBodyHtml = `
+        <div class="d-flex flex-column gap-3">
+          <div>
+              <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Vị trí công việc<span class="text-danger fw-light ms-1">(*)</span></label>
+              <input class="form-control" type="text" id="position-field" required autocomplete="off">
+          </div>
+          <div>
+              <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Số năm kinh nghiệm<span class="text-danger fw-light ms-1">(*)</span></label>
+              <input class="form-control" type="text" id="year-of-experiences-field" required autocomplete="off">
+          </div>
+        </div>`;
+        break;
       case "tóm tắt":
         modalBodyHtml = `
             <textarea class="form-control text-editor"></textarea>`;
@@ -261,11 +284,11 @@ $(document).ready(function () {
           `<div class="d-flex flex-column gap-3">
           <div>
               <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Vị trí công việc<span class="text-danger fw-light ms-1">(*)</span></label>
-              <input class="form-control" type="text" id="experience-position-field" required>
+              <input class="form-control" type="text" id="experience-position-field" required autocomplete="off">
           </div>
           <div>
               <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Tên công ty<span class="text-danger fw-light ms-1">(*)</span></label>
-              <input class="form-control" type="text" id="experience-company-name-field" required>
+              <input class="form-control" type="text" id="experience-company-name-field" required autocomplete="off">
           </div>
           <div class="d-flex gap-3">
               <div class="flex-grow-1">
@@ -296,11 +319,11 @@ $(document).ready(function () {
         <div class="d-flex flex-column gap-3">
         <div>
             <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Tên trường</label>
-            <input class="form-control" type="text" id="education-university-field" required>
+            <input class="form-control" type="text" id="education-university-field" required autocomplete="off">
         </div>
         <div>
             <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Chuyên ngành</label>
-            <input class="form-control" type="text" id="education-major-field" required>
+            <input class="form-control" type="text" id="education-major-field" required autocomplete="off">
         </div>
         <div class="d-flex gap-3">
             <div class="flex-grow-1">
@@ -323,15 +346,15 @@ $(document).ready(function () {
         modalBodyHtml = `<div class="d-flex flex-column gap-3">
         <div>
             <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Tên dự án<span class="text-danger fw-light ms-1">(*)</span></label>
-            <input class="form-control" type="text" id="project-title-field" required>
+            <input class="form-control" type="text" id="project-title-field" required autocomplete="off">
         </div>
         <div>
             <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Vị trí đảm nhận<span class="text-danger fw-light ms-1">(*)</span></label>
-            <input class="form-control" type="text" id="project-position-field" required>
+            <input class="form-control" type="text" id="project-position-field" required autocomplete="off">
         </div>
         <div>
             <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Link git</label>
-            <input class="form-control" type="text" id="project-link-git-field">
+            <input class="form-control" type="text" id="project-link-git-field" autocomplete="off">
         </div>
         <div class="d-flex gap-3">
             <div class="flex-grow-1">
@@ -354,11 +377,11 @@ $(document).ready(function () {
         modalBodyHtml = `<div class="d-flex flex-column gap-3">
         <div>
             <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Ngôn ngữ<span class="text-danger fw-light ms-1">(*)</span></label>
-            <input class="form-control" type="text" id="foreign-language-name-field" required>
+            <input class="form-control" type="text" id="foreign-language-name-field" required autocomplete="off">
         </div>
         <div>
             <label class="text-dark" style="font-size: 0.9rem; font-weight: 600;">Trình độ<span class="text-danger fw-light ms-1">(*)</span></label>
-            <input class="form-control" type="text" id="foreign-language-degree-field" required>
+            <input class="form-control" type="text" id="foreign-language-degree-field" required autocomplete="off">
         </div>
         <span class="text-danger me-auto" style="font-weight: 300; font-size: 0.8rem;">(*) Bắt buộc</span>
     </div>`;
@@ -380,6 +403,12 @@ $(document).ready(function () {
       width: "100%",
       no_results_text: "Không tìm thấy kết quả :",
     });
+  }
+
+  function renderPositionContainerContent(data) {
+    positionContainer.find("p").text(data.position + " - " + data.yearOfExperiences);
+    $('#section-info-position').text(data.position);
+    $('#section-info-year-of-experiences').text(data.yearOfExperiences);
   }
 
   function renderSummaryContainerContent(data) {
@@ -470,6 +499,13 @@ $(document).ready(function () {
 
   function updateSection(target, data) {
     switch (target.toLowerCase()) {
+      case "vị trí ứng tuyển":
+        callAjaxToUpdateSections(
+          "/Profile/UpdatePosition",
+          data,
+          renderPositionContainerContent
+        );
+        break;
       case "tóm tắt":
         callAjaxToUpdateSections(
           "/Profile/UpdateSummary",

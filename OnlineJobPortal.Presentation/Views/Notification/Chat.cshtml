@@ -1,4 +1,4 @@
-﻿<link rel="stylesheet" href="~/area/assets/plugins/bootstrap/css/bootstrap-icons.min.css">
+﻿<link rel="stylesheet" href="~/area/assets/plugins/bootstrap/css/bootstrap-icons/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="~/css/ChatPage/chat.css">
 <style>
     .overlay {
@@ -26,13 +26,13 @@
                 <div class="d-flex justify-content-between align-items-baseline">
                     <h5 class="d-sm-block d-none">Chat</h5>
                     <a role="button" class="btn btn-square rounded-pill fs-5" style="background-color: #e4e6ed;"
-                       data-bs-toggle="collapse" data-bs-target="#find-recipient" aria-expanded="false"
-                       aria-controls="find-recipient">
+                        data-bs-toggle="collapse" data-bs-target="#find-recipient" aria-expanded="false"
+                        aria-controls="find-recipient">
                         <i class="fa-regular fa-pen-to-square"></i>
                     </a>
                     <div class="collapse position-absolute start-100" id="find-recipient">
                         <div class="d-flex flex-column p-3 shadow-sm border-3 rounded-3"
-                             style="width: 300px; height: 300px; background-color: #fafafa;">
+                            style="width: 300px; height: 300px; background-color: #fafafa;">
                             <div class="d-flex align-items-baseline gap-3">
                                 <label class="form-label">Đến:</label>
                                 <input type="text" class="form-control rounded-pill ">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="position-relative">
                     <input class="form-control rounded-pill ps-5" type="text" id="search-recipient"
-                           style="background-color: #e4e6ed;" placeholder="Tìm kiếm người dùng">
+                        style="background-color: #e4e6ed;" placeholder="Tìm kiếm người dùng">
                     <span class="position-absolute top-50 translate-middle" style="left: 1.5rem">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </span>
@@ -54,12 +54,12 @@
             <div class="position-relative">
                 <div id="chat-section" class="w-100">
                     <div class="d-flex align-items-center gap-3 shadow-sm px-3 py-2 position-absolute bg-white"
-                         style="width: 103%; top: -10px; left: -11px;">
+                        style="width: 103%; top: -10px; left: -11px;">
                         <div class="position-relative">
                             <img id="recipient-image" class="rounded-pill" src="~/img/about-1.jpg" alt=""
-                                 style="width: 45px; height: 45px; object-fit: fill;">
+                                style="width: 45px; height: 45px; object-fit: fill;">
                             <span class="position-absolute bg-primary rounded-pill bottom-0"
-                                  style="width: 15px; height: 15px; border: 2px solid #fff; right: 0;"></span>
+                                style="width: 15px; height: 15px; border: 2px solid #fff; right: 0;"></span>
                         </div>
                         <div class="flex-grow-1" style="font-size: 1.1rem">
                             <p id="recipient-name" class="m-0 fw-bold">Hai Nguyen</p>
@@ -75,7 +75,7 @@
                         style="height: 73vh; padding-top: calc(45px + 1.3rem);">
                         <li class="text-center w-100">
                             <a role="button" class="text-center btn-see-more"
-                               style="font-size: .8rem; font-weight: 300;">Xem thêm</a>
+                                style="font-size: .8rem; font-weight: 300;">Xem thêm</a>
                         </li>
                     </ul>
                     <div class="d-flex align-items-center gap-3 p-1">
@@ -85,9 +85,10 @@
                         <span class="fs-5"><i class="bi bi-filetype-gif text-info"></i></span>
                         <div class="position-relative w-100 bottom-0">
                             <input type="text" class="form-control rounded-pill" placeholder="Aa" id="messageInput"
-                                   autocomplete="off">
-                            <a role="button" class="position-absolute top-50 translate-middle-y" style="right: 15px;">
-                                <i class="bi bi-send-fill text-info"></i>
+                                autocomplete="off">
+                            <a role="button" class="position-absolute text-info top-50 translate-middle-y"
+                                style="right: 15px;">
+                                <i class="fa-regular fa-paper-plane"></i>
                             </a>
                         </div>
                     </div>
@@ -125,7 +126,7 @@
                 success: function (res) {
                     if (res != null && res.length > 0) {
                         for (let i = 0; i < res.length; i++) {
-                            renderRecipientContainer(res[i].jobPost);
+                            renderRecipientContainer(res[i].jobPost, res[i].conversationId);
                         }
                     } else {
                         renderNoResult()
@@ -137,11 +138,10 @@
             });
         }
 
-        function renderRecipientContainer(data) {
-            // data-bs-toggle="collapse" href="#chat-section" role="button" aria-expanded="false" aria-controls="chat-section"
+        function renderRecipientContainer(data, conversationId) {
             let recipientHtml = `
             <div>
-                <a class="d-flex flex-column py-1 px-2 rounded-3 recipient" data-user-id="${data.employer.userId}">
+                        <a class="d-flex flex-column py-1 px-2 rounded-3 recipient" data-user-id="${data.employer.userId}" data-conversation-id="${conversationId}">
                     <div class="d-flex align-items-center gap-3">
                         <img class="rounded-pill" src="${'.' + data.employer.company.logoUrl}" alt="" style="width: 55px; height: 55px;">
                         <div class="flex-grow-1 d-sm-flex flex-column d-none">
@@ -281,7 +281,7 @@
                     conversationId: "conversationId",
                     content: "content",
                 },
-                url: "/Employer/Notification/SaveMessageAsync",
+                url: "/Message/SaveMessage",
                 success: function (res) {
                     console.log(res);
                 },
