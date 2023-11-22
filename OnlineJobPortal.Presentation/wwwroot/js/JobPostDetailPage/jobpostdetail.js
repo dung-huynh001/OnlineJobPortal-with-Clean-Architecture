@@ -34,10 +34,10 @@ $(document).ready(function () {
         let btnViewProfile = $(this);
         let candidateId = btnViewProfile.data("candidate-id");
         let applyId = btnViewProfile.data("apply-id");
-        $("#modal-candidate-name").text("Hồng Hi Quan");
-        $("#modal-candidate-position").text("Bussiness Analysis");
-        $("#modal-candidate-create-at").text("10/2023");
-        $("#modal-cv-url").attr("href", "http://facebook.com");
+        $("#modal-candidate-name").text("");
+        $("#modal-candidate-position").text("");
+        $("#modal-candidate-create-at").text("");
+        $("#modal-cv-url").attr("href", "");
         $("#modal-avatar-url").attr("src", "../../img/default_user.png");
         callAjaxToMarkViewedProfile(applyId);
         if ($('.status').find('span').text().toLowerCase() == "pending") {

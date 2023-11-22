@@ -45,7 +45,7 @@ namespace OnlineJobPortal.Application.Futures.StatisticalFeatures.Queries
 
             var viewedCvs = await unitOfWork.Repository<Apply>().GetAll
                 .Include(a => a.JobPost)
-                .Where(a => a.JobPost.EmployerId == request.EmployerId && a.Status.ToLower().Contains("viewed"))
+                .Where(a => a.JobPost.EmployerId == request.EmployerId && !a.Status.ToLower().Contains("pending"))
                 .CountAsync();
 
             var passedCvs = await unitOfWork.Repository<Apply>().GetAll

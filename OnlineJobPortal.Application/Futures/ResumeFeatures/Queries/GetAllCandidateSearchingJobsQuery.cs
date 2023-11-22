@@ -30,6 +30,7 @@ namespace OnlineJobPortal.Application.Futures.ResumeFeatures.Queries
             var result = await unitOfWork.Repository<Resume>()
                 .GetAll
                 .Include(r => r.Candidate.User)
+                .Include(r => r.Candidate.SaveCandidates)
                 .Include(r => r.CandidateSkills).ThenInclude(cs => cs.Skill)
                 .Include(r => r.ForeignLanguages)
                 .Include(r => r.Educations)

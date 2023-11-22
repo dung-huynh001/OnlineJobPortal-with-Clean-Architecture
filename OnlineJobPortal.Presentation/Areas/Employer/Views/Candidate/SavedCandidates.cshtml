@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-12 h-100 mb-3">
             <div class="d-flex justify-content-between align-items-center bg-white p-3">
-                <h5 class="fw-bold text-muted">Ứng viên đã lưu</h5>
+                <h5 class="fw-bold text-muted">Tất cả ứng viên</h5>
                 <div>
                     <select class="form-select" name="" id="">
                         <option value="">Tất cả</option>
@@ -105,15 +105,26 @@
                                         Kinh
                                         nghiệm
                                     </button>
-                                    <a class="fw-bold btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lưu ứng viên">
-                                        <i class="fa-regular fa-heart me-2"></i> <span>Lưu</span>
-                                    </a>
-                                </div>                               
+                                    @if(resume.Candidate.SaveCandidates!=null && resume.Candidate.SaveCandidates.Count > 0){
+                                        var saveList = resume.Candidate.SaveCandidates.Select(s => s.CandidateId);
+                                        if(saveList.Contains(resume.CandidateId)){
+                                            <a class="fw-bold btn btn-primary text-white btn-save-candidate" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lưu ứng viên" data-candidate-id="@resume.CandidateId">
+                                                <i class="fa-regular fa-heart me-2"></i> <span>Hủy Lưu</span>
+                                            </a>
+                                        }
+                                    }else{
+                                        <a class="fw-bold btn btn-outline-primary btn-save-candidate" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lưu ứng viên" data-candidate-id="@resume.CandidateId">
+                                            <i class="fa-regular fa-heart me-2"></i> <span>Lưu</span>
+                                        </a> 
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             }
+
     </div>
 </div>
 
@@ -132,7 +143,7 @@
                 <div class="project-container"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>
@@ -153,6 +164,58 @@
                 projectContainer.html("");
                 callAjaxToGetExperience(candidateId);
             });
+
+            $(".btn-save-candidate").click(function () {
+                let btnSaveCandidate = $(this);
+                let candidateId = btnSaveCandidate.data("candidate-id");
+                if(btnSaveCandidate.hasClass("btn-outline-primary")){
+                    callAjaxToSaveCandidate(candidateId);
+                    btnSaveCandidate.removeClass("btn-outline-primary");
+                    btnSaveCandidate.addClass("btn-primary text-white");
+                }else{
+                    callAjaxToDeleteSaveCandidate(candidateId);
+                    btnSaveCandidate.addClass("btn-outline-primary");
+                    btnSaveCandidate.removeClass("btn-primary text-white");
+                }
+            });
+
+            function callAjaxToSaveCandidate(candidateId) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    data: { candidateId: candidateId },
+                    url: "/Employer/Candidate/SaveCandidate",
+                    success: function (res) {
+                        if(res){
+                            toastr.success("Lưu ứng viên thành công");
+                        }else{
+                            toastr.error("Lưu ứng viên thất bại");
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
+
+            function callAjaxToDeleteSaveCandidate(candidateId) {
+                $.ajax({
+                    type: "DELETE",
+                    dataType: "json",
+                    data: { candidateId: candidateId },
+                    url: "/Employer/Candidate/DeleteSaveCandidate",
+                    success: function (res) {
+                        if(res){
+                            toastr.warning("Bỏ theo dõi ứng viên thành công");
+                        }else{
+                            toastr.error("Bỏ theo dõi ứng viên thất bại");
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
 
             function callAjaxToGetExperience(candidateId) {
                 $.ajax({

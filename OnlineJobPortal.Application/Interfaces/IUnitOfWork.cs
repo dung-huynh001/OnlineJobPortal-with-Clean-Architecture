@@ -33,6 +33,7 @@ namespace OnlineJobPortal.Application.Interfaces
         INotificationRepository NotificationRepository { get; }
         IConversationsRepository ConversationsRepository { get; }
         IParticipationRepository ParticipationRepository { get; }
+        ISaveCandidateRepository SaveCandidateRepository { get; }
         void BeginTransaction();
         void Commit();
         void Rollback();

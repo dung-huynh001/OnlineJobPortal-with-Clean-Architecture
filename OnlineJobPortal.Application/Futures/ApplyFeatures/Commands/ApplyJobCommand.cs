@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.Futures.ApplyFeatures.Commands
 {
-    public record ApplyJobCommand : IRequest<ApiResponse>
+    public record ApplyJobCommand : IRequest<int>
     {
         public CreateApplyDto CreateApplyDto { get; set; }
         public ApplyJobCommand(CreateApplyDto createApplyDto)
@@ -22,7 +22,7 @@ namespace OnlineJobPortal.Application.Futures.ApplyFeatures.Commands
             CreateApplyDto = createApplyDto;
         }
     }
-    public class CreateApplyCommandHandler : IRequestHandler<ApplyJobCommand, ApiResponse>
+    public class CreateApplyCommandHandler : IRequestHandler<ApplyJobCommand, int>
     {
         private readonly IMapper mapper;
         private readonly IUnitOfWork unitOfWork;
@@ -33,7 +33,7 @@ namespace OnlineJobPortal.Application.Futures.ApplyFeatures.Commands
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<ApiResponse> Handle(ApplyJobCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(ApplyJobCommand request, CancellationToken cancellationToken)
         {
             unitOfWork.BeginTransaction();
             try
@@ -51,19 +51,11 @@ namespace OnlineJobPortal.Application.Futures.ApplyFeatures.Commands
                 await unitOfWork.Repository<Apply>().AddAsync(apply);
 
                 unitOfWork.Commit();
-                return new ApiResponse
-                {
-                    Success = true,
-                    Message = "Applied Job successfully."
-                };
+                return apply.Id;
             }catch
             {
                 unitOfWork.Rollback();
-                return new ApiResponse
-                {
-                    Success = false,
-                    Message = "Apply Job failed! Something went wrong."
-                };
+                return 0;
             }
         }
     }

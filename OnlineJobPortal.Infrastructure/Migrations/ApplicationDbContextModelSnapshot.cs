@@ -1097,138 +1097,138 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1685),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9660),
                             JobTypeIcon = "fa-laptop-code",
                             JobTypeName = "Web Developer",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1695)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9671)
                         },
                         new
                         {
                             Id = 2,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1697),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9674),
                             JobTypeIcon = "fa-mobile-alt",
                             JobTypeName = "Mobile Developer",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1698)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9674)
                         },
                         new
                         {
                             Id = 3,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1699),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9676),
                             JobTypeIcon = "fa-check-double",
                             JobTypeName = "QA & QC",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1700)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9676)
                         },
                         new
                         {
                             Id = 4,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1701),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9677),
                             JobTypeIcon = "fa-chart-pie",
                             JobTypeName = "Business Analysis",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1701)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9678)
                         },
                         new
                         {
                             Id = 5,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1702),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9679),
                             JobTypeIcon = "fa-user-shield",
                             JobTypeName = "Tester",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1703)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9679)
                         },
                         new
                         {
                             Id = 6,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1705),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9682),
                             JobTypeIcon = "fa-wifi",
                             JobTypeName = "Internet of things(IoT)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1706)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9683)
                         },
                         new
                         {
                             Id = 7,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1707),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9684),
                             JobTypeIcon = "fa-tasks",
                             JobTypeName = "Project Management",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1707)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9684)
                         },
                         new
                         {
                             Id = 8,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1708),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9686),
                             JobTypeIcon = "fa-users",
                             JobTypeName = "Human Resource",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1708)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9686)
                         },
                         new
                         {
                             Id = 9,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1710),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9688),
                             JobTypeIcon = "fa-paint-brush",
                             JobTypeName = "Design & Creative",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1711)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9688)
                         },
                         new
                         {
                             Id = 10,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1713),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9690),
                             JobTypeIcon = "fa-server",
                             JobTypeName = "System Admin",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1713)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9691)
                         },
                         new
                         {
                             Id = 11,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1714),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9691),
                             JobTypeIcon = "fa-cogs",
                             JobTypeName = "DevOps",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1714)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9692)
                         },
                         new
                         {
                             Id = 12,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1715),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9693),
                             JobTypeIcon = "fa-shield-alt",
                             JobTypeName = "System Security",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1716)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9693)
                         },
                         new
                         {
                             Id = 13,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1717),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9695),
                             JobTypeIcon = "fa-headset",
                             JobTypeName = "IT Support",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1717)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9695)
                         },
                         new
                         {
                             Id = 14,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1718),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9697),
                             JobTypeIcon = "fa-circle-question",
                             JobTypeName = "IT Helpdesk",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1719)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9698)
                         },
                         new
                         {
                             Id = 15,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1719),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9700),
                             JobTypeIcon = "fa-code",
                             JobTypeName = "Frontend Developer",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1720)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9701)
                         },
                         new
                         {
                             Id = 16,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1721),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9702),
                             JobTypeIcon = "fa-database",
                             JobTypeName = "Backend Developer",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1721)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9702)
                         },
                         new
                         {
                             Id = 17,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1722),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9704),
                             JobTypeIcon = "fa-layer-group",
                             JobTypeName = "Fullstack Developer",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 293, DateTimeKind.Local).AddTicks(1723)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 246, DateTimeKind.Local).AddTicks(9705)
                         });
                 });
 
@@ -1489,6 +1489,35 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.ToTable("Resumes");
                 });
 
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.SaveCandidate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CandidateId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CandidateId");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("SaveCandidates");
+                });
+
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Skill", b =>
                 {
                     b.Property<int>("Id")
@@ -1516,1031 +1545,1031 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1291),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2754),
                             SkillName = "Java",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1299)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2761)
                         },
                         new
                         {
                             Id = 2,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1301),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2764),
                             SkillName = "C#",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1301)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2764)
                         },
                         new
                         {
                             Id = 3,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1302),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2765),
                             SkillName = "Python",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1303)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2766)
                         },
                         new
                         {
                             Id = 4,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1304),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2766),
                             SkillName = "JavaScript",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1304)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2767)
                         },
                         new
                         {
                             Id = 5,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1305),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2768),
                             SkillName = "SQL",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1305)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2768)
                         },
                         new
                         {
                             Id = 6,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1307),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2770),
                             SkillName = "HTML/CSS",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1308)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2770)
                         },
                         new
                         {
                             Id = 7,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1308),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2771),
                             SkillName = "React",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1309)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2772)
                         },
                         new
                         {
                             Id = 8,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1310),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2773),
                             SkillName = "Angular",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1310)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2773)
                         },
                         new
                         {
                             Id = 9,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1311),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2774),
                             SkillName = "Node.js",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1312)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2775)
                         },
                         new
                         {
                             Id = 10,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1313),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2776),
                             SkillName = "AWS",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1314)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2777)
                         },
                         new
                         {
                             Id = 11,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1314),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2777),
                             SkillName = "Docker",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1315)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2778)
                         },
                         new
                         {
                             Id = 12,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1316),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2779),
                             SkillName = "Ruby",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1316)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2779)
                         },
                         new
                         {
                             Id = 13,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1317),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2780),
                             SkillName = "Swift",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1317)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2781)
                         },
                         new
                         {
                             Id = 14,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1318),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2781),
                             SkillName = "PHP",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1319)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2782)
                         },
                         new
                         {
                             Id = 15,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1320),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2783),
                             SkillName = "Kotlin",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1320)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2783)
                         },
                         new
                         {
                             Id = 16,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1321),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2784),
                             SkillName = "C++",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1321)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2785)
                         },
                         new
                         {
                             Id = 17,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1322),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2786),
                             SkillName = "Spring Framework",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1323)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2786)
                         },
                         new
                         {
                             Id = 18,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1324),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2796),
                             SkillName = ".NET",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1325)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2796)
                         },
                         new
                         {
                             Id = 19,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1325),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2797),
                             SkillName = "ASP.NET",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1326)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2797)
                         },
                         new
                         {
                             Id = 20,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1327),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2798),
                             SkillName = "Ruby on Rails",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1327)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2799)
                         },
                         new
                         {
                             Id = 21,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1328),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2799),
                             SkillName = "Git",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1328)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2800)
                         },
                         new
                         {
                             Id = 22,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1329),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2801),
                             SkillName = "Linux",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1330)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2801)
                         },
                         new
                         {
                             Id = 23,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1330),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2802),
                             SkillName = "Android Development",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1331)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2803)
                         },
                         new
                         {
                             Id = 24,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1332),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2803),
                             SkillName = "iOS Development",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1332)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2804)
                         },
                         new
                         {
                             Id = 25,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1333),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2805),
                             SkillName = "Machine Learning",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1333)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2805)
                         },
                         new
                         {
                             Id = 26,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1334),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2806),
                             SkillName = "Data Science",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1335)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2807)
                         },
                         new
                         {
                             Id = 27,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1335),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2808),
                             SkillName = "Cybersecurity",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1336)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2808)
                         },
                         new
                         {
                             Id = 28,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1337),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2809),
                             SkillName = "Networking",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1337)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2809)
                         },
                         new
                         {
                             Id = 29,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1338),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2810),
                             SkillName = "Cloud Computing",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1338)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2811)
                         },
                         new
                         {
                             Id = 30,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1339),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2811),
                             SkillName = "Big Data",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1340)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2812)
                         },
                         new
                         {
                             Id = 31,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1340),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2813),
                             SkillName = "DevOps",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1341)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2813)
                         },
                         new
                         {
                             Id = 32,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1342),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2814),
                             SkillName = "Agile/Scrum",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1342)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2815)
                         },
                         new
                         {
                             Id = 33,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1381),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2815),
                             SkillName = "UI/UX Design",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1381)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2816)
                         },
                         new
                         {
                             Id = 34,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1383),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2817),
                             SkillName = "Blockchain",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1384)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2818)
                         },
                         new
                         {
                             Id = 35,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1385),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2819),
                             SkillName = "IoT (Internet of Things)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1385)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2819)
                         },
                         new
                         {
                             Id = 36,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1386),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2820),
                             SkillName = "Game Development",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1386)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2821)
                         },
                         new
                         {
                             Id = 37,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1387),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2821),
                             SkillName = "Front-end Development",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1388)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2822)
                         },
                         new
                         {
                             Id = 38,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1388),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2823),
                             SkillName = "Back-end Development",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1389)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2823)
                         },
                         new
                         {
                             Id = 39,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1390),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2824),
                             SkillName = "Full-stack Development",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1390)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2824)
                         },
                         new
                         {
                             Id = 40,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1391),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2825),
                             SkillName = "Database Management",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1391)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2826)
                         },
                         new
                         {
                             Id = 41,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1392),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2827),
                             SkillName = "Cloud Architecture",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1393)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2827)
                         },
                         new
                         {
                             Id = 42,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1393),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2828),
                             SkillName = "React Native",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1394)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2828)
                         },
                         new
                         {
                             Id = 43,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1395),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2829),
                             SkillName = "Flutter",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1395)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2830)
                         },
                         new
                         {
                             Id = 44,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1396),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2830),
                             SkillName = "ASP.NET Core",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1396)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2831)
                         },
                         new
                         {
                             Id = 45,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1397),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2832),
                             SkillName = "Vue.js",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1398)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2832)
                         },
                         new
                         {
                             Id = 46,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1398),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2833),
                             SkillName = "TypeScript",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1399)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2834)
                         },
                         new
                         {
                             Id = 47,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1400),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2834),
                             SkillName = "Ruby on Rails",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1400)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2835)
                         },
                         new
                         {
                             Id = 48,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1401),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2836),
                             SkillName = "Express.js",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1401)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2836)
                         },
                         new
                         {
                             Id = 49,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1402),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2837),
                             SkillName = "GraphQL",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1402)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2837)
                         },
                         new
                         {
                             Id = 50,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1403),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2838),
                             SkillName = "Rust",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1404)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2839)
                         },
                         new
                         {
                             Id = 51,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1405),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2839),
                             SkillName = "Scala",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1405)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2840)
                         },
                         new
                         {
                             Id = 52,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1406),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2841),
                             SkillName = "Objective-C",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1406)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2841)
                         },
                         new
                         {
                             Id = 53,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1407),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2842),
                             SkillName = "Redux",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1407)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2843)
                         },
                         new
                         {
                             Id = 54,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1408),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2843),
                             SkillName = "Node.js",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1409)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2844)
                         },
                         new
                         {
                             Id = 55,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1410),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2845),
                             SkillName = "Nginx",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1410)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2845)
                         },
                         new
                         {
                             Id = 56,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1411),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2846),
                             SkillName = "Apache",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1411)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2846)
                         },
                         new
                         {
                             Id = 57,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1412),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2848),
                             SkillName = "Ruby on Rails",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1413)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2848)
                         },
                         new
                         {
                             Id = 58,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1413),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2849),
                             SkillName = "DevOps",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1414)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2849)
                         },
                         new
                         {
                             Id = 59,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1415),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2850),
                             SkillName = "Continuous Integration/Continuous Deployment (CI/CD)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1415)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2851)
                         },
                         new
                         {
                             Id = 60,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1416),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2851),
                             SkillName = "Web Security",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1417)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2852)
                         },
                         new
                         {
                             Id = 61,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1417),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2853),
                             SkillName = "Linux System Administration",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1418)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2853)
                         },
                         new
                         {
                             Id = 62,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1419),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2854),
                             SkillName = "Microsoft Azure",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1419)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2855)
                         },
                         new
                         {
                             Id = 63,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1420),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2855),
                             SkillName = "Google Cloud Platform (GCP)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1420)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2856)
                         },
                         new
                         {
                             Id = 64,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1421),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2857),
                             SkillName = "Amazon Web Services (AWS)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1421)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2857)
                         },
                         new
                         {
                             Id = 65,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1422),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2858),
                             SkillName = "Unity3D",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1423)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2858)
                         },
                         new
                         {
                             Id = 66,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1424),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2860),
                             SkillName = "WebAssembly",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1425)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2860)
                         },
                         new
                         {
                             Id = 67,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1426),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2861),
                             SkillName = "Embedded Systems",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1426)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2862)
                         },
                         new
                         {
                             Id = 68,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1427),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2863),
                             SkillName = "AR/VR Development",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1427)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2863)
                         },
                         new
                         {
                             Id = 69,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1428),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2864),
                             SkillName = "Natural Language Processing (NLP)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1429)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2864)
                         },
                         new
                         {
                             Id = 70,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1429),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2865),
                             SkillName = "Robotics",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1430)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2866)
                         },
                         new
                         {
                             Id = 71,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1431),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2866),
                             SkillName = "TensorFlow",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1431)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2867)
                         },
                         new
                         {
                             Id = 72,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1432),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2868),
                             SkillName = "Vue.js",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1433)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2868)
                         },
                         new
                         {
                             Id = 73,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1433),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2869),
                             SkillName = "Electron",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1434)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2870)
                         },
                         new
                         {
                             Id = 74,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1435),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2870),
                             SkillName = "Hadoop",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1435)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2871)
                         },
                         new
                         {
                             Id = 75,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1436),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2872),
                             SkillName = "Spark",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1436)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2872)
                         },
                         new
                         {
                             Id = 76,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1437),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2873),
                             SkillName = "Red Hat Enterprise Linux",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1438)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2873)
                         },
                         new
                         {
                             Id = 77,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1438),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2874),
                             SkillName = "SAS",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1439)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2875)
                         },
                         new
                         {
                             Id = 78,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1440),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2875),
                             SkillName = "MATLAB",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1440)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2876)
                         },
                         new
                         {
                             Id = 79,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1441),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2877),
                             SkillName = "Adobe Creative Suite",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1442)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2877)
                         },
                         new
                         {
                             Id = 80,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1442),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2878),
                             SkillName = "AutoCAD",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1443)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2879)
                         },
                         new
                         {
                             Id = 81,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1444),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2879),
                             SkillName = "Blender",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1444)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2880)
                         },
                         new
                         {
                             Id = 82,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1445),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2881),
                             SkillName = "SolidWorks",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1445)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2881)
                         },
                         new
                         {
                             Id = 83,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1446),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2882),
                             SkillName = "Selenium",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1447)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2882)
                         },
                         new
                         {
                             Id = 84,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1447),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2883),
                             SkillName = "Load Testing",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1448)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2884)
                         },
                         new
                         {
                             Id = 85,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1449),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2884),
                             SkillName = "Windows Server",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1449)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2885)
                         },
                         new
                         {
                             Id = 86,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1450),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2886),
                             SkillName = "Objective-C",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1450)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2886)
                         },
                         new
                         {
                             Id = 87,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1451),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2887),
                             SkillName = "Swift",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1451)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2888)
                         },
                         new
                         {
                             Id = 88,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1452),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2888),
                             SkillName = "WatchOS",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1453)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2889)
                         },
                         new
                         {
                             Id = 89,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1454),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2890),
                             SkillName = "tvOS",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1454)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2890)
                         },
                         new
                         {
                             Id = 90,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1455),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2891),
                             SkillName = "ARKit",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1455)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2891)
                         },
                         new
                         {
                             Id = 91,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1456),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2892),
                             SkillName = "CoreML",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1457)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2893)
                         },
                         new
                         {
                             Id = 92,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1457),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2893),
                             SkillName = "Xamarin",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1458)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2894)
                         },
                         new
                         {
                             Id = 93,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1459),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2895),
                             SkillName = "Reactive Native",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1459)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2895)
                         },
                         new
                         {
                             Id = 94,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1460),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2896),
                             SkillName = "WebAssembly",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1460)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2897)
                         },
                         new
                         {
                             Id = 95,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1461),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2898),
                             SkillName = "SwiftUI",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1462)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2898)
                         },
                         new
                         {
                             Id = 96,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1462),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2899),
                             SkillName = "Angular Material",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1463)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2899)
                         },
                         new
                         {
                             Id = 97,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1464),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2900),
                             SkillName = "Google Material Design",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1464)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2901)
                         },
                         new
                         {
                             Id = 98,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1465),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2901),
                             SkillName = "Responsive Web Design",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1466)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2902)
                         },
                         new
                         {
                             Id = 99,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1466),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2903),
                             SkillName = "Web Accessibility",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1467)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2903)
                         },
                         new
                         {
                             Id = 100,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1468),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2904),
                             SkillName = "Performance Optimization",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1468)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2904)
                         },
                         new
                         {
                             Id = 101,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1469),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2905),
                             SkillName = "Content Management Systems (CMS)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1469)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2906)
                         },
                         new
                         {
                             Id = 102,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1470),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2907),
                             SkillName = "Joomla",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1471)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2907)
                         },
                         new
                         {
                             Id = 103,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1471),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2908),
                             SkillName = "Drupal",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1472)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2908)
                         },
                         new
                         {
                             Id = 104,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1473),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2909),
                             SkillName = "Adobe Experience Manager (AEM)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1473)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2910)
                         },
                         new
                         {
                             Id = 105,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1474),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2910),
                             SkillName = "Sitecore",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1474)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2911)
                         },
                         new
                         {
                             Id = 106,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1475),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2912),
                             SkillName = "Umbraco",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1476)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2912)
                         },
                         new
                         {
                             Id = 107,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1476),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2913),
                             SkillName = "ERP Systems",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1477)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2913)
                         },
                         new
                         {
                             Id = 108,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1478),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2920),
                             SkillName = "SAP",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1478)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2920)
                         },
                         new
                         {
                             Id = 109,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1479),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2921),
                             SkillName = "Oracle E-Business Suite",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1479)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2922)
                         },
                         new
                         {
                             Id = 110,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1480),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2922),
                             SkillName = "Microsoft Dynamics",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1480)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2923)
                         },
                         new
                         {
                             Id = 111,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1481),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2924),
                             SkillName = "CRM Systems",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1482)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2924)
                         },
                         new
                         {
                             Id = 112,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1482),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2925),
                             SkillName = "Salesforce",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1483)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2926)
                         },
                         new
                         {
                             Id = 113,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1484),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2926),
                             SkillName = "HubSpot",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1484)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2927)
                         },
                         new
                         {
                             Id = 114,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1485),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2928),
                             SkillName = "Marketo",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1485)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2928)
                         },
                         new
                         {
                             Id = 115,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1486),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2929),
                             SkillName = "Eloqua",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1487)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2929)
                         },
                         new
                         {
                             Id = 116,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1488),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2930),
                             SkillName = "Email Marketing",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1488)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2931)
                         },
                         new
                         {
                             Id = 117,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1489),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2931),
                             SkillName = "Marketing Automation",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1489)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2932)
                         },
                         new
                         {
                             Id = 118,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1490),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2933),
                             SkillName = "Google Analytics",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1490)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2933)
                         },
                         new
                         {
                             Id = 119,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1491),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2934),
                             SkillName = "Google Ads",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1492)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2935)
                         },
                         new
                         {
                             Id = 120,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1493),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2935),
                             SkillName = "Facebook Ads",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1493)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2936)
                         },
                         new
                         {
                             Id = 121,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1494),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2937),
                             SkillName = "LinkedIn Ads",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1494)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2937)
                         },
                         new
                         {
                             Id = 122,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1495),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2938),
                             SkillName = "Twitter Ads",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1495)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2938)
                         },
                         new
                         {
                             Id = 123,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1496),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2939),
                             SkillName = "Social Media Marketing",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1497)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2940)
                         },
                         new
                         {
                             Id = 124,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1497),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2940),
                             SkillName = "Content Marketing",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1498)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2941)
                         },
                         new
                         {
                             Id = 125,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1539),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2942),
                             SkillName = "Search Engine Optimization (SEO)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1540)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2942)
                         },
                         new
                         {
                             Id = 126,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1540),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2943),
                             SkillName = "Search Engine Marketing (SEM)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1541)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2944)
                         },
                         new
                         {
                             Id = 127,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1542),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2945),
                             SkillName = "Pay-Per-Click (PPC)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1542)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2945)
                         },
                         new
                         {
                             Id = 128,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1543),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2946),
                             SkillName = "Affiliate Marketing",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1543)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2946)
                         },
                         new
                         {
                             Id = 129,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1544),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2947),
                             SkillName = "Influencer Marketing",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1545)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2948)
                         },
                         new
                         {
                             Id = 130,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1547),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2949),
                             SkillName = "Conversion Rate Optimization (CRO)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1547)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2950)
                         },
                         new
                         {
                             Id = 131,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1548),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2950),
                             SkillName = "Copywriting",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1548)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2951)
                         },
                         new
                         {
                             Id = 132,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1549),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2952),
                             SkillName = "Video Production",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1549)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2952)
                         },
                         new
                         {
                             Id = 133,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1550),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2953),
                             SkillName = "Podcast Production",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1551)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2953)
                         },
                         new
                         {
                             Id = 134,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1552),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2954),
                             SkillName = "Public Relations (PR)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1552)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2955)
                         },
                         new
                         {
                             Id = 135,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1553),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2955),
                             SkillName = "Event Marketing",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1553)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2956)
                         },
                         new
                         {
                             Id = 136,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1554),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2957),
                             SkillName = "Trade Show Management",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1554)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2957)
                         },
                         new
                         {
                             Id = 137,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1555),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2958),
                             SkillName = "Market Research",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1556)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2959)
                         },
                         new
                         {
                             Id = 138,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1556),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2959),
                             SkillName = "Competitive Analysis",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1557)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2960)
                         },
                         new
                         {
                             Id = 139,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1558),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2961),
                             SkillName = "Market Segmentation",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1558)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2961)
                         },
                         new
                         {
                             Id = 140,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1559),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2962),
                             SkillName = "Product Launch",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1560)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2962)
                         },
                         new
                         {
                             Id = 141,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1560),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2963),
                             SkillName = "Brand Strategy",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1561)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2964)
                         },
                         new
                         {
                             Id = 142,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1562),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2965),
                             SkillName = "Brand Management",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1562)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2965)
                         },
                         new
                         {
                             Id = 143,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1563),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2966),
                             SkillName = "Crisis Management",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1563)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2967)
                         },
                         new
                         {
                             Id = 144,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1564),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2967),
                             SkillName = "Customer Relationship Management (CRM)",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1565)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2968)
                         },
                         new
                         {
                             Id = 145,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1565),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2969),
                             SkillName = "Customer Success",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1566)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2969)
                         },
                         new
                         {
                             Id = 146,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1567),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2970),
                             SkillName = "Customer Support",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1567)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2970)
                         },
                         new
                         {
                             Id = 147,
-                            CreateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1568),
+                            CreateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2971),
                             SkillName = "Customer Feedback Analysis",
-                            UpdateAt = new DateTime(2023, 11, 21, 2, 39, 44, 296, DateTimeKind.Local).AddTicks(1568)
+                            UpdateAt = new DateTime(2023, 11, 22, 20, 59, 26, 250, DateTimeKind.Local).AddTicks(2972)
                         });
                 });
 
@@ -2929,6 +2958,25 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Navigation("Candidate");
                 });
 
+            modelBuilder.Entity("OnlineJobPortal.Domain.Entities.SaveCandidate", b =>
+                {
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Candidate", "Candidate")
+                        .WithMany("SaveCandidates")
+                        .HasForeignKey("CandidateId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("OnlineJobPortal.Domain.Entities.Company", "Company")
+                        .WithMany("SaveCandidates")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Candidate");
+
+                    b.Navigation("Company");
+                });
+
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.ApplicationUser", b =>
                 {
                     b.Navigation("Messages");
@@ -2957,6 +3005,8 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Navigation("Messages");
 
                     b.Navigation("Resume");
+
+                    b.Navigation("SaveCandidates");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Company", b =>
@@ -2964,6 +3014,8 @@ namespace OnlineJobPortal.Infrastructure.Migrations
                     b.Navigation("CompanyImages");
 
                     b.Navigation("Employers");
+
+                    b.Navigation("SaveCandidates");
                 });
 
             modelBuilder.Entity("OnlineJobPortal.Domain.Entities.Conversations", b =>

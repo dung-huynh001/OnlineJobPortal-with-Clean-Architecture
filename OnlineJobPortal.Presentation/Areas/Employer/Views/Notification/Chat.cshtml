@@ -17,13 +17,15 @@
         height: calc(100% + 10px);
         border-radius: 5px;
     }
-     ul li {
+
+    ul li {
         width: 100%;
     }
+
     ul li.d-flex {
         width: 80%;
     }
-}
+    }
 </style>
 
 <div class="container-fluid bg-white rounded-3">
@@ -106,7 +108,7 @@
 
 @section Scripts {
     <script>
-         const recipientsContainer = $("#recipient-container");
+        const recipientsContainer = $("#recipient-container");
         const searchRecipient = $("#search-recipient");
         const recipientName = $("#recipient-name");
         const recipientImage = $("#recipient-image");
@@ -131,7 +133,7 @@
                 success: function (res) {
                     if (res != null && res.length > 0) {
                         for (let i = 0; i < res.length; i++) {
-                            renderRecipientContainer(res[i]);
+                            renderRecipientContainer(res[i], res[i].conversationId);
                         }
                     } else {
                         renderNoResult()
@@ -147,7 +149,7 @@
             let avatarUrl = data.candidate.avatarUrl != null ? '../.' + data.candidate.avatarUrl : "../../img/default_user.png";
             let recipientHtml = `
             <div>
-                <a class="d-flex flex-column py-1 px-2 rounded-3 recipient" data-user-id="${data.candidate.userId}">
+                <a class="d-flex flex-column py-1 px-2 rounded-3 recipient" data-user-id="${data.candidate.userId}" data-conversation-id="${conversationId}">
                     <div class="d-flex align-items-center gap-3">
                         <img class="rounded-pill" src="${avatarUrl}" alt="" style="width: 55px; height: 55px;">
                         <div class="flex-grow-1 d-sm-flex flex-column d-none">
@@ -166,8 +168,7 @@
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <img src="../img/no-result-found.jpg" alt="" style="width: 200px" />
                 <span class="fw-bold m-1">Bạn chưa ứng tuyển công việc nào</span>
-            </div>
-                `;
+            </div>`;
             recipientsContainer.html(imgHtml);
         }
 
@@ -194,6 +195,8 @@
     <script>
         const messageList = $("#messageList");
         var recipientId = 0;
+        var conversationId = 0;
+        var recipientAvatarUrl = "";
 
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/chat")
@@ -206,12 +209,11 @@
             return console.error(err.toString());
         });
 
-        connection.on("ReceiveMessage", function (user, message) {
-            if (messageList.data("connect-with-data-id") == user) {
-                console.log(user, messageList.data("connect-with-data-id"));
+        connection.on("ReceiveMessage", function (result, message) {
+            if (messageList.data("connect-with-user-id") == result.userId) {
+                renderMessageFromRecipient(result, message);
+                scrollToBottom();
             }
-            renderMessageFromRecipient(user, message);
-            scrollToBottom();
         });
 
 
@@ -224,7 +226,7 @@
             connection.invoke("SendMessageToUser", toUser, message).catch(function (err) {
                 return console.error(err.toString());
             });
-
+            callAjaxToSaveMessage(conversationId, message);
             renderMessageFromSender(message);
             scrollToBottom();
 
@@ -238,8 +240,8 @@
                 let lastArea = $(".sender-message .content-container").last();
                 lastArea.append(createNewMessageHtml);
             } else {
-                var createNewSenderMessageHtml =`
-                <li class="d-flex gap-2 ms-auto justify-content-end sender-message">
+                var createNewSenderMessageHtml = `
+                <li class="mt-auto d-flex gap-2 ms-auto justify-content-end sender-message">
                     <div class="d-flex flex-column align-items-end content-container">
                         <p>
                             ${message}
@@ -250,16 +252,16 @@
             }
         }
 
-        function renderMessageFromRecipient(user, message) {
+        function renderMessageFromRecipient(result, message) {
             var lastUser = messageList.find("li").last();
             if (lastUser.hasClass("recipient-message")) {
                 var createNewMessageHtml = `<p>${message}</p>`;
                 let lastArea = $(".recipient-message .content-container").last();
                 lastArea.append(createNewMessageHtml);
             } else {
-                var createNewRecipientMessageHtml =`
-                <li class="d-flex gap-2 recipient-message">
-                    <img class="btn-square rounded-pill" src="${user.result.avatarUrl != null ?'.' + user.result.avatarUrl : '../../img/default_user.png'}" alt="">
+                var createNewRecipientMessageHtml = `
+                <li class="mt-auto d-flex gap-2 recipient-message">
+                    <img class="btn-square rounded-pill" src="${result.avatarUrl != null ? '../.' + result.avatarUrl : '../../img/default_user.png'}" alt="">
                     <div class="d-flex flex-column align-items-start content-container">
                         <p>${message}</p>
                     </div>
@@ -271,6 +273,25 @@
         function scrollToBottom() {
             let container = $('#messageList');
             container.scrollTop(container[0].scrollHeight);
+        }
+
+        function callAjaxToSaveMessage(conversationId, content) {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: {
+                    conversationId: conversationId,
+                    content: content,
+                },
+                cache: false,
+                url: "/Message/SaveMessage",
+                success: function (res) {
+                    console.log(res);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
         }
 
         $(document).ready(function () {
@@ -285,8 +306,44 @@
 
             $(document).on("click", ".recipient", function () {
                 recipientId = $(this).data("user-id");
+                conversationId = $(this).data("conversation-id");
+                recipientAvatarUrl = $(this).find("img").attr("src");
                 messageList.data("connect-with-user-id", recipientId);
+                callAjaxToLoadMessages(0, conversationId, recipientId);
+                messageList.html("");
             });
+
+            function callAjaxToLoadMessages(totalMessages, conversationId, recipientId) {
+                $.ajax({
+                    type: "get",
+                    dataType: "json",
+                    data: {
+                        totalMessages: totalMessages,
+                        conversationId: conversationId,
+                        recipientId: recipientId
+                    },
+                    cache: false,
+                    url: "/Message/LoadMessages",
+                    success: function (res) {
+                        if(res!=null && res.length>0) {
+                            for(let i=0; i<res.length; i++) {
+                                if(recipientId == res[i].userId){
+                                    let avatarUrl = recipientAvatarUrl.slice(1)
+                                    let result = {
+                                        avatarUrl: avatarUrl
+                                    };
+                                    renderMessageFromRecipient(result, res[i].content);
+                                }else{
+                                    renderMessageFromSender(res[i].content);
+                                }
+                            }
+                        } 
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
         });
     </script>
 }

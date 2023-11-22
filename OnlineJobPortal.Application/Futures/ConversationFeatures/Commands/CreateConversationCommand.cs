@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OnlineJobPortal.Application.Futures.ConversationFeatures.Commands
 {
-    public class CreateConversationCommand : IRequest<bool>
+    public class CreateConversationCommand : IRequest<int>
     {
         public CreateConversationCommand(int applyId)
         {
@@ -20,7 +20,7 @@ namespace OnlineJobPortal.Application.Futures.ConversationFeatures.Commands
         public int ApplyId { get; }
     }
 
-    public class CreateConversationCommandHandler : IRequestHandler<CreateConversationCommand, bool>
+    public class CreateConversationCommandHandler : IRequestHandler<CreateConversationCommand, int>
     {
         private readonly IMapper mapper;
         private readonly IUnitOfWork unitOfWork;
@@ -30,7 +30,7 @@ namespace OnlineJobPortal.Application.Futures.ConversationFeatures.Commands
             this.mapper = mapper;
             this.unitOfWork = unitOfWork;
         }
-        public async Task<bool> Handle(CreateConversationCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateConversationCommand request, CancellationToken cancellationToken)
         {
             unitOfWork.BeginTransaction();
             try
@@ -41,12 +41,12 @@ namespace OnlineJobPortal.Application.Futures.ConversationFeatures.Commands
                 await unitOfWork.Repository<Conversations>().AddAsync(conversation);
 
                 unitOfWork.Commit();
-                return true;
+                return conversation.Id;
             }
             catch
             {
                 unitOfWork.Rollback();
-                return false;
+                return 0;
             }
         }
     }

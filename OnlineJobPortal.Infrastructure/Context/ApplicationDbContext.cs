@@ -46,6 +46,7 @@ namespace OnlineJobPortal.Infrastructure.Context
         public DbSet<Conversations> Conversations { get; set; }
         public DbSet<Participation> Participations { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<SaveCandidate> SaveCandidates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -82,6 +83,7 @@ namespace OnlineJobPortal.Infrastructure.Context
             builder.ApplyConfiguration(new ParticipationConfiguration());
             builder.ApplyConfiguration(new ConversationConfiguration());
             builder.ApplyConfiguration(new NotificationConfiguration());
+            builder.ApplyConfiguration(new SaveCandidateConfiguration());
         }
 
         public virtual async Task<int> SaveChangesAsync()

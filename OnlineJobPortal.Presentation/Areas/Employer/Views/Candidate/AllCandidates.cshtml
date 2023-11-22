@@ -105,52 +105,19 @@
                                         Kinh
                                         nghiệm
                                     </button>
-                                    <a class="fw-bold btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lưu ứng viên">
-                                        <i class="fa-regular fa-heart me-2"></i> <span>Lưu</span>
-                                    </a>
+                                    @if(resume.Candidate.SaveCandidates!=null && resume.Candidate.SaveCandidates.Count > 0){
+                                        var saveList = resume.Candidate.SaveCandidates.Select(s => s.CandidateId);
+                                        if(saveList.Contains(resume.CandidateId)){
+                                            <a class="fw-bold btn btn-primary text-white btn-save-candidate" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lưu ứng viên" data-candidate-id="@resume.CandidateId">
+                                                <i class="fa-regular fa-heart me-2"></i> <span>Hủy Lưu</span>
+                                            </a>
+                                        }
+                                    }else{
+                                        <a class="fw-bold btn btn-outline-primary btn-save-candidate" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lưu ứng viên" data-candidate-id="@resume.CandidateId">
+                                            <i class="fa-regular fa-heart me-2"></i> <span>Lưu</span>
+                                        </a> 
+                                    }
                                 </div>
-                                @* <div id="work-experience-@resume.Id" class="collapse position-absolute rounded-3 bg-white">
-                        <div class="d-flex gap-2 flex-nowrap">
-                        @if(resume.Experiences != null && resume.Experiences.Count > 0)
-                        @foreach(var experience in resume.Experiences) {
-                        <div class="flex-grow-1 d-flex flex-column border rounded-2 p-2">
-                        <span class="fst-italic" style="font-size: .8rem;">@experience.StartDate.ToString("MM/yyyy") - @experience.EndDate.ToString("MM/yyyy")</span>
-                        <h5 class="fw-bold" style="color: #555;">@experience.CompanyName</h5>
-                        <p>Vị trí<span class="ms-2 text-danger fw-bold">@experience.Position</span></p>
-                        <span class="fw-bold">Công nghệ sử dụng</span>
-                        <p class="d-flex gap-3">
-                        @if(experience.ExperienceSkills != null && experience.ExperienceSkills.Count > 0)
-                        @foreach(var experienceSkill in experience.ExperienceSkills){
-                        <span>@experienceSkill.Skill.SkillName</span>
-                        }
-                        </p>
-                        <p>@experience.Description</p>
-                        <div class="align-self-stretch position-relative">
-                        <button class="btn btn-info text-white" data-bs-toggle="collapse"
-                        data-bs-target="#work-experience-project-collapse-@experience.Id" aria-expanded="false"
-                        aria-controls="work-experience-project-collapse-@experience.Id">
-                        Dự án tham gia
-                        </button>
-                        <div id="work-experience-project-collapse-@experience.Id"
-                        class="collapse position-absolute bg-white p-3 top-50 start-100 translate-middle">
-                        <div class="d-flex gap-3">
-                        @if(experience.ExperienceProjects != null && experience.ExperienceProjects.Count > 0)
-                        @foreach(var experienceProjects in experience.ExperienceProjects){
-                        <div class="d-flex flex-column rounded gap-2 p-2"
-                        style="background-color: #fcfbfb;">
-                        <span class="fst-italic" style="font-size: .8rem;">@experienceProjects.StartDate.ToString("MM/yyyy") -
-                        @experienceProjects.EndDate.ToString("MM/yyyy")</span>
-                        <span class="fw-bold">@experienceProjects.Title</span>
-                        <span>Vai trò: @experienceProjects.Position</span>
-                        </div>
-                        }
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        }
-                        </div>
-                        </div> *@
                             </div>
                         </div>
                     </div>
@@ -176,7 +143,7 @@
                 <div class="project-container"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>
@@ -197,6 +164,58 @@
                 projectContainer.html("");
                 callAjaxToGetExperience(candidateId);
             });
+
+            $(".btn-save-candidate").click(function () {
+                let btnSaveCandidate = $(this);
+                let candidateId = btnSaveCandidate.data("candidate-id");
+                if(btnSaveCandidate.hasClass("btn-outline-primary")){
+                    callAjaxToSaveCandidate(candidateId);
+                    btnSaveCandidate.removeClass("btn-outline-primary");
+                    btnSaveCandidate.addClass("btn-primary text-white");
+                }else{
+                    callAjaxToDeleteSaveCandidate(candidateId);
+                    btnSaveCandidate.addClass("btn-outline-primary");
+                    btnSaveCandidate.removeClass("btn-primary text-white");
+                }
+            });
+
+            function callAjaxToSaveCandidate(candidateId) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    data: { candidateId: candidateId },
+                    url: "/Employer/Candidate/SaveCandidate",
+                    success: function (res) {
+                        if(res){
+                            toastr.success("Lưu ứng viên thành công");
+                        }else{
+                            toastr.error("Lưu ứng viên thất bại");
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
+
+            function callAjaxToDeleteSaveCandidate(candidateId) {
+                $.ajax({
+                    type: "DELETE",
+                    dataType: "json",
+                    data: { candidateId: candidateId },
+                    url: "/Employer/Candidate/DeleteSaveCandidate",
+                    success: function (res) {
+                        if(res){
+                            toastr.warning("Bỏ theo dõi ứng viên thành công");
+                        }else{
+                            toastr.error("Bỏ theo dõi ứng viên thất bại");
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
 
             function callAjaxToGetExperience(candidateId) {
                 $.ajax({

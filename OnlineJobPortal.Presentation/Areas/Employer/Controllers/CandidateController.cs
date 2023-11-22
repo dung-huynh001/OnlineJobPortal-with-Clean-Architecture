@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OnlineJobPortal.Application.Futures.ResumeFeatures.Queries;
+using OnlineJobPortal.Application.Futures.SaveCandidateFeatures.Commands;
 using OnlineJobPortal.Application.Interfaces;
 
 namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
@@ -38,9 +39,26 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
             return Json(data);
         }
 
-        public IActionResult SavedCandidates()
+        public async Task<IActionResult> SavedCandidates()
         {
-            return View();
+            var data = await mediator.Send(new GetAllSavedCandidateQuery());
+            return View(data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveCandidate(int candidateId)
+        {
+            int employerId = currentUserService.GetActorId();
+            var success = await mediator.Send(new SaveCandidateCommand(candidateId, employerId));
+            return Json(success);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteSaveCandidate(int candidateId)
+        {
+            int employerId = currentUserService.GetActorId();
+            var success = await mediator.Send(new DeleteSaveCandidateCommand(candidateId, employerId));
+            return Json(success);
         }
     }
 }
