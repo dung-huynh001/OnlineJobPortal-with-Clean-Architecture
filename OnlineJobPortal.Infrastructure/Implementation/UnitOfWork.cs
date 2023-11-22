@@ -45,6 +45,7 @@ namespace OnlineJobPortal.Infrastructure.Implementation
         private INotificationRepository _notificationRepository;
         private IConversationsRepository _conversationsRepository;
         private IParticipationRepository _participationRepository;
+        private ISaveCandidateRepository _saveCandidateRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -78,6 +79,7 @@ namespace OnlineJobPortal.Infrastructure.Implementation
         public INotificationRepository NotificationRepository => _notificationRepository ??= new NotificationRepository(_context);
         public IConversationsRepository ConversationsRepository => _conversationsRepository ??= new ConversationsRepository(_context);
         public IParticipationRepository ParticipationRepository => _participationRepository ??= new ParticipationRepository(_context);
+        public ISaveCandidateRepository SaveCandidateRepository => _saveCandidateRepository ??= new SaveCandidateRepository(_context);
         public IGenericRepository<T> Repository<T>() where T : BaseEntity
         {
             if (_repositories == null)

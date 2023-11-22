@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Futures\ParticipationFeatures\Commands\CreateParticipationCommand.cs~RF3f8590f.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OnlineJobPortal.Domain\OnlineJobPortal.Domain.csproj" />
   </ItemGroup>
 
@@ -23,12 +27,13 @@
     <Folder Include="Futures\ExperienceProjectFeature\Queries\" />
     <Folder Include="Futures\ForeignLangugeFeatures\Queries\" />
     <Folder Include="Futures\LocationFeatures\Queries\" />
+    <Folder Include="Futures\ParticipationFeatures\Queries\" />
     <Folder Include="Futures\ProjectFeatures\Queries\" />
     <Folder Include="Futures\ProvinceFeatures\Queries\" />
     <Folder Include="Futures\RequirementSkillFeatures\Commands\" />
     <Folder Include="Futures\RequirementSkillFeatures\Queries\" />
     <Folder Include="Futures\MessageFeatures\Commands\" />
-    <Folder Include="Futures\MessageFeatures\Queries\" />
+    <Folder Include="Futures\SaveCandidateFeatures\Queries\" />
     <Folder Include="Futures\StatisticalFeatures\Commands\" />
   </ItemGroup>
 

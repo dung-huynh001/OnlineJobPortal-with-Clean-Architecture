@@ -79,7 +79,7 @@ namespace OnlineJobPortal.Application.Futures.ApplyFeatures.Queries
                     .ToListAsync();
 
                 var educations = await unitOfWork.Repository<Education>().GetAll
-                    .Where(e => e.ResumeId != resume!.Id)
+                    .Where(e => e.ResumeId == resume!.Id)
                     .Select(e => new GetEducationDto
                     {
                         Major = e.Major,

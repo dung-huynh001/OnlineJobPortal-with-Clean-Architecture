@@ -35,6 +35,7 @@ namespace OnlineJobPortal.Application.Interfaces
         DbSet<ExperienceSkill> ExperienceSkills { get; set; }
         DbSet<ExperienceProject> ExperienceProjects { get; set; }
         DbSet<Notification> Notifications { get; set; }
+        DbSet<SaveCandidate> SaveCandidates { get; set; }
 
         Task<int> SaveChangesAsync(); 
         Task<int> SaveChangesAsync(CancellationToken cancellation);

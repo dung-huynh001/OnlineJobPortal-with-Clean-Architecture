@@ -9,6 +9,7 @@ using OnlineJobPortal.Application.Futures.ApplyFeatures.Queries;
 using OnlineJobPortal.Application.Futures.ConversationFeatures.Commands;
 using OnlineJobPortal.Application.Futures.JobFavoriteFeatures.Commands;
 using OnlineJobPortal.Application.Futures.JobFavoriteFeatures.Queries;
+using OnlineJobPortal.Application.Futures.ParticipationFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ResumeFeatures.Queries;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Domain.Entities;
@@ -60,9 +61,12 @@ namespace OnlineJobPortal.Presentation.Controllers
                 applyJobDto.Status = "pending";
                 applyJobDto.CoverLetter = coverLetter ?? "";
                 applyJobDto.CvUrl = cvUrl;
-                var result = mediator.Send(new ApplyJobCommand(applyJobDto)).GetAwaiter().GetResult();
-                var createConversation = mediator.Send(new CreateConversationCommand(jobPostId)).Result;
-                if (!result.Success || !createConversation) throw new Exception();
+                var applyId = mediator.Send(new ApplyJobCommand(applyJobDto)).Result;
+                var conversationId = mediator.Send(new CreateConversationCommand(applyId)).Result;
+                if ( applyId == 0 || conversationId == 0) throw new Exception();
+
+                string userId = currentUserService.UserId!;
+                var participation = mediator.Send(new CreateParticipationCommand(userId, conversationId)).Result;
                 return Json(new { success = true });
             }
             catch

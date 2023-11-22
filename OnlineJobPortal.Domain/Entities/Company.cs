@@ -15,17 +15,13 @@ namespace OnlineJobPortal.Domain.Entities
         public string? Twitter { get; set; }
         public string? WebsiteUrl { get; set; }
         public string LogoUrl { get; set; }
-
         public int DistrictId { get; set; }
         public int ProvinceId { get; set; }
         public District District { get; set; }
-
         public int? BussinessIndustryId { get; set; }
         public BussinessIndustry? BussinessIndustry { get; set; }
-
         public ICollection<CompanyImage>? CompanyImages { get; set; }
-
         public ICollection<Employer>? Employers { get; set; }
-
+        public ICollection<SaveCandidate>? SaveCandidates { get; set; }
     }
 }
