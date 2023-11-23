@@ -62,7 +62,9 @@ namespace OnlineJobPortal.Presentation.SignalR
 
         public async Task SendToGroup(string resourceName, string resourceId, string message)
         {
-            await Clients.Groups($"{resourceName}-{resourceId}").SendAsync("ReceiveMessage", message);
+            var fromUserId = Context.UserIdentifier;
+            var result = await mediator.Send(new GetAvatarUserQuery(fromUserId));
+            await Clients.Groups($"{resourceName}-{resourceId}").SendAsync("ReceiveMessage", message, result.AvatarUrl);
         }
 
         public async Task JoinGroup(string resourceName, string resourceId)

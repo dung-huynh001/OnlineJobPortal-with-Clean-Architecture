@@ -150,60 +150,36 @@ var lineChartConfig = {
 
 
 // Chart.js Bar Chart Example 
+var totalList = [];
+var pendingJobsList = [];
+var viewedJobsList = [];
+
 
 var barChartConfig = {
 	type: 'bar',
-
 	data: {
 		labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 		datasets: [{
-			label: 'Tổng CVs',
+			label: 'Tổng CV',
 			backgroundColor: window.chartColors.green,
 			borderColor: window.chartColors.green,
 			borderWidth: 1,
 			maxBarThickness: 16,
-
-			data: [
-				23,
-				45,
-				76,
-				75,
-				62,
-				37,
-				83
-			]
+			data: []
 		},{
-			label: 'CVs Mới',
+			label: 'CV Đã xem',
 			backgroundColor: window.chartColors.gray,
 			borderColor: window.chartColors.gray,
 			borderWidth: 1,
 			maxBarThickness: 16,
-
-			data: [
-				23,
-				45,
-				76,
-				75,
-				62,
-				37,
-				83
-			]
+			data: []
 		},{
-			label: 'CVs Đã xem',
+			label: 'CV Mới',
 			backgroundColor: window.chartColors.yellow,
 			borderColor: window.chartColors.yellow,
 			borderWidth: 1,
 			maxBarThickness: 16,
-
-			data: [
-				23,
-				45,
-				76,
-				75,
-				62,
-				37,
-				83
-			]
+			data: []
 		}]
 	},
 	options: {
@@ -229,7 +205,6 @@ var barChartConfig = {
 			backgroundColor: '#fff',
 			bodyFontColor: window.chartColors.text,
 			titleFontColor: window.chartColors.text,
-
 		},
 		scales: {
 			xAxes: [{
@@ -246,8 +221,6 @@ var barChartConfig = {
 					drawBorder: false,
 					color: window.chartColors.borders,
 				},
-
-
 			}]
 		}
 
@@ -265,10 +238,33 @@ window.addEventListener('load', function () {
 
 	// var lineChart = document.getElementById('canvas-linechart').getContext('2d');
 	// window.myLine = new Chart(lineChart, lineChartConfig);
+	// callAjaxToLoadDataBarChart();
+	// var barChart = document.getElementById('canvas-barchart').getContext('2d');
+	// window.myBar = new Chart(barChart, barChartConfig);
+	async function callAjaxToLoadDataBarChart() {
+		try {
+			const res = await $.ajax({
+				type: 'get',
+				dataType: 'json',
+				url: '/Employer/Home/GetBarChartData',
+			});
+	
+			totalList = res.map(e => e.total);
+			pendingJobsList = res.map(e => e.pendingJobs);
+			viewedJobsList = res.map(e => e.viewedJobs);
+			
+			barChartConfig.data.datasets[0].data = totalList;
+            barChartConfig.data.datasets[1].data = pendingJobsList;
+            barChartConfig.data.datasets[2].data = viewedJobsList;
 
-	var barChart = document.getElementById('canvas-barchart').getContext('2d');
-	window.myBar = new Chart(barChart, barChartConfig);
-
-
+			// Render the chart here
+			var barChart = document.getElementById('canvas-barchart').getContext('2d');
+			window.myBar = new Chart(barChart, barChartConfig);
+		} catch (err) {
+			console.log(err);
+		}
+	}
+	
+	callAjaxToLoadDataBarChart();
 });
 

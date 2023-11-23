@@ -9,9 +9,42 @@
     var jobTypeList = ViewBag.JobTypeList as List<JobTypeDto>;
 }
 <link rel="stylesheet" href="~/area/custom/css/PostANewJob.css">
+<link href="~/lib/animate/animate.min.css" rel="stylesheet">
+
+<style>
+    .overlay {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        overflow: hidden;
+        background: linear-gradient(150deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, .6)), url('../../img/overlay-bg-1.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        top: -14px;
+        left: -12px;
+        width: 105%;
+        height: calc(100% + 10px);
+        border-radius: 5px;
+    }
+</style>
 
 <div class="container">
-    <div class="row">
+    <div class="row position-relative">
+        <div class="overlay" style="display: none;">
+            <div class="p-5 rounded-3 animated slideInDown" style="background-color: rgba(255, 255, 255, .9); margin-top: 160px;">
+                <p class="text-black fs-5 mb-5">Vui lòng cập nhật thông tin công ty trước khi đăng tin tuyển dụng</p>
+                <div class="text-center">
+                    @{
+                        var employerId = @CurrentUserService.GetActorId();
+                    }
+                    <a asp-area="Employer" asp-controller="Company" asp-action="CompanyProfile" asp-route-employerId="@employerId" class="text-uppercase fw-bold btn btn-primary text-white">
+                        <span class="">Cập nhật thông tin công ty</span>
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="col-12 col-lg-3 h-100 pb-3">
             <div
                 class="p-3 bg-white rounded-3 d-flex flex-row flex-lg-column justify-content-between align-items-center align-items-lg-start stepper">

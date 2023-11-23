@@ -148,8 +148,87 @@
     <!-- Template Javascript -->
     <script src="~/js/HomePage/main.js"></script>
     <script>
+        var numberOfNotifications = $("#number-of-notifications");
+        const btnShowNotifications = $("#btn-show-notifications");
+        const notificationContainer = $("#notification-container");
+
+
+        const notificationConnection = new signalR.HubConnectionBuilder()
+                .withUrl("/chat")
+                .configureLogging(signalR.LogLevel.Information)
+                .build();
+
+        async function startConnection() {
+            try {
+                await notificationConnection.start();
+                console.log("SignalR Notification Connected.");
+            } catch (err) {
+                console.log(err);
+                setTimeout(startConnection, 1000);
+            }
+        }
+
+        startConnection();
+
+        notificationConnection.on("ReceiveMessage", (message, avatarUrl) => {
+            console.log(message);
+            console.log(avatarUrl);
+            
+            let notification = renderNotification(message, avatarUrl, "2hr ago");
+
+            notificationContainer.append(notification);
+
+            let numbers = Number(numberOfNotifications.text()) + 1;
+            numberOfNotifications.text(numbers);
+            numberOfNotifications.show();
+        });
+
+        function renderNotification(content, avatarUrl, timestamp) {
+            let url = "." + avatarUrl;
+            let notificationHtml = `
+            <div class="d-flex p-2 gap-3 border-bottom">
+                <img class="flex-shrink-0 align-self-center rounded-pill" src="${url}" alt=""
+                    style="width: 30px; height: 30px; object-fit: fill">
+                <div class="flex-grow-1 overflow-hidden" style="max-height: 3rem;">
+                    ${content}
+                </div>
+                <span class="flex-shrink-0" style="font-size: 0.8rem; color: #aaa;">${timestamp}</span>
+            </div>`
+            return notificationHtml;
+        }
+
         $(document).ready(function(){
             $("input").attr("autocomplete", "off");
+        
+            //Notifications
+            callAjaxToJoinGroup();
+            async function callAjaxToJoinGroup(){
+                try{
+                    var res = await $.ajax({
+                        type: "get",
+                        dataType: "json",
+                        url: "/Notification/GetAppliedJobGroup"
+                    });
+                    if(res != null && res.length > 0){
+                        for(let i=0; i<res.length; i++){
+                            notificationConnection.invoke('JoinGroup', 'JobPost', `${res[i]}`)
+                        }
+                    }else{
+                        throw new exception();
+                    }
+                }catch(err){
+                    console.log(err);
+                }
+            }
+
+            if(numberOfNotifications.text() == 0){
+                numberOfNotifications.hide();
+            }
+
+            btnShowNotifications.click(function(){
+                numberOfNotifications.text("0");
+                numberOfNotifications.hide();
+            });
         });
     </script>
     @await RenderSectionAsync("Scripts", required: false)

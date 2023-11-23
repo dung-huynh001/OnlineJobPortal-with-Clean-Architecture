@@ -48,15 +48,32 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".btn-approval", function () {
-        let btnViewProfile = $(this);
-        let profileItem = btnViewProfile.closest(".profile-item");
-        console.log(profileItem);
-        let applyId = btnViewProfile.data("apply-id");
-        callAjaxToApprovalProfile(applyId);
+        let btnApproval = $(this);
+        let profileItem = btnApproval.closest(".profile-item");
+        let applyId = btnApproval.data("apply-id");
+        let jobPostId = btnApproval.data("job-post-id");
+        $("#btn-send-notification").data("apply-id", applyId);
+        $("#btn-send-notification").data("job-post-id", jobPostId);
         let statusHtml = `<span class="px-2 py-1 bg-success text-white rounded-2" >PASSED</span>`
         profileItem.find(".status").html(statusHtml);
     });
 
+    $(document).on("click", "#btn-send-notification", function () {
+        let btnSendNotification = $(this);
+        let applyId = btnSendNotification.data("apply-id");
+        
+        if(!$("#appointment-form")[0].checkValidity()) {
+            toastr.warning("Vui lòng nhập thông tin lịch hẹn trước khi duyệt");
+            return;
+        }
+        callAjaxToApprovalProfile(applyId);
+    });
+
+    $(document).on("click", "#btn-close-appointment-modal", function() {
+        $("input").val("");
+        $("textarea").val("");
+    });
+    
     $(document).on("click", ".btn-reject-profile", function () {
         let btnViewProfile = $(this);
         let profileItem = btnViewProfile.closest(".profile-item");
@@ -65,6 +82,8 @@ $(document).ready(function () {
         let statusHtml = `<span class="px-2 py-1 bg-secondary text-white rounded-2" >REJECTED</span>`
         profileItem.find(".status").html(statusHtml);
     });
+
+
 
     function callAjaxToApprovalProfile(applyId) {
         $.ajax({

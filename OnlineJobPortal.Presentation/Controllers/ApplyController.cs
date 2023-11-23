@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineJobPortal.Application.DTOs.ApplyDto;
 using OnlineJobPortal.Application.Futures.ApplyFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ApplyFeatures.Queries;
+using OnlineJobPortal.Application.Futures.CandidateFeatures.Queries;
 using OnlineJobPortal.Application.Futures.ConversationFeatures.Commands;
 using OnlineJobPortal.Application.Futures.JobFavoriteFeatures.Commands;
 using OnlineJobPortal.Application.Futures.JobFavoriteFeatures.Queries;
@@ -73,6 +74,13 @@ namespace OnlineJobPortal.Presentation.Controllers
             {
                 return Json(new { success = false });
             }
+        }
+
+        public async Task<IActionResult> IsValidCandidateInfo()
+        {
+            int candidateId = currentUserService.GetActorId();
+            var isValid = await mediator.Send(new IsValidCandidateInfoQuery(candidateId));
+            return Json(isValid);
         }
 
         public IActionResult SavedJobs()
