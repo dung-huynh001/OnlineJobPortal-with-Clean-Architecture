@@ -127,7 +127,7 @@
                                                     <span data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                         title="Duyệt hồ sơ">
                                                         <a class="btn btn-outline-primary fs-5 rounded-3 border px-2 py-1 btn-approval"
-                                                            role="button" data-apply-id="@applied.Id"><i
+                                                            role="button" data-job-post-id="@applied.JobPostId" data-apply-id="@applied.Id" data-bs-toggle="modal" data-bs-target="#appoinment-modal"><i
                                                                 class="fa-solid fa-circle-check"></i></a>
                                                     </span>
                                                     <span data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -326,7 +326,7 @@
     </div>
 </div>
 
-<!-- Modal -->
+<!-- View Candidate Modal -->
 <div class="modal fade" id="candidate-info-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -395,8 +395,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
             </div>
@@ -404,7 +402,92 @@
     </div>
 </div>
 
+<!-- Appointment Modal -->
+<div class="modal fade" id="appoinment-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="appointment-label" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="appointment-label">Đặt lịch hẹn ứng viên</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="appointment-form">
+            <div class="pb-3">
+                <label class="form-label">Tiêu đề<span class="text-danger ms-1">*</span></label>
+                <input id="appointment-modal-title" type="text" class="form-control" required>
+            </div>
+            <div>
+                <label class="form-label">Nội dung<span class="text-danger ms-1">*</span></label>
+                <textarea id="appointment-modal-content" class="form-control" required style="height: 100px"></textarea>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-close-appointment-modal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button id="btn-send-notification" type="button" class="btn btn-primary text-white">Gửi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 @section Scripts {
     <script src="~/js/JobPostDetailPage/jobpostdetail.js"></script>
+    <script src="~/area/assets/plugins/signalr/signalr.min.js"></script>
+    <script>
+        const notificationConnection = new signalR.HubConnectionBuilder()
+                .withUrl("/chat")
+                .configureLogging(signalR.LogLevel.Information)
+                .build();
+
+        async function startConnection() {
+            try {
+                await notificationConnection.start();
+                console.log("SignalR Notification Connected.");
+            } catch (err) {
+                console.log(err);
+                setTimeout(startConnection, 1000);
+            }
+        }
+
+        startConnection();
+
+        function sendNotificationToGroup(jobPostId, content) {
+            notificationConnection.invoke("SendToGroup", "JobPost", `${jobPostId}`, content).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+
+        $(document).ready(function() {
+            callAjaxToJoinGroup();
+            async function callAjaxToJoinGroup(){
+                try{
+                    var res = await $.ajax({
+                        type: "get",
+                        dataType: "json",
+                        url: "/Notification/GetJobPostGroup"
+                    });
+                    console.log(res);
+                    if(res != null && res.length > 0){
+                        for(let i=0; i<res.length; i++){
+                            notificationConnection.invoke('JoinGroup', 'JobPost', `${res[i]}`)
+                        }
+                    }else{
+                        throw new exception();
+                    }
+                }catch(err){
+                    console.log(err);
+                }
+            }
+
+            $(document).on("click", "#btn-send-notification", function () {
+                let btnSendNotification = $(this);
+                let jobPostId = btnSendNotification.data("job-post-id");
+                let title = $("#appointment-modal-title").val();
+                alert(title);
+                sendNotificationToGroup(jobPostId, title);
+                $("#btn-close-appointment-modal").trigger("click");
+            });
+        });
+    </script>
 }

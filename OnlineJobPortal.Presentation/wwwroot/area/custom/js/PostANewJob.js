@@ -1,4 +1,20 @@
 ﻿$(document).ready(function () {
+
+  $.ajax({
+    type: "get",
+    dataType: "json",
+    cache: false,
+    url: "/Employer/JobPost/IsValidCompanyInfo",
+    success: function (res) {
+      if(!res){
+        $('.overlay').show();
+      }
+    },
+    error: function (err) {
+      console.error(err);
+    }
+  });  
+
   // Khởi tạo location selection
   var localpicker = new LocalPicker({
     province: "ls_province",

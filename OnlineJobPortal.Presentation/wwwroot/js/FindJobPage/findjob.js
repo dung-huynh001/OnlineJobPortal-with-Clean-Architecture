@@ -394,6 +394,21 @@ $(document).ready(function () {
     formData.append("coverLetter", $("#cover-letter").val());
     if ($("input[name='radio-cv']:checked").val() == 0) {
       formData.append("cv", null);
+      $.ajax({
+        type: "get",
+        dataType: "json",
+        cache: false,
+        url: "/Apply/IsValidCandidateInfo",
+        success: function(res){
+          if(!res){
+            toastr.warning("Vui lòng cập nhật hồ sơ Online của IT Jobs");
+          }
+        },
+        error: function(err){
+          console.log(err);
+        }
+      });
+      return;
     } else {
       formData.append("cv", cvFile);
       if (cvFile == null) {

@@ -25,5 +25,11 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
             return View(data);
         }
 
+        public async Task<IActionResult> GetBarChartData()
+        {
+            int employerId = currentUserService.GetActorId();
+            var data = await mediator.Send(new DrawBarChartQuery(employerId));
+            return Json(data);
+        }
     }
 }

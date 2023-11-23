@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using OnlineJobPortal.Application.Futures.EmployerFeatures.Queries;
+using OnlineJobPortal.Application.Futures.MessageFeatures.Queries;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Presentation.Models;
@@ -46,6 +47,23 @@ namespace OnlineJobPortal.Presentation.Controllers
             var candidateId = currentUserService.GetActorId();
             var data = await mediator.Send(new GetAllAppliedEmployersQuery(candidateId));
             return Json(data);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAppliedJobGroup()
+        {
+            int candidateId = currentUserService.GetActorId();
+            var jobPostIds = await mediator.Send(new GetAppliedJobGroupQuery(candidateId));
+            return Json(jobPostIds);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Employer")]
+        public async Task<IActionResult> GetJobPostGroup()
+        {
+            int employerId = currentUserService.GetActorId();
+            var jobPostIds = await mediator.Send(new GetJobPostGroupQuery(employerId));
+            return Json(jobPostIds);
         }
 
         /*[HttpPost]

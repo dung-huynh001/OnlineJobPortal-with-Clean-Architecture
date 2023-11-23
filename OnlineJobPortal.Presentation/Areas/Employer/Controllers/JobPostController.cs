@@ -9,6 +9,7 @@ using OnlineJobPortal.Application.DTOs.LocationDto;
 using OnlineJobPortal.Application.DTOs.SkillDto;
 using OnlineJobPortal.Application.Futures.ApplyFeatures.Commands;
 using OnlineJobPortal.Application.Futures.ApplyFeatures.Queries;
+using OnlineJobPortal.Application.Futures.CompanyFeatures.Queries;
 using OnlineJobPortal.Application.Futures.JobFavoriteFeatures.Queries;
 using OnlineJobPortal.Application.Futures.JobPostFeatures.Commands;
 using OnlineJobPortal.Application.Futures.JobPostFeatures.Queries;
@@ -72,6 +73,14 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
         {
             var data = mediator.Send(new GetJobPostByIdQuery(id)).GetAwaiter().GetResult();
             return View(data);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> IsValidCompanyInfo()
+        {
+            int employerId = currentUserService.GetActorId();
+            var isValid = await mediator.Send(new VerifyCompanyInfoQuery(employerId));
+            return Json(isValid);
         }
 
         [HttpPost]
