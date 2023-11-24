@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using OnlineJobPortal.Application.Futures.EmployerFeatures.Queries;
 using OnlineJobPortal.Application.Futures.MessageFeatures.Queries;
+using OnlineJobPortal.Application.Futures.NotificationFeatures.Queries;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Presentation.Models;
@@ -34,7 +35,9 @@ namespace OnlineJobPortal.Presentation.Controllers
 
         public IActionResult Notifies()
         {
-            return View();
+            string userId = currentUserService.UserId!;
+            var notifications = mediator.Send(new GetAllNotificationsQuery(userId)).Result;
+            return View(notifications);
         }
 
         public IActionResult Chat()
@@ -64,6 +67,22 @@ namespace OnlineJobPortal.Presentation.Controllers
             int employerId = currentUserService.GetActorId();
             var jobPostIds = await mediator.Send(new GetJobPostGroupQuery(employerId));
             return Json(jobPostIds);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetTitleOfNotification()
+        {
+            string userId = currentUserService.UserId!;
+            var notificaitons = await mediator.Send(new GetTitleToNotifyQuery(userId));
+            return Json(notificaitons);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetNumberOfUnreadNotifications()
+        {
+            string userId = currentUserService.UserId!;
+            var numberOfUnread = await mediator.Send(new GetTotalUnReadNotificationQuery(userId));
+            return Json(numberOfUnread);
         }
 
         /*[HttpPost]

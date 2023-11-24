@@ -15,7 +15,10 @@ namespace OnlineJobPortal.Infrastructure.Configuration
         {
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Content).IsRequired(false);
+            builder.Property(x => x.Content)
+                .HasColumnType("ntext")
+                .IsRequired(false);
+            builder.Property(x => x.Title).IsRequired(false);
             builder.Property(x => x.ResourceId).IsRequired();
             builder.Property(x => x.ResourceName).IsRequired(false);
 

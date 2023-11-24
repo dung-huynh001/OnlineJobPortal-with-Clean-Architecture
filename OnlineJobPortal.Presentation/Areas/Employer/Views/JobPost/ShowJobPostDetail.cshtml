@@ -19,6 +19,10 @@
     .list-group .list-group-item.active div .fa-caret-right {
         transform: rotate(90deg);
     }
+
+    .ck-editor__editable {
+        min-height: 250px;
+    }
 </style>
 
 <div class="row g-3">
@@ -58,10 +62,13 @@
                     </div>
                     <p class="m-0 ms-auto d-flex align-items-baseline">
                         <span class="me-2 text-nowrap fw-bold">Lọc theo</span>
-                        <select class="form-select" name="" id="">
-                            <option value="">Tất cả</option>
-                            <option value="">Ngày nộp</option>
-                            <option value="">Trạng thái</option>
+                        <select class="form-select" name="" id="filter-selector">
+                            <option value="0">Tất cả</option>
+                            <option value="1">Chưa xem</option>
+                            <option value="2">Đã xem</option>
+                            <option value="3">Đã duyệt</option>
+                            <option value="4">Từ chối</option>
+                            <option value="5">Rút hồ sơ</option>
                         </select>
                     </p>
                 </div>
@@ -75,7 +82,7 @@
                                     {
                                         foreach (var applied in Model!.Applications)
                                         {
-                                            <div class="d-flex gap-3 bg-white p-3 rounded-3 shadow-sm profile-item">
+                                            <div class="gap-3 bg-white p-3 rounded-3 shadow-sm profile-item" style="display: flex;">
                                                 @{
                                                     var avatarUrl = "../../img/default_user.png";
                                                     if (@applied.Candidate?.AvatarUrl != null)
@@ -127,7 +134,7 @@
                                                     <span data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                         title="Duyệt hồ sơ">
                                                         <a class="btn btn-outline-primary fs-5 rounded-3 border px-2 py-1 btn-approval"
-                                                            role="button" data-job-post-id="@applied.JobPostId" data-apply-id="@applied.Id" data-bs-toggle="modal" data-bs-target="#appoinment-modal"><i
+                                                            role="button" data-candidate-id="@applied.CandidateId" data-job-post-id="@applied.JobPostId" data-apply-id="@applied.Id" data-bs-toggle="modal" data-bs-target="#appoinment-modal"><i
                                                                 class="fa-solid fa-circle-check"></i></a>
                                                     </span>
                                                     <span data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -418,7 +425,10 @@
             </div>
             <div>
                 <label class="form-label">Nội dung<span class="text-danger ms-1">*</span></label>
-                <textarea id="appointment-modal-content" class="form-control" required style="height: 100px"></textarea>
+                <div id="appointment-modal-content" class="">
+
+                </div>
+                @* <textarea id="appointment-modal-content" class="form-control" required style="height: 100px"></textarea> *@
             </div>
         </form>
       </div>
@@ -432,6 +442,7 @@
 
 
 @section Scripts {
+    <script src="~/area/assets/plugins/ckeditor/ckeditor5/ckeditor.min.js"></script>
     <script src="~/js/JobPostDetailPage/jobpostdetail.js"></script>
     <script src="~/area/assets/plugins/signalr/signalr.min.js"></script>
     <script>
@@ -450,11 +461,33 @@
             }
         }
 
-        startConnection();
+        
 
         function sendNotificationToGroup(jobPostId, content) {
             notificationConnection.invoke("SendToGroup", "JobPost", `${jobPostId}`, content).catch(function (err) {
                 return console.error(err.toString());
+            });
+        }
+
+        function callAjaxToSaveNotification(candidateId, title, content, resourceId){
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: {
+                    candidateId: candidateId, 
+                    title: title, 
+                    content: content, 
+                    resourceId: resourceId
+                },
+                url: "/Employer/Notification/SaveNotification",
+                success: function(res) {
+                    if(!res){
+                        toastr.warning("Hệ thông đang gặp trục trặc vui lòng quay lại sau");
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
             });
         }
 
@@ -467,8 +500,8 @@
                         dataType: "json",
                         url: "/Notification/GetJobPostGroup"
                     });
-                    console.log(res);
                     if(res != null && res.length > 0){
+                        await startConnection();
                         for(let i=0; i<res.length; i++){
                             notificationConnection.invoke('JoinGroup', 'JobPost', `${res[i]}`)
                         }
@@ -480,14 +513,82 @@
                 }
             }
 
-            $(document).on("click", "#btn-send-notification", function () {
+            $(document).on("click", "#btn-send-notification", async function () {
                 let btnSendNotification = $(this);
                 let jobPostId = btnSendNotification.data("job-post-id");
                 let title = $("#appointment-modal-title").val();
-                alert(title);
-                sendNotificationToGroup(jobPostId, title);
+                let content = $("#appointment-modal-content").find(".ck-content").html();
+                let candidateId = btnSendNotification.data("candidate-id");
+                await callAjaxToSaveNotification(candidateId, title, content, jobPostId);
+                await sendNotificationToGroup(jobPostId, title);
                 $("#btn-close-appointment-modal").trigger("click");
             });
+
+            $("#filter-selector").on("change", function() {
+                let selector = $(this);
+                let selectedValue = selector.val();
+                switch (selectedValue) {
+                    case "1":
+                        $(".profile-item").each(function() {
+                            let profile = $(this);
+                            let status = profile.find(".status>span").text();
+                            if(status.toLowerCase() == "pending"){
+                                profile.show();
+                            }else{
+                                profile.hide();
+                            }
+                        });
+                        break;
+                    case "2":
+                        $(".profile-item").each(function() {
+                            let profile = $(this);
+                            let status = profile.find(".status>span").text();
+                            if(status.toLowerCase() == "viewed"){
+                                profile.show();
+                            }else{
+                                profile.hide();
+                            }
+                        });
+                        break;
+                    case "3":
+                        $(".profile-item").each(function() {
+                            let profile = $(this);
+                            let status = profile.find(".status>span").text();
+                            if(status.toLowerCase() == "passed"){
+                                profile.show();
+                            }else{
+                                profile.hide();
+                            }
+                        });
+                        break;
+                    case "4":
+                        $(".profile-item").each(function() {
+                            let profile = $(this);
+                            let status = profile.find(".status>span").text();
+                            if(status.toLowerCase() == "rejected"){
+                                profile.show();
+                            }else{
+                                profile.hide();
+                            }
+                        });
+                        break;
+                    case "5":
+                        $(".profile-item").each(function() {
+                            let profile = $(this);
+                            let status = profile.find(".status>span").text();
+                            if(status.toLowerCase() == "cancel"){
+                                profile.show();
+                            }else{
+                                profile.hide();
+                            }
+                        });
+                        break;
+                    default: 
+                        $(".profile-item").show();
+                        break;
+                }
+            });
+
         });
     </script>
 }

@@ -20,8 +20,20 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/Profile/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZmlsZVxJbmRleC5jc2h0bWw=
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/ManageCandidate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlQ2FuZGlkYXRlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/ManageCompany/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlQ29tcGFueVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/ManageEmployer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlRW1wbG95ZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/ManageJobPost/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlSm9iUG9zdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/LVTN/Project_V1_03102023/OnlineJobPortal/OnlineJobPortal.Presentation/Areas/Admin/Views/Shared/_Layout.cshtml]
