@@ -1,4 +1,7 @@
-﻿<div class="container-fluid bg-light">
+﻿@using OnlineJobPortal.Application.DTOs.NotificationDto
+@model List<GetNotificationDto>
+
+<div class="container-fluid bg-light">
     <div class="contaner min-vh-100 py-3 px-5">
         <div class="row gap-3">
             <div class="col-12">
@@ -14,25 +17,60 @@
                 </div>
             </div>
             <div class="col-12">
-                <div class="d-flex flex-column bg-white shadow-sm">
-                    <div class="d-flex gap-3 align-items-center p-3 border-bottom">
-                        <img class="rounded-pill" src="~/img/about-2.jpg" alt=""
-                            style="width: 70px; height: 70px; object-fit: fill;">
-                        <div class="d-flex flex-column justify-content-center">
-                            <span class="fw-bold">Notification Heading Lorem Ipsum</span>
-                            <p class="vertical-middle" style="font-size: .9rem;">
-                                <span class="pe-2 border-end border-3 me-2 text-muted">2 hrs ago</span>
-                                <span class=""> Amy Doe</span>
+                @if(Model != null && Model.Count > 0)
+                {
+                    foreach(var notification in Model)
+                    {
+                        <div class="d-flex flex-column bg-white shadow-sm py-3 px-5">
+                            <div class="d-flex gap-3 align-items-center border-bottom">
+                                @{
+                                    var logoUrl = "." + @notification.CompanyLogoUrl;
+                                }
+                                <img class="rounded-pill" src="@logoUrl" alt=""
+                                     style="width: 70px; height: 70px; object-fit: fill;">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <span class="fw-bold">@notification.Title</span>
+                                    <p class="vertical-middle" style="font-size: .9rem;">
+                                        @{
+                                            var createAt = DateTime.Now - notification.CreateAt;
+                                            string timestamp = "";
+
+                                            if (createAt.TotalHours >= 24)
+                                            {
+                                                timestamp = $"{(int)createAt.TotalDays} day(s) ago";
+                                            }
+                                            else if (createAt.TotalHours >= 1)
+                                            {
+                                                timestamp = $"{(int)createAt.TotalHours} hour(s) ago";
+                                            }
+                                            else if (createAt.TotalMinutes <= 1) 
+                                            {
+                                                timestamp = "now";
+                                            }
+                                            else
+                                            {
+                                                timestamp = $"{(int)createAt.TotalMinutes} minute(s) ago";
+                                            }
+                                        }
+                                            <span class="pe-2 border-end border-3 me-2 text-muted">@timestamp</span>
+                                        <span class="">@notification.CompanyName</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="m-0 p-3">
+                                @Html.Raw(notification.Content) 
                             </p>
                         </div>
+                        <hr/>
+                    }
+                }
+                else
+                {
+                    <div class="d-flex flex-column bg-white justify-content-center align-items-center py-3">
+                        <img src="~/img/no-result-found.jpg" alt="" style="width: 450px; height: 400px;" />
+                        <p>Bạn chưa nhận được thông báo nào.</p>
                     </div>
-                    <p class="m-0 p-3">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ultrices dolor, ac maximus
-                        ligula. Donec ex orci, mollis ac purus vel, tempor pulvinar justo. Praesent nibh massa, posuere
-                        non mollis vel, molestie non mauris. Aenean consequat facilisis orci, sed sagittis mauris
-                        interdum at.
-                    </p>
-                </div>
+                }
             </div>
         </div>
     </div>

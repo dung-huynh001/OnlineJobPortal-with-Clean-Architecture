@@ -52,9 +52,18 @@ $(document).ready(function () {
         let profileItem = btnApproval.closest(".profile-item");
         let applyId = btnApproval.data("apply-id");
         let jobPostId = btnApproval.data("job-post-id");
+        let candidateId = btnApproval.data("candidate-id");
         $("#btn-send-notification").data("apply-id", applyId);
         $("#btn-send-notification").data("job-post-id", jobPostId);
-        let statusHtml = `<span class="px-2 py-1 bg-success text-white rounded-2" >PASSED</span>`
+        $("#btn-send-notification").data("candidate-id", candidateId);
+        $("#appointment-modal-content").html(`<textarea class="form-control text-editor"></textarea>`);
+        const editors = $(".text-editor");
+            editors.each((index, el) => {
+            ClassicEditor.create(el).catch((error) => {
+                console.error(error);
+            });
+        });
+        let statusHtml = `<span class="px-2 py-1 bg-success text-white rounded-2" >PASSED</span>`;
         profileItem.find(".status").html(statusHtml);
     });
 
@@ -62,7 +71,7 @@ $(document).ready(function () {
         let btnSendNotification = $(this);
         let applyId = btnSendNotification.data("apply-id");
         
-        if(!$("#appointment-form")[0].checkValidity()) {
+        if(!$("#appointment-form")[0].checkValidity() || $("#appointment-modal-content").find(".ck-content p").text().trim() === "") {
             toastr.warning("Vui lòng nhập thông tin lịch hẹn trước khi duyệt");
             return;
         }
@@ -71,7 +80,6 @@ $(document).ready(function () {
 
     $(document).on("click", "#btn-close-appointment-modal", function() {
         $("input").val("");
-        $("textarea").val("");
     });
     
     $(document).on("click", ".btn-reject-profile", function () {

@@ -10,8 +10,8 @@
     <link href="~/img/favicon.png" rel="icon">
 
     <!--Chosen Select Plugin CSS-->
-    <link href="~/area/assets/plugins/chosen/chosen.min.css" rel="stylesheet">    
-    
+    <link href="~/area/assets/plugins/chosen/chosen.min.css" rel="stylesheet">
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,13 +31,13 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="~/css/bootstrap.min.css" rel="stylesheet">
 
-    
+
     <!--Toastr Plugin CSS-->
     <link rel="stylesheet" href="~/area/assets/plugins/toastr/toastr.min.css">
 
     <!--jQuery Datatable-->
-	<link rel="stylesheet" href="~/area/assets/plugins/datatables/css/responsive.bootstrap.min.css">
-	<link rel="stylesheet" href="~/area/assets/plugins/datatables/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="~/area/assets/plugins/datatables/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" href="~/area/assets/plugins/datatables/css/jquery.dataTables.min.css">
 
     <!-- Template Stylesheet -->
     <link href="~/css/HomePage/custom.css" rel="stylesheet" />
@@ -142,8 +142,8 @@
     <script src="~/area/assets/plugins/signalr/signalr.min.js"></script>
 
     <!--jQuery Datatable-->
-	<script src="~/area/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="~/area/assets/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="~/area/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/area/assets/plugins/datatables/js/dataTables.responsive.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="~/js/HomePage/main.js"></script>
@@ -154,9 +154,9 @@
 
 
         const notificationConnection = new signalR.HubConnectionBuilder()
-                .withUrl("/chat")
-                .configureLogging(signalR.LogLevel.Information)
-                .build();
+            .withUrl("/chat")
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
 
         async function startConnection() {
             try {
@@ -168,13 +168,17 @@
             }
         }
 
-        startConnection();
+        notificationConnection.onclose(async () => {
+            await startConnection();
+        });
 
-        notificationConnection.on("ReceiveMessage", (message, avatarUrl) => {
+        //startConnection();
+
+        notificationConnection.on("ReceiveNotification", (message, avatarUrl) => {
             console.log(message);
             console.log(avatarUrl);
-            
-            let notification = renderNotification(message, avatarUrl, "2hr ago");
+
+            let notification = renderNotification(message, avatarUrl, "now", false);
 
             notificationContainer.append(notification);
 
@@ -183,49 +187,112 @@
             numberOfNotifications.show();
         });
 
-        function renderNotification(content, avatarUrl, timestamp) {
+        function renderNotification(content, avatarUrl, timestamp, isRead) {
             let url = "." + avatarUrl;
             let notificationHtml = `
-            <div class="d-flex p-2 gap-3 border-bottom">
-                <img class="flex-shrink-0 align-self-center rounded-pill" src="${url}" alt=""
-                    style="width: 30px; height: 30px; object-fit: fill">
+            <div class="d-flex p-2 gap-3 border-bottom position-relative align-items-center">
+                <img class="flex-shrink-0 rounded-pill border" src="${url}" alt=""
+                    style="width: 35px; height: 35px; object-fit: fill">
                 <div class="flex-grow-1 overflow-hidden" style="max-height: 3rem;">
                     ${content}
                 </div>
                 <span class="flex-shrink-0" style="font-size: 0.8rem; color: #aaa;">${timestamp}</span>
-            </div>`
+            `;
+            if(!isRead){
+                notificationHtml += 
+                    `<span class="position-absolute badge badge__new" 
+                    style="font-size: .6rem; top: 3px; left: 23px; padding-top: 0 !important; padding-bottom: 0 !important;">mới</span>
+                </div>`;
+            } else {
+                notificationHtml += `</div>`;
+            }
+                
             return notificationHtml;
         }
 
-        $(document).ready(function(){
+        $(document).ready(function () {
             $("input").attr("autocomplete", "off");
-        
+            setNumberUnreadNotification();
+
+            async function setNumberUnreadNotification() {
+                try {
+                    var res = await $.ajax({
+                        type: "get",
+                        dataType: "json",
+                        url: "/Notification/GetNumberOfUnreadNotifications"
+                    });
+                    if(res != null && res > 0) {
+                        numberOfNotifications.text(res);
+                        numberOfNotifications.show();
+                    }
+                } catch(err) {
+                    console.log(err);
+                }
+            }
+
             //Notifications
             callAjaxToJoinGroup();
-            async function callAjaxToJoinGroup(){
-                try{
+            async function callAjaxToJoinGroup() {
+                try {
                     var res = await $.ajax({
                         type: "get",
                         dataType: "json",
                         url: "/Notification/GetAppliedJobGroup"
                     });
-                    if(res != null && res.length > 0){
-                        for(let i=0; i<res.length; i++){
-                            notificationConnection.invoke('JoinGroup', 'JobPost', `${res[i]}`)
+                    if (res != null && res.length > 0) {
+                        await startConnection();
+                        for (let i = 0; i < res.length; i++) { 
+                            notificationConnection.invoke('JoinGroup', 'JobPost', `${res[i]}`);
                         }
-                    }else{
+                    } else {
                         throw new exception();
                     }
-                }catch(err){
+                } catch (err) {
                     console.log(err);
                 }
             }
 
-            if(numberOfNotifications.text() == 0){
+            if (numberOfNotifications.text() == 0) {
                 numberOfNotifications.hide();
             }
 
-            btnShowNotifications.click(function(){
+            btnShowNotifications.click(async function () {
+                var res = await $.ajax({
+                    type: "get",
+                    dataType: "json",
+                    url: "/Notification/GetTitleOfNotification"
+                });
+                if (res != null && res.length > 0) {
+                    let notificationHtml = "";
+                    for (let i = 0; i < res.length; i++) {
+                        let createdAtDate = new Date(res[i].createAt);
+                        let now = new Date();
+                        let diff = now - createdAtDate;
+                        let diffInMinutes = diff / (1000 * 60);
+                        let timestamp;
+                        if (diffInMinutes < 1) {
+                            timestamp = "now";
+                        } else if (diffInMinutes < 60) {
+                            timestamp = Math.floor(diffInMinutes) + " min(s) ago";
+                        } else if (diffInMinutes < 1440) {
+                            timestamp = Math.floor(diffInMinutes / 60) + " hr(s) ago";
+                        } else {
+                            timestamp = Math.floor(diffInMinutes / 1440) + " day(s) ago";
+                        }
+
+                        notificationHtml  += renderNotification(res[i].title, res[i].companyLogoUrl, timestamp, res[i].isRead);
+                    }
+                    notificationContainer.html(notificationHtml);
+                }else{
+                    let emptyNotificationHtml = `
+                    <div class="d-flex flex-column align-items-center justify-content-center py-3">
+                        <img src="../img/no-result-found.jpg" alt="" style="width: 220px;" />
+                        <p>Chưa có thông báo nào</p>
+                    </div>
+                    `;
+                    notificationContainer.html(emptyNotificationHtml)
+                }
+
                 numberOfNotifications.text("0");
                 numberOfNotifications.hide();
             });

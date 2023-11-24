@@ -57,14 +57,14 @@ namespace OnlineJobPortal.Presentation.SignalR
             if (toUser != null)
             {
                 await Clients.Client(toUser.ConnectionId).SendAsync("ReceiveMessage", result, message);
-            }
+            } 
         }
 
         public async Task SendToGroup(string resourceName, string resourceId, string message)
         {
             var fromUserId = Context.UserIdentifier;
             var result = await mediator.Send(new GetAvatarUserQuery(fromUserId));
-            await Clients.Groups($"{resourceName}-{resourceId}").SendAsync("ReceiveMessage", message, result.AvatarUrl);
+            await Clients.Groups($"{resourceName}-{resourceId}").SendAsync("ReceiveNotification", message, result.AvatarUrl);
         }
 
         public async Task JoinGroup(string resourceName, string resourceId)

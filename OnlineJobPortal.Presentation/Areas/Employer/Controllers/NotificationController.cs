@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using OnlineJobPortal.Application.Futures.AdminFeatures.Queries;
 using OnlineJobPortal.Application.Futures.CandidateFeatures.Queries;
+using OnlineJobPortal.Application.Futures.NotificationFeatures.Commands;
 using OnlineJobPortal.Application.Interfaces;
 using OnlineJobPortal.Domain.Entities;
 using OnlineJobPortal.Presentation.SignalR;
@@ -48,6 +49,14 @@ namespace OnlineJobPortal.Presentation.Areas.Employer.Controllers
             };
 
             return Json(message);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveNotification(int candidateId, string title, string content, int resourceId)
+        {
+            string resourceName = "JobPost";
+            var success = await mediator.Send(new CreateNotificationCommand(candidateId, title, content, resourceId, resourceName));
+            return Json(success);
         }
 
         public async Task<IActionResult> GetAllAppliedCandidates()

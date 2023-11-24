@@ -58,6 +58,9 @@
 	</div><!--//app-wrapper-->
 
 
+	<!--jQuery-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+	
 	<!-- Javascript -->
 	<script src="~/area/assets/plugins/popper.min.js"></script>
 	<script src="~/area/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -68,11 +71,23 @@
 
 	<!-- Page Specific JS -->
 	<script src="~/area/assets/js/app.js"></script>
+
+	<!--Chosen Select Plugin-->
+	<script src="~/area/assets/plugins/chosen/chosen.jquery.min.js"></script>
+
+	<!--Toastr Plugin-->
+	<script src="~/area/assets/plugins/toastr/toastr.min.js"></script>
+
+	<!--jQuery Datatable-->
+	<script src="~/area/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="~/area/assets/plugins/datatables/js/dataTables.responsive.min.js"></script>
+	
 	<script>
 		$(document).ready(function(){
             $("input").attr("autocomplete", "off");
 		});
 	</script>
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>
