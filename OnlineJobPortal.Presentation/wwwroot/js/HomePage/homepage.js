@@ -122,6 +122,8 @@
     let btnApplyJob = $(this);
     let jobId = btnApplyJob.data("job-post-id");
     let title = btnApplyJob.data("job-post-title");
+    $("#cv-it-jobs").val(0);
+    $("#others-cv").val(1);
     applyJobModal.find("#job-post-title").text(title);
     $(".btn-save").data("job-post-id", jobId);
   });
@@ -149,21 +151,22 @@
         success: function(res){
           if(!res){
             toastr.warning("Vui lòng cập nhật hồ sơ Online của IT Jobs");
+            return;
           }
+          callAjaxToApplyJob(formData);
         },
         error: function(err){
           console.log(err);
         }
       });
-      return;
     }else{
       formData.append("cv", cvFile);
-      if(cvFile == null){
+      if(cvFile == null || cvFile == undefined){
         toastr.warning("Vui lòng chọn CV trước");
         return;
       }
+      callAjaxToApplyJob(formData);
     }
-    callAjaxToApplyJob(formData);
   });
 
   function callAjaxToApplyJob(formData) {
@@ -186,6 +189,13 @@
       error: function(err){}
     });
   }
+
+  $(".btn-cancel").on("click", function(){
+    $("#cv-it-jobs").prop("checked", true);
+    $("#upload-cv").val(null);
+    $("#cover-letter").val(null);
+    cvFile = null;
+  });
 
   function favoriteJob(jobPostId) {
     $.ajax({

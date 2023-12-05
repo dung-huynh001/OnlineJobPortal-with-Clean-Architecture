@@ -39,21 +39,24 @@ namespace OnlineJobPortal.Presentation.Controllers
             this.uploadService = uploadService;
             this.webHostEnvironment = webHostEnvironment;
         }
+
+        [HttpPost]
         public IActionResult ApplyJob(int jobPostId, string? coverLetter, IFormFile? cv)
         {
             try
             {
                 int candidateId = currentUserService.GetActorId();
                 string? cvUrl = mediator.Send(new GetCvUrlQuery(candidateId)).GetAwaiter().GetResult();
-                if (cvUrl == null)
-                {
-                    throw new Exception();
-                }
 
-                if(cv != null)
+                if (cv != null)
                 {
                     string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Uploads/CVs");
                     cvUrl = uploadService.UploadImageAsync(cv, uploadsFolder).GetAwaiter().GetResult();
+                }
+
+                if (cvUrl == null)
+                {
+                    throw new Exception();
                 }
 
                 var applyJobDto = new CreateApplyDto();

@@ -19,7 +19,7 @@ namespace OnlineJobPortal.Presentation.Models
         public string LogoUrl { get; set; }
         public string ProvinceName { get; set; }
         public string Salary { get; set; }
-        public List<string> SkillsRequired { get; set; }
+        public List<string> skills { get; set; }
         public string Title { get; set; }
         public string YearsOfExperience { get; set; }
         public bool Saved { get; set; } = false;
