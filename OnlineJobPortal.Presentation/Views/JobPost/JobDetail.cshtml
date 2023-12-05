@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="d-flex gap-4">
-                        <button class="text-white btn btn-primary flex-grow-1 rounded-3" data-bs-toggle="modal"
+                        <button class="text-white btn btn-primary flex-grow-1 rounded-3 btn-apply-job" data-bs-toggle="modal"
                             data-bs-target="#apply-job-modal"><i class="fa-regular fa-paper-plane pe-2"></i>Ứng tuyển
                             ngay</button>
                         @if (Model.Saved == true)
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     <div class="d-flex gap-4 py-3">
-                        <button class="btn btn-primary rounded-3" data-bs-toggle="modal"
+                        <button class="btn btn-primary rounded-3 btn-apply-job" data-bs-toggle="modal"
                             data-bs-target="#apply-job-modal">Ứng tuyển ngay</button>
                         @if (Model.Saved == true)
                         {
@@ -334,7 +334,8 @@
                 let btnApplyJob = $(this);
                 let jobId = btnApplyJob.data("job-post-id");
                 let title = btnApplyJob.data("job-post-title");
-                console.log(title, jobId);
+                $("#cv-it-jobs").val(0);
+                $("#others-cv").val(1);
                 applyJobModal.find("#job-post-title").text(title);
                 $(".btn-save").data("job-post-id", jobId);
             });
@@ -359,24 +360,25 @@
                         dataType: "json",
                         cache: false,
                         url: "/Apply/IsValidCandidateInfo",
-                        success: function(res){
-                        if(!res){
-                            toastr.warning("Vui lòng cập nhật hồ sơ Online của IT Jobs");
-                        }
+                        success: function (res) {
+                            if (!res) {
+                                toastr.warning("Vui lòng cập nhật hồ sơ Online của IT Jobs");
+                                return;
+                            }
+                            callAjaxToApplyJob(formData);
                         },
-                        error: function(err){
-                        console.log(err);
+                        error: function (err) {
+                            console.log(err);
                         }
                     });
-                    return;
                 } else {
                     formData.append("cv", cvFile);
-                    if (cvFile == null) {
+                    if (cvFile == null || cvFile == undefined) {
                         toastr.warning("Vui lòng chọn CV trước");
                         return;
                     }
+                    callAjaxToApplyJob(formData);
                 }
-                callAjaxToApplyJob(formData);
             });
 
             function callAjaxToApplyJob(formData) {
@@ -400,6 +402,12 @@
                 });
             }
 
+            $(".btn-cancel").on("click", function () {
+                $("#cv-it-jobs").prop("checked", true);
+                $("#upload-cv").val(null);
+                $("#cover-letter").val(null);
+                cvFile = null;
+            });
         });
     </script>
 }

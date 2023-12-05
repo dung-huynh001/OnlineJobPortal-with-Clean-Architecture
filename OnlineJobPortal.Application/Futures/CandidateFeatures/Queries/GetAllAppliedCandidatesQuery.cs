@@ -38,6 +38,14 @@ namespace OnlineJobPortal.Application.Futures.CandidateFeatures.Queries
                 .Include(a => a.JobPost)
                 .Where(a => a.JobPost.EmployerId == request.EmployerId)
                 .ToListAsync();
+            foreach (var appliedJob in appliedJobs)
+            {
+                var conversation = await unitOfWork.Repository<Conversations>().GetAll
+                .Where(c => c.ApplyId == appliedJob.Id)
+                .FirstOrDefaultAsync();
+
+                appliedJob.ConversationId = conversation != null ? conversation.Id : 0;
+            }
             return appliedJobs;
         }
     }

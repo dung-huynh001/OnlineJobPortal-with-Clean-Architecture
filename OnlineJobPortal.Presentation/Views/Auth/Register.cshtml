@@ -48,7 +48,7 @@
                     </div>
                     <input asp-for="RegistrationRequest.UserType" value="1" type="hidden" />
                     <input type="submit" class="btn" value="Đăng ký" />
-                    <p class="social-text">Hoặc đăng ký với các nền tảng</p>
+                    @* <p class="social-text">Hoặc đăng ký với các nền tảng</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
@@ -56,7 +56,7 @@
                         <a href="#" class="social-icon">
                             <i class="fab fa-google"></i>
                         </a>
-                    </div>
+                    </div> *@
                 </form>
                 <form method="post" action="/auth/login" class="sign-in-form">
                     <h2 class="title">
@@ -75,7 +75,7 @@
                         <span asp-validation-for="AuthRequest.Password" class="text-danger error-message"></span>
                     </div>
                     <input type="submit" class="btn solid" value="Đăng nhập" />
-                    <p class="social-text">Hoặc đăng nhập với nền tảng</p>
+                    @* <p class="social-text">Hoặc đăng nhập với nền tảng</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
@@ -83,7 +83,7 @@
                         <a href="#" class="social-icon">
                             <i class="fab fa-google"></i>
                         </a>
-                    </div>
+                    </div> *@
                 </form>
                 
             </div>

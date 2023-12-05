@@ -374,7 +374,8 @@ $(document).ready(function () {
     let btnApplyJob = $(this);
     let jobId = btnApplyJob.data("job-post-id");
     let title = btnApplyJob.data("job-post-title");
-    console.log(title, jobId);
+    $("#cv-it-jobs").val(0);
+    $("#others-cv").val(1);
     applyJobModal.find("#job-post-title").text(title);
     $(".btn-save").data("job-post-id", jobId);
   });
@@ -386,13 +387,13 @@ $(document).ready(function () {
     }
   });
 
-  $(document).on("click", ".btn-save", function (e) {
+  $(document).on("click", ".btn-save", function(e) {
     let btnSave = $(this);
     let jobId = btnSave.data("job-post-id");
     let formData = new FormData();
     formData.append("jobPostId", jobId);
     formData.append("coverLetter", $("#cover-letter").val());
-    if ($("input[name='radio-cv']:checked").val() == 0) {
+    if($("input[name='radio-cv']:checked").val() == 0){
       formData.append("cv", null);
       $.ajax({
         type: "get",
@@ -402,21 +403,22 @@ $(document).ready(function () {
         success: function(res){
           if(!res){
             toastr.warning("Vui lòng cập nhật hồ sơ Online của IT Jobs");
+            return;
           }
+          callAjaxToApplyJob(formData);
         },
         error: function(err){
           console.log(err);
         }
       });
-      return;
-    } else {
+    }else{
       formData.append("cv", cvFile);
-      if (cvFile == null) {
+      if(cvFile == null || cvFile == undefined){
         toastr.warning("Vui lòng chọn CV trước");
         return;
       }
+      callAjaxToApplyJob(formData);
     }
-    callAjaxToApplyJob(formData);
   });
 
   function callAjaxToApplyJob(formData) {
@@ -427,17 +429,24 @@ $(document).ready(function () {
       processData: false,
       data: formData,
       url: "/Apply/ApplyJob",
-      success: function (res) {
+      success: function(res) {
         $(".btn-cancel").trigger("click");
         $(".modal-body input, .modal-body textarea").val("");
-        if (res.success) {
+        if(res.success) {
           toastr.success("Đã gửi hồ sơ đến nhà tuyển dụng");
-        } else {
+        }else{
           toastr.warning("Bạn đã ứng tuyển công việc này trước đó");
         }
       },
-      error: function (err) { }
+      error: function(err){}
     });
   }
+
+  $(".btn-cancel").on("click", function(){
+    $("#cv-it-jobs").prop("checked", true);
+    $("#upload-cv").val(null);
+    $("#cover-letter").val(null);
+    cvFile = null;
+  });
 
 });

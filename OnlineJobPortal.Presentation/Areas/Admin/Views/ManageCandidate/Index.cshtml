@@ -1,0 +1,171 @@
+﻿<div class="row min-vh-100 bg-white rounded-3 p-3">
+    <div class="col-12">
+        <table id="tbl-manage-job-post" class="responsive" style="font-size: .9rem;">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var table = $('#tbl-manage-job-post').DataTable({
+            language: {
+                emptyTable: "Chưa có bài đăng tuyển dụng nào"
+            },
+            responsive: true,
+            ordering: true,
+            searching: true,
+            columnDefs: [
+                { "width": "15%", "targets": 2 }
+            ],
+            ajax: {
+                url: '/Employer/JobPost/GetAllJobPost',
+                type: 'GET'
+            },
+            columns: [
+                {
+                    orderable: false,
+                    className: 'dt-control',
+                    data: null,
+                    defaultContent: '',
+                },
+                {
+                    data: 'id',
+                    title: 'ID',
+                    render: function (data, type, row) {
+                        return type === 'display' ? '#' + data : data;
+                    }
+                },
+                {
+                    data: 'title',
+                    title: 'Tiêu đề',
+                },
+                {
+                    data: 'employmentType',
+                    title: 'Hình thức',
+                    className: 'text-nowrap',
+                    render: function (data, type, row) {
+                        switch (data) {
+                            case 0:
+                                data = "Full time";
+                                break;
+                            case 1:
+                                data = "Part time";
+                                break;
+                            case 2:
+                                data = "Freelancer";
+                                break;
+                            default:
+                                data = "Remote";
+                                break;
+                        }
+                        return data;
+                    }
+                },
+                {
+                    data: 'salary',
+                    title: 'Mức lương',
+                    className: 'text-nowrap',
+                },
+                {
+                    data: 'yearsOfExperience',
+                    title: 'Kinh nghiệm',
+                },
+                {
+                    data: 'numberOfRecruits',
+                    title: 'SL tuyển'
+                },
+                {
+                    data: 'applications',
+                    title: 'Đã nhận',
+                    render: function (data, type, row) {
+                        data = data.length + " hồ sơ"
+                        return type === 'display' ? data : 'Chưa có';
+                    }
+                },
+                {
+                    data: 'expiredDate',
+                    title: 'Hết hạn',
+                    className: 'text-nowrap',
+                    render: function (data, type, row) {
+                        data = data.slice(0, 10).split("-");
+                        data = data.reverse();
+                        return type === 'display' ?
+                            data.join("/") : data;
+                    }
+                },
+                {
+                    data: 'expiredDate',
+                    title: 'Trạng thái',
+                    render: function (data, type, row) {
+                        var currentDate = new Date();
+                        var expirationDate = new Date(data);
+
+                        if (expirationDate < currentDate) {
+                            return $('<span>', {
+                                class: 'badge bg-danger',
+                                text: 'Kết thúc'
+                            }).prop('outerHTML');
+                        } else {
+                            return $('<span>', {
+                                class: 'badge bg-success',
+                                text: 'Đang tuyển'
+                            }).prop('outerHTML');;
+                        }
+                    }
+                },
+                {
+                    responsivePriority: 1,
+                    data: 'id',
+                    title: "Thao tác",
+                    orderable: false,
+                    render: function (data, type, row) {
+                        return type === 'display' ?
+                            '<div class="d-flex justify-content-around">'
+                            + '<a href="/Employer/JobPost/ShowJobPostDetail?id=' + data + '" data-job-post-id="' + data + '" class="btn btn-outline-info btn-sm btn-view" role="button"'
+                            + 'data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xem chi tiết">'
+                            + '<i class="fa-solid fa-eye"></i></a>'
+                            + '<a href="" data-job-post-id="' + data + '" class="btn btn-outline-danger btn-sm btn-cancel" role="button"'
+                            + 'data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xóa bài đăng">'
+                            + '<i class="fa-solid fa-circle-xmark"></i></a>'
+                            + '</div>'
+                            : data;
+                    }
+                }
+            ]
+        });
+
+        function loadData() {
+            table.ajax.reload();
+        }
+
+        $(document).ready(function () {
+            loadData();
+        });
+
+        $(document).on('click', '.btn-cancel', function (e) {
+            e.preventDefault();
+            let btnCancel = $(this);
+            let jobPostId = btnCancel.data('job-post-id');
+            $.ajax({
+                type: "DELETE",
+                dataType: "json",
+                data: { jobPostId: jobPostId },
+                url: "/Employer/JobPost/DeleteJobPost",
+                success: function (res) {
+                    if (res) {
+                        toastr.success('Xóa bài đăng thành công');
+                        loadData();
+                    } else {
+                        toastr.error('Xóa bài đăng thất bại');
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        });
+
+    </script>
+}

@@ -113,7 +113,7 @@ namespace OnlineJobPortal.Presentation.Controllers
                     data = data?.Where(i => (i.Title.ToLower().Contains(keyword ?? "")
                     || i.Title.ToLower().Contains(keyword ?? "")
                     || i.CompanyName.ToLower().Contains(keyword ?? "")
-                    || i.SkillsRequired.Any(s => s.ToLower().Contains(keyword ?? "")))
+                    || i.skills.Any(s => s.ToLower().Contains(keyword ?? "")))
                         && i.ProvinceName.ToLower().Contains(provinceName ?? "")
                         && isSalaryInRange(salary, i.Salary))
                         .ToList();

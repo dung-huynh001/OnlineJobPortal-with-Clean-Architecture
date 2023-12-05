@@ -125,7 +125,7 @@ $(document).ready(function () {
                     <a href="/Company/CompanyDetail/${jobPost.companyId}" target="_blank" class="text-uppercase text-muted">${jobPost.companyName}</a>
                   </div>
                   <div class="d-flex flex-wrap gap-3 mb-2 text-capitalize text-primary skills-wrapper">
-                    ${jobPost.skillsRequired.map((skill) => `<span>${skill}</span>`).join("")}
+                    ${jobPost.skills.map((skill) => `<span>${skill}</span>`).join("")}
                   </div>
                   <span class="text-truncate me-3">
                     <i class="fa fa-map-marker-alt text-primary me-2"></i>${jobPost.provinceName}
